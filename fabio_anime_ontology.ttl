@@ -1,4 +1,4 @@
-@prefix : <http://www.semanticweb.org/ontology/anime/> .
+@prefix : <http://www.semanticweb.org/ontology/anime-f/> .
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -8,11 +8,9 @@
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix voaf: <http://purl.org/vocommons/voaf#> .
 @prefix schema: <http://schema.org/> .
-@base <http://www.semanticweb.org/ontology/anime/> .
+@base <http://www.semanticweb.org/ontology/anime-f/> .
 
-<http://www.semanticweb.org/ontology/anime> rdf:type owl:Ontology ;
-                                             rdfs:label "Alberto" ,
-                                                        "Fabio" .
+<http://www.semanticweb.org/ontology/anime-f> rdf:type owl:Ontology .
 
 #################################################################
 #    Annotation properties
@@ -70,12 +68,12 @@
 <http://www.semanticweb.org/albisyx/ontologies/2023/7/untitled-ontology-27/voiceActed> rdf:type owl:ObjectProperty .
 
 
-###  http://www.semanticweb.org/ontology/anime/hasSeasonalAnime
+###  http://www.semanticweb.org/ontology/anime-f/hasSeasonalAnime
 :hasSeasonalAnime rdf:type owl:ObjectProperty ;
                   owl:inverseOf :meteorologicalSeason .
 
 
-###  http://www.semanticweb.org/ontology/anime/meteorologicalSeason
+###  http://www.semanticweb.org/ontology/anime-f/meteorologicalSeason
 :meteorologicalSeason rdf:type owl:ObjectProperty ;
                       rdfs:domain :AnimeSeason ;
                       rdfs:range <https://schema.org/Text> .
@@ -249,14 +247,14 @@ schema:Quantity rdf:type owl:Class .
                                                                                       rdfs:subClassOf <https://schema.org/Person> .
 
 
-###  http://www.semanticweb.org/ontology/anime/AnimeMovie
+###  http://www.semanticweb.org/ontology/anime-f/AnimeMovie
 :AnimeMovie rdf:type owl:Class ;
             rdfs:subClassOf <http://dbpedia.org/ontology/Anime> ,
                             <https://schema.org/Movie> ;
             owl:disjointWith :AnimeSeason .
 
 
-###  http://www.semanticweb.org/ontology/anime/AnimeSeason
+###  http://www.semanticweb.org/ontology/anime-f/AnimeSeason
 :AnimeSeason rdf:type owl:Class ;
              rdfs:subClassOf <http://dbpedia.org/ontology/Anime> ,
                              <https://schema.org/TVSeason> .
