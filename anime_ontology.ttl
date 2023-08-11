@@ -1,15 +1,242 @@
-@prefix : <http://www.semanticweb.org/fabio/ontologies/2023/7/untitled-ontology-14/> .
-@prefix dct: <http://purl.org/dc/terms/> .
+@prefix : <http://www.semanticweb.org/albisyx/ontologies/2023/7/untitled-ontology-27/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix vann: <http://purl.org/vocab/vann/> .
-@prefix voaf: <http://purl.org/vocommons/voaf#> .
 @prefix schema: <http://schema.org/> .
-@base <http://www.semanticweb.org/fabio/ontologies/2023/7/untitled-ontology-14/> .
+@base <http://www.semanticweb.org/albisyx/ontologies/2023/7/untitled-ontology-27/> .
 
-<http://www.semanticweb.org/fabio/ontologies/2023/7/untitled-ontology-14> rdf:type owl:Ontology .
+<http://www.semanticweb.org/ontology/anime> rdf:type owl:Ontology .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://open.vocab.org/terms/defines
+<http://open.vocab.org/terms/defines> rdf:type owl:AnnotationProperty .
+
+
+###  http://open.vocab.org/terms/describes
+<http://open.vocab.org/terms/describes> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2007/05/powder-s#describedby
+<http://www.w3.org/2007/05/powder-s#describedby> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/prov#wasDerivedFrom
+<http://www.w3.org/ns/prov#wasDerivedFrom> rdf:type owl:AnnotationProperty .
+
+
+###  https://schema.org/contributor
+<https://schema.org/contributor> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/albisyx/ontologies/2023/7/untitled-ontology-27/hasCharacters
+:hasCharacters rdf:type owl:ObjectProperty ;
+               rdfs:domain <http://dbpedia.org/ontology/Anime> ;
+               rdfs:range :Character .
+
+
+###  http://www.semanticweb.org/albisyx/ontologies/2023/7/untitled-ontology-27/hasVoiceActor
+:hasVoiceActor rdf:type owl:ObjectProperty ;
+               owl:inverseOf :voiceActed ;
+               rdfs:domain :Character ;
+               rdfs:range <http://dbpedia.org/ontology/VoiceActor> .
+
+
+###  http://www.semanticweb.org/albisyx/ontologies/2023/7/untitled-ontology-27/languageOfVoicing
+:languageOfVoicing rdf:type owl:ObjectProperty ;
+                   owl:inverseOf :languageVoicedBy ;
+                   rdfs:domain <http://dbpedia.org/ontology/VoiceActor> ;
+                   rdfs:range <https://schema.org/Language> .
+
+
+###  http://www.semanticweb.org/albisyx/ontologies/2023/7/untitled-ontology-27/voiceActed
+:voiceActed rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/ontology/anime#languageVoicedBy
+:languageVoicedBy rdf:type owl:ObjectProperty .
+
+
+###  https://schema.org/alternateName
+<https://schema.org/alternateName> rdf:type owl:ObjectProperty ;
+                                   rdfs:domain <https://schema.org/Thing> ;
+                                   rdfs:range <https://schema.org/Text> ;
+                                   rdfs:comment "An alias for the item." ;
+                                   rdfs:label "alternateName" .
+
+
+###  https://schema.org/description
+<https://schema.org/description> rdf:type owl:ObjectProperty ,
+                                          owl:FunctionalProperty ;
+                                 rdfs:domain <https://schema.org/Thing> ;
+                                 rdfs:range <https://schema.org/Text> ;
+                                 rdfs:comment "A description of the item." ;
+                                 rdfs:label "description" .
+
+
+###  https://schema.org/mainEntityOfPage
+<https://schema.org/mainEntityOfPage> rdf:type owl:ObjectProperty ;
+                                      rdfs:domain <http://dbpedia.org/ontology/Anime> ,
+                                                  <https://schema.org/Thing> ;
+                                      rdfs:range <https://schema.org/CreativeWork> ,
+                                                 <https://schema.org/URL> ;
+                                      rdfs:comment "Indicates a page (or other CreativeWork) for which this thing is the main entity being described. See [background notes](/docs/datamodel.html#mainEntityBackground) for details." ;
+                                      rdfs:label "mainEntityOfPage" .
+
+
+###  https://schema.org/name
+<https://schema.org/name> rdf:type owl:ObjectProperty ,
+                                   owl:FunctionalProperty ;
+                          rdfs:domain <https://schema.org/Thing> ;
+                          rdfs:range <https://schema.org/Text> ;
+                          rdfs:comment "The name of the item." ;
+                          rdfs:label "name" .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://dbpedia.org/ontology/Actor
+<http://dbpedia.org/ontology/Actor> rdf:type owl:Class .
+
+
+###  http://dbpedia.org/ontology/Anime
+<http://dbpedia.org/ontology/Anime> rdf:type owl:Class ;
+                                    owl:equivalentClass <http://www.wikidata.org/entity/Q1107> ;
+                                    rdfs:subClassOf <http://dbpedia.org/ontology/Cartoon> ;
+                                    rdfs:comment "A style of animation originating in Japan"@en ,
+                                                 "Designación coa que se coñece a animación xaponesa"@gl ,
+                                                 "Geanimeerd Japans stripverhaal"@nl ,
+                                                 "Style d'animation né au Japon"@fr ,
+                                                 "Στυλ κινουμένων σχεδίων με καταγωγή την Ιαπωνία"@el ,
+                                                 "حرکت پذیری کا ایک انداز جاپان میں شروع ہوا۔"@ur ;
+                                    rdfs:isDefinedBy <http://dbpedia.org/ontology/> ;
+                                    rdfs:label "Animation"@fr ,
+                                               "Anime"@en ,
+                                               "anime"@de ,
+                                               "anime"@ga ,
+                                               "anime"@gl ,
+                                               "anime"@it ,
+                                               "anime"@nl ,
+                                               "άνιμε"@el ,
+                                               "انیمے"@ur ,
+                                               "アニメ"@ja ,
+                                               "일본의 애니메이션"@ko ;
+                                    <http://www.w3.org/2007/05/powder-s#describedby> <http://dbpedia.org/ontology/data/definitions.ttl> ;
+                                    <http://www.w3.org/ns/prov#wasDerivedFrom> <http://mappings.dbpedia.org/index.php/OntologyClass:Anime> .
+
+
+###  http://dbpedia.org/ontology/Cartoon
+<http://dbpedia.org/ontology/Cartoon> rdf:type owl:Class .
+
+
+###  http://dbpedia.org/ontology/VoiceActor
+<http://dbpedia.org/ontology/VoiceActor> rdf:type owl:Class ;
+                                         rdfs:subClassOf <http://dbpedia.org/ontology/Actor> .
+
+
+###  http://www.semanticweb.org/albisyx/ontologies/2023/7/untitled-ontology-27/Character
+:Character rdf:type owl:Class ;
+           rdfs:subClassOf :DomainEntity ,
+                           <https://schema.org/Person> .
+
+
+###  http://www.semanticweb.org/albisyx/ontologies/2023/7/untitled-ontology-27/DomainEntity
+:DomainEntity rdf:type owl:Class ;
+              rdfs:subClassOf owl:Thing .
+
+
+###  http://www.wikidata.org/entity/Q1107
+<http://www.wikidata.org/entity/Q1107> rdf:type owl:Class .
+
+
+###  http://xmlns.com/foaf/0.1/Person
+<http://xmlns.com/foaf/0.1/Person> rdf:type owl:Class ;
+                                   owl:equivalentClass <https://schema.org/Person> .
+
+
+###  https://schema.org/CreativeWork
+<https://schema.org/CreativeWork> rdf:type owl:Class ;
+                                  rdfs:subClassOf <https://schema.org/Thing> ;
+                                  rdfs:comment "The most generic kind of creative work, including books, movies, photographs, software programs, etc." ;
+                                  rdfs:label "CreativeWork" ;
+                                  <https://schema.org/contributor> <https://schema.org/docs/collab/rNews> .
+
+
+###  https://schema.org/Intangible
+<https://schema.org/Intangible> rdf:type owl:Class ;
+                                rdfs:subClassOf <https://schema.org/Thing> .
+
+
+###  https://schema.org/Language
+<https://schema.org/Language> rdf:type owl:Class ;
+                              rdfs:subClassOf <https://schema.org/Intangible> ;
+                              rdfs:comment "Natural languages such as Spanish, Tamil, Hindi, English, etc. Formal language code tags expressed in [BCP 47](https://en.wikipedia.org/wiki/IETF_language_tag) can be used via the [[alternateName]] property. The Language type previously also covered programming languages such as Scheme and Lisp, which are now best represented using [[ComputerLanguage]]." ;
+                              rdfs:label "Language" .
+
+
+###  https://schema.org/Person
+<https://schema.org/Person> rdf:type owl:Class ;
+                            rdfs:subClassOf <https://schema.org/Thing> ;
+                            rdfs:comment "A person (alive, dead, undead, or fictional)." ;
+                            rdfs:label "Person" ;
+                            <https://schema.org/contributor> <https://schema.org/docs/collab/rNews> .
+
+
+###  https://schema.org/Text
+<https://schema.org/Text> rdf:type owl:Class ;
+                          rdfs:comment "Data type: Text." ;
+                          rdfs:label "Text" .
+
+
+###  https://schema.org/Thing
+<https://schema.org/Thing> rdf:type owl:Class .
+
+
+###  https://schema.org/URL
+<https://schema.org/URL> rdf:type owl:Class ;
+                         rdfs:subClassOf <https://schema.org/Text> ;
+                         rdfs:comment "Data type: URL." ;
+                         rdfs:label "URL" .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://dbpedia.org/ontology/VoiceActor
+
+#################################################################
+#    Annotations
+#################################################################
+
+<http://dbpedia.org/ontology/> <http://open.vocab.org/terms/defines> <http://dbpedia.org/ontology/Anime> ,
+                                                                     <http://dbpedia.org/ontology/VoiceActor> .
+
+
+<http://dbpedia.org/ontology/VoiceActor> rdfs:isDefinedBy <http://dbpedia.org/ontology/> ;
+                                         rdfs:label "Synchronsprecher"@de ,
+                                                    "acteur de doublage"@fr ,
+                                                    "stemacteur"@nl ,
+                                                    "voice actor"@en ,
+                                                    "آوازکا اداکار"@ur ,
+                                                    "声優"@ja ,
+                                                    "성우"@ko ;
+                                         <http://www.w3.org/2007/05/powder-s#describedby> <http://dbpedia.org/ontology/data/definitions.ttl> ;
+                                         <http://www.w3.org/ns/prov#wasDerivedFrom> <http://mappings.dbpedia.org/index.php/OntologyClass:VoiceActor> .
+
+
+<http://dbpedia.org/ontology/data/definitions.ttl> <http://open.vocab.org/terms/describes> <http://dbpedia.org/ontology/Anime> ,
+                                                                                           <http://dbpedia.org/ontology/VoiceActor> .
+
 
 ###  Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi
