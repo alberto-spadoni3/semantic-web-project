@@ -1,4 +1,4 @@
-@prefix : <http://www.semanticweb.org/fabio/ontologies/2023/7/untitled-ontology-14/> .
+@prefix : <http://www.semanticweb.org/fabio/ontology/anime/> .
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -8,8 +8,230 @@
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix voaf: <http://purl.org/vocommons/voaf#> .
 @prefix schema: <http://schema.org/> .
-@base <http://www.semanticweb.org/fabio/ontologies/2023/7/untitled-ontology-14/> .
+@base <http://www.semanticweb.org/fabio/ontology/anime/> .
 
-<http://www.semanticweb.org/fabio/ontologies/2023/7/untitled-ontology-14> rdf:type owl:Ontology .
+<http://www.semanticweb.org/fabio/ontology/anime> rdf:type owl:Ontology .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://www.w3.org/2007/05/powder-s#describedby
+<http://www.w3.org/2007/05/powder-s#describedby> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/prov#wasDerivedFrom
+<http://www.w3.org/ns/prov#wasDerivedFrom> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/fabio/ontology/anime#hasSeasonalAnime
+:hasSeasonalAnime rdf:type owl:ObjectProperty ;
+                  owl:inverseOf :meteorologicalSeason ;
+                  rdfs:domain <http://purl.org/dc/dcmitype/Text> ;
+                  rdfs:range :AnimeSeason .
+
+
+###  http://www.semanticweb.org/fabio/ontology/anime/meteorologicalSeason
+:meteorologicalSeason rdf:type owl:ObjectProperty ;
+                      rdfs:domain :AnimeSeason ;
+                      rdfs:range <http://purl.org/dc/dcmitype/Text> .
+
+
+###  https://schema.org/datePublished
+<https://schema.org/datePublished> rdf:type owl:ObjectProperty ;
+                                   rdfs:domain <https://schema.org/CreativeWork> ;
+                                   rdfs:range schema:Date .
+
+
+###  https://schema.org/description
+<https://schema.org/description> rdf:type owl:ObjectProperty ;
+                                 rdfs:domain <https://schema.org/Thing> ;
+                                 rdfs:range <http://purl.org/dc/dcmitype/Text> .
+
+
+###  https://schema.org/duration
+<https://schema.org/duration> rdf:type owl:ObjectProperty ;
+                              rdfs:domain <https://schema.org/Movie> ;
+                              rdfs:range schema:Duration .
+
+
+###  https://schema.org/endDate
+<https://schema.org/endDate> rdf:type owl:ObjectProperty ;
+                             rdfs:domain <https://schema.org/CreativeWorkSeason> ;
+                             rdfs:range schema:Date .
+
+
+###  https://schema.org/episode
+<https://schema.org/episode> rdf:type owl:ObjectProperty ;
+                             rdfs:domain <https://schema.org/CreativeWorkSeason> ;
+                             rdfs:range <https://schema.org/Episode> .
+
+
+###  https://schema.org/episodeNumber
+<https://schema.org/episodeNumber> rdf:type owl:ObjectProperty ;
+                                   rdfs:domain <https://schema.org/Episode> ;
+                                   rdfs:range schema:Integer .
+
+
+###  https://schema.org/name
+<https://schema.org/name> rdf:type owl:ObjectProperty ;
+                          rdfs:domain <https://schema.org/Thing> ;
+                          rdfs:range <http://purl.org/dc/dcmitype/Text> .
+
+
+###  https://schema.org/numberOfEpisodes
+<https://schema.org/numberOfEpisodes> rdf:type owl:ObjectProperty ;
+                                      rdfs:domain <https://schema.org/CreativeWorkSeason> ;
+                                      rdfs:range schema:Integer .
+
+
+###  https://schema.org/partOfSeason
+<https://schema.org/partOfSeason> rdf:type owl:ObjectProperty ;
+                                  rdfs:domain <https://schema.org/Episode> ;
+                                  rdfs:range <https://schema.org/CreativeWorkSeason> .
+
+
+###  https://schema.org/startDate
+<https://schema.org/startDate> rdf:type owl:ObjectProperty ;
+                               rdfs:domain <https://schema.org/CreativeWorkSeason> ;
+                               rdfs:range schema:Date .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://dbpedia.org/ontology/Anime
+<http://dbpedia.org/ontology/Anime> rdf:type owl:Class ;
+                                    owl:equivalentClass <http://www.wikidata.org/entity/Q1107> ;
+                                    rdfs:subClassOf <http://dbpedia.org/ontology/Cartoon> ;
+                                    rdfs:comment "A style of animation originating in Japan"@en ,
+                                                 "Designación coa que se coñece a animación xaponesa"@gl ,
+                                                 "Geanimeerd Japans stripverhaal"@nl ,
+                                                 "Style d'animation né au Japon"@fr ,
+                                                 "Στυλ κινουμένων σχεδίων με καταγωγή την Ιαπωνία"@el ,
+                                                 "حرکت پذیری کا ایک انداز جاپان میں شروع ہوا۔"@ur ;
+                                    rdfs:isDefinedBy <http://dbpedia.org/ontology/> ;
+                                    rdfs:label "Animation"@fr ,
+                                               "Anime"@en ,
+                                               "anime"@de ,
+                                               "anime"@ga ,
+                                               "anime"@gl ,
+                                               "anime"@it ,
+                                               "anime"@nl ,
+                                               "άνιμε"@el ,
+                                               "انیمے"@ur ,
+                                               "アニメ"@ja ,
+                                               "일본의 애니메이션"@ko ;
+                                    <http://www.w3.org/2007/05/powder-s#describedby> <http://dbpedia.org/ontology/data/definitions.ttl> ;
+                                    <http://www.w3.org/ns/prov#wasDerivedFrom> <http://mappings.dbpedia.org/index.php/OntologyClass:Anime> .
+
+
+###  http://dbpedia.org/ontology/Cartoon
+<http://dbpedia.org/ontology/Cartoon> rdf:type owl:Class .
+
+
+###  http://purl.org/dc/dcmitype/Text
+<http://purl.org/dc/dcmitype/Text> rdf:type owl:Class ;
+                                   owl:equivalentClass schema:TextObject .
+
+
+###  http://schema.org/Date
+schema:Date rdf:type owl:Class ;
+            rdfs:comment "A date value in [ISO 8601 date format](http://en.wikipedia.org/wiki/ISO_8601)." ;
+            rdfs:label "Date" .
+
+
+###  http://schema.org/Duration
+schema:Duration rdf:type owl:Class ;
+                rdfs:subClassOf schema:Quantity ;
+                rdfs:comment "Quantity: Duration (use [ISO 8601 duration format](http://en.wikipedia.org/wiki/ISO_8601))." ;
+                rdfs:label "Duration" .
+
+
+###  http://schema.org/Integer
+schema:Integer rdf:type owl:Class ;
+               rdfs:subClassOf schema:Number ;
+               rdfs:comment "Data type: Integer." ;
+               rdfs:label "Integer" .
+
+
+###  http://schema.org/Number
+schema:Number rdf:type owl:Class .
+
+
+###  http://schema.org/Quantity
+schema:Quantity rdf:type owl:Class .
+
+
+###  http://schema.org/TextObject
+schema:TextObject rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/fabio/ontology/anime/Anime
+:Anime rdf:type owl:Class ;
+       rdfs:subClassOf :DomainEntity .
+
+
+###  http://www.semanticweb.org/fabio/ontology/anime/AnimeMovie
+:AnimeMovie rdf:type owl:Class ;
+            rdfs:subClassOf :Anime ,
+                            <https://schema.org/Movie> ;
+            owl:disjointWith :AnimeSeason .
+
+
+###  http://www.semanticweb.org/fabio/ontology/anime/AnimeSeason
+:AnimeSeason rdf:type owl:Class ;
+             rdfs:subClassOf :Anime ,
+                             <https://schema.org/TVSeason> .
+
+
+###  http://www.semanticweb.org/fabio/ontology/anime/DomainEntity
+:DomainEntity rdf:type owl:Class .
+
+
+###  http://www.wikidata.org/entity/Q1107
+<http://www.wikidata.org/entity/Q1107> rdf:type owl:Class .
+
+
+###  https://schema.org/CreativeWork
+<https://schema.org/CreativeWork> rdf:type owl:Class .
+
+
+###  https://schema.org/CreativeWorkSeason
+<https://schema.org/CreativeWorkSeason> rdf:type owl:Class .
+
+
+###  https://schema.org/Episode
+<https://schema.org/Episode> rdf:type owl:Class ;
+                             rdfs:subClassOf <https://schema.org/CreativeWork> ;
+                             rdfs:comment "A media episode (e.g. TV, radio, video game) which can be part of a series or season." ;
+                             rdfs:label "Episode" .
+
+
+###  https://schema.org/Movie
+<https://schema.org/Movie> rdf:type owl:Class ;
+                           rdfs:subClassOf <https://schema.org/CreativeWork> ;
+                           rdfs:comment "A movie." ;
+                           rdfs:label "Movie" .
+
+
+###  https://schema.org/TVSeason
+<https://schema.org/TVSeason> rdf:type owl:Class ;
+                              rdfs:subClassOf <https://schema.org/CreativeWork> ,
+                                              <https://schema.org/CreativeWorkSeason> ;
+                              rdfs:comment "Season dedicated to TV broadcast and associated online delivery." ;
+                              rdfs:label "TVSeason" .
+
+
+###  https://schema.org/Thing
+<https://schema.org/Thing> rdf:type owl:Class ;
+                           rdfs:comment "The most generic type of item." ;
+                           rdfs:label "Thing" .
+
 
 ###  Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi
