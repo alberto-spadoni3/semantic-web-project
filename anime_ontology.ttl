@@ -79,23 +79,6 @@
 <http://www.semanticweb.org/ontology/anime-a/providesContentFor> rdf:type owl:ObjectProperty .
 
 
-###  http://www.semanticweb.org/ontology/anime-f#hasPrequel
-:hasPrequel rdf:type owl:ObjectProperty ;
-            owl:inverseOf :hasSequel .
-
-
-###  http://www.semanticweb.org/ontology/anime-f#hasSequel
-:hasSequel rdf:type owl:ObjectProperty ;
-           rdfs:domain <http://dbpedia.org/ontology/Anime> ;
-           rdfs:range <http://dbpedia.org/ontology/Anime> .
-
-
-###  http://www.semanticweb.org/ontology/anime-f#hasSpinOff
-:hasSpinOff rdf:type owl:ObjectProperty ;
-            rdfs:domain <http://dbpedia.org/ontology/Anime> ;
-            rdfs:range <http://dbpedia.org/ontology/Anime> .
-
-
 ###  http://www.semanticweb.org/ontology/anime-f/animeWithAudience
 :animeWithAudience rdf:type owl:ObjectProperty ;
                    owl:inverseOf <https://schema.org/audience> .
@@ -127,9 +110,26 @@
                     rdfs:range <https://schema.org/Text> .
 
 
+###  http://www.semanticweb.org/ontology/anime-f/hasPrequel
+:hasPrequel rdf:type owl:ObjectProperty ;
+            owl:inverseOf :hasSequel .
+
+
 ###  http://www.semanticweb.org/ontology/anime-f/hasSeasonalAnime
 :hasSeasonalAnime rdf:type owl:ObjectProperty ;
                   owl:inverseOf :meteorologicalSeason .
+
+
+###  http://www.semanticweb.org/ontology/anime-f/hasSequel
+:hasSequel rdf:type owl:ObjectProperty ;
+           rdfs:domain <http://dbpedia.org/ontology/Anime> ;
+           rdfs:range <http://dbpedia.org/ontology/Anime> .
+
+
+###  http://www.semanticweb.org/ontology/anime-f/hasSpinOff
+:hasSpinOff rdf:type owl:ObjectProperty ;
+            rdfs:domain <http://dbpedia.org/ontology/Anime> ;
+            rdfs:range <http://dbpedia.org/ontology/Anime> .
 
 
 ###  http://www.semanticweb.org/ontology/anime-f/meteorologicalSeason
@@ -240,12 +240,9 @@
 
 
 ###  https://schema.org/name
-<https://schema.org/name> rdf:type owl:ObjectProperty ,
-                                   owl:FunctionalProperty ;
-                          rdfs:domain <https://schema.org/Thing> ;
-                          rdfs:range <https://schema.org/Text> ;
-                          rdfs:comment "The name of the item." ;
-                          rdfs:label "name" .
+<https://schema.org/name> rdf:type owl:ObjectProperty ;
+                          rdfs:domain owl:Thing ;
+                          rdfs:range <https://schema.org/Text> .
 
 
 ###  https://schema.org/numberOfEpisodes
@@ -294,6 +291,15 @@
                          rdfs:range <https://schema.org/URL> ;
                          rdfs:comment "URL of the item." ;
                          rdfs:label "url" .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  https://schema.org/name
+<https://schema.org/name> rdf:type owl:DatatypeProperty ;
+                          rdfs:range xsd:string .
 
 
 #################################################################
@@ -626,6 +632,77 @@ schema:Quantity rdf:type owl:Class .
                          rdfs:subClassOf <https://schema.org/Text> ;
                          rdfs:comment "Data type: URL." ;
                          rdfs:label "URL" .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/ontology/anime-f/Content_Rating_G
+:Content_Rating_G rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/ontology/anime-f/Content_Rating_NC-17
+:Content_Rating_NC-17 rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/ontology/anime-f/Content_Rating_PG
+:Content_Rating_PG rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/ontology/anime-f/Content_Rating_PG_13
+:Content_Rating_PG_13 rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/ontology/anime-f/Content_Rating_R
+:Content_Rating_R rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/ontology/anime-f/MAPPA
+:MAPPA rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/ontology/anime-f/Organization_MAPPA
+:Organization_MAPPA rdf:type owl:NamedIndividual ;
+                    <https://schema.org/name> :MAPPA ,
+                                              "MAPPA" .
+
+
+###  http://www.semanticweb.org/ontology/anime-f/Organization_Production_I.G
+:Organization_Production_I.G rdf:type owl:NamedIndividual ;
+                             <https://schema.org/name> :Production_I.G ,
+                                                       "Production I.G" .
+
+
+###  http://www.semanticweb.org/ontology/anime-f/Production_I.G
+:Production_I.G rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/ontology/anime-f/Shingeki_no_Kyojin
+:Shingeki_no_Kyojin rdf:type owl:NamedIndividual ;
+                    :creativeWorkStatus :Status_Finished_Airing ;
+                    :hasSequel :Shingeki_no_Kyojin_Season_2 ;
+                    <https://schema.org/contentRating> :Content_Rating_NC-17 ;
+                    <https://schema.org/producer> :Organization_MAPPA ,
+                                                  :Organization_Production_I.G .
+
+
+###  http://www.semanticweb.org/ontology/anime-f/Shingeki_no_Kyojin_Season_2
+:Shingeki_no_Kyojin_Season_2 rdf:type owl:NamedIndividual ;
+                             :creativeWorkStatus :Status_Finished_Airing ;
+                             <https://schema.org/contentRating> :Content_Rating_NC-17 .
+
+
+###  http://www.semanticweb.org/ontology/anime-f/Status_Currently_Airing
+:Status_Currently_Airing rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/ontology/anime-f/Status_Finished_Airing
+:Status_Finished_Airing rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/ontology/anime-f/Status_Not_Yet_Aired
+:Status_Not_Yet_Aired rdf:type owl:NamedIndividual .
 
 
 #################################################################
