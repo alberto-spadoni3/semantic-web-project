@@ -1,4 +1,4 @@
-@prefix : <http://www.semanticweb.org/ontology/anime/> .
+@prefix : <http://www.semanticweb.org/ontology/anime-f/> .
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -8,11 +8,9 @@
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix voaf: <http://purl.org/vocommons/voaf#> .
 @prefix schema: <http://schema.org/> .
-@base <http://www.semanticweb.org/ontology/anime/> .
+@base <http://www.semanticweb.org/ontology/anime-f/> .
 
-<http://www.semanticweb.org/ontology/anime> rdf:type owl:Ontology ;
-                                             rdfs:label "Alberto" ,
-                                                        "Fabio" .
+<http://www.semanticweb.org/ontology/anime-f> rdf:type owl:Ontology .
 
 #################################################################
 #    Annotation properties
@@ -70,15 +68,79 @@
 <http://www.semanticweb.org/albisyx/ontologies/2023/7/untitled-ontology-27/voiceActed> rdf:type owl:ObjectProperty .
 
 
-###  http://www.semanticweb.org/ontology/anime/hasSeasonalAnime
+###  http://www.semanticweb.org/ontology/anime-a/isStreamedOn
+<http://www.semanticweb.org/ontology/anime-a/isStreamedOn> rdf:type owl:ObjectProperty ;
+                                                           owl:inverseOf <http://www.semanticweb.org/ontology/anime-a/providesContentFor> ;
+                                                           rdfs:domain <http://dbpedia.org/ontology/Anime> ;
+                                                           rdfs:range <https://schema.org/BroadcastEvent> .
+
+
+###  http://www.semanticweb.org/ontology/anime-a/providesContentFor
+<http://www.semanticweb.org/ontology/anime-a/providesContentFor> rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/ontology/anime-f#hasPrequel
+:hasPrequel rdf:type owl:ObjectProperty ;
+            owl:inverseOf :hasSequel .
+
+
+###  http://www.semanticweb.org/ontology/anime-f#hasSequel
+:hasSequel rdf:type owl:ObjectProperty ;
+           rdfs:domain <http://dbpedia.org/ontology/Anime> ;
+           rdfs:range <http://dbpedia.org/ontology/Anime> .
+
+
+###  http://www.semanticweb.org/ontology/anime-f#hasSpinOff
+:hasSpinOff rdf:type owl:ObjectProperty ;
+            rdfs:domain <http://dbpedia.org/ontology/Anime> ;
+            rdfs:range <http://dbpedia.org/ontology/Anime> .
+
+
+###  http://www.semanticweb.org/ontology/anime-f/animeWithAudience
+:animeWithAudience rdf:type owl:ObjectProperty ;
+                   owl:inverseOf <https://schema.org/audience> .
+
+
+###  http://www.semanticweb.org/ontology/anime-f/animeWithContentRating
+:animeWithContentRating rdf:type owl:ObjectProperty ;
+                        owl:inverseOf <https://schema.org/contentRating> .
+
+
+###  http://www.semanticweb.org/ontology/anime-f/animeWithGenre
+:animeWithGenre rdf:type owl:ObjectProperty ;
+                owl:inverseOf <https://schema.org/genre> .
+
+
+###  http://www.semanticweb.org/ontology/anime-f/animeWithSource
+:animeWithSource rdf:type owl:ObjectProperty ;
+                 owl:inverseOf <https://schema.org/isBasedOn> .
+
+
+###  http://www.semanticweb.org/ontology/anime-f/animeWithStatus
+:animeWithStatus rdf:type owl:ObjectProperty ;
+                 owl:inverseOf :creativeWorkStatus .
+
+
+###  http://www.semanticweb.org/ontology/anime-f/creativeWorkStatus
+:creativeWorkStatus rdf:type owl:ObjectProperty ;
+                    rdfs:domain <https://schema.org/CreativeWork> ;
+                    rdfs:range <https://schema.org/Text> .
+
+
+###  http://www.semanticweb.org/ontology/anime-f/hasSeasonalAnime
 :hasSeasonalAnime rdf:type owl:ObjectProperty ;
                   owl:inverseOf :meteorologicalSeason .
 
 
-###  http://www.semanticweb.org/ontology/anime/meteorologicalSeason
+###  http://www.semanticweb.org/ontology/anime-f/meteorologicalSeason
 :meteorologicalSeason rdf:type owl:ObjectProperty ;
                       rdfs:domain :AnimeSeason ;
                       rdfs:range <https://schema.org/Text> .
+
+
+###  http://www.semanticweb.org/ontology/anime-f/producedAnime
+:producedAnime rdf:type owl:ObjectProperty ;
+               owl:inverseOf <https://schema.org/producer> .
 
 
 ###  https://schema.org/alternateName
@@ -87,6 +149,18 @@
                                    rdfs:range <https://schema.org/Text> ;
                                    rdfs:comment "An alias for the item." ;
                                    rdfs:label "alternateName" .
+
+
+###  https://schema.org/audience
+<https://schema.org/audience> rdf:type owl:ObjectProperty ;
+                              rdfs:domain <https://schema.org/CreativeWork> ;
+                              rdfs:range <https://schema.org/Audience> .
+
+
+###  https://schema.org/contentRating
+<https://schema.org/contentRating> rdf:type owl:ObjectProperty ;
+                                   rdfs:domain <https://schema.org/CreativeWork> ;
+                                   rdfs:range <https://schema.org/Text> .
 
 
 ###  https://schema.org/datePublished
@@ -129,6 +203,32 @@
                                    rdfs:range schema:Integer .
 
 
+###  https://schema.org/genre
+<https://schema.org/genre> rdf:type owl:ObjectProperty ;
+                           rdfs:domain <https://schema.org/CreativeWork> ;
+                           rdfs:range <https://schema.org/Text> ,
+                                      <https://schema.org/URL> .
+
+
+###  https://schema.org/inLanguage
+<https://schema.org/inLanguage> rdf:type owl:ObjectProperty ;
+                                rdfs:domain <https://schema.org/BroadcastService> ,
+                                            <https://schema.org/CreativeWork> ,
+                                            <https://schema.org/Event> ;
+                                rdfs:range <https://schema.org/Language> ,
+                                           <https://schema.org/Text> ;
+                                rdfs:comment "The language of the content or performance or used in an action. Please use one of the language codes from the IETF BCP 47 standard (http://tools.ietf.org/html/bcp47)." ;
+                                rdfs:label "inLanguage" .
+
+
+###  https://schema.org/isBasedOn
+<https://schema.org/isBasedOn> rdf:type owl:ObjectProperty ;
+                               rdfs:domain <https://schema.org/CreativeWork> ;
+                               rdfs:range <http://dbpedia.org/ontology/Manga> ,
+                                          <https://schema.org/Book> ,
+                                          <https://schema.org/Game> .
+
+
 ###  https://schema.org/mainEntityOfPage
 <https://schema.org/mainEntityOfPage> rdf:type owl:ObjectProperty ;
                                       rdfs:domain <http://dbpedia.org/ontology/Anime> ,
@@ -158,10 +258,42 @@
 <https://schema.org/partOfSeason> rdf:type owl:ObjectProperty .
 
 
+###  https://schema.org/producer
+<https://schema.org/producer> rdf:type owl:ObjectProperty ;
+                              rdfs:domain <https://schema.org/CreativeWork> ;
+                              rdfs:range <https://schema.org/Organization> .
+
+
+###  https://schema.org/publishedOn
+<https://schema.org/publishedOn> rdf:type owl:ObjectProperty ;
+                                 rdfs:domain <https://schema.org/PublicationEvent> ;
+                                 rdfs:range <https://schema.org/BroadcastService> ;
+                                 rdfs:comment "A broadcast service associated with the publication event." ;
+                                 rdfs:label "publishedOn" .
+
+
 ###  https://schema.org/startDate
 <https://schema.org/startDate> rdf:type owl:ObjectProperty ;
                                rdfs:domain <https://schema.org/CreativeWorkSeason> ;
                                rdfs:range schema:Date .
+
+
+###  https://schema.org/subtitleLanguage
+<https://schema.org/subtitleLanguage> rdf:type owl:ObjectProperty ;
+                                      rdfs:domain <https://schema.org/BroadcastEvent> ,
+                                                  <https://schema.org/Movie> ;
+                                      rdfs:range <https://schema.org/Language> ,
+                                                 <https://schema.org/Text> ;
+                                      rdfs:comment "\"Languages in which subtitles/captions are available, in IETF BCP 47 standard format (http://tools.ietf.org/html/bcp47)." ;
+                                      rdfs:label "subtitleLanguage" .
+
+
+###  https://schema.org/url
+<https://schema.org/url> rdf:type owl:ObjectProperty ;
+                         rdfs:domain <https://schema.org/Thing> ;
+                         rdfs:range <https://schema.org/URL> ;
+                         rdfs:comment "URL of the item." ;
+                         rdfs:label "url" .
 
 
 #################################################################
@@ -169,11 +301,23 @@
 #################################################################
 
 ###  http://dbpedia.org/ontology/Actor
-<http://dbpedia.org/ontology/Actor> rdf:type owl:Class .
+<http://dbpedia.org/ontology/Actor> rdf:type owl:Class ;
+                                    rdfs:subClassOf <https://dbpedia.org/ontology/Artist> .
 
 
 ###  http://dbpedia.org/ontology/Anime
 <http://dbpedia.org/ontology/Anime> rdf:type owl:Class ;
+                                    owl:equivalentClass <http://www.wikidata.org/entity/Q1107> ,
+                                                        [ rdf:type owl:Class ;
+                                                          owl:unionOf ( <http://www.semanticweb.org/ontology/anime-a/AnimeMovie>
+                                                                        <http://www.semanticweb.org/ontology/anime-a/AnimeSeason>
+                                                                      )
+                                                        ] ,
+                                                        [ rdf:type owl:Class ;
+                                                          owl:unionOf ( :AnimeMovie
+                                                                        :AnimeSeason
+                                                                      )
+                                                        ] ;
                                     rdfs:subClassOf <http://dbpedia.org/ontology/Cartoon> ;
                                     rdfs:comment "A style of animation originating in Japan"@en ,
                                                  "Designación coa que se coñece a animación xaponesa"@gl ,
@@ -198,7 +342,37 @@
 
 
 ###  http://dbpedia.org/ontology/Cartoon
-<http://dbpedia.org/ontology/Cartoon> rdf:type owl:Class .
+<http://dbpedia.org/ontology/Cartoon> rdf:type owl:Class ;
+                                      rdfs:subClassOf <https://schema.org/CreativeWork> ;
+                                      rdfs:comment "A cartoon is a type of visual art that is typically drawn, frequently animated, in an unrealistic or semi-realistic style." ;
+                                      rdfs:label "Cartoon" .
+
+
+###  http://dbpedia.org/ontology/Comic
+<http://dbpedia.org/ontology/Comic> rdf:type owl:Class ;
+                                    rdfs:subClassOf <https://schema.org/CreativeWork> ;
+                                    rdfs:comment "Comics is a medium used to express ideas with images, often combined with text or other visual information. It typically takes the form of a sequence of panels of images." ;
+                                    rdfs:label "Comic" .
+
+
+###  http://dbpedia.org/ontology/Manga
+<http://dbpedia.org/ontology/Manga> rdf:type owl:Class ;
+                                    owl:equivalentClass <http://www.wikidata.org/entity/Q8274> ;
+                                    rdfs:subClassOf <http://dbpedia.org/ontology/Comic> ;
+                                    rdfs:comment "Manga are comics created in Japan"@en ,
+                                                 "Manga is het Japanse equivalent van het stripverhaal"@nl ,
+                                                 "منگا جاپان میں تخلیق کردہ کامکس ہیں"@ur ;
+                                    rdfs:isDefinedBy <http://dbpedia.org/ontology/> ;
+                                    rdfs:label "manga"@de ,
+                                               "manga"@en ,
+                                               "manga"@fr ,
+                                               "manga"@it ,
+                                               "manga"@nl ,
+                                               "κινούμενα σχέδια"@el ,
+                                               "مانگا"@ur ,
+                                               "日本の漫画"@ja ;
+                                    <http://www.w3.org/2007/05/powder-s#describedby> <http://dbpedia.org/ontology/data/definitions.ttl> ;
+                                    <http://www.w3.org/ns/prov#wasDerivedFrom> <http://mappings.dbpedia.org/index.php/OntologyClass:Manga> .
 
 
 ###  http://dbpedia.org/ontology/VoiceActor
@@ -214,6 +388,11 @@
                                                     "성우"@ko ;
                                          <http://www.w3.org/2007/05/powder-s#describedby> <http://dbpedia.org/ontology/data/definitions.ttl> ;
                                          <http://www.w3.org/ns/prov#wasDerivedFrom> <http://mappings.dbpedia.org/index.php/OntologyClass:VoiceActor> .
+
+
+###  http://purl.org/dc/dcmitype/Event
+<http://purl.org/dc/dcmitype/Event> rdf:type owl:Class ;
+                                    owl:equivalentClass <https://schema.org/Event> .
 
 
 ###  http://schema.org/Date
@@ -249,22 +428,88 @@ schema:Quantity rdf:type owl:Class .
                                                                                       rdfs:subClassOf <https://schema.org/Person> .
 
 
-###  http://www.semanticweb.org/ontology/anime/AnimeMovie
+###  http://www.semanticweb.org/ontology/anime-a/AnimeMovie
+<http://www.semanticweb.org/ontology/anime-a/AnimeMovie> rdf:type owl:Class ;
+                                                         rdfs:subClassOf <http://dbpedia.org/ontology/Anime> ,
+                                                                         <https://schema.org/Movie> ;
+                                                         owl:disjointWith <http://www.semanticweb.org/ontology/anime-a/AnimeSeason> .
+
+
+###  http://www.semanticweb.org/ontology/anime-a/AnimeSeason
+<http://www.semanticweb.org/ontology/anime-a/AnimeSeason> rdf:type owl:Class ;
+                                                          rdfs:subClassOf <http://dbpedia.org/ontology/Anime> ,
+                                                                          <https://schema.org/TVSeason> .
+
+
+###  http://www.semanticweb.org/ontology/anime-f/AnimeMovie
 :AnimeMovie rdf:type owl:Class ;
             rdfs:subClassOf <http://dbpedia.org/ontology/Anime> ,
                             <https://schema.org/Movie> ;
-            owl:disjointWith :AnimeSeason .
+            owl:disjointWith :AnimeSeason ;
+            rdfs:comment "An animated movie." ;
+            rdfs:label "AnimeMovie" .
 
 
-###  http://www.semanticweb.org/ontology/anime/AnimeSeason
+###  http://www.semanticweb.org/ontology/anime-f/AnimeSeason
 :AnimeSeason rdf:type owl:Class ;
              rdfs:subClassOf <http://dbpedia.org/ontology/Anime> ,
-                             <https://schema.org/TVSeason> .
+                             <https://schema.org/TVSeason> ;
+             rdfs:comment "A particular season of a specif Anime. A season is composed of a sequence of episodes." ;
+             rdfs:label "AnimeSeason" .
+
+
+###  http://www.wikidata.org/entity/Q1107
+<http://www.wikidata.org/entity/Q1107> rdf:type owl:Class .
+
+
+###  http://www.wikidata.org/entity/Q8274
+<http://www.wikidata.org/entity/Q8274> rdf:type owl:Class ;
+                                       rdfs:subClassOf <http://dbpedia.org/ontology/Comic> .
+
+
+###  https://dbpedia.org/ontology/Artist
+<https://dbpedia.org/ontology/Artist> rdf:type owl:Class ;
+                                      rdfs:subClassOf <https://dbpedia.org/ontology/Person> .
+
+
+###  https://dbpedia.org/ontology/Person
+<https://dbpedia.org/ontology/Person> rdf:type owl:Class ;
+                                      owl:equivalentClass <https://schema.org/Person> .
+
+
+###  https://schema.org/Audience
+<https://schema.org/Audience> rdf:type owl:Class ;
+                              rdfs:subClassOf <https://schema.org/Intangible> ;
+                              rdfs:comment "Intended audience for an item, i.e. the group for whom the item was created." ;
+                              rdfs:label "Audience" .
+
+
+###  https://schema.org/Book
+<https://schema.org/Book> rdf:type owl:Class ;
+                          rdfs:subClassOf <https://schema.org/CreativeWork> ;
+                          rdfs:comment "A book." ;
+                          rdfs:label "Book" .
+
+
+###  https://schema.org/BroadcastEvent
+<https://schema.org/BroadcastEvent> rdf:type owl:Class ;
+                                    rdfs:subClassOf <https://schema.org/PublicationEvent> ;
+                                    rdfs:comment "An over the air or online broadcast event." ;
+                                    rdfs:label "BroadcastEvent" .
+
+
+###  https://schema.org/BroadcastService
+<https://schema.org/BroadcastService> rdf:type owl:Class ;
+                                      rdfs:subClassOf <https://schema.org/Service> ;
+                                      rdfs:comment "A delivery service through which content is provided via broadcast over the air or online." ;
+                                      rdfs:label "BroadcastService" .
 
 
 ###  https://schema.org/CreativeWork
 <https://schema.org/CreativeWork> rdf:type owl:Class ;
                                   rdfs:subClassOf <https://schema.org/Thing> ;
+                                  owl:disjointWith <https://schema.org/Intangible> ,
+                                                   <https://schema.org/Person> ;
                                   rdfs:comment "The most generic kind of creative work, including books, movies, photographs, software programs, etc." ;
                                   rdfs:label "CreativeWork" ;
                                   <https://schema.org/contributor> <https://schema.org/docs/collab/rNews> .
@@ -272,7 +517,9 @@ schema:Quantity rdf:type owl:Class .
 
 ###  https://schema.org/CreativeWorkSeason
 <https://schema.org/CreativeWorkSeason> rdf:type owl:Class ;
-                                        rdfs:subClassOf <https://schema.org/CreativeWork> .
+                                        rdfs:subClassOf <https://schema.org/CreativeWork> ;
+                                        rdfs:comment "A media season, e.g. TV, radio, video game etc." ;
+                                        rdfs:label "CreativeWorkSeason" .
 
 
 ###  https://schema.org/Episode
@@ -282,9 +529,26 @@ schema:Quantity rdf:type owl:Class .
                              rdfs:label "Episode" .
 
 
+###  https://schema.org/Event
+<https://schema.org/Event> rdf:type owl:Class ;
+                           rdfs:subClassOf <https://schema.org/Thing> ;
+                           rdfs:comment "An event happening at a certain time and location, such as a concert, lecture, or festival. Ticketing information may be added via the [[offers]] property. Repeated events may be structured as separate Event objects." ;
+                           rdfs:label "Event" .
+
+
+###  https://schema.org/Game
+<https://schema.org/Game> rdf:type owl:Class ;
+                          rdfs:subClassOf <https://schema.org/CreativeWork> ;
+                          rdfs:comment "The Game type represents things which are games. These are typically rule-governed recreational activities, e.g. role-playing games in which players assume the role of characters in a fictional setting." ;
+                          rdfs:label "Game" .
+
+
 ###  https://schema.org/Intangible
 <https://schema.org/Intangible> rdf:type owl:Class ;
-                                rdfs:subClassOf <https://schema.org/Thing> .
+                                rdfs:subClassOf <https://schema.org/Thing> ;
+                                owl:disjointWith <https://schema.org/Person> ;
+                                rdfs:comment "A utility class that serves as the umbrella for a number of 'intangible' things such as quantities, structured values, etc." ;
+                                rdfs:label "Intangible" .
 
 
 ###  https://schema.org/Language
@@ -301,12 +565,40 @@ schema:Quantity rdf:type owl:Class .
                            rdfs:label "Movie" .
 
 
+###  https://schema.org/Organization
+<https://schema.org/Organization> rdf:type owl:Class ;
+                                  rdfs:subClassOf <https://schema.org/Thing> ;
+                                  rdfs:comment "An organization such as a school, NGO, corporation, club, etc." ;
+                                  rdfs:label "Organization" .
+
+
+###  https://schema.org/PeopleAudience
+<https://schema.org/PeopleAudience> rdf:type owl:Class ;
+                                    rdfs:subClassOf <https://schema.org/Audience> ;
+                                    rdfs:comment "A set of characteristics belonging to people, e.g. who compose an item's target audience." ;
+                                    rdfs:label "PeopleAudience" .
+
+
 ###  https://schema.org/Person
 <https://schema.org/Person> rdf:type owl:Class ;
                             rdfs:subClassOf <https://schema.org/Thing> ;
                             rdfs:comment "A person (alive, dead, undead, or fictional)." ;
                             rdfs:label "Person" ;
                             <https://schema.org/contributor> <https://schema.org/docs/collab/rNews> .
+
+
+###  https://schema.org/PublicationEvent
+<https://schema.org/PublicationEvent> rdf:type owl:Class ;
+                                      rdfs:subClassOf <https://schema.org/Event> ;
+                                      rdfs:comment "A PublicationEvent corresponds indifferently to the event of publication for a CreativeWork of any type, e.g. a broadcast event, an on-demand event, a book/journal publication via a variety of delivery media." ;
+                                      rdfs:label "PublicationEvent" .
+
+
+###  https://schema.org/Service
+<https://schema.org/Service> rdf:type owl:Class ;
+                             rdfs:subClassOf <https://schema.org/Intangible> ;
+                             rdfs:comment "A service provided by an organization, e.g. delivery service, print services, etc." ;
+                             rdfs:label "Service" .
 
 
 ###  https://schema.org/TVSeason
