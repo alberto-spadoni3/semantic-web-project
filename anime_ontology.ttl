@@ -681,54 +681,17 @@ schema:Quantity rdf:type owl:Class .
 #    Individuals
 #################################################################
 
-###  http://www.semanticweb.org/ontology/anime#Text_Centuries_ago,_mankind_was_slaughtered_to_near_extinction_by_monstrous_humanoid_creatures_called_Titans,_forcing_humans_to_hide_in_fear_behind_enormous_concentric_walls._What_makes_these_giants_truly_terrifying_is_that_their_taste_for_human_flesh_is_not_born_out_of_hunger_but_what_appears_to_be_out_of_pleasure._To_ensure_their_survival,_the_remnants_of_humanity_began_living_within_defensive_barriers,_resulting_in_one_hundred_years_without_a_single_titan_encounter._However,_that_fragile_calm_is_soon_shattered_when_a_colossal_Titan_manages_to_breach_the_supposedly_impregnable_outer_wall,_reigniting_the_fight_for_survival_against_the_man-eating_abominations.
-<http://www.semanticweb.org/ontology/anime#Text_Centuries_ago,_mankind_was_slaughtered_to_near_extinction_by_monstrous_humanoid_creatures_called_Titans,_forcing_humans_to_hide_in_fear_behind_enormous_concentric_walls._What_makes_these_giants_truly_terrifying_is_that_their_taste_for_human_flesh_is_not_born_out_of_hunger_but_what_appears_to_be_out_of_pleasure._To_ensure_their_survival,_the_remnants_of_humanity_began_living_within_defensive_barriers,_resulting_in_one_hundred_years_without_a_single_titan_encounter._However,_that_fragile_calm_is_soon_shattered_when_a_colossal_Titan_manages_to_breach_the_supposedly_impregnable_outer_wall,_reigniting_the_fight_for_survival_against_the_man-eating_abominations.> rdf:type owl:NamedIndividual ,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  <https://schema.org/Text> .
-
-
-###  http://www.semanticweb.org/ontology/anime#Text_For_centuries,_humanity_has_been_hunted_by_giant,_mysterious_predators_known_as_the_Titans._Three_mighty_walls—Wall_Maria,_Rose,_and_Sheena—provided_peace_and_protection_for_humanity_for_over_a_hundred_years._That_peace,_however,_was_shattered_when_the_Colossal_Titan_and_Armored_Titan_appeared_and_destroyed_the_outermost_wall,_Wall_Maria._Forced_to_retreat_behind_Wall_Rose,_humanity_waited_with_bated_breath_for_the_Titans_to_reappear_and_destroy_their_safe_haven_once_more.
-<http://www.semanticweb.org/ontology/anime#Text_For_centuries,_humanity_has_been_hunted_by_giant,_mysterious_predators_known_as_the_Titans._Three_mighty_walls—Wall_Maria,_Rose,_and_Sheena—provided_peace_and_protection_for_humanity_for_over_a_hundred_years._That_peace,_however,_was_shattered_when_the_Colossal_Titan_and_Armored_Titan_appeared_and_destroyed_the_outermost_wall,_Wall_Maria._Forced_to_retreat_behind_Wall_Rose,_humanity_waited_with_bated_breath_for_the_Titans_to_reappear_and_destroy_their_safe_haven_once_more.> rdf:type owl:NamedIndividual ,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <https://schema.org/Text> .
-
-
 ###  http://www.semanticweb.org/ontology/anime/Shingeki_no_Kyojin
 :Shingeki_no_Kyojin rdf:type owl:NamedIndividual ,
                              :AnimeSeason ;
                     :hasTVSerieSequel :Shingeki_no_Kyojin_Season_2 ;
-                    <https://schema.org/description> <http://www.semanticweb.org/ontology/anime#Text_Centuries_ago,_mankind_was_slaughtered_to_near_extinction_by_monstrous_humanoid_creatures_called_Titans,_forcing_humans_to_hide_in_fear_behind_enormous_concentric_walls._What_makes_these_giants_truly_terrifying_is_that_their_taste_for_human_flesh_is_not_born_out_of_hunger_but_what_appears_to_be_out_of_pleasure._To_ensure_their_survival,_the_remnants_of_humanity_began_living_within_defensive_barriers,_resulting_in_one_hundred_years_without_a_single_titan_encounter._However,_that_fragile_calm_is_soon_shattered_when_a_colossal_Titan_manages_to_breach_the_supposedly_impregnable_outer_wall,_reigniting_the_fight_for_survival_against_the_man-eating_abominations.> ;
-                    <https://schema.org/name> :Text_Attack_On_Titan ,
-                                              :Text_Shingeki_no_Kyojin ;
                     dct:title "asd" ,
                               "Wasd" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Shingeki_no_Kyojin_Season_2
 :Shingeki_no_Kyojin_Season_2 rdf:type owl:NamedIndividual ,
-                                      :AnimeSeason ;
-                             <https://schema.org/description> <http://www.semanticweb.org/ontology/anime#Text_For_centuries,_humanity_has_been_hunted_by_giant,_mysterious_predators_known_as_the_Titans._Three_mighty_walls—Wall_Maria,_Rose,_and_Sheena—provided_peace_and_protection_for_humanity_for_over_a_hundred_years._That_peace,_however,_was_shattered_when_the_Colossal_Titan_and_Armored_Titan_appeared_and_destroyed_the_outermost_wall,_Wall_Maria._Forced_to_retreat_behind_Wall_Rose,_humanity_waited_with_bated_breath_for_the_Titans_to_reappear_and_destroy_their_safe_haven_once_more.> ;
-                             <https://schema.org/name> :Text_Attack_On_Titan ,
-                                                       :Text_Attack_On_Titan_Season_2 .
-
-
-###  http://www.semanticweb.org/ontology/anime/Text_Attack_On_Titan
-:Text_Attack_On_Titan rdf:type owl:NamedIndividual ,
-                               <https://schema.org/Text> .
-
-
-###  http://www.semanticweb.org/ontology/anime/Text_Attack_On_Titan_Season_2
-:Text_Attack_On_Titan_Season_2 rdf:type owl:NamedIndividual ,
-                                        <https://schema.org/Text> .
-
-
-###  http://www.semanticweb.org/ontology/anime/Text_Shingeki_no_Kyojin
-:Text_Shingeki_no_Kyojin rdf:type owl:NamedIndividual ,
-                                  <https://schema.org/Text> ;
-                         dct:title "asdasd" .
-
-
-###  http://www.semanticweb.org/ontology/anime/Text_Shingeki_no_Kyojin_Season_2
-:Text_Shingeki_no_Kyojin_Season_2 rdf:type owl:NamedIndividual ,
-                                           <https://schema.org/Text> .
+                                      :AnimeSeason .
 
 
 #################################################################
