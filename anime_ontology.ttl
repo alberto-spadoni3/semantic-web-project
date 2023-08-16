@@ -44,45 +44,6 @@ dct:description rdf:type owl:AnnotationProperty .
 #    Object Properties
 #################################################################
 
-###  http://www.semanticweb.org/albisyx/ontologies/2023/7/untitled-ontology-27/hasCharacters
-<http://www.semanticweb.org/albisyx/ontologies/2023/7/untitled-ontology-27/hasCharacters> rdf:type owl:ObjectProperty ;
-                                                                                          rdfs:domain <http://dbpedia.org/ontology/Anime> ;
-                                                                                          rdfs:range <http://www.semanticweb.org/albisyx/ontologies/2023/7/untitled-ontology-27/Character> .
-
-
-###  http://www.semanticweb.org/albisyx/ontologies/2023/7/untitled-ontology-27/hasVoiceActor
-<http://www.semanticweb.org/albisyx/ontologies/2023/7/untitled-ontology-27/hasVoiceActor> rdf:type owl:ObjectProperty ;
-                                                                                          owl:inverseOf <http://www.semanticweb.org/albisyx/ontologies/2023/7/untitled-ontology-27/voiceActed> ;
-                                                                                          rdfs:domain <http://www.semanticweb.org/albisyx/ontologies/2023/7/untitled-ontology-27/Character> ;
-                                                                                          rdfs:range <http://dbpedia.org/ontology/VoiceActor> .
-
-
-###  http://www.semanticweb.org/albisyx/ontologies/2023/7/untitled-ontology-27/languageOfVoicing
-<http://www.semanticweb.org/albisyx/ontologies/2023/7/untitled-ontology-27/languageOfVoicing> rdf:type owl:ObjectProperty ;
-                                                                                              owl:inverseOf <http://www.semanticweb.org/albisyx/ontologies/2023/7/untitled-ontology-27/languageVoicedBy> ;
-                                                                                              rdfs:domain <http://dbpedia.org/ontology/VoiceActor> ;
-                                                                                              rdfs:range <https://schema.org/Language> .
-
-
-###  http://www.semanticweb.org/albisyx/ontologies/2023/7/untitled-ontology-27/languageVoicedBy
-<http://www.semanticweb.org/albisyx/ontologies/2023/7/untitled-ontology-27/languageVoicedBy> rdf:type owl:ObjectProperty .
-
-
-###  http://www.semanticweb.org/albisyx/ontologies/2023/7/untitled-ontology-27/voiceActed
-<http://www.semanticweb.org/albisyx/ontologies/2023/7/untitled-ontology-27/voiceActed> rdf:type owl:ObjectProperty .
-
-
-###  http://www.semanticweb.org/ontology/anime-a/isStreamedOn
-<http://www.semanticweb.org/ontology/anime-a/isStreamedOn> rdf:type owl:ObjectProperty ;
-                                                           owl:inverseOf <http://www.semanticweb.org/ontology/anime-a/providesContentFor> ;
-                                                           rdfs:domain <http://dbpedia.org/ontology/Anime> ;
-                                                           rdfs:range <https://schema.org/BroadcastEvent> .
-
-
-###  http://www.semanticweb.org/ontology/anime-a/providesContentFor
-<http://www.semanticweb.org/ontology/anime-a/providesContentFor> rdf:type owl:ObjectProperty .
-
-
 ###  http://www.semanticweb.org/ontology/anime/animeInMeteorologicalSeason
 :animeInMeteorologicalSeason rdf:type owl:ObjectProperty ;
                              owl:inverseOf :meteorologicalSeason .
@@ -114,9 +75,13 @@ dct:description rdf:type owl:AnnotationProperty .
 
 
 ###  http://www.semanticweb.org/ontology/anime/creativeWorkStatus
-:creativeWorkStatus rdf:type owl:ObjectProperty ;
-                    rdfs:domain <https://schema.org/CreativeWork> ;
-                    rdfs:range <https://schema.org/Text> .
+:creativeWorkStatus rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/ontology/anime/hasCharacters
+:hasCharacters rdf:type owl:ObjectProperty ;
+               rdfs:domain <http://dbpedia.org/ontology/Anime> ;
+               rdfs:range :Character .
 
 
 ###  http://www.semanticweb.org/ontology/anime/hasMoviePrequel
@@ -181,10 +146,34 @@ dct:description rdf:type owl:AnnotationProperty .
                    rdfs:subPropertyOf :hasSpinOff .
 
 
+###  http://www.semanticweb.org/ontology/anime/hasVoiceActor
+:hasVoiceActor rdf:type owl:ObjectProperty ;
+               owl:inverseOf :voiceActed ;
+               rdfs:domain :Character ;
+               rdfs:range <http://dbpedia.org/ontology/VoiceActor> .
+
+
+###  http://www.semanticweb.org/ontology/anime/isStreamedOn
+:isStreamedOn rdf:type owl:ObjectProperty ;
+              owl:inverseOf :providesContentFor ;
+              rdfs:domain <http://dbpedia.org/ontology/Anime> ;
+              rdfs:range <https://schema.org/BroadcastEvent> .
+
+
+###  http://www.semanticweb.org/ontology/anime/languageOfVoicing
+:languageOfVoicing rdf:type owl:ObjectProperty ;
+                   owl:inverseOf :languageVoicedBy ;
+                   rdfs:domain <http://dbpedia.org/ontology/VoiceActor> ;
+                   rdfs:range <https://schema.org/Language> .
+
+
+###  http://www.semanticweb.org/ontology/anime/languageVoicedBy
+:languageVoicedBy rdf:type owl:ObjectProperty .
+
+
 ###  http://www.semanticweb.org/ontology/anime/meteorologicalSeason
 :meteorologicalSeason rdf:type owl:ObjectProperty ;
-                      rdfs:domain :AnimeSeason ;
-                      rdfs:range <https://schema.org/Text> .
+                      rdfs:domain :AnimeSeason .
 
 
 ###  http://www.semanticweb.org/ontology/anime/producedAnime
@@ -192,12 +181,12 @@ dct:description rdf:type owl:AnnotationProperty .
                owl:inverseOf <https://schema.org/producer> .
 
 
-###  https://schema.org/alternateName
-<https://schema.org/alternateName> rdf:type owl:ObjectProperty ;
-                                   rdfs:domain <https://schema.org/Thing> ;
-                                   rdfs:range <https://schema.org/Text> ;
-                                   rdfs:comment "An alias for the item." ;
-                                   rdfs:label "alternateName" .
+###  http://www.semanticweb.org/ontology/anime/providesContentFor
+:providesContentFor rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/ontology/anime/voiceActed
+:voiceActed rdf:type owl:ObjectProperty .
 
 
 ###  https://schema.org/audience
@@ -209,28 +198,7 @@ dct:description rdf:type owl:AnnotationProperty .
 ###  https://schema.org/contentRating
 <https://schema.org/contentRating> rdf:type owl:ObjectProperty ;
                                    rdfs:domain <https://schema.org/CreativeWork> ;
-                                   rdfs:range <https://schema.org/Text> .
-
-
-###  https://schema.org/datePublished
-<https://schema.org/datePublished> rdf:type owl:ObjectProperty ;
-                                   rdfs:domain <https://schema.org/CreativeWork> ;
-                                   rdfs:range schema:Date .
-
-
-###  https://schema.org/description
-<https://schema.org/description> rdf:type owl:ObjectProperty ,
-                                          owl:FunctionalProperty ;
-                                 rdfs:domain <https://schema.org/Thing> ;
-                                 rdfs:range <https://schema.org/Text> ;
-                                 rdfs:comment "A description of the item." ;
-                                 rdfs:label "description" .
-
-
-###  https://schema.org/duration
-<https://schema.org/duration> rdf:type owl:ObjectProperty ;
-                              rdfs:domain <https://schema.org/Movie> ;
-                              rdfs:range schema:Duration .
+                                   rdfs:range <https://schema.org/Rating> .
 
 
 ###  https://schema.org/episode
@@ -240,17 +208,9 @@ dct:description rdf:type owl:AnnotationProperty .
                              rdfs:range <https://schema.org/Episode> .
 
 
-###  https://schema.org/episodeNumber
-<https://schema.org/episodeNumber> rdf:type owl:ObjectProperty ;
-                                   rdfs:domain <https://schema.org/Episode> ;
-                                   rdfs:range schema:Integer .
-
-
 ###  https://schema.org/genre
 <https://schema.org/genre> rdf:type owl:ObjectProperty ;
-                           rdfs:domain <https://schema.org/CreativeWork> ;
-                           rdfs:range <https://schema.org/Text> ,
-                                      <https://schema.org/URL> .
+                           rdfs:domain <https://schema.org/CreativeWork> .
 
 
 ###  https://schema.org/inLanguage
@@ -258,10 +218,7 @@ dct:description rdf:type owl:AnnotationProperty .
                                 rdfs:domain <https://schema.org/BroadcastService> ,
                                             <https://schema.org/CreativeWork> ,
                                             <https://schema.org/Event> ;
-                                rdfs:range <https://schema.org/Language> ,
-                                           <https://schema.org/Text> ;
-                                rdfs:comment "The language of the content or performance or used in an action. Please use one of the language codes from the IETF BCP 47 standard (http://tools.ietf.org/html/bcp47)." ;
-                                rdfs:label "inLanguage" .
+                                rdfs:range <https://schema.org/Language> .
 
 
 ###  https://schema.org/isBasedOn
@@ -270,28 +227,6 @@ dct:description rdf:type owl:AnnotationProperty .
                                rdfs:range <http://dbpedia.org/ontology/Manga> ,
                                           <https://schema.org/Book> ,
                                           <https://schema.org/Game> .
-
-
-###  https://schema.org/mainEntityOfPage
-<https://schema.org/mainEntityOfPage> rdf:type owl:ObjectProperty ;
-                                      rdfs:domain <http://dbpedia.org/ontology/Anime> ,
-                                                  <https://schema.org/Thing> ;
-                                      rdfs:range <https://schema.org/CreativeWork> ,
-                                                 <https://schema.org/URL> ;
-                                      rdfs:comment "Indicates a page (or other CreativeWork) for which this thing is the main entity being described. See [background notes](/docs/datamodel.html#mainEntityBackground) for details." ;
-                                      rdfs:label "mainEntityOfPage" .
-
-
-###  https://schema.org/name
-<https://schema.org/name> rdf:type owl:ObjectProperty ;
-                          rdfs:domain owl:Thing ;
-                          rdfs:range <https://schema.org/Text> .
-
-
-###  https://schema.org/numberOfEpisodes
-<https://schema.org/numberOfEpisodes> rdf:type owl:ObjectProperty ;
-                                      rdfs:domain <https://schema.org/CreativeWorkSeason> ;
-                                      rdfs:range schema:Integer .
 
 
 ###  https://schema.org/partOfSeason
@@ -312,33 +247,29 @@ dct:description rdf:type owl:AnnotationProperty .
                                  rdfs:label "publishedOn" .
 
 
-###  https://schema.org/startDate
-<https://schema.org/startDate> rdf:type owl:ObjectProperty ;
-                               rdfs:domain <https://schema.org/CreativeWorkSeason> ;
-                               rdfs:range schema:Date .
-
-
 ###  https://schema.org/subtitleLanguage
 <https://schema.org/subtitleLanguage> rdf:type owl:ObjectProperty ;
                                       rdfs:domain <https://schema.org/BroadcastEvent> ,
                                                   <https://schema.org/Movie> ;
-                                      rdfs:range <https://schema.org/Language> ,
-                                                 <https://schema.org/Text> ;
+                                      rdfs:range <https://schema.org/Language> ;
                                       rdfs:comment "\"Languages in which subtitles/captions are available, in IETF BCP 47 standard format (http://tools.ietf.org/html/bcp47)." ;
                                       rdfs:label "subtitleLanguage" .
-
-
-###  https://schema.org/url
-<https://schema.org/url> rdf:type owl:ObjectProperty ;
-                         rdfs:domain <https://schema.org/Thing> ;
-                         rdfs:range <https://schema.org/URL> ;
-                         rdfs:comment "URL of the item." ;
-                         rdfs:label "url" .
 
 
 #################################################################
 #    Data properties
 #################################################################
+
+###  http://purl.org/dc/terms/alternative
+dct:alternative rdf:type owl:DatatypeProperty ;
+                owl:equivalentProperty <https://schema.org/alternateName> ;
+                rdfs:subPropertyOf dct:title ;
+                rdfs:range rdfs:Literal ;
+                dct:description "The distinction between titles and alternative titles is application-specific."@en ;
+                rdfs:comment "An alternative name for the resource."@en ;
+                rdfs:isDefinedBy dct: ;
+                rdfs:label "Alternative Title"@en .
+
 
 ###  http://purl.org/dc/terms/date
 dct:date rdf:type owl:DatatypeProperty ;
@@ -358,16 +289,125 @@ dct:title rdf:type owl:DatatypeProperty ;
           rdfs:label "Title"@en .
 
 
+###  http://www.semanticweb.org/ontology/anime/meteorologicalSeason
+:meteorologicalSeason rdf:type owl:DatatypeProperty ;
+                      rdfs:range rdfs:Literal .
+
+
+###  https://schema.org/alternateName
+<https://schema.org/alternateName> rdf:type owl:DatatypeProperty ;
+                                   rdfs:domain <https://schema.org/Thing> ;
+                                   rdfs:range rdfs:Literal ;
+                                   rdfs:comment "An alias for the item." ;
+                                   rdfs:label "alternateName" .
+
+
+###  https://schema.org/audienceType
+<https://schema.org/audienceType> rdf:type owl:DatatypeProperty ;
+                                  rdfs:range rdfs:Literal .
+
+
+###  https://schema.org/contentRating
+<https://schema.org/contentRating> rdf:type owl:DatatypeProperty ;
+                                   rdfs:range rdfs:Literal .
+
+
+###  https://schema.org/creativeWorkStatus
+<https://schema.org/creativeWorkStatus> rdf:type owl:DatatypeProperty ;
+                                        rdfs:domain <https://schema.org/CreativeWork> ;
+                                        rdfs:range rdfs:Literal .
+
+
+###  https://schema.org/datePublished
+<https://schema.org/datePublished> rdf:type owl:DatatypeProperty ;
+                                   rdfs:domain <https://schema.org/CreativeWork> ;
+                                   rdfs:range xsd:dateTime .
+
+
+###  https://schema.org/description
+<https://schema.org/description> rdf:type owl:DatatypeProperty ,
+                                          owl:FunctionalProperty ;
+                                 rdfs:domain <https://schema.org/Thing> ;
+                                 rdfs:range rdfs:Literal ;
+                                 rdfs:comment "A description of the item." ;
+                                 rdfs:label "description" .
+
+
+###  https://schema.org/duration
+<https://schema.org/duration> rdf:type owl:DatatypeProperty ;
+                              rdfs:domain <https://schema.org/Movie> ;
+                              rdfs:range rdfs:Literal .
+
+
 ###  https://schema.org/endDate
 <https://schema.org/endDate> rdf:type owl:DatatypeProperty ;
                              rdfs:domain <https://schema.org/CreativeWork> ;
                              rdfs:range rdfs:Literal .
 
 
+###  https://schema.org/episodeNumber
+<https://schema.org/episodeNumber> rdf:type owl:DatatypeProperty ;
+                                   rdfs:domain <https://schema.org/Episode> ;
+                                   rdfs:range xsd:int .
+
+
+###  https://schema.org/genre
+<https://schema.org/genre> rdf:type owl:DatatypeProperty ;
+                           rdfs:range rdfs:Literal .
+
+
+###  https://schema.org/inLanguage
+<https://schema.org/inLanguage> rdf:type owl:DatatypeProperty .
+
+
+###  https://schema.org/mainEntityOfPage
+<https://schema.org/mainEntityOfPage> rdf:type owl:DatatypeProperty ;
+                                      rdfs:domain <http://dbpedia.org/ontology/Anime> ,
+                                                  <https://schema.org/Thing> ;
+                                      rdfs:range rdfs:Literal ;
+                                      rdfs:comment "Indicates a page (or other CreativeWork) for which this thing is the main entity being described. See [background notes](/docs/datamodel.html#mainEntityBackground) for details." ;
+                                      rdfs:label "mainEntityOfPage" .
+
+
 ###  https://schema.org/name
 <https://schema.org/name> rdf:type owl:DatatypeProperty ;
                           rdfs:domain owl:Thing ;
                           rdfs:range rdfs:Literal .
+
+
+###  https://schema.org/numberOfEpisodes
+<https://schema.org/numberOfEpisodes> rdf:type owl:DatatypeProperty ;
+                                      rdfs:domain <https://schema.org/CreativeWorkSeason> ;
+                                      rdfs:range xsd:int .
+
+
+###  https://schema.org/startDate
+<https://schema.org/startDate> rdf:type owl:DatatypeProperty ;
+                               rdfs:domain <https://schema.org/CreativeWorkSeason> ;
+                               rdfs:range xsd:dateTime .
+
+
+###  https://schema.org/suggestedGender
+<https://schema.org/suggestedGender> rdf:type owl:DatatypeProperty ;
+                                     rdfs:range rdfs:Literal .
+
+
+###  https://schema.org/suggestedMaxAge
+<https://schema.org/suggestedMaxAge> rdf:type owl:DatatypeProperty ;
+                                     rdfs:range xsd:int .
+
+
+###  https://schema.org/suggestedMinAge
+<https://schema.org/suggestedMinAge> rdf:type owl:DatatypeProperty ;
+                                     rdfs:range xsd:int .
+
+
+###  https://schema.org/url
+<https://schema.org/url> rdf:type owl:DatatypeProperty ;
+                         rdfs:domain <https://schema.org/Thing> ;
+                         rdfs:range rdfs:Literal ;
+                         rdfs:comment "URL of the item." ;
+                         rdfs:label "url" .
 
 
 #################################################################
@@ -492,11 +532,6 @@ schema:Number rdf:type owl:Class .
 schema:Quantity rdf:type owl:Class .
 
 
-###  http://www.semanticweb.org/albisyx/ontologies/2023/7/untitled-ontology-27/Character
-<http://www.semanticweb.org/albisyx/ontologies/2023/7/untitled-ontology-27/Character> rdf:type owl:Class ;
-                                                                                      rdfs:subClassOf <https://schema.org/Person> .
-
-
 ###  http://www.semanticweb.org/ontology/anime/AnimeMovie
 :AnimeMovie rdf:type owl:Class ;
             rdfs:subClassOf <http://dbpedia.org/ontology/Anime> ,
@@ -512,6 +547,11 @@ schema:Quantity rdf:type owl:Class .
                              <https://schema.org/TVSeason> ;
              rdfs:comment "A particular season of a specif Anime. A season is composed of a sequence of episodes." ;
              rdfs:label "AnimeSeason" .
+
+
+###  http://www.semanticweb.org/ontology/anime/Character
+:Character rdf:type owl:Class ;
+           rdfs:subClassOf <https://schema.org/Person> .
 
 
 ###  http://www.wikidata.org/entity/Q1107
@@ -650,6 +690,13 @@ schema:Quantity rdf:type owl:Class .
                                       rdfs:label "PublicationEvent" .
 
 
+###  https://schema.org/Rating
+<https://schema.org/Rating> rdf:type owl:Class ;
+                            rdfs:subClassOf <https://schema.org/Intangible> ;
+                            rdfs:comment "A rating is an evaluation on a numeric scale, such as 1 to 5 stars." ;
+                            rdfs:label "Rating" .
+
+
 ###  https://schema.org/Service
 <https://schema.org/Service> rdf:type owl:Class ;
                              rdfs:subClassOf <https://schema.org/Intangible> ;
@@ -688,12 +735,37 @@ schema:Quantity rdf:type owl:Class .
 #    Individuals
 #################################################################
 
+###  http://www.semanticweb.org/ontology/anime#English
+:English rdf:type owl:NamedIndividual ,
+                  <https://schema.org/Language> .
+
+
+###  http://www.semanticweb.org/ontology/anime#Japanese
+:Japanese rdf:type owl:NamedIndividual ,
+                   <https://schema.org/Language> .
+
+
+###  http://www.semanticweb.org/ontology/anime#NC-17
+:NC-17 rdf:type owl:NamedIndividual ,
+                <https://schema.org/Rating> .
+
+
+###  http://www.semanticweb.org/ontology/anime#PG
+:PG rdf:type owl:NamedIndividual ,
+             <https://schema.org/Rating> .
+
+
+###  http://www.semanticweb.org/ontology/anime#Shounen
+:Shounen rdf:type owl:NamedIndividual ,
+                  <https://schema.org/PeopleAudience> .
+
+
 ###  http://www.semanticweb.org/ontology/anime/Shingeki_no_Kyojin
 :Shingeki_no_Kyojin rdf:type owl:NamedIndividual ,
                              :AnimeSeason ;
                     :hasTVSerieSequel :Shingeki_no_Kyojin_Season_2 ;
-                    dct:title "asd" ,
-                              "Wasd" .
+                    dct:title "Wasd" ,
+                              "asd" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Shingeki_no_Kyojin_Season_2
@@ -711,6 +783,10 @@ schema:Quantity rdf:type owl:Class .
 
 <http://dbpedia.org/ontology/data/definitions.ttl> <http://open.vocab.org/terms/describes> <http://dbpedia.org/ontology/Anime> ,
                                                                                            <http://dbpedia.org/ontology/VoiceActor> .
+
+
+<https://schema.org/inLanguage> rdfs:comment "The language of the content or performance or used in an action. Please use one of the language codes from the IETF BCP 47 standard (http://tools.ietf.org/html/bcp47)." ;
+                                rdfs:label "inLanguage" .
 
 
 ###  Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi
