@@ -1,4 +1,4 @@
-@prefix : <http://www.semanticweb.org/ontology/anime-f/> .
+@prefix : <http://www.semanticweb.org/ontology/anime/> .
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -8,9 +8,9 @@
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix voaf: <http://purl.org/vocommons/voaf#> .
 @prefix schema: <http://schema.org/> .
-@base <http://www.semanticweb.org/ontology/anime-f/> .
+@base <http://www.semanticweb.org/ontology/anime/> .
 
-<http://www.semanticweb.org/ontology/anime-f> rdf:type owl:Ontology .
+<http://www.semanticweb.org/ontology/anime> rdf:type owl:Ontology .
 
 #################################################################
 #    Annotation properties
@@ -22,6 +22,10 @@
 
 ###  http://open.vocab.org/terms/describes
 <http://open.vocab.org/terms/describes> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/description
+dct:description rdf:type owl:AnnotationProperty .
 
 
 ###  http://www.w3.org/2007/05/powder-s#describedby
@@ -79,66 +83,111 @@
 <http://www.semanticweb.org/ontology/anime-a/providesContentFor> rdf:type owl:ObjectProperty .
 
 
-###  http://www.semanticweb.org/ontology/anime-f/animeWithAudience
+###  http://www.semanticweb.org/ontology/anime/animeInMeteorologicalSeason
+:animeInMeteorologicalSeason rdf:type owl:ObjectProperty ;
+                             owl:inverseOf :meteorologicalSeason .
+
+
+###  http://www.semanticweb.org/ontology/anime/animeWithAudience
 :animeWithAudience rdf:type owl:ObjectProperty ;
                    owl:inverseOf <https://schema.org/audience> .
 
 
-###  http://www.semanticweb.org/ontology/anime-f/animeWithContentRating
+###  http://www.semanticweb.org/ontology/anime/animeWithContentRating
 :animeWithContentRating rdf:type owl:ObjectProperty ;
                         owl:inverseOf <https://schema.org/contentRating> .
 
 
-###  http://www.semanticweb.org/ontology/anime-f/animeWithGenre
+###  http://www.semanticweb.org/ontology/anime/animeWithGenre
 :animeWithGenre rdf:type owl:ObjectProperty ;
                 owl:inverseOf <https://schema.org/genre> .
 
 
-###  http://www.semanticweb.org/ontology/anime-f/animeWithSource
+###  http://www.semanticweb.org/ontology/anime/animeWithSource
 :animeWithSource rdf:type owl:ObjectProperty ;
                  owl:inverseOf <https://schema.org/isBasedOn> .
 
 
-###  http://www.semanticweb.org/ontology/anime-f/animeWithStatus
+###  http://www.semanticweb.org/ontology/anime/animeWithStatus
 :animeWithStatus rdf:type owl:ObjectProperty ;
                  owl:inverseOf :creativeWorkStatus .
 
 
-###  http://www.semanticweb.org/ontology/anime-f/creativeWorkStatus
+###  http://www.semanticweb.org/ontology/anime/creativeWorkStatus
 :creativeWorkStatus rdf:type owl:ObjectProperty ;
                     rdfs:domain <https://schema.org/CreativeWork> ;
                     rdfs:range <https://schema.org/Text> .
 
 
-###  http://www.semanticweb.org/ontology/anime-f/hasPrequel
+###  http://www.semanticweb.org/ontology/anime/hasMoviePrequel
+:hasMoviePrequel rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf :hasPrequel ;
+                 owl:inverseOf :hasMovieSequel ,
+                               :hasMovieSpinOff .
+
+
+###  http://www.semanticweb.org/ontology/anime/hasMovieSequel
+:hasMovieSequel rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf :hasSequel .
+
+
+###  http://www.semanticweb.org/ontology/anime/hasMovieSpinOff
+:hasMovieSpinOff rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf :hasSpinOff .
+
+
+###  http://www.semanticweb.org/ontology/anime/hasPrequel
 :hasPrequel rdf:type owl:ObjectProperty ;
-            owl:inverseOf :hasSequel .
+            owl:inverseOf :hasSequel ,
+                          :hasSpinOff .
 
 
-###  http://www.semanticweb.org/ontology/anime-f/hasSeasonalAnime
-:hasSeasonalAnime rdf:type owl:ObjectProperty ;
-                  owl:inverseOf :meteorologicalSeason .
+###  http://www.semanticweb.org/ontology/anime/hasRelation
+:hasRelation rdf:type owl:ObjectProperty ,
+                      owl:SymmetricProperty ,
+                      owl:TransitiveProperty ;
+             rdfs:domain <http://dbpedia.org/ontology/Anime> ;
+             rdfs:range <http://dbpedia.org/ontology/Anime> .
 
 
-###  http://www.semanticweb.org/ontology/anime-f/hasSequel
+###  http://www.semanticweb.org/ontology/anime/hasSequel
 :hasSequel rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :hasRelation ;
            rdfs:domain <http://dbpedia.org/ontology/Anime> ;
            rdfs:range <http://dbpedia.org/ontology/Anime> .
 
 
-###  http://www.semanticweb.org/ontology/anime-f/hasSpinOff
+###  http://www.semanticweb.org/ontology/anime/hasSpinOff
 :hasSpinOff rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf :hasRelation ;
             rdfs:domain <http://dbpedia.org/ontology/Anime> ;
             rdfs:range <http://dbpedia.org/ontology/Anime> .
 
 
-###  http://www.semanticweb.org/ontology/anime-f/meteorologicalSeason
+###  http://www.semanticweb.org/ontology/anime/hasTVSeriePrequel
+:hasTVSeriePrequel rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf :hasPrequel ;
+                   owl:inverseOf :hasTVSerieSequel ,
+                                 :hasTVSerieSpinOff .
+
+
+###  http://www.semanticweb.org/ontology/anime/hasTVSerieSequel
+:hasTVSerieSequel rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf :hasSequel .
+
+
+###  http://www.semanticweb.org/ontology/anime/hasTVSerieSpinOff
+:hasTVSerieSpinOff rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf :hasSpinOff .
+
+
+###  http://www.semanticweb.org/ontology/anime/meteorologicalSeason
 :meteorologicalSeason rdf:type owl:ObjectProperty ;
                       rdfs:domain :AnimeSeason ;
                       rdfs:range <https://schema.org/Text> .
 
 
-###  http://www.semanticweb.org/ontology/anime-f/producedAnime
+###  http://www.semanticweb.org/ontology/anime/producedAnime
 :producedAnime rdf:type owl:ObjectProperty ;
                owl:inverseOf <https://schema.org/producer> .
 
@@ -297,9 +346,21 @@
 #    Data properties
 #################################################################
 
-###  https://schema.org/name
-<https://schema.org/name> rdf:type owl:DatatypeProperty ;
-                          rdfs:range xsd:string .
+###  http://purl.org/dc/terms/date
+dct:date rdf:type owl:DatatypeProperty ;
+         rdfs:range rdfs:Literal ;
+         dct:description "Date may be used to express temporal information at any level of granularity.  Recommended practice is to express the date, date/time, or period of time according to ISO 8601-1 [[ISO 8601-1](https://www.iso.org/iso-8601-date-and-time-format.html)] or a published profile of the ISO standard, such as the W3C Note on Date and Time Formats [[W3CDTF](https://www.w3.org/TR/NOTE-datetime)] or the Extended Date/Time Format Specification [[EDTF](http://www.loc.gov/standards/datetime/)].  If the full date is unknown, month and year (YYYY-MM) or just year (YYYY) may be used. Date ranges may be specified using ISO 8601 period of time specification in which start and end dates are separated by a '/' (slash) character.  Either the start or end date may be missing."@en ;
+         rdfs:comment "A point or period of time associated with an event in the lifecycle of the resource."@en ;
+         rdfs:isDefinedBy dct: ;
+         rdfs:label "Date"@en .
+
+
+###  http://purl.org/dc/terms/title
+dct:title rdf:type owl:DatatypeProperty ;
+          rdfs:range rdfs:Literal ;
+          rdfs:comment "A name given to the resource."@en ;
+          rdfs:isDefinedBy dct: ;
+          rdfs:label "Title"@en .
 
 
 #################################################################
@@ -314,11 +375,6 @@
 ###  http://dbpedia.org/ontology/Anime
 <http://dbpedia.org/ontology/Anime> rdf:type owl:Class ;
                                     owl:equivalentClass <http://www.wikidata.org/entity/Q1107> ,
-                                                        [ rdf:type owl:Class ;
-                                                          owl:unionOf ( <http://www.semanticweb.org/ontology/anime-a/AnimeMovie>
-                                                                        <http://www.semanticweb.org/ontology/anime-a/AnimeSeason>
-                                                                      )
-                                                        ] ,
                                                         [ rdf:type owl:Class ;
                                                           owl:unionOf ( :AnimeMovie
                                                                         :AnimeSeason
@@ -434,20 +490,7 @@ schema:Quantity rdf:type owl:Class .
                                                                                       rdfs:subClassOf <https://schema.org/Person> .
 
 
-###  http://www.semanticweb.org/ontology/anime-a/AnimeMovie
-<http://www.semanticweb.org/ontology/anime-a/AnimeMovie> rdf:type owl:Class ;
-                                                         rdfs:subClassOf <http://dbpedia.org/ontology/Anime> ,
-                                                                         <https://schema.org/Movie> ;
-                                                         owl:disjointWith <http://www.semanticweb.org/ontology/anime-a/AnimeSeason> .
-
-
-###  http://www.semanticweb.org/ontology/anime-a/AnimeSeason
-<http://www.semanticweb.org/ontology/anime-a/AnimeSeason> rdf:type owl:Class ;
-                                                          rdfs:subClassOf <http://dbpedia.org/ontology/Anime> ,
-                                                                          <https://schema.org/TVSeason> .
-
-
-###  http://www.semanticweb.org/ontology/anime-f/AnimeMovie
+###  http://www.semanticweb.org/ontology/anime/AnimeMovie
 :AnimeMovie rdf:type owl:Class ;
             rdfs:subClassOf <http://dbpedia.org/ontology/Anime> ,
                             <https://schema.org/Movie> ;
@@ -456,7 +499,7 @@ schema:Quantity rdf:type owl:Class .
             rdfs:label "AnimeMovie" .
 
 
-###  http://www.semanticweb.org/ontology/anime-f/AnimeSeason
+###  http://www.semanticweb.org/ontology/anime/AnimeSeason
 :AnimeSeason rdf:type owl:Class ;
              rdfs:subClassOf <http://dbpedia.org/ontology/Anime> ,
                              <https://schema.org/TVSeason> ;
@@ -638,115 +681,54 @@ schema:Quantity rdf:type owl:Class .
 #    Individuals
 #################################################################
 
-###  http://www.semanticweb.org/ontology/anime-f#String_Attack_On_Titan
-:String_Attack_On_Titan rdf:type owl:NamedIndividual .
+###  http://www.semanticweb.org/ontology/anime#Text_Centuries_ago,_mankind_was_slaughtered_to_near_extinction_by_monstrous_humanoid_creatures_called_Titans,_forcing_humans_to_hide_in_fear_behind_enormous_concentric_walls._What_makes_these_giants_truly_terrifying_is_that_their_taste_for_human_flesh_is_not_born_out_of_hunger_but_what_appears_to_be_out_of_pleasure._To_ensure_their_survival,_the_remnants_of_humanity_began_living_within_defensive_barriers,_resulting_in_one_hundred_years_without_a_single_titan_encounter._However,_that_fragile_calm_is_soon_shattered_when_a_colossal_Titan_manages_to_breach_the_supposedly_impregnable_outer_wall,_reigniting_the_fight_for_survival_against_the_man-eating_abominations.
+<http://www.semanticweb.org/ontology/anime#Text_Centuries_ago,_mankind_was_slaughtered_to_near_extinction_by_monstrous_humanoid_creatures_called_Titans,_forcing_humans_to_hide_in_fear_behind_enormous_concentric_walls._What_makes_these_giants_truly_terrifying_is_that_their_taste_for_human_flesh_is_not_born_out_of_hunger_but_what_appears_to_be_out_of_pleasure._To_ensure_their_survival,_the_remnants_of_humanity_began_living_within_defensive_barriers,_resulting_in_one_hundred_years_without_a_single_titan_encounter._However,_that_fragile_calm_is_soon_shattered_when_a_colossal_Titan_manages_to_breach_the_supposedly_impregnable_outer_wall,_reigniting_the_fight_for_survival_against_the_man-eating_abominations.> rdf:type owl:NamedIndividual ,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  <https://schema.org/Text> .
 
 
-###  http://www.semanticweb.org/ontology/anime-f#String_Attack_On_Titan_Season_2
-:String_Attack_On_Titan_Season_2 rdf:type owl:NamedIndividual .
+###  http://www.semanticweb.org/ontology/anime#Text_For_centuries,_humanity_has_been_hunted_by_giant,_mysterious_predators_known_as_the_Titans._Three_mighty_walls—Wall_Maria,_Rose,_and_Sheena—provided_peace_and_protection_for_humanity_for_over_a_hundred_years._That_peace,_however,_was_shattered_when_the_Colossal_Titan_and_Armored_Titan_appeared_and_destroyed_the_outermost_wall,_Wall_Maria._Forced_to_retreat_behind_Wall_Rose,_humanity_waited_with_bated_breath_for_the_Titans_to_reappear_and_destroy_their_safe_haven_once_more.
+<http://www.semanticweb.org/ontology/anime#Text_For_centuries,_humanity_has_been_hunted_by_giant,_mysterious_predators_known_as_the_Titans._Three_mighty_walls—Wall_Maria,_Rose,_and_Sheena—provided_peace_and_protection_for_humanity_for_over_a_hundred_years._That_peace,_however,_was_shattered_when_the_Colossal_Titan_and_Armored_Titan_appeared_and_destroyed_the_outermost_wall,_Wall_Maria._Forced_to_retreat_behind_Wall_Rose,_humanity_waited_with_bated_breath_for_the_Titans_to_reappear_and_destroy_their_safe_haven_once_more.> rdf:type owl:NamedIndividual ,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <https://schema.org/Text> .
 
 
-###  http://www.semanticweb.org/ontology/anime-f#String_MAPPA
-:String_MAPPA rdf:type owl:NamedIndividual .
+###  http://www.semanticweb.org/ontology/anime/Shingeki_no_Kyojin
+:Shingeki_no_Kyojin rdf:type owl:NamedIndividual ,
+                             :AnimeSeason ;
+                    :hasTVSerieSequel :Shingeki_no_Kyojin_Season_2 ;
+                    <https://schema.org/description> <http://www.semanticweb.org/ontology/anime#Text_Centuries_ago,_mankind_was_slaughtered_to_near_extinction_by_monstrous_humanoid_creatures_called_Titans,_forcing_humans_to_hide_in_fear_behind_enormous_concentric_walls._What_makes_these_giants_truly_terrifying_is_that_their_taste_for_human_flesh_is_not_born_out_of_hunger_but_what_appears_to_be_out_of_pleasure._To_ensure_their_survival,_the_remnants_of_humanity_began_living_within_defensive_barriers,_resulting_in_one_hundred_years_without_a_single_titan_encounter._However,_that_fragile_calm_is_soon_shattered_when_a_colossal_Titan_manages_to_breach_the_supposedly_impregnable_outer_wall,_reigniting_the_fight_for_survival_against_the_man-eating_abominations.> ;
+                    <https://schema.org/name> :Text_Attack_On_Titan ,
+                                              :Text_Shingeki_no_Kyojin ;
+                    dct:title "asd" ,
+                              "Wasd" .
 
 
-###  http://www.semanticweb.org/ontology/anime-f#String_Production_I.G
-:String_Production_I.G rdf:type owl:NamedIndividual .
+###  http://www.semanticweb.org/ontology/anime/Shingeki_no_Kyojin_Season_2
+:Shingeki_no_Kyojin_Season_2 rdf:type owl:NamedIndividual ,
+                                      :AnimeSeason ;
+                             <https://schema.org/description> <http://www.semanticweb.org/ontology/anime#Text_For_centuries,_humanity_has_been_hunted_by_giant,_mysterious_predators_known_as_the_Titans._Three_mighty_walls—Wall_Maria,_Rose,_and_Sheena—provided_peace_and_protection_for_humanity_for_over_a_hundred_years._That_peace,_however,_was_shattered_when_the_Colossal_Titan_and_Armored_Titan_appeared_and_destroyed_the_outermost_wall,_Wall_Maria._Forced_to_retreat_behind_Wall_Rose,_humanity_waited_with_bated_breath_for_the_Titans_to_reappear_and_destroy_their_safe_haven_once_more.> ;
+                             <https://schema.org/name> :Text_Attack_On_Titan ,
+                                                       :Text_Attack_On_Titan_Season_2 .
 
 
-###  http://www.semanticweb.org/ontology/anime-f#String_Shingeki_no_Kyojin
-:String_Shingeki_no_Kyojin rdf:type owl:NamedIndividual .
+###  http://www.semanticweb.org/ontology/anime/Text_Attack_On_Titan
+:Text_Attack_On_Titan rdf:type owl:NamedIndividual ,
+                               <https://schema.org/Text> .
 
 
-###  http://www.semanticweb.org/ontology/anime-f#String_Shingeki_no_Kyojin_Season_2
-:String_Shingeki_no_Kyojin_Season_2 rdf:type owl:NamedIndividual .
+###  http://www.semanticweb.org/ontology/anime/Text_Attack_On_Titan_Season_2
+:Text_Attack_On_Titan_Season_2 rdf:type owl:NamedIndividual ,
+                                        <https://schema.org/Text> .
 
 
-###  http://www.semanticweb.org/ontology/anime-f#Description_Centuries_ago,_mankind_was_slaughtered_to_near_extinction_by_monstrous_humanoid_creatures_called_Titans,_forcing_humans_to_hide_in_fear_behind_enormous_concentric_walls._What_makes_these_giants_truly_terrifying_is_that_their_taste_for_human_flesh_is_not_born_out_of_hunger_but_what_appears_to_be_out_of_pleasure._To_ensure_their_survival,_the_remnants_of_humanity_began_living_within_defensive_barriers,_resulting_in_one_hundred_years_without_a_single_titan_encounter._However,_that_fragile_calm_is_soon_shattered_when_a_colossal_Titan_manages_to_breach_the_supposedly_impregnable_outer_wall,_reigniting_the_fight_for_survival_against_the_man-eating_abominations.
-<http://www.semanticweb.org/ontology/anime-f#Description_Centuries_ago,_mankind_was_slaughtered_to_near_extinction_by_monstrous_humanoid_creatures_called_Titans,_forcing_humans_to_hide_in_fear_behind_enormous_concentric_walls._What_makes_these_giants_truly_terrifying_is_that_their_taste_for_human_flesh_is_not_born_out_of_hunger_but_what_appears_to_be_out_of_pleasure._To_ensure_their_survival,_the_remnants_of_humanity_began_living_within_defensive_barriers,_resulting_in_one_hundred_years_without_a_single_titan_encounter._However,_that_fragile_calm_is_soon_shattered_when_a_colossal_Titan_manages_to_breach_the_supposedly_impregnable_outer_wall,_reigniting_the_fight_for_survival_against_the_man-eating_abominations.> rdf:type owl:NamedIndividual .
+###  http://www.semanticweb.org/ontology/anime/Text_Shingeki_no_Kyojin
+:Text_Shingeki_no_Kyojin rdf:type owl:NamedIndividual ,
+                                  <https://schema.org/Text> ;
+                         dct:title "asdasd" .
 
 
-###  http://www.semanticweb.org/ontology/anime-f#Description_For_centuries,_humanity_has_been_hunted_by_giant,_mysterious_predators_known_as_the_Titans._Three_mighty_walls—Wall_Maria,_Rose,_and_Sheena—provided_peace_and_protection_for_humanity_for_over_a_hundred_years._That_peace,_however,_was_shattered_when_the_Colossal_Titan_and_Armored_Titan_appeared_and_destroyed_the_outermost_wall,_Wall_Maria._Forced_to_retreat_behind_Wall_Rose,_humanity_waited_with_bated_breath_for_the_Titans_to_reappear_and_destroy_their_safe_haven_once_more.
-<http://www.semanticweb.org/ontology/anime-f#Description_For_centuries,_humanity_has_been_hunted_by_giant,_mysterious_predators_known_as_the_Titans._Three_mighty_walls—Wall_Maria,_Rose,_and_Sheena—provided_peace_and_protection_for_humanity_for_over_a_hundred_years._That_peace,_however,_was_shattered_when_the_Colossal_Titan_and_Armored_Titan_appeared_and_destroyed_the_outermost_wall,_Wall_Maria._Forced_to_retreat_behind_Wall_Rose,_humanity_waited_with_bated_breath_for_the_Titans_to_reappear_and_destroy_their_safe_haven_once_more.> rdf:type owl:NamedIndividual .
-
-
-###  http://www.semanticweb.org/ontology/anime-f#URL_https://dbpedia.org/page/MAPPA
-<http://www.semanticweb.org/ontology/anime-f#URL_https://dbpedia.org/page/MAPPA> rdf:type owl:NamedIndividual .
-
-
-###  http://www.semanticweb.org/ontology/anime-f#URL_https://en.wikipedia.org/wiki/Production_I.G
-<http://www.semanticweb.org/ontology/anime-f#URL_https://en.wikipedia.org/wiki/Production_I.G> rdf:type owl:NamedIndividual .
-
-
-###  http://www.semanticweb.org/ontology/anime-f/Content_Rating_G
-:Content_Rating_G rdf:type owl:NamedIndividual .
-
-
-###  http://www.semanticweb.org/ontology/anime-f/Content_Rating_NC-17
-:Content_Rating_NC-17 rdf:type owl:NamedIndividual .
-
-
-###  http://www.semanticweb.org/ontology/anime-f/Content_Rating_PG
-:Content_Rating_PG rdf:type owl:NamedIndividual .
-
-
-###  http://www.semanticweb.org/ontology/anime-f/Content_Rating_PG_13
-:Content_Rating_PG_13 rdf:type owl:NamedIndividual .
-
-
-###  http://www.semanticweb.org/ontology/anime-f/Content_Rating_R
-:Content_Rating_R rdf:type owl:NamedIndividual .
-
-
-###  http://www.semanticweb.org/ontology/anime-f/Organization_MAPPA
-:Organization_MAPPA rdf:type owl:NamedIndividual ;
-                    <https://schema.org/name> :String_MAPPA ;
-                    <https://schema.org/url> <http://www.semanticweb.org/ontology/anime-f#URL_https://dbpedia.org/page/MAPPA> ;
-                    <https://schema.org/name> "MAPPA" .
-
-
-###  http://www.semanticweb.org/ontology/anime-f/Organization_Production_I.G
-:Organization_Production_I.G rdf:type owl:NamedIndividual ;
-                             <https://schema.org/name> :String_Production_I.G ;
-                             <https://schema.org/url> <http://www.semanticweb.org/ontology/anime-f#URL_https://en.wikipedia.org/wiki/Production_I.G> ;
-                             <https://schema.org/name> "Production I.G" .
-
-
-###  http://www.semanticweb.org/ontology/anime-f/Shingeki_no_Kyojin
-:Shingeki_no_Kyojin rdf:type owl:NamedIndividual ;
-                    :creativeWorkStatus :Status_Finished_Airing ;
-                    :hasSequel :Shingeki_no_Kyojin_Season_2 ;
-                    <https://schema.org/contentRating> :Content_Rating_NC-17 ;
-                    <https://schema.org/description> <http://www.semanticweb.org/ontology/anime-f#Description_Centuries_ago,_mankind_was_slaughtered_to_near_extinction_by_monstrous_humanoid_creatures_called_Titans,_forcing_humans_to_hide_in_fear_behind_enormous_concentric_walls._What_makes_these_giants_truly_terrifying_is_that_their_taste_for_human_flesh_is_not_born_out_of_hunger_but_what_appears_to_be_out_of_pleasure._To_ensure_their_survival,_the_remnants_of_humanity_began_living_within_defensive_barriers,_resulting_in_one_hundred_years_without_a_single_titan_encounter._However,_that_fragile_calm_is_soon_shattered_when_a_colossal_Titan_manages_to_breach_the_supposedly_impregnable_outer_wall,_reigniting_the_fight_for_survival_against_the_man-eating_abominations.> ;
-                    <https://schema.org/name> :String_Attack_On_Titan ,
-                                              :String_Shingeki_no_Kyojin ;
-                    <https://schema.org/producer> :Organization_Production_I.G ;
-                    <https://schema.org/name> "Attack on Titan" ,
-                                              "Shingeki no Kyojin" .
-
-
-###  http://www.semanticweb.org/ontology/anime-f/Shingeki_no_Kyojin_Season_2
-:Shingeki_no_Kyojin_Season_2 rdf:type owl:NamedIndividual ;
-                             :creativeWorkStatus :Status_Finished_Airing ;
-                             <https://schema.org/contentRating> :Content_Rating_NC-17 ;
-                             <https://schema.org/description> <http://www.semanticweb.org/ontology/anime-f#Description_For_centuries,_humanity_has_been_hunted_by_giant,_mysterious_predators_known_as_the_Titans._Three_mighty_walls—Wall_Maria,_Rose,_and_Sheena—provided_peace_and_protection_for_humanity_for_over_a_hundred_years._That_peace,_however,_was_shattered_when_the_Colossal_Titan_and_Armored_Titan_appeared_and_destroyed_the_outermost_wall,_Wall_Maria._Forced_to_retreat_behind_Wall_Rose,_humanity_waited_with_bated_breath_for_the_Titans_to_reappear_and_destroy_their_safe_haven_once_more.> ;
-                             <https://schema.org/name> :String_Attack_On_Titan_Season_2 ,
-                                                       :String_Shingeki_no_Kyojin_Season_2 ;
-                             <https://schema.org/producer> :Organization_Production_I.G ;
-                             <https://schema.org/name> "Attack on Titan Season 2" ,
-                                                       "Shingeki no Kyojin Season 2" .
-
-
-###  http://www.semanticweb.org/ontology/anime-f/Status_Currently_Airing
-:Status_Currently_Airing rdf:type owl:NamedIndividual .
-
-
-###  http://www.semanticweb.org/ontology/anime-f/Status_Finished_Airing
-:Status_Finished_Airing rdf:type owl:NamedIndividual .
-
-
-###  http://www.semanticweb.org/ontology/anime-f/Status_Not_Yet_Aired
-:Status_Not_Yet_Aired rdf:type owl:NamedIndividual .
+###  http://www.semanticweb.org/ontology/anime/Text_Shingeki_no_Kyojin_Season_2
+:Text_Shingeki_no_Kyojin_Season_2 rdf:type owl:NamedIndividual ,
+                                           <https://schema.org/Text> .
 
 
 #################################################################
