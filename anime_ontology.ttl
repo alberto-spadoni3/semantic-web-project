@@ -233,12 +233,6 @@ dct:description rdf:type owl:AnnotationProperty .
                               rdfs:range schema:Duration .
 
 
-###  https://schema.org/endDate
-<https://schema.org/endDate> rdf:type owl:ObjectProperty ;
-                             rdfs:domain <https://schema.org/CreativeWorkSeason> ;
-                             rdfs:range schema:Date .
-
-
 ###  https://schema.org/episode
 <https://schema.org/episode> rdf:type owl:ObjectProperty ;
                              owl:inverseOf <https://schema.org/partOfSeason> ;
@@ -357,10 +351,23 @@ dct:date rdf:type owl:DatatypeProperty ;
 
 ###  http://purl.org/dc/terms/title
 dct:title rdf:type owl:DatatypeProperty ;
+          owl:equivalentProperty <https://schema.org/name> ;
           rdfs:range rdfs:Literal ;
           rdfs:comment "A name given to the resource."@en ;
           rdfs:isDefinedBy dct: ;
           rdfs:label "Title"@en .
+
+
+###  https://schema.org/endDate
+<https://schema.org/endDate> rdf:type owl:DatatypeProperty ;
+                             rdfs:domain <https://schema.org/CreativeWork> ;
+                             rdfs:range rdfs:Literal .
+
+
+###  https://schema.org/name
+<https://schema.org/name> rdf:type owl:DatatypeProperty ;
+                          rdfs:domain owl:Thing ;
+                          rdfs:range rdfs:Literal .
 
 
 #################################################################
