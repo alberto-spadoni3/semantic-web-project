@@ -368,8 +368,7 @@ dct:title rdf:type owl:DatatypeProperty ;
 
 ###  https://schema.org/mainEntityOfPage
 <https://schema.org/mainEntityOfPage> rdf:type owl:DatatypeProperty ;
-                                      rdfs:domain <http://dbpedia.org/ontology/Anime> ,
-                                                  <https://schema.org/Thing> ;
+                                      rdfs:domain <https://schema.org/Thing> ;
                                       rdfs:range rdfs:Literal ;
                                       rdfs:comment "Indicates a page (or other CreativeWork) for which this thing is the main entity being described. See [background notes](/docs/datamodel.html#mainEntityBackground) for details." ;
                                       rdfs:label "mainEntityOfPage" .
