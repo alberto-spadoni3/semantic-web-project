@@ -202,6 +202,13 @@ dct:description rdf:type owl:AnnotationProperty ;
                                    rdfs:range <https://schema.org/Rating> .
 
 
+###  https://schema.org/creativeWorkStatus
+<https://schema.org/creativeWorkStatus> rdf:type owl:ObjectProperty ;
+                                        rdfs:subPropertyOf <https://schema.org/character> ;
+                                        rdfs:domain <https://schema.org/CreativeWork> ;
+                                        rdfs:range <https://schema.org/Text> .
+
+
 ###  https://schema.org/episode
 <https://schema.org/episode> rdf:type owl:ObjectProperty ;
                              owl:inverseOf <https://schema.org/partOfSeason> ;
@@ -310,17 +317,6 @@ dct:title rdf:type owl:DatatypeProperty ;
                                   rdfs:range rdfs:Literal .
 
 
-###  https://schema.org/contentRating
-<https://schema.org/contentRating> rdf:type owl:DatatypeProperty ;
-                                   rdfs:range rdfs:Literal .
-
-
-###  https://schema.org/creativeWorkStatus
-<https://schema.org/creativeWorkStatus> rdf:type owl:DatatypeProperty ;
-                                        rdfs:domain <https://schema.org/CreativeWork> ;
-                                        rdfs:range rdfs:Literal .
-
-
 ###  https://schema.org/datePublished
 <https://schema.org/datePublished> rdf:type owl:DatatypeProperty ;
                                    rdfs:subPropertyOf dct:date ;
@@ -360,18 +356,6 @@ dct:title rdf:type owl:DatatypeProperty ;
 ###  https://schema.org/genre
 <https://schema.org/genre> rdf:type owl:DatatypeProperty ;
                            rdfs:range rdfs:Literal .
-
-
-###  https://schema.org/inLanguage
-<https://schema.org/inLanguage> rdf:type owl:DatatypeProperty .
-
-
-###  https://schema.org/mainEntityOfPage
-<https://schema.org/mainEntityOfPage> rdf:type owl:DatatypeProperty ;
-                                      rdfs:domain <https://schema.org/Thing> ;
-                                      rdfs:range rdfs:Literal ;
-                                      rdfs:comment "Indicates a page (or other CreativeWork) for which this thing is the main entity being described. See [background notes](/docs/datamodel.html#mainEntityBackground) for details." ;
-                                      rdfs:label "mainEntityOfPage" .
 
 
 ###  https://schema.org/name
@@ -785,6 +769,84 @@ schema:Quantity rdf:type owl:Class .
 #    Individuals
 #################################################################
 
+###  http://www.semanticweb.org/ontology/anime#Crunchyroll
+:Crunchyroll rdf:type owl:NamedIndividual ,
+                      <https://schema.org/BroadcastService> .
+
+
+###  http://www.semanticweb.org/ontology/anime#Crunchyroll_Koe_no_Katachi
+:Crunchyroll_Koe_no_Katachi rdf:type owl:NamedIndividual ,
+                                     <https://schema.org/BroadcastEvent> ;
+                            <https://schema.org/inLanguage> <http://www.semanticweb.org/ontology/anime-1/ja-JP> ;
+                            <https://schema.org/publishedOn> :Crunchyroll ;
+                            <https://schema.org/subtitleLanguage> <http://www.semanticweb.org/ontology/anime-1/en-US> ,
+                                                                  <http://www.semanticweb.org/ontology/anime-1/ja-JP> ;
+                            <https://schema.org/url> "https://www.crunchyroll.com/it/series/GP5HJ84XV/a-silent-voice" .
+
+
+###  http://www.semanticweb.org/ontology/anime#Crunchyroll_Shingeki_no_Kyojin_Season_2
+:Crunchyroll_Shingeki_no_Kyojin_Season_2 rdf:type owl:NamedIndividual ,
+                                                  <https://schema.org/BroadcastEvent> ;
+                                         <https://schema.org/inLanguage> <http://www.semanticweb.org/ontology/anime-1/ja-JP> ;
+                                         <https://schema.org/publishedOn> :Crunchyroll ;
+                                         <https://schema.org/subtitleLanguage> <http://www.semanticweb.org/ontology/anime-1/en-US> ,
+                                                                               <http://www.semanticweb.org/ontology/anime-1/ja-JP> ;
+                                         <https://schema.org/url> "https://www.crunchyroll.com/it/series/GR751KNZY/attack-on-titan" .
+
+
+###  http://www.semanticweb.org/ontology/anime#Manga_Koe_no_Katachi
+:Manga_Koe_no_Katachi rdf:type owl:NamedIndividual ,
+                               <http://dbpedia.org/ontology/Manga> ;
+                      <https://schema.org/url> "https://myanimelist.net/manga/56805/Koe_no_Katachi" .
+
+
+###  http://www.semanticweb.org/ontology/anime#Manga_Shingeki_no_Kyojin
+:Manga_Shingeki_no_Kyojin rdf:type owl:NamedIndividual ,
+                                   <http://dbpedia.org/ontology/Manga> ;
+                          <https://schema.org/url> "https://myanimelist.net/manga/23390/Shingeki_no_Kyojin" .
+
+
+###  http://www.semanticweb.org/ontology/anime#Netflix
+:Netflix rdf:type owl:NamedIndividual ,
+                  <https://schema.org/BroadcastService> .
+
+
+###  http://www.semanticweb.org/ontology/anime#Netflix_Koe_no_Katachi
+:Netflix_Koe_no_Katachi rdf:type owl:NamedIndividual ,
+                                 <https://schema.org/BroadcastEvent> ;
+                        <https://schema.org/inLanguage> <http://www.semanticweb.org/ontology/anime-1/en-US> ,
+                                                        <http://www.semanticweb.org/ontology/anime-1/ja-JP> ;
+                        <https://schema.org/publishedOn> :Netflix ;
+                        <https://schema.org/subtitleLanguage> <http://www.semanticweb.org/ontology/anime-1/en-US> ,
+                                                              <http://www.semanticweb.org/ontology/anime-1/es-ES> ,
+                                                              <http://www.semanticweb.org/ontology/anime-1/ja-JP> ;
+                        <https://schema.org/url> "https://www.netflix.com/jp-en/title/80223226" .
+
+
+###  http://www.semanticweb.org/ontology/anime#Netflix_Shingeki_no_Kyojin
+:Netflix_Shingeki_no_Kyojin rdf:type owl:NamedIndividual ,
+                                     <https://schema.org/BroadcastEvent> ;
+                            <https://schema.org/inLanguage> <http://www.semanticweb.org/ontology/anime-1/en-US> ,
+                                                            <http://www.semanticweb.org/ontology/anime-1/ja-JP> ;
+                            <https://schema.org/publishedOn> :Netflix ;
+                            <https://schema.org/subtitleLanguage> <http://www.semanticweb.org/ontology/anime-1/en-US> ,
+                                                                  <http://www.semanticweb.org/ontology/anime-1/es-ES> ,
+                                                                  <http://www.semanticweb.org/ontology/anime-1/ja-JP> ;
+                            <https://schema.org/url> "https://www.netflix.com/it-en/title/70299043" .
+
+
+###  http://www.semanticweb.org/ontology/anime#Netflix_Shingeki_no_Kyojin_Season_2
+:Netflix_Shingeki_no_Kyojin_Season_2 rdf:type owl:NamedIndividual ,
+                                              <https://schema.org/BroadcastEvent> ;
+                                     <https://schema.org/inLanguage> <http://www.semanticweb.org/ontology/anime-1/en-US> ,
+                                                                     <http://www.semanticweb.org/ontology/anime-1/ja-JP> ;
+                                     <https://schema.org/publishedOn> :Netflix ;
+                                     <https://schema.org/subtitleLanguage> <http://www.semanticweb.org/ontology/anime-1/en-US> ,
+                                                                           <http://www.semanticweb.org/ontology/anime-1/es-ES> ,
+                                                                           <http://www.semanticweb.org/ontology/anime-1/ja-JP> ;
+                                     <https://schema.org/url> "https://www.netflix.com/it-en/title/70299043" .
+
+
 ###  http://www.semanticweb.org/ontology/anime-1/Action
 <http://www.semanticweb.org/ontology/anime-1/Action> rdf:type owl:NamedIndividual ,
                                                               <http://dbpedia.org/ontology/Genre> ;
@@ -1074,49 +1136,57 @@ schema:Quantity rdf:type owl:Class .
 ###  http://www.semanticweb.org/ontology/anime/Actor_Hayami_Saori
 :Actor_Hayami_Saori rdf:type owl:NamedIndividual ,
                              <http://dbpedia.org/ontology/VoiceActor> ;
-                    :languageOfVoicing :Japanese .
+                    :languageOfVoicing <http://www.semanticweb.org/ontology/anime-1/ja-JP> ;
+                    dct:title "Hayami Saori" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Actor_Inoue_Marina
 :Actor_Inoue_Marina rdf:type owl:NamedIndividual ,
                              <http://dbpedia.org/ontology/VoiceActor> ;
-                    :languageOfVoicing :Japanese .
+                    :languageOfVoicing <http://www.semanticweb.org/ontology/anime-1/en-US> ;
+                    dct:title "Inoue Marina" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Actor_Irino_Miyu
 :Actor_Irino_Miyu rdf:type owl:NamedIndividual ,
                            <http://dbpedia.org/ontology/VoiceActor> ;
-                  :languageOfVoicing :Japanese .
+                  :languageOfVoicing <http://www.semanticweb.org/ontology/anime-1/ja-JP> ;
+                  dct:title "Irino Miyu" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Actor_Ishikawa_Yui
 :Actor_Ishikawa_Yui rdf:type owl:NamedIndividual ,
                              <http://dbpedia.org/ontology/VoiceActor> ;
-                    :languageOfVoicing :English .
+                    :languageOfVoicing <http://www.semanticweb.org/ontology/anime-1/ja-JP> ;
+                    dct:title "Ishikawa Yui" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Actor_Kaji_Yuuki
 :Actor_Kaji_Yuuki rdf:type owl:NamedIndividual ,
                            <http://dbpedia.org/ontology/VoiceActor> ;
-                  :languageOfVoicing :Japanese .
+                  :languageOfVoicing <http://www.semanticweb.org/ontology/anime-1/ja-JP> ;
+                  dct:title "Kaji Yuuki" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Actor_Kamiya_Hiroshi
 :Actor_Kamiya_Hiroshi rdf:type owl:NamedIndividual ,
                                <http://dbpedia.org/ontology/VoiceActor> ;
-                      :languageOfVoicing :Japanese .
+                      :languageOfVoicing <http://www.semanticweb.org/ontology/anime-1/ja-JP> ;
+                      dct:title "Kamiya Hiroshi" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Actor_Nishimura_Trina
 :Actor_Nishimura_Trina rdf:type owl:NamedIndividual ,
                                 <http://dbpedia.org/ontology/VoiceActor> ;
-                       :languageOfVoicing :English .
+                       :languageOfVoicing <http://www.semanticweb.org/ontology/anime-1/en-US> ;
+                       dct:title "Nishimura Trina" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Actor_Papenbrook_Bryce
 :Actor_Papenbrook_Bryce rdf:type owl:NamedIndividual ,
                                  <http://dbpedia.org/ontology/VoiceActor> ;
-                        :languageOfVoicing :Japanese .
+                        :languageOfVoicing <http://www.semanticweb.org/ontology/anime-1/en-US> ;
+                        dct:title "Papenbrook Bryce" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Character_Armin_Arlert
@@ -1124,7 +1194,7 @@ schema:Quantity rdf:type owl:Class .
                                  <https://schema.org/Person> ;
                         :hasVoiceActor :Actor_Inoue_Marina ;
                         dct:title "Armin Arlert"^^rdfs:Literal ;
-                        <https://schema.org/mainEntityOfPage> "https://myanimelist.net/character/46494/Armin_Arlert"^^rdfs:Literal ;
+                        <https://schema.org/url> "https://myanimelist.net/character/46494/Armin_Arlert"^^rdfs:Literal ;
                         dct:description """Birthday: November 3
 Height: 163 cm (5'4\") -> 169 cm (5'6\")
 Weight: 55 kg (121 lbs) -> 56 kg (123 lbs)
@@ -1140,7 +1210,7 @@ Armin Arlert is Eren's best friend. He is physically weak, but emotionally stron
                        :hasVoiceActor :Actor_Kaji_Yuuki ,
                                       :Actor_Papenbrook_Bryce ;
                        dct:title "Eren Yeager"^^rdfs:Literal ;
-                       <https://schema.org/mainEntityOfPage> "https://myanimelist.net/character/40882/Eren_Yeager"^^rdfs:Literal ;
+                       <https://schema.org/url> "https://myanimelist.net/character/40882/Eren_Yeager"^^rdfs:Literal ;
                        dct:description """Birthdate: March 30
 Height: 170 cm (5'7\") -> 183 cm (6'0\")
 Weight: 63 kg (139 lbs) -> 82 kg (181 lbs)
@@ -1158,7 +1228,7 @@ His father is a doctor (whom is well respected by Hannes and potentially many mo
                          :hasVoiceActor :Actor_Irino_Miyu ;
                          dct:alternative "Shou-chan, Yashou"^^rdfs:Literal ;
                          dct:title "Shouya Ishida"^^rdfs:Literal ;
-                         <https://schema.org/mainEntityOfPage> "https://myanimelist.net/character/80491/Shouya_Ishida"^^rdfs:Literal ;
+                         <https://schema.org/url> "https://myanimelist.net/character/80491/Shouya_Ishida"^^rdfs:Literal ;
                          dct:description """Age: 18
 Gender: Male
 Birthday: June 6th
@@ -1171,7 +1241,7 @@ The main character and narrator. Ishida bullied Nishimiya Shouko in elementary s
                          <https://schema.org/Person> ;
                 :hasVoiceActor :Actor_Kamiya_Hiroshi ;
                 dct:title "Levi"^^rdfs:Literal ;
-                <https://schema.org/mainEntityOfPage> "https://myanimelist.net/character/45627/Levi"^^rdfs:Literal ;
+                <https://schema.org/url> "https://myanimelist.net/character/45627/Levi"^^rdfs:Literal ;
                 dct:description """Birthday: December 25
 Height: 160 cm (5'3\")
 Weight: 65 kg (143 lbs)
@@ -1186,7 +1256,7 @@ Levi is known as humanity's most powerful soldier. He's ranked as Captain of the
                            :hasVoiceActor :Actor_Ishikawa_Yui ,
                                           :Actor_Nishimura_Trina ;
                            dct:title "Mikasa Ackerman"^^rdfs:Literal ;
-                           <https://schema.org/mainEntityOfPage> "https://myanimelist.net/character/40881/Mikasa_Ackerman"^^rdfs:Literal ;
+                           <https://schema.org/url> "https://myanimelist.net/character/40881/Mikasa_Ackerman"^^rdfs:Literal ;
                            dct:description """Birthdate: February 10
 Height: 170 cm (5'7\") -> 176 cm (5'9\")
 Weight: 68 kg (150 lbs) -> 70 kg (154 lbs)
@@ -1204,32 +1274,32 @@ As a teen, Mikasa is considered a genius among all the army trainees and is incr
                             :hasVoiceActor :Actor_Hayami_Saori ;
                             dct:alternative "Shou-chan, 西宮 硝子"^^rdfs:Literal ;
                             dct:title "Shouko Nishimiya"^^rdfs:Literal ;
-                            <https://schema.org/mainEntityOfPage> "https://myanimelist.net/character/80243/Shouko_Nishimiya"^^rdfs:Literal ;
+                            <https://schema.org/url> "https://myanimelist.net/character/80243/Shouko_Nishimiya"^^rdfs:Literal ;
                             dct:description """Birthday: June 7
 Blood type: A
 
 A young, deaf transfer student with an amazingly positive outlook on life. Despite being a victim of continuous bullying, she always keeps a smile on her face."""^^rdfs:Literal .
 
 
-###  http://www.semanticweb.org/ontology/anime/English
-:English rdf:type owl:NamedIndividual ,
-                  <https://schema.org/Language> .
-
-
-###  http://www.semanticweb.org/ontology/anime/Japanese
-:Japanese rdf:type owl:NamedIndividual ,
-                   <https://schema.org/Language> .
-
-
 ###  http://www.semanticweb.org/ontology/anime/Koe_no_Katachi
 :Koe_no_Katachi rdf:type owl:NamedIndividual ,
                          :AnimeMovie ;
+                :creativeWorkStatus <http://www.semanticweb.org/ontology/anime-1/CreativeWorkStatus-Finished_Airing> ;
+                :isStreamedOn :Crunchyroll_Koe_no_Katachi ,
+                              :Netflix_Koe_no_Katachi ;
+                <https://schema.org/audience> <http://www.semanticweb.org/ontology/anime-1/Shounen> ;
                 <https://schema.org/character> :Character_Ishida_Shouya ,
                                                :Character_Shouko_Nishimiya ;
+                <https://schema.org/contentRating> <http://www.semanticweb.org/ontology/anime-1/PG-13> ;
+                <https://schema.org/genre> <http://www.semanticweb.org/ontology/anime-1/Award_Winning> ,
+                                           <http://www.semanticweb.org/ontology/anime-1/Drama> ;
+                <https://schema.org/isBasedOn> :Manga_Koe_no_Katachi ;
+                <https://schema.org/producer> <http://www.semanticweb.org/ontology/anime-1/Studio_Ghibli> ;
                 dct:title "A Silent Voice" ,
                           "Koe no Katachi" ;
                 <https://schema.org/datePublished> "2016-09-17T00:00:00"^^xsd:dateTime ;
                 <https://schema.org/duration> "2 hr. 10 min." ;
+                <https://schema.org/url> "https://myanimelist.net/anime/28851/Koe_no_Katachi" ;
                 dct:description """As a wild youth, elementary school student Shouya Ishida sought to beat boredom in the cruelest ways. When the deaf Shouko Nishimiya transfers into his class, Shouya and the rest of his class thoughtlessly bully her for fun. However, when her mother notifies the school, he is singled out and blamed for everything done to her. With Shouko transferring out of the school, Shouya is left at the mercy of his classmates. He is heartlessly ostracized all throughout elementary and middle school, while teachers turn a blind eye.
 
 Now in his third year of high school, Shouya is still plagued by his wrongdoings as a young boy. Sincerely regretting his past actions, he sets out on a journey of redemption: to meet Shouko once more and make amends.
@@ -1240,20 +1310,30 @@ Koe no Katachi tells the heartwarming tale of Shouya's reunion with Shouko and h
 ###  http://www.semanticweb.org/ontology/anime/Shingeki_no_Kyojin
 :Shingeki_no_Kyojin rdf:type owl:NamedIndividual ,
                              :AnimeSeason ;
+                    :creativeWorkStatus <http://www.semanticweb.org/ontology/anime-1/CreativeWorkStatus-Finished_Airing> ;
                     :hasTVSerieSequel :Shingeki_no_Kyojin_Season_2 ;
+                    :isStreamedOn :Netflix_Shingeki_no_Kyojin ;
+                    <https://schema.org/audience> <http://www.semanticweb.org/ontology/anime-1/Shounen> ;
                     <https://schema.org/character> :Character_Armin_Arlert ,
                                                    :Character_Eren_Yeager ,
                                                    :Character_Mikasa_Ackerman ;
+                    <https://schema.org/contentRating> <http://www.semanticweb.org/ontology/anime-1/NC-17> ;
                     <https://schema.org/episode> :Shingeki_no_Kyojin_E1 ,
                                                  :Shingeki_no_Kyojin_E2 ,
                                                  :Shingeki_no_Kyojin_E3 ,
                                                  :Shingeki_no_Kyojin_E4 ;
+                    <https://schema.org/genre> <http://www.semanticweb.org/ontology/anime-1/Action> ,
+                                               <http://www.semanticweb.org/ontology/anime-1/Award_Winning> ,
+                                               <http://www.semanticweb.org/ontology/anime-1/Drama> ;
+                    <https://schema.org/isBasedOn> :Manga_Shingeki_no_Kyojin ;
+                    <https://schema.org/producer> <http://www.semanticweb.org/ontology/anime-1/MAPPA> ;
                     dct:title "Attack on Titan" ,
                               "Shingeki no Kyojin" ;
                     :meteorologicalSeason "Spring 2017" ;
                     <https://schema.org/endDate> "2013-09-29T00:00:00"^^xsd:dateTime ;
                     <https://schema.org/numberOfEpisodes> "12"^^xsd:int ;
                     <https://schema.org/startDate> "2013-04-07T00:00:00"^^xsd:dateTime ;
+                    <https://schema.org/url> "https://myanimelist.net/anime/16498/Shingeki_no_Kyojin" ;
                     dct:description """Centuries ago, mankind was slaughtered to near extinction by monstrous humanoid creatures called Titans, forcing humans to hide in fear behind enormous concentric walls. What makes these giants truly terrifying is that their taste for human flesh is not born out of hunger but what appears to be out of pleasure. To ensure their survival, the remnants of humanity began living within defensive barriers, resulting in one hundred years without a single titan encounter. However, that fragile calm is soon shattered when a colossal Titan manages to breach the supposedly impregnable outer wall, reigniting the fight for survival against the man-eating abominations.
 
 After witnessing a horrific personal loss at the hands of the invading creatures, Eren Yeager dedicates his life to their eradication by enlisting into the Survey Corps, an elite military unit that combats the merciless humanoids outside the protection of the walls. Eren, his adopted sister Mikasa Ackerman, and his childhood friend Armin Arlert join the brutal war against the Titans and race to discover a way of defeating them before the last walls are breached.""" .
@@ -1294,19 +1374,30 @@ After witnessing a horrific personal loss at the hands of the invading creatures
 ###  http://www.semanticweb.org/ontology/anime/Shingeki_no_Kyojin_Season_2
 :Shingeki_no_Kyojin_Season_2 rdf:type owl:NamedIndividual ,
                                       :AnimeSeason ;
+                             :creativeWorkStatus <http://www.semanticweb.org/ontology/anime-1/CreativeWorkStatus-Finished_Airing> ;
+                             :isStreamedOn :Crunchyroll_Shingeki_no_Kyojin_Season_2 ,
+                                           :Netflix_Shingeki_no_Kyojin_Season_2 ;
+                             <https://schema.org/audience> <http://www.semanticweb.org/ontology/anime-1/Shounen> ;
                              <https://schema.org/character> :Character_Armin_Arlert ,
                                                             :Character_Eren_Yeager ,
                                                             :Character_Levi ,
                                                             :Character_Mikasa_Ackerman ;
+                             <https://schema.org/contentRating> <http://www.semanticweb.org/ontology/anime-1/NC-17> ;
                              <https://schema.org/episode> :Shingeki_no_Kyojin_Season_2_E1 ,
                                                           :Shingeki_no_Kyojin_Season_2_E3 ,
                                                           :Shingeki_no_Kyojin_Season_2_E4 ;
+                             <https://schema.org/genre> <http://www.semanticweb.org/ontology/anime-1/Action> ,
+                                                        <http://www.semanticweb.org/ontology/anime-1/Award_Winning> ,
+                                                        <http://www.semanticweb.org/ontology/anime-1/Drama> ;
+                             <https://schema.org/isBasedOn> :Manga_Shingeki_no_Kyojin ;
+                             <https://schema.org/producer> <http://www.semanticweb.org/ontology/anime-1/MAPPA> ;
                              dct:title "Attack on Titan Season 2" ,
                                        "Shingeki no Kyojin Season 2" ;
                              :meteorologicalSeason "Spring 2013" ;
                              <https://schema.org/endDate> "2017-06-17T00:00:00"^^xsd:dateTime ;
                              <https://schema.org/numberOfEpisodes> "12"^^xsd:int ;
                              <https://schema.org/startDate> "2017-04-01T00:00:00"^^xsd:dateTime ;
+                             <https://schema.org/url> "https://myanimelist.net/anime/25777/Shingeki_no_Kyojin_Season_2" ;
                              dct:description """For centuries, humanity has been hunted by giant, mysterious predators known as the Titans. Three mighty walls—Wall Maria, Rose, and Sheena—provided peace and protection for humanity for over a hundred years. That peace, however, was shattered when the Colossal Titan and Armored Titan appeared and destroyed the outermost wall, Wall Maria. Forced to retreat behind Wall Rose, humanity waited with bated breath for the Titans to reappear and destroy their safe haven once more.
 
 In Shingeki no Kyojin Season 2, Eren Yeager and others of the 104th Training Corps have just begun to become full members of the Survey Corps. As they ready themselves to face the Titans once again, their preparations are interrupted by the invasion of Wall Rose—but all is not as it seems as more mysteries are unraveled. As the Survey Corps races to save the wall, they uncover more about the invading Titans and the dark secrets of their own members.""" .
@@ -1354,10 +1445,6 @@ In Shingeki no Kyojin Season 2, Eren Yeager and others of the 104th Training Cor
 
 <http://dbpedia.org/ontology/data/definitions.ttl> <http://open.vocab.org/terms/describes> <http://dbpedia.org/ontology/Anime> ,
                                                                                            <http://dbpedia.org/ontology/VoiceActor> .
-
-
-<https://schema.org/inLanguage> rdfs:comment "The language of the content or performance or used in an action. Please use one of the language codes from the IETF BCP 47 standard (http://tools.ietf.org/html/bcp47)." ;
-                                rdfs:label "inLanguage" .
 
 
 ###  Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi
