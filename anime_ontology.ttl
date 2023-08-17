@@ -44,6 +44,11 @@ dct:description rdf:type owl:AnnotationProperty .
 #    Object Properties
 #################################################################
 
+###  http://www.semanticweb.org/ontology/anime#animeWithCharacter
+:animeWithCharacter rdf:type owl:ObjectProperty ;
+                    owl:inverseOf <https://schema.org/character> .
+
+
 ###  http://www.semanticweb.org/ontology/anime/animeInMeteorologicalSeason
 :animeInMeteorologicalSeason rdf:type owl:ObjectProperty ;
                              owl:inverseOf :meteorologicalSeason .
@@ -76,19 +81,6 @@ dct:description rdf:type owl:AnnotationProperty .
 
 ###  http://www.semanticweb.org/ontology/anime/creativeWorkStatus
 :creativeWorkStatus rdf:type owl:ObjectProperty .
-
-
-###  http://www.semanticweb.org/ontology/anime/hasCharacters
-:hasCharacters rdf:type owl:ObjectProperty ;
-               rdfs:domain <http://dbpedia.org/ontology/Anime> ;
-               rdfs:range :Character .
-
-
-###  http://www.semanticweb.org/ontology/anime/hasMoviePrequel
-:hasMoviePrequel rdf:type owl:ObjectProperty ;
-                 rdfs:subPropertyOf :hasPrequel ;
-                 owl:inverseOf :hasMovieSequel ,
-                               :hasMovieSpinOff .
 
 
 ###  http://www.semanticweb.org/ontology/anime/hasMovieSequel
@@ -129,13 +121,6 @@ dct:description rdf:type owl:AnnotationProperty .
             rdfs:range <http://dbpedia.org/ontology/Anime> .
 
 
-###  http://www.semanticweb.org/ontology/anime/hasTVSeriePrequel
-:hasTVSeriePrequel rdf:type owl:ObjectProperty ;
-                   rdfs:subPropertyOf :hasPrequel ;
-                   owl:inverseOf :hasTVSerieSequel ,
-                                 :hasTVSerieSpinOff .
-
-
 ###  http://www.semanticweb.org/ontology/anime/hasTVSerieSequel
 :hasTVSerieSequel rdf:type owl:ObjectProperty ;
                   rdfs:subPropertyOf :hasSequel .
@@ -149,7 +134,7 @@ dct:description rdf:type owl:AnnotationProperty .
 ###  http://www.semanticweb.org/ontology/anime/hasVoiceActor
 :hasVoiceActor rdf:type owl:ObjectProperty ;
                owl:inverseOf :voiceActed ;
-               rdfs:domain :Character ;
+               rdfs:domain <https://schema.org/Person> ;
                rdfs:range <http://dbpedia.org/ontology/VoiceActor> .
 
 
@@ -193,6 +178,13 @@ dct:description rdf:type owl:AnnotationProperty .
 <https://schema.org/audience> rdf:type owl:ObjectProperty ;
                               rdfs:domain <https://schema.org/CreativeWork> ;
                               rdfs:range <https://schema.org/Audience> .
+
+
+###  https://schema.org/character
+<https://schema.org/character> rdf:type owl:ObjectProperty ;
+                               rdfs:subPropertyOf owl:topObjectProperty ;
+                               rdfs:domain <http://dbpedia.org/ontology/Anime> ;
+                               rdfs:range <https://schema.org/Person> .
 
 
 ###  https://schema.org/contentRating
@@ -273,7 +265,8 @@ dct:alternative rdf:type owl:DatatypeProperty ;
 
 ###  http://purl.org/dc/terms/date
 dct:date rdf:type owl:DatatypeProperty ;
-         rdfs:range rdfs:Literal ;
+         rdfs:range rdfs:Literal ,
+                    xsd:dateTime ;
          dct:description "Date may be used to express temporal information at any level of granularity.  Recommended practice is to express the date, date/time, or period of time according to ISO 8601-1 [[ISO 8601-1](https://www.iso.org/iso-8601-date-and-time-format.html)] or a published profile of the ISO standard, such as the W3C Note on Date and Time Formats [[W3CDTF](https://www.w3.org/TR/NOTE-datetime)] or the Extended Date/Time Format Specification [[EDTF](http://www.loc.gov/standards/datetime/)].  If the full date is unknown, month and year (YYYY-MM) or just year (YYYY) may be used. Date ranges may be specified using ISO 8601 period of time specification in which start and end dates are separated by a '/' (slash) character.  Either the start or end date may be missing."@en ;
          rdfs:comment "A point or period of time associated with an event in the lifecycle of the resource."@en ;
          rdfs:isDefinedBy dct: ;
@@ -320,6 +313,7 @@ dct:title rdf:type owl:DatatypeProperty ;
 
 ###  https://schema.org/datePublished
 <https://schema.org/datePublished> rdf:type owl:DatatypeProperty ;
+                                   rdfs:subPropertyOf dct:date ;
                                    rdfs:domain <https://schema.org/CreativeWork> ;
                                    rdfs:range xsd:dateTime .
 
@@ -341,8 +335,9 @@ dct:title rdf:type owl:DatatypeProperty ;
 
 ###  https://schema.org/endDate
 <https://schema.org/endDate> rdf:type owl:DatatypeProperty ;
-                             rdfs:domain <https://schema.org/CreativeWork> ;
-                             rdfs:range rdfs:Literal .
+                             rdfs:subPropertyOf dct:date ;
+                             rdfs:domain <https://schema.org/CreativeWorkSeason> ;
+                             rdfs:range xsd:dateTime .
 
 
 ###  https://schema.org/episodeNumber
@@ -362,8 +357,7 @@ dct:title rdf:type owl:DatatypeProperty ;
 
 ###  https://schema.org/mainEntityOfPage
 <https://schema.org/mainEntityOfPage> rdf:type owl:DatatypeProperty ;
-                                      rdfs:domain <http://dbpedia.org/ontology/Anime> ,
-                                                  <https://schema.org/Thing> ;
+                                      rdfs:domain <https://schema.org/Thing> ;
                                       rdfs:range rdfs:Literal ;
                                       rdfs:comment "Indicates a page (or other CreativeWork) for which this thing is the main entity being described. See [background notes](/docs/datamodel.html#mainEntityBackground) for details." ;
                                       rdfs:label "mainEntityOfPage" .
@@ -383,6 +377,7 @@ dct:title rdf:type owl:DatatypeProperty ;
 
 ###  https://schema.org/startDate
 <https://schema.org/startDate> rdf:type owl:DatatypeProperty ;
+                               rdfs:subPropertyOf dct:date ;
                                rdfs:domain <https://schema.org/CreativeWorkSeason> ;
                                rdfs:range xsd:dateTime .
 
@@ -547,11 +542,6 @@ schema:Quantity rdf:type owl:Class .
                              <https://schema.org/TVSeason> ;
              rdfs:comment "A particular season of a specif Anime. A season is composed of a sequence of episodes." ;
              rdfs:label "AnimeSeason" .
-
-
-###  http://www.semanticweb.org/ontology/anime/Character
-:Character rdf:type owl:Class ;
-           rdfs:subClassOf <https://schema.org/Person> .
 
 
 ###  http://www.wikidata.org/entity/Q1107
@@ -735,42 +725,300 @@ schema:Quantity rdf:type owl:Class .
 #    Individuals
 #################################################################
 
-###  http://www.semanticweb.org/ontology/anime#English
+###  http://www.semanticweb.org/ontology/anime#Actor_Hayami_Saori
+:Actor_Hayami_Saori rdf:type owl:NamedIndividual ,
+                             <http://dbpedia.org/ontology/VoiceActor> ;
+                    :languageOfVoicing :Japanese .
+
+
+###  http://www.semanticweb.org/ontology/anime#Actor_Inoue_Marina
+:Actor_Inoue_Marina rdf:type owl:NamedIndividual ,
+                             <http://dbpedia.org/ontology/VoiceActor> ;
+                    :languageOfVoicing :Japanese .
+
+
+###  http://www.semanticweb.org/ontology/anime#Actor_Irino_Miyu
+:Actor_Irino_Miyu rdf:type owl:NamedIndividual ,
+                           <http://dbpedia.org/ontology/VoiceActor> ;
+                  :languageOfVoicing :Japanese .
+
+
+###  http://www.semanticweb.org/ontology/anime#Actor_Ishikawa_Yui
+:Actor_Ishikawa_Yui rdf:type owl:NamedIndividual ,
+                             <http://dbpedia.org/ontology/VoiceActor> ;
+                    :languageOfVoicing :English .
+
+
+###  http://www.semanticweb.org/ontology/anime#Actor_Kaji_Yuuki
+:Actor_Kaji_Yuuki rdf:type owl:NamedIndividual ,
+                           <http://dbpedia.org/ontology/VoiceActor> ;
+                  :languageOfVoicing :Japanese .
+
+
+###  http://www.semanticweb.org/ontology/anime#Actor_Kamiya_Hiroshi
+:Actor_Kamiya_Hiroshi rdf:type owl:NamedIndividual ,
+                               <http://dbpedia.org/ontology/VoiceActor> ;
+                      :languageOfVoicing :Japanese .
+
+
+###  http://www.semanticweb.org/ontology/anime#Actor_Nishimura_Trina
+:Actor_Nishimura_Trina rdf:type owl:NamedIndividual ,
+                                <http://dbpedia.org/ontology/VoiceActor> ;
+                       :languageOfVoicing :English .
+
+
+###  http://www.semanticweb.org/ontology/anime#Actor_Papenbrook_Bryce
+:Actor_Papenbrook_Bryce rdf:type owl:NamedIndividual ,
+                                 <http://dbpedia.org/ontology/VoiceActor> ;
+                        :languageOfVoicing :Japanese .
+
+
+###  http://www.semanticweb.org/ontology/anime#Character_Armin_Arlert
+:Character_Armin_Arlert rdf:type owl:NamedIndividual ,
+                                 <https://schema.org/Person> ;
+                        :hasVoiceActor :Actor_Inoue_Marina ;
+                        dct:title "Armin Arlert"^^rdfs:Literal ;
+                        <https://schema.org/mainEntityOfPage> "https://myanimelist.net/character/46494/Armin_Arlert"^^rdfs:Literal ;
+                        dct:description """Birthday: November 3
+Height: 163 cm (5'4\") -> 169 cm (5'6\")
+Weight: 55 kg (121 lbs) -> 56 kg (123 lbs)
+Position: 104th Trainees Squad, Scouting Legion
+Graduation Rank: Outside the top 10
+
+Armin Arlert is Eren's best friend. He is physically weak, but emotionally strong. Even though he lacks in actual combat skills, Armin is a genius in theoretical courses and can make plans even under extreme pressure. Even so, Armin keeps on thinking that he is weak. He himself does not notice the things he does for Eren and Mikasa and believes himself to be completely incompetent and hates himself for having to rely on Eren and Mikasa."""^^rdfs:Literal .
+
+
+###  http://www.semanticweb.org/ontology/anime#Character_Eren_Yeager
+:Character_Eren_Yeager rdf:type owl:NamedIndividual ,
+                                <https://schema.org/Person> ;
+                       :hasVoiceActor :Actor_Kaji_Yuuki ,
+                                      :Actor_Papenbrook_Bryce ;
+                       dct:title "Eren Yeager"^^rdfs:Literal ;
+                       <https://schema.org/mainEntityOfPage> "https://myanimelist.net/character/40882/Eren_Yeager"^^rdfs:Literal ;
+                       dct:description """Birthdate: March 30
+Height: 170 cm (5'7\") -> 183 cm (6'0\")
+Weight: 63 kg (139 lbs) -> 82 kg (181 lbs)
+Position: 104th Trainees Squad, Scouting Legion
+Graduation rank: 5th
+
+Eren is Shingeki no Kyojin's protagonist. His childhood friend, Mikasa, notes on numerous occasions that he acts on impulse without thinking things through, and she often pulls/carries/throws him when he starts fighting with others to protect him from himself. Along with Mikasa, he tends to spend his free time with their mutual friend, Armin.
+
+His father is a doctor (whom is well respected by Hannes and potentially many more) whilst his mother is a housewife."""^^rdfs:Literal .
+
+
+###  http://www.semanticweb.org/ontology/anime#Character_Ishida_Shouya
+:Character_Ishida_Shouya rdf:type owl:NamedIndividual ,
+                                  <https://schema.org/Person> ;
+                         :hasVoiceActor :Actor_Irino_Miyu ;
+                         dct:alternative "Shou-chan, Yashou"^^rdfs:Literal ;
+                         dct:title "Shouya Ishida"^^rdfs:Literal ;
+                         <https://schema.org/mainEntityOfPage> "https://myanimelist.net/character/80491/Shouya_Ishida"^^rdfs:Literal ;
+                         dct:description """Age: 18
+Gender: Male
+Birthday: June 6th
+
+The main character and narrator. Ishida bullied Nishimiya Shouko in elementary school and when she transferred away, he was ostracized and bullied by his former friends. He started to ignore those around him (imagining them with a large X across their face) and was driven to the point of suicide. He changed his mind after he apologized to Nishimiya and began to spend time with her. He learned sign language specifically so he could apologize to her and is shown to be very talented in it. He feels like he hasn't been punished enough for bullying Nishimiya and often wishes he could kill his younger self. He seems resigned to the fact that he will never be able to have friends again."""^^rdfs:Literal .
+
+
+###  http://www.semanticweb.org/ontology/anime#Character_Levi
+:Character_Levi rdf:type owl:NamedIndividual ,
+                         <https://schema.org/Person> ;
+                :hasVoiceActor :Actor_Kamiya_Hiroshi ;
+                dct:title "Levi"^^rdfs:Literal ;
+                <https://schema.org/mainEntityOfPage> "https://myanimelist.net/character/45627/Levi"^^rdfs:Literal ;
+                dct:description """Birthday: December 25
+Height: 160 cm (5'3\")
+Weight: 65 kg (143 lbs)
+Affiliations: Scouting Legion, Special Operations Squad
+
+Levi is known as humanity's most powerful soldier. He's ranked as Captain of the Scouting Legion division. Levi is also the leader of the Special Operations Squad, an elite team that he hand-picked in order to protect Eren Yeager. While it is said that he is blunt and unapproachable, it is noted that he has a strong respect for structure and discipline. There are rumors that he was originally part of underground crime before he became a soldier. Although he often appears to be unfriendly, he cares deeply for his team and has never undervalued human life. He is also a notorious clean-freak."""^^rdfs:Literal .
+
+
+###  http://www.semanticweb.org/ontology/anime#Character_Mikasa_Ackerman
+:Character_Mikasa_Ackerman rdf:type owl:NamedIndividual ,
+                                    <https://schema.org/Person> ;
+                           :hasVoiceActor :Actor_Ishikawa_Yui ,
+                                          :Actor_Nishimura_Trina ;
+                           dct:title "Mikasa Ackerman"^^rdfs:Literal ;
+                           <https://schema.org/mainEntityOfPage> "https://myanimelist.net/character/40881/Mikasa_Ackerman"^^rdfs:Literal ;
+                           dct:description """Birthdate: February 10
+Height: 170 cm (5'7\") -> 176 cm (5'9\")
+Weight: 68 kg (150 lbs) -> 70 kg (154 lbs)
+Position: 104th Trainees Squad, Scouting Legion
+Graduation rank: 1st
+
+Mikasa is Eren's childhood friend, along with Armin. Mikasa shares an unbreakable bond with Eren following events in their past, and rushes to protect him whenever he is in danger. Mikasa possesses impressive fighting skill and strength even as a child.
+
+As a teen, Mikasa is considered a genius among all the army trainees and is incredibly skilled at combat and agility. She constantly worries for Eren's well-being and lives to protect him."""^^rdfs:Literal .
+
+
+###  http://www.semanticweb.org/ontology/anime#Character_Shouko_Nishimiya
+:Character_Shouko_Nishimiya rdf:type owl:NamedIndividual ,
+                                     <https://schema.org/Person> ;
+                            :hasVoiceActor :Actor_Hayami_Saori ;
+                            dct:alternative "Shou-chan, 西宮 硝子"^^rdfs:Literal ;
+                            dct:title "Shouko Nishimiya"^^rdfs:Literal ;
+                            <https://schema.org/mainEntityOfPage> "https://myanimelist.net/character/80243/Shouko_Nishimiya"^^rdfs:Literal ;
+                            dct:description """Birthday: June 7
+Blood type: A
+
+A young, deaf transfer student with an amazingly positive outlook on life. Despite being a victim of continuous bullying, she always keeps a smile on her face."""^^rdfs:Literal .
+
+
+###  http://www.semanticweb.org/ontology/anime#Koe_no_Katachi
+:Koe_no_Katachi rdf:type owl:NamedIndividual ,
+                         :AnimeMovie ;
+                <https://schema.org/character> :Character_Ishida_Shouya ,
+                                               :Character_Shouko_Nishimiya ;
+                <https://schema.org/contentRating> :PG-13 ;
+                dct:title "A Silent Voice" ,
+                          "Koe no Katachi" ;
+                <https://schema.org/datePublished> "2016-09-17T00:00:00"^^xsd:dateTime ;
+                <https://schema.org/duration> "2 hr. 10 min." ;
+                dct:description """As a wild youth, elementary school student Shouya Ishida sought to beat boredom in the cruelest ways. When the deaf Shouko Nishimiya transfers into his class, Shouya and the rest of his class thoughtlessly bully her for fun. However, when her mother notifies the school, he is singled out and blamed for everything done to her. With Shouko transferring out of the school, Shouya is left at the mercy of his classmates. He is heartlessly ostracized all throughout elementary and middle school, while teachers turn a blind eye.
+
+Now in his third year of high school, Shouya is still plagued by his wrongdoings as a young boy. Sincerely regretting his past actions, he sets out on a journey of redemption: to meet Shouko once more and make amends.
+
+Koe no Katachi tells the heartwarming tale of Shouya's reunion with Shouko and his honest attempts to redeem himself, all while being continually haunted by the shadows of his past.""" .
+
+
+###  http://www.semanticweb.org/ontology/anime#PG-13
+:PG-13 rdf:type owl:NamedIndividual ,
+                <https://schema.org/Rating> .
+
+
+###  http://www.semanticweb.org/ontology/anime#Shingeki_no_Kyojin_E1
+:Shingeki_no_Kyojin_E1 rdf:type owl:NamedIndividual ,
+                                <https://schema.org/Episode> ;
+                       dct:title "To You Two Thousand Years Later" ;
+                       <https://schema.org/episodeNumber> 1 ;
+                       dct:description "For over a century, humans have been living in settlements surrounded by three 50m gigantic walls, Wall Maria, Wall Rose and Wall Sina, which prevent the Titans, giant humanoid creatures who eat humans, from entering. Eren Jaeger, of the town called the Shiganshina District, wishes to see the outside world by joining the Scout Regiment, as he likens living in the cities to livestock. Despite this, his friend Mikasa Ackermann and their mother Carla Jaeger are against him joining the Scouts. Even after seeing the Scouts return home with large casualties, Eren expresses his interest to join, which impresses his father Grisha Jaeger, who promises to show him what lies in their basement once he returns. After Eren and Mikasa rescue their friend Armin Arlert from a group of delinquents, the Colossal Titan, a 60m Titan, suddenly appears and knocks down the gate to the Shiganshina District, which lies in the outer edge of Wall Maria, allowing smaller Titans to enter. As the town erupts into mass panic, Eren and Mikasa rush back to their house, only to see Carla pinned under their collapsed house. As a Smiling Titan approaches them, Carla begs them to flee, but they refuse until city guard Hannes arrives and assures them that he will defend them. However, as he charges towards the Titan, he is overcome with fear and takes Eren and Mikasa away. Eren watches in horror as a Smiling Titan eats Carla." .
+
+
+###  http://www.semanticweb.org/ontology/anime#Shingeki_no_Kyojin_E2
+:Shingeki_no_Kyojin_E2 rdf:type owl:NamedIndividual ,
+                                <https://schema.org/Episode> ;
+                       dct:title "That Day" ;
+                       <https://schema.org/episodeNumber> 2 ;
+                       dct:description "Hannes apologizes to Eren for not saving his mother, admitting he was afraid of the Smiling Titan and that both Eren and Mikasa are still weak children. Some of townsfolk of the Shiganshina District escape to the inner Wall Maria, while the soldiers try to hold off the Titans. The soldiers try to close the gate, but the Armored Titan rams the gate, breaching the inner Wall Maria, and causing those inside to retreat even further inside Wall Rose. Some time later, Eren has a strange dream in which his grieving father forcefully gives him an injection and his key before being woken up by Mikasa. Eren grows disgusted with the people of Wall Rose as the latter do not like sharing their food or homes with the refugees. During the next year, as a food shortage becomes apparent, the government orders the refugees to either work on the farms or fight to reclaim Wall Maria. About 250,000 people, 20% of the populace, choose to fight, only to be wiped out by the Titans. Eren vows revenge and joins the army along with Mikasa and Armin." .
+
+
+###  http://www.semanticweb.org/ontology/anime#Shingeki_no_Kyojin_E3
+:Shingeki_no_Kyojin_E3 rdf:type owl:NamedIndividual ,
+                                <https://schema.org/Episode> ;
+                       dct:title "Shining Dimly in the Midst of Despair" ;
+                       <https://schema.org/episodeNumber> 3 ;
+                       dct:description "The drill instructor Keith Sadies inspects the new recruits of the 104th Cadet Corps and provides a barrage of verbal insults. When he comes across Sasha Braus, who is eating a potato, he punishes her by having her run around the camp until sunset and not giving her any food or drink. Eren develops a rivalry with Jean Kirschtein, who desires a safe and easy position in the Military Police Regiment within the inner city walls. The recruits train on an omni-directional mobility gear[10] apparatus, where they have to balance themselves while suspended on cables. After Eren has trouble balancing, he asks Reiner Braun and Bertholdt Hoover for help and discover they too are among the few who have personally encountered Titans. The next day, Eren balances on the apparatus but falls, but Keith discovers that Eren's apparatus was defective and passes him after a retry with different equipment." .
+
+
+###  http://www.semanticweb.org/ontology/anime#Shingeki_no_Kyojin_E4
+:Shingeki_no_Kyojin_E4 rdf:type owl:NamedIndividual ,
+                                <https://schema.org/Episode> ;
+                       dct:title "Night of the Disbanding" ;
+                       <https://schema.org/episodeNumber> 4 ;
+                       dct:description "Five years since Wall Maria fell, Keith evaluates the recruits for their strengths and weaknesses. After training in hand-to-hand combat with Reiner and Annie Leonhart, Eren learns later that night that Jean and several other recruits hope to join the Military Police Regiment to avoid having to fight Titans. On graduation day, Eren and Mikasa rank among the top ten of their class. They are eligible to join the Military Police Regiment, but Eren declines and announces that he is joining the Scout Regiment on the front lines, leading Armin and Mikasa to join him. They are assigned to the Trost District, one of the cities which is at the outer edge of Wall Rose, where they discover other classmates have joined. The Colossal Titan appears and breaches the gate. Once Eren regains his composure, he takes command and orders a counterattack." .
+
+
+###  http://www.semanticweb.org/ontology/anime#Shingeki_no_Kyojin_Season_2_E1
+:Shingeki_no_Kyojin_Season_2_E1 rdf:type owl:NamedIndividual ,
+                                         <https://schema.org/Episode> ;
+                                dct:title "Beast Titan" ;
+                                <https://schema.org/episodeNumber> 1 ;
+                                dct:description "As the encased Annie is taken into custody, Hange and her team discover the Titan sealed inside the walls. Pastor Nick of the Wall Cult appears, urging them to cover it from sunlight. After the Titan is covered with sheets, Nick refuses to tell Hange why it is there, even after she threatens to kill him. She suspects that more titans are hidden within the walls. Meanwhile, Erwin is informed that Wall Rose was breached and Titans are roaming inside. 12 hours earlier, the rest of the 104th Trainees are stationed at an outpost when Titans are seen advancing from the south. Mike Zacharias orders the soldiers and trainees to spread out and inform the nearby villages and the capital about the Titans while he stays behind to delay them. In Stohess, Eren wakes up with Mikasa at his bedside and Armin tells them the Titans have breached Wall Rose. Back at the outpost, Mike buys enough time and prepares to escape, but is captured by a mysterious ape-like Titan covered in fur that is capable of speaking. The Beast Titan inquires about his three-dimensional maneuvering equipment (立体機動装置 Rittai kidō sōchi), but Mike does not answer, so the Titan strips Mike of his gear and leaves him to be eaten by the other Titans. (Source: Wikipedia)" .
+
+
+###  http://www.semanticweb.org/ontology/anime#Shingeki_no_Kyojin_Season_2_E2
+:Shingeki_no_Kyojin_Season_2_E2 rdf:type owl:NamedIndividual ,
+                                         <https://schema.org/Episode> ;
+                                dct:title "I'm Home" ;
+                                <https://schema.org/episodeNumber> 2 ;
+                                dct:description "Hange and Armin deduce that the Titans encased within the walls provide its strength. The Survey Corps depart from Stohess to deal with the Titans that appeared inside Wall Rose, and Hange takes Pastor Nick along intending to gain more information from him. Meanwhile, Sasha rushes to warn her father and her village. She arrives to find the entire village deserted except for a woman being eaten by a Titan, and her daughter nearby in a state of shock. Sasha takes the girl and flees but they are chased by the Titan. Sasha decides to stay and fight while urging the girl to run away. Sasha succeeds in blinding the Titan with her arrows just as a group of villagers, including her father and the girl, return to pick her up. Meanwhile, Connie arrives at his village, only to find that it had already been attacked by Titans. Upon reaching his house, Connie discovers a Titan on its back trapped inside. He and the others wonder how it got so far from the walls when its short, thin legs seem too weak to support its body. (Source: Wikipedia)" .
+
+
+###  http://www.semanticweb.org/ontology/anime#Shingeki_no_Kyojin_Season_2_E3
+:Shingeki_no_Kyojin_Season_2_E3 rdf:type owl:NamedIndividual ,
+                                         <https://schema.org/Episode> ;
+                                dct:title "Shothwestward" ;
+                                <https://schema.org/episodeNumber> 3 ;
+                                dct:description "Conny learns from Lynne and Gelgar that his family could still be alive since there are no traces of carnage, but before Conny rejoins his group to find the breach in the wall, he is startled when the Titan in his house faintly speaks and welcomes him back home. Elsewhere, Christa Lenz tells Ymir not to worry about her when the latter asks Nanaba and Henning to allow the two to leave their group. Both groups eventually meet up at nighttime, discovering that no breaches occurred at the walls and deciding to rest up at Castle Utgard. Meanwhile, Eren Jaeger learns from Hange he could learn how to seal the breach in the Shiganshina District, seeing as the crystallized skin from Annie Leonhart as the Female Titan is the same material from the walls. Pastor Nick eventually reveals to Hange that Christa is the key to finding all the answers. Soon after, Sasha arrives and hands Hange a scroll from Erwin, advising Hange and the Scouts to head to Castle Utgard. In the meantime, the Beast Titan leads the other Titans to attack Castle Utgard. This prompts Nanaba, Henning, Lynne and Gelgar to defend the 104th Cadets." .
+
+
+###  http://www.semanticweb.org/ontology/anime#Shingeki_no_Kyojin_Season_2_E4
+:Shingeki_no_Kyojin_Season_2_E4 rdf:type owl:NamedIndividual ,
+                                         <https://schema.org/Episode> ;
+                                dct:title "Soldier" ;
+                                <https://schema.org/episodeNumber> 4 ;
+                                dct:description "Two hours before the attack by the Titans at Castle Utgard, the 104th Cadets rest as their seniors keep watch. Conny mentions that the Titan he encountered at Ragako resembled his mother, but Ymir plays it off. Reiner Braun becomes suspicious when Ymir is able to read the unknown language on a food can labeled herring. The Titans soon appear, and the senior soldiers hold them off from the outside while the 104th Cadets defend themselves against smaller Titans that have breached the castle. In the process, Reiner has his arm badly injured after it is bitten by a Titan. After clearing the area of Titans, the Beast Titan throws chunks of Wall Rose at the castle, killing the group's horses. A second wave of Titans subsequently attack the castle, and the senior soldiers are soon overwhelmed and killed. As the Titans surround the tower which the unarmed 104th Cadets are on, Ymir jumps off the tower and transforms into a Titan in order to honor a promise that she made with Christa." .
+
+
+###  http://www.semanticweb.org/ontology/anime/English
 :English rdf:type owl:NamedIndividual ,
                   <https://schema.org/Language> .
 
 
-###  http://www.semanticweb.org/ontology/anime#Japanese
+###  http://www.semanticweb.org/ontology/anime/Japanese
 :Japanese rdf:type owl:NamedIndividual ,
                    <https://schema.org/Language> .
 
 
-###  http://www.semanticweb.org/ontology/anime#NC-17
+###  http://www.semanticweb.org/ontology/anime/NC-17
 :NC-17 rdf:type owl:NamedIndividual ,
                 <https://schema.org/Rating> .
 
 
-###  http://www.semanticweb.org/ontology/anime#PG
+###  http://www.semanticweb.org/ontology/anime/PG
 :PG rdf:type owl:NamedIndividual ,
              <https://schema.org/Rating> .
-
-
-###  http://www.semanticweb.org/ontology/anime#Shounen
-:Shounen rdf:type owl:NamedIndividual ,
-                  <https://schema.org/PeopleAudience> .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Shingeki_no_Kyojin
 :Shingeki_no_Kyojin rdf:type owl:NamedIndividual ,
                              :AnimeSeason ;
                     :hasTVSerieSequel :Shingeki_no_Kyojin_Season_2 ;
-                    dct:title "Wasd" ,
-                              "asd" .
+                    <https://schema.org/character> :Character_Armin_Arlert ,
+                                                   :Character_Eren_Yeager ,
+                                                   :Character_Mikasa_Ackerman ;
+                    <https://schema.org/contentRating> :NC-17 ;
+                    <https://schema.org/episode> :Shingeki_no_Kyojin_E1 ,
+                                                 :Shingeki_no_Kyojin_E2 ,
+                                                 :Shingeki_no_Kyojin_E3 ,
+                                                 :Shingeki_no_Kyojin_E4 ;
+                    dct:title "Attack on Titan" ,
+                              "Shingeki no Kyojin" ;
+                    :meteorologicalSeason "Spring 2017" ;
+                    <https://schema.org/endDate> "2013-09-29T00:00:00"^^xsd:dateTime ;
+                    <https://schema.org/numberOfEpisodes> "12"^^xsd:int ;
+                    <https://schema.org/startDate> "2013-04-07T00:00:00"^^xsd:dateTime ;
+                    dct:description """Centuries ago, mankind was slaughtered to near extinction by monstrous humanoid creatures called Titans, forcing humans to hide in fear behind enormous concentric walls. What makes these giants truly terrifying is that their taste for human flesh is not born out of hunger but what appears to be out of pleasure. To ensure their survival, the remnants of humanity began living within defensive barriers, resulting in one hundred years without a single titan encounter. However, that fragile calm is soon shattered when a colossal Titan manages to breach the supposedly impregnable outer wall, reigniting the fight for survival against the man-eating abominations.
+
+After witnessing a horrific personal loss at the hands of the invading creatures, Eren Yeager dedicates his life to their eradication by enlisting into the Survey Corps, an elite military unit that combats the merciless humanoids outside the protection of the walls. Eren, his adopted sister Mikasa Ackerman, and his childhood friend Armin Arlert join the brutal war against the Titans and race to discover a way of defeating them before the last walls are breached.""" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Shingeki_no_Kyojin_Season_2
 :Shingeki_no_Kyojin_Season_2 rdf:type owl:NamedIndividual ,
-                                      :AnimeSeason .
+                                      :AnimeSeason ;
+                             <https://schema.org/character> :Character_Armin_Arlert ,
+                                                            :Character_Eren_Yeager ,
+                                                            :Character_Levi ,
+                                                            :Character_Mikasa_Ackerman ;
+                             <https://schema.org/contentRating> :NC-17 ;
+                             <https://schema.org/episode> :Shingeki_no_Kyojin_Season_2_E1 ,
+                                                          :Shingeki_no_Kyojin_Season_2_E3 ,
+                                                          :Shingeki_no_Kyojin_Season_2_E4 ;
+                             dct:title "Attack on Titan Season 2" ,
+                                       "Shingeki no Kyojin Season 2" ;
+                             :meteorologicalSeason "Spring 2013" ;
+                             <https://schema.org/endDate> "2017-06-17T00:00:00"^^xsd:dateTime ;
+                             <https://schema.org/numberOfEpisodes> "12"^^xsd:int ;
+                             <https://schema.org/startDate> "2017-04-01T00:00:00"^^xsd:dateTime ;
+                             dct:description """For centuries, humanity has been hunted by giant, mysterious predators known as the Titans. Three mighty walls—Wall Maria, Rose, and Sheena—provided peace and protection for humanity for over a hundred years. That peace, however, was shattered when the Colossal Titan and Armored Titan appeared and destroyed the outermost wall, Wall Maria. Forced to retreat behind Wall Rose, humanity waited with bated breath for the Titans to reappear and destroy their safe haven once more.
+
+In Shingeki no Kyojin Season 2, Eren Yeager and others of the 104th Training Corps have just begun to become full members of the Survey Corps. As they ready themselves to face the Titans once again, their preparations are interrupted by the invasion of Wall Rose—but all is not as it seems as more mysteries are unraveled. As the Survey Corps races to save the wall, they uncover more about the invading Titans and the dark secrets of their own members.""" .
+
+
+###  http://www.semanticweb.org/ontology/anime/Shounen
+:Shounen rdf:type owl:NamedIndividual ,
+                  <https://schema.org/PeopleAudience> .
 
 
 #################################################################
