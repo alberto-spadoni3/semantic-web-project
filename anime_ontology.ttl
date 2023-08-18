@@ -89,7 +89,9 @@ dct:description rdf:type owl:AnnotationProperty ;
 
 
 ###  http://www.semanticweb.org/ontology/anime/creativeWorkStatus
-:creativeWorkStatus rdf:type owl:ObjectProperty .
+:creativeWorkStatus rdf:type owl:ObjectProperty ;
+                    rdfs:domain <https://schema.org/CreativeWork> ;
+                    rdfs:range :Status .
 
 
 ###  http://www.semanticweb.org/ontology/anime/hasMovieSequel
@@ -104,8 +106,7 @@ dct:description rdf:type owl:AnnotationProperty ;
 
 ###  http://www.semanticweb.org/ontology/anime/hasPrequel
 :hasPrequel rdf:type owl:ObjectProperty ;
-            owl:inverseOf :hasSequel ,
-                          :hasSpinOff .
+            owl:inverseOf :hasSequel .
 
 
 ###  http://www.semanticweb.org/ontology/anime/hasRelation
@@ -126,6 +127,7 @@ dct:description rdf:type owl:AnnotationProperty ;
 ###  http://www.semanticweb.org/ontology/anime/hasSpinOff
 :hasSpinOff rdf:type owl:ObjectProperty ;
             rdfs:subPropertyOf :hasRelation ;
+            owl:inverseOf :isSpinOffOf ;
             rdfs:domain <http://dbpedia.org/ontology/Anime> ;
             rdfs:range <http://dbpedia.org/ontology/Anime> .
 
@@ -145,6 +147,11 @@ dct:description rdf:type owl:AnnotationProperty ;
                owl:inverseOf :voiceActed ;
                rdfs:domain <https://schema.org/Person> ;
                rdfs:range <http://dbpedia.org/ontology/VoiceActor> .
+
+
+###  http://www.semanticweb.org/ontology/anime/isSpinOffOf
+:isSpinOffOf rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty .
 
 
 ###  http://www.semanticweb.org/ontology/anime/isStreamedOn
@@ -223,9 +230,8 @@ dct:description rdf:type owl:AnnotationProperty ;
 
 ###  https://schema.org/inLanguage
 <https://schema.org/inLanguage> rdf:type owl:ObjectProperty ;
-                                rdfs:domain <https://schema.org/BroadcastService> ,
-                                            <https://schema.org/CreativeWork> ,
-                                            <https://schema.org/Event> ;
+                                rdfs:domain <https://schema.org/BroadcastEvent> ,
+                                            <https://schema.org/CreativeWork> ;
                                 rdfs:range <https://schema.org/Language> .
 
 
@@ -233,8 +239,7 @@ dct:description rdf:type owl:AnnotationProperty ;
 <https://schema.org/isBasedOn> rdf:type owl:ObjectProperty ;
                                rdfs:domain <https://schema.org/CreativeWork> ;
                                rdfs:range <http://dbpedia.org/ontology/Manga> ,
-                                          <https://schema.org/Book> ,
-                                          <https://schema.org/Game> .
+                                          <https://schema.org/Book> .
 
 
 ###  https://schema.org/partOfSeason
@@ -303,6 +308,22 @@ dct:title rdf:type owl:DatatypeProperty ;
                       rdfs:range rdfs:Literal .
 
 
+###  https://schema.org/airingEndDate
+<https://schema.org/airingEndDate> rdf:type owl:DatatypeProperty ;
+                                   rdfs:subPropertyOf dct:date ;
+                                   rdfs:domain <https://schema.org/CreativeWork> ,
+                                               <https://schema.org/CreativeWorkSeason> ;
+                                   rdfs:range xsd:dateTime .
+
+
+###  https://schema.org/airingStartDate
+<https://schema.org/airingStartDate> rdf:type owl:DatatypeProperty ;
+                                     rdfs:subPropertyOf dct:date ;
+                                     rdfs:domain <https://schema.org/CreativeWork> ,
+                                                 <https://schema.org/CreativeWorkSeason> ;
+                                     rdfs:range xsd:dateTime .
+
+
 ###  https://schema.org/alternateName
 <https://schema.org/alternateName> rdf:type owl:DatatypeProperty ;
                                    rdfs:domain <https://schema.org/Thing> ;
@@ -339,14 +360,6 @@ dct:title rdf:type owl:DatatypeProperty ;
                               rdfs:range rdfs:Literal .
 
 
-###  https://schema.org/endDate
-<https://schema.org/endDate> rdf:type owl:DatatypeProperty ;
-                             rdfs:subPropertyOf dct:date ;
-                             rdfs:domain <https://schema.org/CreativeWork> ,
-                                         <https://schema.org/CreativeWorkSeason> ;
-                             rdfs:range xsd:dateTime .
-
-
 ###  https://schema.org/episodeNumber
 <https://schema.org/episodeNumber> rdf:type owl:DatatypeProperty ;
                                    rdfs:domain <https://schema.org/Episode> ;
@@ -368,14 +381,6 @@ dct:title rdf:type owl:DatatypeProperty ;
 <https://schema.org/numberOfEpisodes> rdf:type owl:DatatypeProperty ;
                                       rdfs:domain <https://schema.org/CreativeWorkSeason> ;
                                       rdfs:range xsd:int .
-
-
-###  https://schema.org/startDate
-<https://schema.org/startDate> rdf:type owl:DatatypeProperty ;
-                               rdfs:subPropertyOf dct:date ;
-                               rdfs:domain <https://schema.org/CreativeWork> ,
-                                           <https://schema.org/CreativeWorkSeason> ;
-                               rdfs:range xsd:dateTime .
 
 
 ###  https://schema.org/suggestedGender
@@ -414,6 +419,23 @@ dct:title rdf:type owl:DatatypeProperty ;
 #    Classes
 #################################################################
 
+###  Genre_http://dbpedia.org/ontology/Genre
+<Genre_http://dbpedia.org/ontology/Genre> rdf:type owl:Class ;
+                                          rdfs:subClassOf <https://schema.org/Intangible> ;
+                                          rdfs:isDefinedBy <http://dbpedia.org/ontology/> ;
+                                          rdfs:label "Genre"@de ,
+                                                     "genre"@en ,
+                                                     "genre"@fr ,
+                                                     "genre"@nl ,
+                                                     "género"@es ,
+                                                     "seánra"@ga ,
+                                                     "ύφος"@el ,
+                                                     "صنف"@ur ,
+                                                     "ジャンル"@ja ;
+                                          <http://www.w3.org/2007/05/powder-s#describedby> <http://dbpedia.org/ontology/data/definitions.ttl> ;
+                                          <http://www.w3.org/ns/prov#wasDerivedFrom> <http://mappings.dbpedia.org/index.php/OntologyClass:Genre> .
+
+
 ###  http://dbpedia.org/ontology/Actor
 <http://dbpedia.org/ontology/Actor> rdf:type owl:Class ;
                                     rdfs:subClassOf <https://dbpedia.org/ontology/Artist> .
@@ -422,11 +444,6 @@ dct:title rdf:type owl:DatatypeProperty ;
 ###  http://dbpedia.org/ontology/Anime
 <http://dbpedia.org/ontology/Anime> rdf:type owl:Class ;
                                     owl:equivalentClass <http://www.wikidata.org/entity/Q1107> ,
-                                                        [ rdf:type owl:Class ;
-                                                          owl:unionOf ( <http://www.semanticweb.org/ontology/anime-1/AnimeMovie>
-                                                                        <http://www.semanticweb.org/ontology/anime-1/AnimeSeason>
-                                                                      )
-                                                        ] ,
                                                         [ rdf:type owl:Class ;
                                                           owl:unionOf ( :AnimeMovie
                                                                         :AnimeSeason
@@ -470,26 +487,14 @@ dct:title rdf:type owl:DatatypeProperty ;
 
 
 ###  http://dbpedia.org/ontology/Genre
-<http://dbpedia.org/ontology/Genre> rdf:type owl:Class ;
-                                    rdfs:subClassOf <https://schema.org/Intangible> ;
-                                    rdfs:isDefinedBy <http://dbpedia.org/ontology/> ;
-                                    rdfs:label "Genre"@de ,
-                                               "genre"@en ,
-                                               "genre"@fr ,
-                                               "genre"@nl ,
-                                               "género"@es ,
-                                               "seánra"@ga ,
-                                               "ύφος"@el ,
-                                               "صنف"@ur ,
-                                               "ジャンル"@ja ;
-                                    <http://www.w3.org/2007/05/powder-s#describedby> <http://dbpedia.org/ontology/data/definitions.ttl> ;
-                                    <http://www.w3.org/ns/prov#wasDerivedFrom> <http://mappings.dbpedia.org/index.php/OntologyClass:Genre> .
+<http://dbpedia.org/ontology/Genre> rdf:type owl:Class .
 
 
 ###  http://dbpedia.org/ontology/Manga
 <http://dbpedia.org/ontology/Manga> rdf:type owl:Class ;
                                     owl:equivalentClass <http://www.wikidata.org/entity/Q8274> ;
                                     rdfs:subClassOf <http://dbpedia.org/ontology/Comic> ;
+                                    owl:disjointWith :AnimeSeason ;
                                     rdfs:comment "Manga are comics created in Japan"@en ,
                                                  "Manga is het Japanse equivalent van het stripverhaal"@nl ,
                                                  "منگا جاپان میں تخلیق کردہ کامکس ہیں"@ur ;
@@ -554,23 +559,6 @@ schema:Number rdf:type owl:Class .
 schema:Quantity rdf:type owl:Class .
 
 
-###  http://www.semanticweb.org/ontology/anime-1/AnimeMovie
-<http://www.semanticweb.org/ontology/anime-1/AnimeMovie> rdf:type owl:Class ;
-                                                         rdfs:subClassOf <http://dbpedia.org/ontology/Anime> ,
-                                                                         <https://schema.org/Movie> ;
-                                                         owl:disjointWith <http://www.semanticweb.org/ontology/anime-1/AnimeSeason> ;
-                                                         rdfs:comment "An animated movie." ;
-                                                         rdfs:label "AnimeMovie" .
-
-
-###  http://www.semanticweb.org/ontology/anime-1/AnimeSeason
-<http://www.semanticweb.org/ontology/anime-1/AnimeSeason> rdf:type owl:Class ;
-                                                          rdfs:subClassOf <http://dbpedia.org/ontology/Anime> ,
-                                                                          <https://schema.org/TVSeason> ;
-                                                          rdfs:comment "A particular season of a specif Anime. A season is composed of a sequence of episodes." ;
-                                                          rdfs:label "AnimeSeason" .
-
-
 ###  http://www.semanticweb.org/ontology/anime/AnimeMovie
 :AnimeMovie rdf:type owl:Class ;
             rdfs:subClassOf <http://dbpedia.org/ontology/Anime> ,
@@ -586,6 +574,11 @@ schema:Quantity rdf:type owl:Class .
                              <https://schema.org/TVSeason> ;
              rdfs:comment "A particular season of a specif Anime. A season is composed of a sequence of episodes." ;
              rdfs:label "AnimeSeason" .
+
+
+###  http://www.semanticweb.org/ontology/anime/Status
+:Status rdf:type owl:Class ;
+        rdfs:subClassOf <https://schema.org/Intangible> .
 
 
 ###  http://www.wikidata.org/entity/Q1107
@@ -664,13 +657,6 @@ schema:Quantity rdf:type owl:Class .
                            rdfs:subClassOf <https://schema.org/Thing> ;
                            rdfs:comment "An event happening at a certain time and location, such as a concert, lecture, or festival. Ticketing information may be added via the [[offers]] property. Repeated events may be structured as separate Event objects." ;
                            rdfs:label "Event" .
-
-
-###  https://schema.org/Game
-<https://schema.org/Game> rdf:type owl:Class ;
-                          rdfs:subClassOf <https://schema.org/CreativeWork> ;
-                          rdfs:comment "The Game type represents things which are games. These are typically rule-governed recreational activities, e.g. role-playing games in which players assume the role of characters in a fictional setting." ;
-                          rdfs:label "Game" .
 
 
 ###  https://schema.org/Intangible
@@ -769,424 +755,166 @@ schema:Quantity rdf:type owl:Class .
 #    Individuals
 #################################################################
 
-###  http://www.semanticweb.org/ontology/anime#Crunchyroll
-:Crunchyroll rdf:type owl:NamedIndividual ,
-                      <https://schema.org/BroadcastService> .
-
-
-###  http://www.semanticweb.org/ontology/anime#Crunchyroll_Koe_no_Katachi
-:Crunchyroll_Koe_no_Katachi rdf:type owl:NamedIndividual ,
-                                     <https://schema.org/BroadcastEvent> ;
-                            <https://schema.org/inLanguage> <http://www.semanticweb.org/ontology/anime-1/ja-JP> ;
-                            <https://schema.org/publishedOn> :Crunchyroll ;
-                            <https://schema.org/subtitleLanguage> <http://www.semanticweb.org/ontology/anime-1/en-US> ,
-                                                                  <http://www.semanticweb.org/ontology/anime-1/ja-JP> ;
-                            <https://schema.org/url> "https://www.crunchyroll.com/it/series/GP5HJ84XV/a-silent-voice" .
-
-
-###  http://www.semanticweb.org/ontology/anime#Crunchyroll_Shingeki_no_Kyojin_Season_2
-:Crunchyroll_Shingeki_no_Kyojin_Season_2 rdf:type owl:NamedIndividual ,
-                                                  <https://schema.org/BroadcastEvent> ;
-                                         <https://schema.org/inLanguage> <http://www.semanticweb.org/ontology/anime-1/ja-JP> ;
-                                         <https://schema.org/publishedOn> :Crunchyroll ;
-                                         <https://schema.org/subtitleLanguage> <http://www.semanticweb.org/ontology/anime-1/en-US> ,
-                                                                               <http://www.semanticweb.org/ontology/anime-1/ja-JP> ;
-                                         <https://schema.org/url> "https://www.crunchyroll.com/it/series/GR751KNZY/attack-on-titan" .
-
-
-###  http://www.semanticweb.org/ontology/anime#Manga_Koe_no_Katachi
-:Manga_Koe_no_Katachi rdf:type owl:NamedIndividual ,
-                               <http://dbpedia.org/ontology/Manga> ;
-                      <https://schema.org/url> "https://myanimelist.net/manga/56805/Koe_no_Katachi" .
-
-
-###  http://www.semanticweb.org/ontology/anime#Manga_Shingeki_no_Kyojin
-:Manga_Shingeki_no_Kyojin rdf:type owl:NamedIndividual ,
-                                   <http://dbpedia.org/ontology/Manga> ;
-                          <https://schema.org/url> "https://myanimelist.net/manga/23390/Shingeki_no_Kyojin" .
-
-
-###  http://www.semanticweb.org/ontology/anime#Netflix
-:Netflix rdf:type owl:NamedIndividual ,
-                  <https://schema.org/BroadcastService> .
-
-
-###  http://www.semanticweb.org/ontology/anime#Netflix_Koe_no_Katachi
-:Netflix_Koe_no_Katachi rdf:type owl:NamedIndividual ,
-                                 <https://schema.org/BroadcastEvent> ;
-                        <https://schema.org/inLanguage> <http://www.semanticweb.org/ontology/anime-1/en-US> ,
-                                                        <http://www.semanticweb.org/ontology/anime-1/ja-JP> ;
-                        <https://schema.org/publishedOn> :Netflix ;
-                        <https://schema.org/subtitleLanguage> <http://www.semanticweb.org/ontology/anime-1/en-US> ,
-                                                              <http://www.semanticweb.org/ontology/anime-1/es-ES> ,
-                                                              <http://www.semanticweb.org/ontology/anime-1/ja-JP> ;
-                        <https://schema.org/url> "https://www.netflix.com/jp-en/title/80223226" .
-
-
-###  http://www.semanticweb.org/ontology/anime#Netflix_Shingeki_no_Kyojin
-:Netflix_Shingeki_no_Kyojin rdf:type owl:NamedIndividual ,
-                                     <https://schema.org/BroadcastEvent> ;
-                            <https://schema.org/inLanguage> <http://www.semanticweb.org/ontology/anime-1/en-US> ,
-                                                            <http://www.semanticweb.org/ontology/anime-1/ja-JP> ;
-                            <https://schema.org/publishedOn> :Netflix ;
-                            <https://schema.org/subtitleLanguage> <http://www.semanticweb.org/ontology/anime-1/en-US> ,
-                                                                  <http://www.semanticweb.org/ontology/anime-1/es-ES> ,
-                                                                  <http://www.semanticweb.org/ontology/anime-1/ja-JP> ;
-                            <https://schema.org/url> "https://www.netflix.com/it-en/title/70299043" .
-
-
-###  http://www.semanticweb.org/ontology/anime#Netflix_Shingeki_no_Kyojin_Season_2
-:Netflix_Shingeki_no_Kyojin_Season_2 rdf:type owl:NamedIndividual ,
-                                              <https://schema.org/BroadcastEvent> ;
-                                     <https://schema.org/inLanguage> <http://www.semanticweb.org/ontology/anime-1/en-US> ,
-                                                                     <http://www.semanticweb.org/ontology/anime-1/ja-JP> ;
-                                     <https://schema.org/publishedOn> :Netflix ;
-                                     <https://schema.org/subtitleLanguage> <http://www.semanticweb.org/ontology/anime-1/en-US> ,
-                                                                           <http://www.semanticweb.org/ontology/anime-1/es-ES> ,
-                                                                           <http://www.semanticweb.org/ontology/anime-1/ja-JP> ;
-                                     <https://schema.org/url> "https://www.netflix.com/it-en/title/70299043" .
-
-
-###  http://www.semanticweb.org/ontology/anime-1/Action
-<http://www.semanticweb.org/ontology/anime-1/Action> rdf:type owl:NamedIndividual ,
-                                                              <http://dbpedia.org/ontology/Genre> ;
-                                                     dct:title "Action"@en .
-
-
-###  http://www.semanticweb.org/ontology/anime-1/Adventure
-<http://www.semanticweb.org/ontology/anime-1/Adventure> rdf:type owl:NamedIndividual ,
-                                                                 <http://dbpedia.org/ontology/Genre> ;
-                                                        dct:title "Adventure"@en .
-
-
-###  http://www.semanticweb.org/ontology/anime-1/Avant_Garde
-<http://www.semanticweb.org/ontology/anime-1/Avant_Garde> rdf:type owl:NamedIndividual ,
-                                                                   <http://dbpedia.org/ontology/Genre> ;
-                                                          dct:title "Avant Garde"@en .
-
-
-###  http://www.semanticweb.org/ontology/anime-1/Award_Winning
-<http://www.semanticweb.org/ontology/anime-1/Award_Winning> rdf:type owl:NamedIndividual ,
-                                                                     <http://dbpedia.org/ontology/Genre> ;
-                                                            dct:title "Award Winning"@en .
-
-
-###  http://www.semanticweb.org/ontology/anime-1/Boys_Love
-<http://www.semanticweb.org/ontology/anime-1/Boys_Love> rdf:type owl:NamedIndividual ,
-                                                                 <http://dbpedia.org/ontology/Genre> ;
-                                                        dct:title "Boys Love"@en .
-
-
-###  http://www.semanticweb.org/ontology/anime-1/Comedy
-<http://www.semanticweb.org/ontology/anime-1/Comedy> rdf:type owl:NamedIndividual ,
-                                                              <http://dbpedia.org/ontology/Genre> ;
-                                                     dct:title "Comedy"@en .
-
-
-###  http://www.semanticweb.org/ontology/anime-1/CreativeWorkStatus-Currently_Airing
-<http://www.semanticweb.org/ontology/anime-1/CreativeWorkStatus-Currently_Airing> rdf:type owl:NamedIndividual ,
-                                                                                           <https://schema.org/Text> ;
-                                                                                  dct:title "Currently Airing"@en .
-
-
-###  http://www.semanticweb.org/ontology/anime-1/CreativeWorkStatus-Finished_Airing
-<http://www.semanticweb.org/ontology/anime-1/CreativeWorkStatus-Finished_Airing> rdf:type owl:NamedIndividual ,
-                                                                                          <https://schema.org/Text> ;
-                                                                                 dct:title "Finished Airing"@en .
-
-
-###  http://www.semanticweb.org/ontology/anime-1/CreativeWorkStatus-Not_Yet_Aired
-<http://www.semanticweb.org/ontology/anime-1/CreativeWorkStatus-Not_Yet_Aired> rdf:type owl:NamedIndividual ,
-                                                                                        <https://schema.org/Text> ;
-                                                                               dct:title "Not Yet Aired"@en .
-
-
-###  http://www.semanticweb.org/ontology/anime-1/Drama
-<http://www.semanticweb.org/ontology/anime-1/Drama> rdf:type owl:NamedIndividual ,
-                                                             <http://dbpedia.org/ontology/Genre> ;
-                                                    dct:title "Drama"@en .
-
-
-###  http://www.semanticweb.org/ontology/anime-1/Fantasy
-<http://www.semanticweb.org/ontology/anime-1/Fantasy> rdf:type owl:NamedIndividual ,
-                                                               <http://dbpedia.org/ontology/Genre> ;
-                                                      dct:title "Fantasy"@en .
-
-
-###  http://www.semanticweb.org/ontology/anime-1/G
-<http://www.semanticweb.org/ontology/anime-1/G> rdf:type owl:NamedIndividual ,
-                                                         <https://schema.org/Rating> ;
-                                                dct:title "G" ;
-                                                dct:description "General audiences – All ages admitted"@en .
-
-
-###  http://www.semanticweb.org/ontology/anime-1/Girls_Love
-<http://www.semanticweb.org/ontology/anime-1/Girls_Love> rdf:type owl:NamedIndividual ,
-                                                                  <http://dbpedia.org/ontology/Genre> ;
-                                                         dct:title "Girls Love"@en .
-
-
-###  http://www.semanticweb.org/ontology/anime-1/Gourmet
-<http://www.semanticweb.org/ontology/anime-1/Gourmet> rdf:type owl:NamedIndividual ,
-                                                               <http://dbpedia.org/ontology/Genre> ;
-                                                      dct:title "Gourmet"@en .
-
-
-###  http://www.semanticweb.org/ontology/anime-1/Horror
-<http://www.semanticweb.org/ontology/anime-1/Horror> rdf:type owl:NamedIndividual ,
-                                                              <http://dbpedia.org/ontology/Genre> ;
-                                                     dct:title "Horror"@en .
-
-
-###  http://www.semanticweb.org/ontology/anime-1/Josei
-<http://www.semanticweb.org/ontology/anime-1/Josei> rdf:type owl:NamedIndividual ,
-                                                             <https://schema.org/PeopleAudience> ;
-                                                    <https://schema.org/audienceType> "Josei" ;
-                                                    <https://schema.org/suggestedGender> "female" ;
-                                                    <https://schema.org/suggestedMaxAge> "40"^^xsd:int ;
-                                                    <https://schema.org/suggestedMinAge> "18"^^xsd:int .
-
-
-###  http://www.semanticweb.org/ontology/anime-1/Kids
-<http://www.semanticweb.org/ontology/anime-1/Kids> rdf:type owl:NamedIndividual ,
-                                                            <https://schema.org/PeopleAudience> ;
-                                                   <https://schema.org/audienceType> "Kids" ;
-                                                   <https://schema.org/suggestedGender> "unisex" ;
-                                                   <https://schema.org/suggestedMaxAge> "12"^^xsd:int ;
-                                                   <https://schema.org/suggestedMinAge> "5"^^xsd:int .
-
-
-###  http://www.semanticweb.org/ontology/anime-1/MAPPA
-<http://www.semanticweb.org/ontology/anime-1/MAPPA> rdf:type owl:NamedIndividual ,
-                                                             <https://schema.org/Organization> ;
-                                                    dct:title "MAPPA" ;
-                                                    <https://schema.org/url> "https://dbpedia.org/page/MAPPA"^^xsd:anyURI .
-
-
-###  http://www.semanticweb.org/ontology/anime-1/Madhouse
-<http://www.semanticweb.org/ontology/anime-1/Madhouse> rdf:type owl:NamedIndividual ,
-                                                                <https://schema.org/Organization> ;
-                                                       dct:title "Madhouse" ;
-                                                       <https://schema.org/url> "https://dbpedia.org/page/Madhouse_(company)"^^xsd:anyURI .
-
-
-###  http://www.semanticweb.org/ontology/anime-1/Mistery
-<http://www.semanticweb.org/ontology/anime-1/Mistery> rdf:type owl:NamedIndividual ,
-                                                               <http://dbpedia.org/ontology/Genre> ;
-                                                      dct:title "Mistery"@en .
-
-
-###  http://www.semanticweb.org/ontology/anime-1/NC-17
-<http://www.semanticweb.org/ontology/anime-1/NC-17> rdf:type owl:NamedIndividual ,
-                                                             <https://schema.org/Rating> ;
-                                                    dct:title "NC-17" ;
-                                                    dct:description "Adults Only – No one 17 and under admitted"@en .
-
-
-###  http://www.semanticweb.org/ontology/anime-1/PG
-<http://www.semanticweb.org/ontology/anime-1/PG> rdf:type owl:NamedIndividual ,
-                                                          <https://schema.org/Rating> ;
-                                                 dct:title "PG" ;
-                                                 dct:description "Parental guidance suggested – Some material may not be suitable for children"@en .
-
-
-###  http://www.semanticweb.org/ontology/anime-1/PG-13
-<http://www.semanticweb.org/ontology/anime-1/PG-13> rdf:type owl:NamedIndividual ,
-                                                             <https://schema.org/Rating> ;
-                                                    dct:title "PG-13" ;
-                                                    dct:description "Parents strongly cautioned – Some material may be inappropriate for children under 13"@en .
-
-
-###  http://www.semanticweb.org/ontology/anime-1/R
-<http://www.semanticweb.org/ontology/anime-1/R> rdf:type owl:NamedIndividual ,
-                                                         <https://schema.org/Rating> ;
-                                                dct:title "R" ;
-                                                dct:description "Restricted – Under 17 requires accompanying parent or adult guardian"@en .
-
-
-###  http://www.semanticweb.org/ontology/anime-1/Romance
-<http://www.semanticweb.org/ontology/anime-1/Romance> rdf:type owl:NamedIndividual ,
-                                                               <http://dbpedia.org/ontology/Genre> ;
-                                                      dct:title "Romance"@en .
-
-
-###  http://www.semanticweb.org/ontology/anime-1/Sci-Fi
-<http://www.semanticweb.org/ontology/anime-1/Sci-Fi> rdf:type owl:NamedIndividual ,
-                                                              <http://dbpedia.org/ontology/Genre> ;
-                                                     dct:title "Sci-Fi"@en .
-
-
-###  http://www.semanticweb.org/ontology/anime-1/Seinen
-<http://www.semanticweb.org/ontology/anime-1/Seinen> rdf:type owl:NamedIndividual ,
-                                                              <https://schema.org/PeopleAudience> ;
-                                                     <https://schema.org/audienceType> "Seinen" ;
-                                                     <https://schema.org/suggestedGender> "unisex" ;
-                                                     <https://schema.org/suggestedMaxAge> "40"^^xsd:int ;
-                                                     <https://schema.org/suggestedMinAge> "18"^^xsd:int .
-
-
-###  http://www.semanticweb.org/ontology/anime-1/Shoujo
-<http://www.semanticweb.org/ontology/anime-1/Shoujo> rdf:type owl:NamedIndividual ,
-                                                              <https://schema.org/PeopleAudience> ;
-                                                     <https://schema.org/audienceType> "Shoujo" ;
-                                                     <https://schema.org/suggestedGender> "female" ;
-                                                     <https://schema.org/suggestedMaxAge> "18"^^xsd:int ;
-                                                     <https://schema.org/suggestedMinAge> "12"^^xsd:int .
-
-
-###  http://www.semanticweb.org/ontology/anime-1/Shounen
-<http://www.semanticweb.org/ontology/anime-1/Shounen> rdf:type owl:NamedIndividual ,
-                                                               <https://schema.org/PeopleAudience> ;
-                                                      <https://schema.org/audienceType> "Shounen" ;
-                                                      <https://schema.org/suggestedGender> "unisex" ;
-                                                      <https://schema.org/suggestedMaxAge> "18"^^xsd:int ;
-                                                      <https://schema.org/suggestedMinAge> "12"^^xsd:int .
-
-
-###  http://www.semanticweb.org/ontology/anime-1/Slice_Of_Life
-<http://www.semanticweb.org/ontology/anime-1/Slice_Of_Life> rdf:type owl:NamedIndividual ,
-                                                                     <http://dbpedia.org/ontology/Genre> ;
-                                                            dct:title "Slice Of Life"@en .
-
-
-###  http://www.semanticweb.org/ontology/anime-1/Sports
-<http://www.semanticweb.org/ontology/anime-1/Sports> rdf:type owl:NamedIndividual ,
-                                                              <http://dbpedia.org/ontology/Genre> ;
-                                                     dct:title "Sports"@en .
-
-
-###  http://www.semanticweb.org/ontology/anime-1/Studio_Ghibli
-<http://www.semanticweb.org/ontology/anime-1/Studio_Ghibli> rdf:type owl:NamedIndividual ,
-                                                                     <https://schema.org/Organization> ;
-                                                            dct:title "Studio Ghibli" ;
-                                                            <https://schema.org/url> "https://dbpedia.org/page/Studio_Ghibli"^^xsd:anyURI .
-
-
-###  http://www.semanticweb.org/ontology/anime-1/Supernatural
-<http://www.semanticweb.org/ontology/anime-1/Supernatural> rdf:type owl:NamedIndividual ,
-                                                                    <http://dbpedia.org/ontology/Genre> ;
-                                                           dct:title "Supernatural"@en .
-
-
-###  http://www.semanticweb.org/ontology/anime-1/Suspense
-<http://www.semanticweb.org/ontology/anime-1/Suspense> rdf:type owl:NamedIndividual ,
-                                                                <http://dbpedia.org/ontology/Genre> ;
-                                                       dct:title "Suspense"@en .
-
-
-###  http://www.semanticweb.org/ontology/anime-1/Toei_Animation
-<http://www.semanticweb.org/ontology/anime-1/Toei_Animation> rdf:type owl:NamedIndividual ,
-                                                                      <https://schema.org/Organization> ;
-                                                             dct:title "Toei Animation" ;
-                                                             <https://schema.org/url> "https://dbpedia.org/page/Toei_Animation"^^xsd:anyURI .
-
-
-###  http://www.semanticweb.org/ontology/anime-1/de-DE
-<http://www.semanticweb.org/ontology/anime-1/de-DE> rdf:type owl:NamedIndividual ,
-                                                             <https://schema.org/Language> ;
-                                                    dct:title "de-DE" ;
-                                                    <https://schema.org/alternateName> "Deutsch"@de ,
-                                                                                       "German"@en ,
-                                                                                       "Tedesco"@it .
-
-
-###  http://www.semanticweb.org/ontology/anime-1/en-US
-<http://www.semanticweb.org/ontology/anime-1/en-US> rdf:type owl:NamedIndividual ,
-                                                             <https://schema.org/Language> ;
-                                                    dct:title "en-US" ;
-                                                    <https://schema.org/alternateName> "English"@en ,
-                                                                                       "Inglese"@it .
-
-
-###  http://www.semanticweb.org/ontology/anime-1/es-ES
-<http://www.semanticweb.org/ontology/anime-1/es-ES> rdf:type owl:NamedIndividual ,
-                                                             <https://schema.org/Language> ;
-                                                    dct:title "es-ES" ;
-                                                    <https://schema.org/alternateName> "Español"@es ,
-                                                                                       "Spagnolo"@it ,
-                                                                                       "Spanish"@en .
-
-
-###  http://www.semanticweb.org/ontology/anime-1/fr-FR
-<http://www.semanticweb.org/ontology/anime-1/fr-FR> rdf:type owl:NamedIndividual ,
-                                                             <https://schema.org/Language> ;
-                                                    dct:title "fr-FR" ;
-                                                    <https://schema.org/alternateName> "Francese"@it ,
-                                                                                       "Français"@fr ,
-                                                                                       "French"@en .
-
-
-###  http://www.semanticweb.org/ontology/anime-1/it-IT
-<http://www.semanticweb.org/ontology/anime-1/it-IT> rdf:type owl:NamedIndividual ,
-                                                             <https://schema.org/Language> ;
-                                                    dct:title "it-IT" ;
-                                                    <https://schema.org/alternateName> "Italian"@en ,
-                                                                                       "Italiano"@it .
-
-
-###  http://www.semanticweb.org/ontology/anime-1/ja-JP
-<http://www.semanticweb.org/ontology/anime-1/ja-JP> rdf:type owl:NamedIndividual ,
-                                                             <https://schema.org/Language> ;
-                                                    dct:title "ja-JP" ;
-                                                    <https://schema.org/alternateName> "Giapponese"@it ,
-                                                                                       "Japanese"@en ,
-                                                                                       "日本語"@ja .
+###  http://www.semanticweb.org/ontology/anime/Actor_Chantal_Claude
+:Actor_Chantal_Claude rdf:type owl:NamedIndividual ,
+                               <http://dbpedia.org/ontology/VoiceActor> ;
+                      :languageOfVoicing :Language_fr-FR ;
+                      dct:title "Chantal Claude" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Actor_Hayami_Saori
 :Actor_Hayami_Saori rdf:type owl:NamedIndividual ,
                              <http://dbpedia.org/ontology/VoiceActor> ;
-                    :languageOfVoicing <http://www.semanticweb.org/ontology/anime-1/ja-JP> ;
+                    :languageOfVoicing :Language_ja-JP ;
                     dct:title "Hayami Saori" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Actor_Inoue_Marina
 :Actor_Inoue_Marina rdf:type owl:NamedIndividual ,
                              <http://dbpedia.org/ontology/VoiceActor> ;
-                    :languageOfVoicing <http://www.semanticweb.org/ontology/anime-1/en-US> ;
+                    :languageOfVoicing :Language_en-US ;
                     dct:title "Inoue Marina" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Actor_Irino_Miyu
 :Actor_Irino_Miyu rdf:type owl:NamedIndividual ,
                            <http://dbpedia.org/ontology/VoiceActor> ;
-                  :languageOfVoicing <http://www.semanticweb.org/ontology/anime-1/ja-JP> ;
+                  :languageOfVoicing :Language_ja-JP ;
                   dct:title "Irino Miyu" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Actor_Ishikawa_Yui
 :Actor_Ishikawa_Yui rdf:type owl:NamedIndividual ,
                              <http://dbpedia.org/ontology/VoiceActor> ;
-                    :languageOfVoicing <http://www.semanticweb.org/ontology/anime-1/ja-JP> ;
+                    :languageOfVoicing :Language_ja-JP ;
                     dct:title "Ishikawa Yui" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Actor_Kaji_Yuuki
 :Actor_Kaji_Yuuki rdf:type owl:NamedIndividual ,
                            <http://dbpedia.org/ontology/VoiceActor> ;
-                  :languageOfVoicing <http://www.semanticweb.org/ontology/anime-1/ja-JP> ;
+                  :languageOfVoicing :Language_ja-JP ;
                   dct:title "Kaji Yuuki" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Actor_Kamiya_Hiroshi
 :Actor_Kamiya_Hiroshi rdf:type owl:NamedIndividual ,
                                <http://dbpedia.org/ontology/VoiceActor> ;
-                      :languageOfVoicing <http://www.semanticweb.org/ontology/anime-1/ja-JP> ;
+                      :languageOfVoicing :Language_ja-JP ;
                       dct:title "Kamiya Hiroshi" .
+
+
+###  http://www.semanticweb.org/ontology/anime/Actor_Liebing_Katja
+:Actor_Liebing_Katja rdf:type owl:NamedIndividual ,
+                              <http://dbpedia.org/ontology/VoiceActor> ;
+                     :languageOfVoicing :Language_de-DE ;
+                     dct:title "Liebing Katja" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Actor_Nishimura_Trina
 :Actor_Nishimura_Trina rdf:type owl:NamedIndividual ,
                                 <http://dbpedia.org/ontology/VoiceActor> ;
-                       :languageOfVoicing <http://www.semanticweb.org/ontology/anime-1/en-US> ;
+                       :languageOfVoicing :Language_en-US ;
                        dct:title "Nishimura Trina" .
+
+
+###  http://www.semanticweb.org/ontology/anime/Actor_Nozawa_Masako
+:Actor_Nozawa_Masako rdf:type owl:NamedIndividual ,
+                              <http://dbpedia.org/ontology/VoiceActor> ;
+                     :languageOfVoicing :Language_ja-JP ;
+                     dct:title "Nozawa Masako" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Actor_Papenbrook_Bryce
 :Actor_Papenbrook_Bryce rdf:type owl:NamedIndividual ,
                                  <http://dbpedia.org/ontology/VoiceActor> ;
-                        :languageOfVoicing <http://www.semanticweb.org/ontology/anime-1/en-US> ;
+                        :languageOfVoicing :Language_en-US ;
                         dct:title "Papenbrook Bryce" .
+
+
+###  http://www.semanticweb.org/ontology/anime/Actor_Scianca_Patrizia
+:Actor_Scianca_Patrizia rdf:type owl:NamedIndividual ,
+                                 <http://dbpedia.org/ontology/VoiceActor> ;
+                        :languageOfVoicing :Language_it-IT ;
+                        dct:title "Scianca Patrizia" .
+
+
+###  http://www.semanticweb.org/ontology/anime/Actor_Shioya_Kouzou
+:Actor_Shioya_Kouzou rdf:type owl:NamedIndividual ,
+                              <http://dbpedia.org/ontology/VoiceActor> ;
+                     :languageOfVoicing :Language_ja-JP ;
+                     dct:title "Shioya Kouzou" .
+
+
+###  http://www.semanticweb.org/ontology/anime/Actor_Tanaka_Mayumi
+:Actor_Tanaka_Mayumi rdf:type owl:NamedIndividual ,
+                              <http://dbpedia.org/ontology/VoiceActor> ;
+                     :languageOfVoicing :Language_ja-JP ;
+                     dct:title "Tanaka Mayumi" .
+
+
+###  http://www.semanticweb.org/ontology/anime/Actor_Tsuru_Hiromi
+:Actor_Tsuru_Hiromi rdf:type owl:NamedIndividual ,
+                             <http://dbpedia.org/ontology/VoiceActor> ;
+                    :languageOfVoicing :Language_ja-JP ;
+                    dct:title "Tsuru Hiromi" .
+
+
+###  http://www.semanticweb.org/ontology/anime/Audience_Josei
+:Audience_Josei rdf:type owl:NamedIndividual ,
+                         <https://schema.org/PeopleAudience> ;
+                <https://schema.org/audienceType> "Josei" ;
+                <https://schema.org/suggestedGender> "female" ;
+                <https://schema.org/suggestedMaxAge> "40"^^xsd:int ;
+                <https://schema.org/suggestedMinAge> "18"^^xsd:int .
+
+
+###  http://www.semanticweb.org/ontology/anime/Audience_Kids
+:Audience_Kids rdf:type owl:NamedIndividual ,
+                        <https://schema.org/PeopleAudience> ;
+               <https://schema.org/audienceType> "Kids" ;
+               <https://schema.org/suggestedGender> "unisex" ;
+               <https://schema.org/suggestedMaxAge> "12"^^xsd:int ;
+               <https://schema.org/suggestedMinAge> "5"^^xsd:int .
+
+
+###  http://www.semanticweb.org/ontology/anime/Audience_Seinen
+:Audience_Seinen rdf:type owl:NamedIndividual ,
+                          <https://schema.org/PeopleAudience> ;
+                 <https://schema.org/audienceType> "Seinen" ;
+                 <https://schema.org/suggestedGender> "unisex" ;
+                 <https://schema.org/suggestedMaxAge> "40"^^xsd:int ;
+                 <https://schema.org/suggestedMinAge> "18"^^xsd:int .
+
+
+###  http://www.semanticweb.org/ontology/anime/Audience_Shoujo
+:Audience_Shoujo rdf:type owl:NamedIndividual ,
+                          <https://schema.org/PeopleAudience> ;
+                 <https://schema.org/audienceType> "Shoujo" ;
+                 <https://schema.org/suggestedGender> "female" ;
+                 <https://schema.org/suggestedMaxAge> "18"^^xsd:int ;
+                 <https://schema.org/suggestedMinAge> "12"^^xsd:int .
+
+
+###  http://www.semanticweb.org/ontology/anime/Audience_Shounen
+:Audience_Shounen rdf:type owl:NamedIndividual ,
+                           <https://schema.org/PeopleAudience> ;
+                  <https://schema.org/audienceType> "Shounen" ;
+                  <https://schema.org/suggestedGender> "unisex" ;
+                  <https://schema.org/suggestedMaxAge> "18"^^xsd:int ;
+                  <https://schema.org/suggestedMinAge> "12"^^xsd:int .
+
+
+###  http://www.semanticweb.org/ontology/anime/Broadcast_Crunchyroll
+:Broadcast_Crunchyroll rdf:type owl:NamedIndividual ,
+                                <https://schema.org/BroadcastService> ;
+                       dct:title "Crunchyroll" .
+
+
+###  http://www.semanticweb.org/ontology/anime/Broadcast_Netflix
+:Broadcast_Netflix rdf:type owl:NamedIndividual ,
+                            <https://schema.org/BroadcastService> ;
+                   dct:title "Netflix" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Character_Armin_Arlert
@@ -1202,6 +930,26 @@ Position: 104th Trainees Squad, Scouting Legion
 Graduation Rank: Outside the top 10
 
 Armin Arlert is Eren's best friend. He is physically weak, but emotionally strong. Even though he lacks in actual combat skills, Armin is a genius in theoretical courses and can make plans even under extreme pressure. Even so, Armin keeps on thinking that he is weak. He himself does not notice the things he does for Eren and Mikasa and believes himself to be completely incompetent and hates himself for having to rely on Eren and Mikasa."""^^rdfs:Literal .
+
+
+###  http://www.semanticweb.org/ontology/anime/Character_Bulma
+:Character_Bulma rdf:type owl:NamedIndividual ,
+                          <https://schema.org/Person> ;
+                 :hasVoiceActor :Actor_Liebing_Katja ,
+                                :Actor_Tsuru_Hiromi ;
+                 dct:title "Bulma" ;
+                 <https://schema.org/url> "https://myanimelist.net/character/678/Bulma" ;
+                 dct:description """Race: Earthling
+Height: 5' 5\"
+Weight: 108 lbs
+Birth year: 733 Age
+Hobby: Inventing
+Favorite food: Strawberries
+Favorite vehicle: All Types of Vehicles
+
+Bulma is originally a secondary main character, but her role is quickly downplayed as the series continues, even though she does remain an important support character for most of the series. Bulma is a direct parody of the character Xuanzang from the Chinese novel Journey to the West. Even though Bulma's character parodies a monk, her Japanese name \"Buruma\" is the brand of a popular gym short worn by girls in Japan. Her re-adapted name Bulma is a direct take on the word \"bloomers,\" which was a popular brand of women's underwear in the early 20th century.
+
+Bulma is the second character to be introduced in the Dragon Ball series. In the early part of the story, she is the inventor of the Dragon Radar and is searching for the legendary Dragon Balls. Bulma was hoping to use the Dragon Balls to wish for the perfect boyfriend. While searching for a nearby Dragon Ball, she runs into Son Goku. It is at this time that she finds out Goku inherited one of the balls (the four-star ball) she is searching for from his Grandpa Gohan. Because of Goku's love for the ball and his belief that his Grandpa's spirit lives in the ball, Goku is not willing to give it up. Bulma then asks him to loan it for her in exchange of taking him in her travels. At that point, they team up to find the remainder of the balls and the adventure begins. In the later action-oriented episodes of the series, there is little room for a genius but Bulma continues to play a role as a secondary character, helping Goku and his friends with her gadgets, and having a rather rocky relationship with Yamcha.""" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Character_Eren_Yeager
@@ -1222,6 +970,27 @@ Eren is Shingeki no Kyojin's protagonist. His childhood friend, Mikasa, notes on
 His father is a doctor (whom is well respected by Hannes and potentially many more) whilst his mother is a housewife."""^^rdfs:Literal .
 
 
+###  http://www.semanticweb.org/ontology/anime/Character_Gokuu
+:Character_Gokuu rdf:type owl:NamedIndividual ,
+                          <https://schema.org/Person> ;
+                 :hasVoiceActor :Actor_Nozawa_Masako ,
+                                :Actor_Scianca_Patrizia ;
+                 dct:alternative "Kakarot" ;
+                 dct:title "Gokuu" ;
+                 <https://schema.org/url> "https://myanimelist.net/character/246/Gokuu_Son" ;
+                 dct:description """Race: Saiyan
+Height: 5'9\" (175.3 cm)
+Weight: 187 lbs (85.4 kg)
+Birth year: 737 Age
+Hobby: Fighting strong opponents
+Favorite food: Everything
+Favorite vehicle: Kintoun (Nimbus)
+
+Originally named Kakarot, Gokuu is born a member of a race of extraterrestrials called the Saiyans. Shortly following his birth, Gokuu is sent from his native planet Vegeta to Earth, for potential selling on the intergalactic market by destroying all its life; Goku was also sent away to escape Freeza's genocide of the Saiyans. Once he lands on Earth, he is adopted by an old man named Gohan (who is later just called Grandpa Gohan). At first, Goku is very violent as a kid due to his Saiyan blood, but due to an injury to his head that caused him severe amnesia, Gokuu changes to a more tempered, innocent boy. At the start of the series, Gokuu meets Bulma, Yamucha, Oolong, and Pu'ar, whose characters mirror those found in Wu Cheng'en's Journey to the West. He also encounters Kuririn, who eventually becomes his best friend, and others during his journey for more strength. Participating in several World Martial Arts Tournaments, Gokuu also battles foes-turned-allies such as Tenshinhan and Chaozu, as well as the offspring of Demon King Piccolo named Majunior (later, he's named just Piccolo).
+
+Dragon Ball Z takes place 5 years after Gokuu's victory against Piccolo in the 23rd Budokai Tenkaichi. He now has a son named Son Gohan (named after Grandpa Gohan) who lacks his father's love of fighting but has a great hidden potential himself. Throughout the series, Gokuu & Gohan face terribly strong opponents like other powerful Saiyans, a space tyrant, artificial humans, Majins & Gods that threaten Earth while also giving them exhilarating fights. Along with new enemies, they also gain new friends that help in these situations. As well as becoming more powerful, Gokuu learns to accept his forgotten Saiyan heritage (this gives him a small identity crisis when Raditz reveals his past, and is something he carries with him into the proceeding Namek arc) & consistently comes across the predicament of killing an opponent (he starts out killing without much thought to the moral consequences of taking a life, and only after training under Kami does he start to struggle with killing a person; this comes to a head when he fights Freeza on Namek).""" .
+
+
 ###  http://www.semanticweb.org/ontology/anime/Character_Ishida_Shouya
 :Character_Ishida_Shouya rdf:type owl:NamedIndividual ,
                                   <https://schema.org/Person> ;
@@ -1236,6 +1005,19 @@ Birthday: June 6th
 The main character and narrator. Ishida bullied Nishimiya Shouko in elementary school and when she transferred away, he was ostracized and bullied by his former friends. He started to ignore those around him (imagining them with a large X across their face) and was driven to the point of suicide. He changed his mind after he apologized to Nishimiya and began to spend time with her. He learned sign language specifically so he could apologize to her and is shown to be very talented in it. He feels like he hasn't been punished enough for bullying Nishimiya and often wishes he could kill his younger self. He seems resigned to the fact that he will never be able to have friends again."""^^rdfs:Literal .
 
 
+###  http://www.semanticweb.org/ontology/anime/Character_Kuririn
+:Character_Kuririn rdf:type owl:NamedIndividual ,
+                            <https://schema.org/Person> ;
+                   :hasVoiceActor :Actor_Chantal_Claude ,
+                                  :Actor_Tanaka_Mayumi ;
+                   dct:alternative "Krillin" ;
+                   dct:title "Kuririn" ;
+                   <https://schema.org/url> "https://myanimelist.net/character/2159/Kuririn" ;
+                   dct:description """A short, hairless (for most of the series) warrior monk, loyal Krillin provides comic relief during tense moments. Like Chiaotzu, Krillin doesn't have a nose. He is a good-natured, outgoing and competitive martial artist. His only true vice seems to be his interest in women, though as the series progresses, his intentions lean more romantic, and in dangerous situations, he sometimes despairs about possibly dying unmarried. One of the most powerful and talented Human martial artists on Earth, Krillin is courageous, a faithful ally and good-natured. He is a prominent Z Fighter, despite usually being overpowered by the major enemies.
+
+Once a fierce rival of Son Goku, he quickly became his best friend while training under Master Roshi. He also is close to Goku's son, Gohan. He eventually marries Android 18 and settles down, having a daughter named Marron.""" .
+
+
 ###  http://www.semanticweb.org/ontology/anime/Character_Levi
 :Character_Levi rdf:type owl:NamedIndividual ,
                          <https://schema.org/Person> ;
@@ -1248,6 +1030,14 @@ Weight: 65 kg (143 lbs)
 Affiliations: Scouting Legion, Special Operations Squad
 
 Levi is known as humanity's most powerful soldier. He's ranked as Captain of the Scouting Legion division. Levi is also the leader of the Special Operations Squad, an elite team that he hand-picked in order to protect Eren Yeager. While it is said that he is blunt and unapproachable, it is noted that he has a strong respect for structure and discipline. There are rumors that he was originally part of underground crime before he became a soldier. Although he often appears to be unfriendly, he cares deeply for his team and has never undervalued human life. He is also a notorious clean-freak."""^^rdfs:Literal .
+
+
+###  http://www.semanticweb.org/ontology/anime/Character_Majin_Buu
+:Character_Majin_Buu rdf:type owl:NamedIndividual ,
+                              <https://schema.org/Person> ;
+                     :hasVoiceActor :Actor_Shioya_Kouzou ;
+                     dct:title "Majin Buu" ;
+                     <https://schema.org/url> "https://myanimelist.net/character/1012/Majin_Buu" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Character_Mikasa_Ackerman
@@ -1281,20 +1071,320 @@ Blood type: A
 A young, deaf transfer student with an amazingly positive outlook on life. Despite being a victim of continuous bullying, she always keeps a smile on her face."""^^rdfs:Literal .
 
 
+###  http://www.semanticweb.org/ontology/anime/CreativeWorkStatus_Currently_Airing
+:CreativeWorkStatus_Currently_Airing rdf:type owl:NamedIndividual ,
+                                              :Status ;
+                                     dct:title "Currently Airing"@en .
+
+
+###  http://www.semanticweb.org/ontology/anime/CreativeWorkStatus_Finished_Airing
+:CreativeWorkStatus_Finished_Airing rdf:type owl:NamedIndividual ,
+                                             :Status ;
+                                    dct:title "Finished Airing"@en .
+
+
+###  http://www.semanticweb.org/ontology/anime/CreativeWorkStatus_Not_Yet_Aired
+:CreativeWorkStatus_Not_Yet_Aired rdf:type owl:NamedIndividual ,
+                                           :Status ;
+                                  dct:title "Not Yet Aired"@en .
+
+
+###  http://www.semanticweb.org/ontology/anime/Crunchyroll_Dragon_Ball
+:Crunchyroll_Dragon_Ball rdf:type owl:NamedIndividual ,
+                                  <https://schema.org/BroadcastEvent> ;
+                         <https://schema.org/inLanguage> :Language_en-US ,
+                                                         :Language_it-IT ,
+                                                         :Language_ja-JP ;
+                         <https://schema.org/publishedOn> :Broadcast_Crunchyroll ;
+                         <https://schema.org/subtitleLanguage> :Language_en-US ;
+                         <https://schema.org/url> "https://www.crunchyroll.com/it/series/G8DHV7W21/dragon-ball" .
+
+
+###  http://www.semanticweb.org/ontology/anime/Crunchyroll_Dragon_Ball_Z
+:Crunchyroll_Dragon_Ball_Z rdf:type owl:NamedIndividual ,
+                                    <https://schema.org/BroadcastEvent> ;
+                           <https://schema.org/inLanguage> :Language_en-US ,
+                                                           :Language_it-IT ,
+                                                           :Language_ja-JP ;
+                           <https://schema.org/publishedOn> :Broadcast_Crunchyroll ;
+                           <https://schema.org/subtitleLanguage> :Language_en-US ;
+                           <https://schema.org/url> "https://www.crunchyroll.com/it/series/G9VHN9PPW/dragon-ball-z" .
+
+
+###  http://www.semanticweb.org/ontology/anime/Crunchyroll_Koe_no_Katachi
+:Crunchyroll_Koe_no_Katachi rdf:type owl:NamedIndividual ,
+                                     <https://schema.org/BroadcastEvent> ;
+                            <https://schema.org/inLanguage> :Language_ja-JP ;
+                            <https://schema.org/publishedOn> :Broadcast_Crunchyroll ;
+                            <https://schema.org/subtitleLanguage> :Language_en-US ,
+                                                                  :Language_ja-JP ;
+                            <https://schema.org/url> "https://www.crunchyroll.com/it/series/GP5HJ84XV/a-silent-voice" .
+
+
+###  http://www.semanticweb.org/ontology/anime/Crunchyroll_Shingeki_no_Kyojin_Season_2
+:Crunchyroll_Shingeki_no_Kyojin_Season_2 rdf:type owl:NamedIndividual ,
+                                                  <https://schema.org/BroadcastEvent> ;
+                                         <https://schema.org/inLanguage> :Language_ja-JP ;
+                                         <https://schema.org/publishedOn> :Broadcast_Crunchyroll ;
+                                         <https://schema.org/subtitleLanguage> :Language_en-US ,
+                                                                               :Language_ja-JP ;
+                                         <https://schema.org/url> "https://www.crunchyroll.com/it/series/GR751KNZY/attack-on-titan" .
+
+
+###  http://www.semanticweb.org/ontology/anime/Dragon_Ball
+:Dragon_Ball rdf:type owl:NamedIndividual ,
+                      :AnimeSeason ;
+             :creativeWorkStatus :CreativeWorkStatus_Finished_Airing ;
+             :hasTVSerieSequel :Dragon_Ball_Z ;
+             :hasTVSerieSpinOff :Dragon_Ball_Specials ;
+             :isStreamedOn :Crunchyroll_Dragon_Ball ;
+             <https://schema.org/audience> :Audience_Shounen ;
+             <https://schema.org/character> :Character_Bulma ,
+                                            :Character_Gokuu ,
+                                            :Character_Kuririn ;
+             <https://schema.org/contentRating> :Rating_PG-13 ;
+             <https://schema.org/episode> :Dragon_Ball_E1 ,
+                                          :Dragon_Ball_E2 ,
+                                          :Dragon_Ball_E3 ;
+             <https://schema.org/genre> :Genre_Action ,
+                                        :Genre_Adventure ,
+                                        :Genre_Comedy ,
+                                        :Genre_Fantasy ;
+             <https://schema.org/isBasedOn> :Manga_Dragon_Ball ;
+             <https://schema.org/producer> :Organization_Toei_Animation ;
+             dct:title "Dragon Ball"@en ,
+                       "ドラゴンボール"@ja ;
+             :meteorologicalSeason "Winter 1986" ;
+             <https://schema.org/airingEndDate> "1989-04-12T00:00:00"^^xsd:dateTime ;
+             <https://schema.org/airingStartDate> "1986-02-26T00:00:00"^^xsd:dateTime ;
+             <https://schema.org/numberOfEpisodes> "153"^^xsd:int ;
+             <https://schema.org/url> "https://myanimelist.net/anime/223/Dragon_Ball?q=dragon%20ball&cat=anime" ;
+             dct:description """Gokuu Son is a young boy who lives in the woods all alone—that is, until a girl named Bulma runs into him in her search for a set of magical objects called the \"Dragon Balls.\" Since the artifacts are said to grant one wish to whoever collects all seven, Bulma hopes to gather them and wish for a perfect boyfriend. Gokuu happens to be in possession of a dragon ball, but unfortunately for Bulma, he refuses to part ways with it, so she makes him a deal: he can tag along on her journey if he lets her borrow the dragon ball's power. With that, the two set off on the journey of a lifetime.
+
+They don't go on the journey alone. On the way, they meet the old Muten-Roshi and wannabe disciple Kuririn, with whom Gokuu trains to become a stronger martial artist for the upcoming World Martial Arts Tournament. However, it's not all fun and games; the ability to make any wish come true is a powerful one, and there are others who would do much worse than just wishing for a boyfriend. To stop those who would try to abuse the legendary power, they train to become stronger fighters, using their newfound strength to help the people around them along the way.""" .
+
+
+###  http://www.semanticweb.org/ontology/anime/Dragon_Ball_E1
+:Dragon_Ball_E1 rdf:type owl:NamedIndividual ,
+                         <https://schema.org/Episode> ;
+                dct:title "The Secret of the Dragon Balls" ;
+                <https://schema.org/episodeNumber> "1"^^xsd:int .
+
+
+###  http://www.semanticweb.org/ontology/anime/Dragon_Ball_E2
+:Dragon_Ball_E2 rdf:type owl:NamedIndividual ,
+                         <https://schema.org/Episode> ;
+                dct:title "The Emperor's Quest" ;
+                <https://schema.org/episodeNumber> "2"^^xsd:int .
+
+
+###  http://www.semanticweb.org/ontology/anime/Dragon_Ball_E3
+:Dragon_Ball_E3 rdf:type owl:NamedIndividual ,
+                         <https://schema.org/Episode> ;
+                dct:title "The Nimbus Cloud of Roshi" ;
+                <https://schema.org/episodeNumber> 3 .
+
+
+###  http://www.semanticweb.org/ontology/anime/Dragon_Ball_Specials
+:Dragon_Ball_Specials rdf:type owl:NamedIndividual ,
+                               :AnimeSeason ;
+                      :creativeWorkStatus :CreativeWorkStatus_Finished_Airing ;
+                      <https://schema.org/audience> :Audience_Shounen ;
+                      <https://schema.org/character> :Character_Bulma ,
+                                                     :Character_Gokuu ,
+                                                     :Character_Kuririn ;
+                      <https://schema.org/contentRating> :Rating_PG ;
+                      <https://schema.org/episode> :Dragon_Ball_Specials_E1 ,
+                                                   :Dragon_Ball_Specials_E2 ;
+                      <https://schema.org/genre> :Genre_Comedy ,
+                                                 :Genre_Fantasy ;
+                      <https://schema.org/isBasedOn> :Manga_Dragon_Ball ;
+                      <https://schema.org/producer> :Organization_Toei_Animation ;
+                      dct:title "Dragon Ball Specials" ;
+                      <https://schema.org/airingEndDate> "1988-06-08T23:59:00"^^xsd:dateTime ;
+                      <https://schema.org/airingStartDate> "1988-06-08T00:00:00"^^xsd:dateTime ;
+                      <https://schema.org/numberOfEpisodes> "2"^^xsd:int .
+
+
+###  http://www.semanticweb.org/ontology/anime/Dragon_Ball_Specials_E1
+:Dragon_Ball_Specials_E1 rdf:type owl:NamedIndividual ,
+                                  <https://schema.org/Episode> ;
+                         dct:title "Goku's Traffic Safety" ;
+                         <https://schema.org/episodeNumber> "1"^^xsd:int .
+
+
+###  http://www.semanticweb.org/ontology/anime/Dragon_Ball_Specials_E2
+:Dragon_Ball_Specials_E2 rdf:type owl:NamedIndividual ,
+                                  <https://schema.org/Episode> ;
+                         dct:title "Goku's Fire Brigade" ;
+                         <https://schema.org/episodeNumber> "2"^^xsd:int .
+
+
+###  http://www.semanticweb.org/ontology/anime/Dragon_Ball_Z
+:Dragon_Ball_Z rdf:type owl:NamedIndividual ,
+                        :AnimeSeason ;
+               :creativeWorkStatus :CreativeWorkStatus_Finished_Airing ;
+               :isStreamedOn :Crunchyroll_Dragon_Ball_Z ;
+               <https://schema.org/audience> :Audience_Shounen ;
+               <https://schema.org/character> :Character_Bulma ,
+                                              :Character_Gokuu ,
+                                              :Character_Kuririn ,
+                                              :Character_Majin_Buu ;
+               <https://schema.org/contentRating> :Rating_PG-13 ;
+               <https://schema.org/episode> :Dragon_Ball_Z_E1 ,
+                                            :Dragon_Ball_Z_E2 ;
+               <https://schema.org/genre> :Genre_Action ,
+                                          :Genre_Adventure ,
+                                          :Genre_Comedy ,
+                                          :Genre_Fantasy ;
+               <https://schema.org/isBasedOn> :Manga_Dragon_Ball ;
+               <https://schema.org/producer> :Organization_Toei_Animation ;
+               :meteorologicalSeason "Spring 1989" ;
+               <https://schema.org/airingEndDate> "1996-01-31T00:00:00"^^xsd:dateTime ;
+               <https://schema.org/airingStartDate> "1989-04-26T00:00:00"^^xsd:dateTime ;
+               <https://schema.org/numberOfEpisodes> "291"^^xsd:int ;
+               <https://schema.org/url> "https://myanimelist.net/anime/813/Dragon_Ball_Z" ;
+               dct:description """Five years after winning the World Martial Arts tournament, Gokuu is now living a peaceful life with his wife and son. This changes, however, with the arrival of a mysterious enemy named Raditz who presents himself as Gokuu's long-lost brother. He reveals that Gokuu is a warrior from the once powerful but now virtually extinct Saiyan race, whose homeworld was completely annihilated. When he was sent to Earth as a baby, Gokuu's sole purpose was to conquer and destroy the planet; but after suffering amnesia from a head injury, his violent and savage nature changed, and instead was raised as a kind and well-mannered boy, now fighting to protect others.
+
+With his failed attempt at forcibly recruiting Gokuu as an ally, Raditz warns Gokuu's friends of a new threat that's rapidly approaching Earth—one that could plunge Earth into an intergalactic conflict and cause the heavens themselves to shake. A war will be fought over the seven mystical dragon balls, and only the strongest will survive in Dragon Ball Z.""" .
+
+
+###  http://www.semanticweb.org/ontology/anime/Dragon_Ball_Z_E1
+:Dragon_Ball_Z_E1 rdf:type owl:NamedIndividual ,
+                           <https://schema.org/Episode> ;
+                  dct:title "The New Threat" ;
+                  <https://schema.org/episodeNumber> "1"^^xsd:int .
+
+
+###  http://www.semanticweb.org/ontology/anime/Dragon_Ball_Z_E2
+:Dragon_Ball_Z_E2 rdf:type owl:NamedIndividual ,
+                           <https://schema.org/Episode> ;
+                  dct:title "Reunions" ;
+                  <https://schema.org/episodeNumber> "2"^^xsd:int .
+
+
+###  http://www.semanticweb.org/ontology/anime/Genre_Action
+:Genre_Action rdf:type owl:NamedIndividual ,
+                       <http://dbpedia.org/ontology/Genre> ;
+              dct:title "Action"@en .
+
+
+###  http://www.semanticweb.org/ontology/anime/Genre_Adventure
+:Genre_Adventure rdf:type owl:NamedIndividual ,
+                          <http://dbpedia.org/ontology/Genre> ;
+                 dct:title "Adventure"@en .
+
+
+###  http://www.semanticweb.org/ontology/anime/Genre_Avant_Garde
+:Genre_Avant_Garde rdf:type owl:NamedIndividual ,
+                            <http://dbpedia.org/ontology/Genre> ;
+                   dct:title "Avant Garde"@en .
+
+
+###  http://www.semanticweb.org/ontology/anime/Genre_Award_Winning
+:Genre_Award_Winning rdf:type owl:NamedIndividual ,
+                              <http://dbpedia.org/ontology/Genre> ;
+                     dct:title "Award Winning"@en .
+
+
+###  http://www.semanticweb.org/ontology/anime/Genre_Boys_Love
+:Genre_Boys_Love rdf:type owl:NamedIndividual ,
+                          <http://dbpedia.org/ontology/Genre> ;
+                 dct:title "Boys Love"@en .
+
+
+###  http://www.semanticweb.org/ontology/anime/Genre_Comedy
+:Genre_Comedy rdf:type owl:NamedIndividual ,
+                       <http://dbpedia.org/ontology/Genre> ;
+              dct:title "Comedy"@en .
+
+
+###  http://www.semanticweb.org/ontology/anime/Genre_Drama
+:Genre_Drama rdf:type owl:NamedIndividual ,
+                      <http://dbpedia.org/ontology/Genre> ;
+             dct:title "Drama"@en .
+
+
+###  http://www.semanticweb.org/ontology/anime/Genre_Fantasy
+:Genre_Fantasy rdf:type owl:NamedIndividual ,
+                        <http://dbpedia.org/ontology/Genre> ;
+               dct:title "Fantasy"@en .
+
+
+###  http://www.semanticweb.org/ontology/anime/Genre_Girls_Love
+:Genre_Girls_Love rdf:type owl:NamedIndividual ,
+                           <http://dbpedia.org/ontology/Genre> ;
+                  dct:title "Girls Love"@en .
+
+
+###  http://www.semanticweb.org/ontology/anime/Genre_Gourmet
+:Genre_Gourmet rdf:type owl:NamedIndividual ,
+                        <http://dbpedia.org/ontology/Genre> ;
+               dct:title "Gourmet"@en .
+
+
+###  http://www.semanticweb.org/ontology/anime/Genre_Horror
+:Genre_Horror rdf:type owl:NamedIndividual ,
+                       <http://dbpedia.org/ontology/Genre> ;
+              dct:title "Horror"@en .
+
+
+###  http://www.semanticweb.org/ontology/anime/Genre_Mistery
+:Genre_Mistery rdf:type owl:NamedIndividual ,
+                        <http://dbpedia.org/ontology/Genre> ;
+               dct:title "Mistery"@en .
+
+
+###  http://www.semanticweb.org/ontology/anime/Genre_Romance
+:Genre_Romance rdf:type owl:NamedIndividual ,
+                        <http://dbpedia.org/ontology/Genre> ;
+               dct:title "Romance"@en .
+
+
+###  http://www.semanticweb.org/ontology/anime/Genre_Sci-Fi
+:Genre_Sci-Fi rdf:type owl:NamedIndividual ,
+                       <http://dbpedia.org/ontology/Genre> ;
+              dct:title "Sci-Fi"@en .
+
+
+###  http://www.semanticweb.org/ontology/anime/Genre_Slice_Of_Life
+:Genre_Slice_Of_Life rdf:type owl:NamedIndividual ,
+                              <http://dbpedia.org/ontology/Genre> ;
+                     dct:title "Slice Of Life"@en .
+
+
+###  http://www.semanticweb.org/ontology/anime/Genre_Sports
+:Genre_Sports rdf:type owl:NamedIndividual ,
+                       <http://dbpedia.org/ontology/Genre> ;
+              dct:title "Sports"@en .
+
+
+###  http://www.semanticweb.org/ontology/anime/Genre_Supernatural
+:Genre_Supernatural rdf:type owl:NamedIndividual ,
+                             <http://dbpedia.org/ontology/Genre> ;
+                    dct:title "Supernatural"@en .
+
+
+###  http://www.semanticweb.org/ontology/anime/Genre_Suspense
+:Genre_Suspense rdf:type owl:NamedIndividual ,
+                         <http://dbpedia.org/ontology/Genre> ;
+                dct:title "Suspense"@en .
+
+
 ###  http://www.semanticweb.org/ontology/anime/Koe_no_Katachi
 :Koe_no_Katachi rdf:type owl:NamedIndividual ,
                          :AnimeMovie ;
-                :creativeWorkStatus <http://www.semanticweb.org/ontology/anime-1/CreativeWorkStatus-Finished_Airing> ;
+                :creativeWorkStatus :CreativeWorkStatus_Finished_Airing ;
                 :isStreamedOn :Crunchyroll_Koe_no_Katachi ,
                               :Netflix_Koe_no_Katachi ;
-                <https://schema.org/audience> <http://www.semanticweb.org/ontology/anime-1/Shounen> ;
+                <https://schema.org/audience> :Audience_Shounen ;
                 <https://schema.org/character> :Character_Ishida_Shouya ,
                                                :Character_Shouko_Nishimiya ;
-                <https://schema.org/contentRating> <http://www.semanticweb.org/ontology/anime-1/PG-13> ;
-                <https://schema.org/genre> <http://www.semanticweb.org/ontology/anime-1/Award_Winning> ,
-                                           <http://www.semanticweb.org/ontology/anime-1/Drama> ;
+                <https://schema.org/contentRating> :Rating_PG-13 ;
+                <https://schema.org/genre> :Genre_Award_Winning ,
+                                           :Genre_Drama ;
                 <https://schema.org/isBasedOn> :Manga_Koe_no_Katachi ;
-                <https://schema.org/producer> <http://www.semanticweb.org/ontology/anime-1/Studio_Ghibli> ;
+                <https://schema.org/producer> :Organization_Studio_Ghibli ;
                 dct:title "A Silent Voice" ,
                           "Koe no Katachi" ;
                 <https://schema.org/datePublished> "2016-09-17T00:00:00"^^xsd:dateTime ;
@@ -1307,32 +1397,204 @@ Now in his third year of high school, Shouya is still plagued by his wrongdoings
 Koe no Katachi tells the heartwarming tale of Shouya's reunion with Shouko and his honest attempts to redeem himself, all while being continually haunted by the shadows of his past.""" .
 
 
+###  http://www.semanticweb.org/ontology/anime/Language_de-DE
+:Language_de-DE rdf:type owl:NamedIndividual ,
+                         <https://schema.org/Language> ;
+                dct:title "de-DE" ;
+                <https://schema.org/alternateName> "Deutsch"@de ,
+                                                   "German"@en ,
+                                                   "Tedesco"@it .
+
+
+###  http://www.semanticweb.org/ontology/anime/Language_en-US
+:Language_en-US rdf:type owl:NamedIndividual ,
+                         <https://schema.org/Language> ;
+                dct:title "en-US" ;
+                <https://schema.org/alternateName> "English"@en ,
+                                                   "Inglese"@it .
+
+
+###  http://www.semanticweb.org/ontology/anime/Language_es-ES
+:Language_es-ES rdf:type owl:NamedIndividual ,
+                         <https://schema.org/Language> ;
+                dct:title "es-ES" ;
+                <https://schema.org/alternateName> "Español"@es ,
+                                                   "Spagnolo"@it ,
+                                                   "Spanish"@en .
+
+
+###  http://www.semanticweb.org/ontology/anime/Language_fr-FR
+:Language_fr-FR rdf:type owl:NamedIndividual ,
+                         <https://schema.org/Language> ;
+                dct:title "fr-FR" ;
+                <https://schema.org/alternateName> "Francese"@it ,
+                                                   "Français"@fr ,
+                                                   "French"@en .
+
+
+###  http://www.semanticweb.org/ontology/anime/Language_it-IT
+:Language_it-IT rdf:type owl:NamedIndividual ,
+                         <https://schema.org/Language> ;
+                dct:title "it-IT" ;
+                <https://schema.org/alternateName> "Italian"@en ,
+                                                   "Italiano"@it .
+
+
+###  http://www.semanticweb.org/ontology/anime/Language_ja-JP
+:Language_ja-JP rdf:type owl:NamedIndividual ,
+                         <https://schema.org/Language> ;
+                dct:title "ja-JP" ;
+                <https://schema.org/alternateName> "Giapponese"@it ,
+                                                   "Japanese"@en ,
+                                                   "日本語"@ja .
+
+
+###  http://www.semanticweb.org/ontology/anime/Manga_Dragon_Ball
+:Manga_Dragon_Ball rdf:type owl:NamedIndividual ,
+                            <http://dbpedia.org/ontology/Manga> ;
+                   dct:title "Dragon Ball Manga" ;
+                   <https://schema.org/url> "https://myanimelist.net/manga/42/Dragon_Ball?q=dragon%20ball&cat=manga" .
+
+
+###  http://www.semanticweb.org/ontology/anime/Manga_Koe_no_Katachi
+:Manga_Koe_no_Katachi rdf:type owl:NamedIndividual ,
+                               <http://dbpedia.org/ontology/Manga> ;
+                      dct:title "Koe no Katachi Manga" ;
+                      <https://schema.org/url> "https://myanimelist.net/manga/56805/Koe_no_Katachi" .
+
+
+###  http://www.semanticweb.org/ontology/anime/Manga_Shingeki_no_Kyojin
+:Manga_Shingeki_no_Kyojin rdf:type owl:NamedIndividual ,
+                                   <http://dbpedia.org/ontology/Manga> ;
+                          dct:title "Shingeki no Kyojin Manga" ;
+                          <https://schema.org/url> "https://myanimelist.net/manga/23390/Shingeki_no_Kyojin" .
+
+
+###  http://www.semanticweb.org/ontology/anime/Netflix_Koe_no_Katachi
+:Netflix_Koe_no_Katachi rdf:type owl:NamedIndividual ,
+                                 <https://schema.org/BroadcastEvent> ;
+                        <https://schema.org/inLanguage> :Language_en-US ,
+                                                        :Language_ja-JP ;
+                        <https://schema.org/publishedOn> :Broadcast_Netflix ;
+                        <https://schema.org/subtitleLanguage> :Language_en-US ,
+                                                              :Language_es-ES ,
+                                                              :Language_ja-JP ;
+                        <https://schema.org/url> "https://www.netflix.com/jp-en/title/80223226" .
+
+
+###  http://www.semanticweb.org/ontology/anime/Netflix_Shingeki_no_Kyojin
+:Netflix_Shingeki_no_Kyojin rdf:type owl:NamedIndividual ,
+                                     <https://schema.org/BroadcastEvent> ;
+                            <https://schema.org/inLanguage> :Language_en-US ,
+                                                            :Language_ja-JP ;
+                            <https://schema.org/publishedOn> :Broadcast_Netflix ;
+                            <https://schema.org/subtitleLanguage> :Language_en-US ,
+                                                                  :Language_es-ES ,
+                                                                  :Language_ja-JP ;
+                            <https://schema.org/url> "https://www.netflix.com/it-en/title/70299043" .
+
+
+###  http://www.semanticweb.org/ontology/anime/Netflix_Shingeki_no_Kyojin_Season_2
+:Netflix_Shingeki_no_Kyojin_Season_2 rdf:type owl:NamedIndividual ,
+                                              <https://schema.org/BroadcastEvent> ;
+                                     <https://schema.org/inLanguage> :Language_en-US ,
+                                                                     :Language_ja-JP ;
+                                     <https://schema.org/publishedOn> :Broadcast_Netflix ;
+                                     <https://schema.org/subtitleLanguage> :Language_en-US ,
+                                                                           :Language_es-ES ,
+                                                                           :Language_ja-JP ;
+                                     <https://schema.org/url> "https://www.netflix.com/it-en/title/70299043" .
+
+
+###  http://www.semanticweb.org/ontology/anime/Organization_MAPPA
+:Organization_MAPPA rdf:type owl:NamedIndividual ,
+                             <https://schema.org/Organization> ;
+                    dct:title "MAPPA" ;
+                    <https://schema.org/url> "https://dbpedia.org/page/MAPPA"^^xsd:anyURI .
+
+
+###  http://www.semanticweb.org/ontology/anime/Organization_Madhouse
+:Organization_Madhouse rdf:type owl:NamedIndividual ,
+                                <https://schema.org/Organization> ;
+                       dct:title "Madhouse" ;
+                       <https://schema.org/url> "https://dbpedia.org/page/Madhouse_(company)"^^xsd:anyURI .
+
+
+###  http://www.semanticweb.org/ontology/anime/Organization_Studio_Ghibli
+:Organization_Studio_Ghibli rdf:type owl:NamedIndividual ,
+                                     <https://schema.org/Organization> ;
+                            dct:title "Studio Ghibli" ;
+                            <https://schema.org/url> "https://dbpedia.org/page/Studio_Ghibli"^^xsd:anyURI .
+
+
+###  http://www.semanticweb.org/ontology/anime/Organization_Toei_Animation
+:Organization_Toei_Animation rdf:type owl:NamedIndividual ,
+                                      <https://schema.org/Organization> ;
+                             dct:title "Toei Animation" ;
+                             <https://schema.org/url> "https://dbpedia.org/page/Toei_Animation"^^xsd:anyURI .
+
+
+###  http://www.semanticweb.org/ontology/anime/Rating_G
+:Rating_G rdf:type owl:NamedIndividual ,
+                   <https://schema.org/Rating> ;
+          dct:title "G" ;
+          dct:description "General audiences – All ages admitted"@en .
+
+
+###  http://www.semanticweb.org/ontology/anime/Rating_NC-17
+:Rating_NC-17 rdf:type owl:NamedIndividual ,
+                       <https://schema.org/Rating> ;
+              dct:title "NC-17" ;
+              dct:description "Adults Only – No one 17 and under admitted"@en .
+
+
+###  http://www.semanticweb.org/ontology/anime/Rating_PG
+:Rating_PG rdf:type owl:NamedIndividual ,
+                    <https://schema.org/Rating> ;
+           dct:title "PG" ;
+           dct:description "Parental guidance suggested – Some material may not be suitable for children"@en .
+
+
+###  http://www.semanticweb.org/ontology/anime/Rating_PG-13
+:Rating_PG-13 rdf:type owl:NamedIndividual ,
+                       <https://schema.org/Rating> ;
+              dct:title "PG-13" ;
+              dct:description "Parents strongly cautioned – Some material may be inappropriate for children under 13"@en .
+
+
+###  http://www.semanticweb.org/ontology/anime/Rating_R
+:Rating_R rdf:type owl:NamedIndividual ,
+                   <https://schema.org/Rating> ;
+          dct:title "R" ;
+          dct:description "Restricted – Under 17 requires accompanying parent or adult guardian"@en .
+
+
 ###  http://www.semanticweb.org/ontology/anime/Shingeki_no_Kyojin
 :Shingeki_no_Kyojin rdf:type owl:NamedIndividual ,
                              :AnimeSeason ;
-                    :creativeWorkStatus <http://www.semanticweb.org/ontology/anime-1/CreativeWorkStatus-Finished_Airing> ;
+                    :creativeWorkStatus :CreativeWorkStatus_Finished_Airing ;
                     :hasTVSerieSequel :Shingeki_no_Kyojin_Season_2 ;
                     :isStreamedOn :Netflix_Shingeki_no_Kyojin ;
-                    <https://schema.org/audience> <http://www.semanticweb.org/ontology/anime-1/Shounen> ;
+                    <https://schema.org/audience> :Audience_Shounen ;
                     <https://schema.org/character> :Character_Armin_Arlert ,
                                                    :Character_Eren_Yeager ,
                                                    :Character_Mikasa_Ackerman ;
-                    <https://schema.org/contentRating> <http://www.semanticweb.org/ontology/anime-1/NC-17> ;
+                    <https://schema.org/contentRating> :Rating_NC-17 ;
                     <https://schema.org/episode> :Shingeki_no_Kyojin_E1 ,
                                                  :Shingeki_no_Kyojin_E2 ,
                                                  :Shingeki_no_Kyojin_E3 ,
                                                  :Shingeki_no_Kyojin_E4 ;
-                    <https://schema.org/genre> <http://www.semanticweb.org/ontology/anime-1/Action> ,
-                                               <http://www.semanticweb.org/ontology/anime-1/Award_Winning> ,
-                                               <http://www.semanticweb.org/ontology/anime-1/Drama> ;
+                    <https://schema.org/genre> :Genre_Action ,
+                                               :Genre_Award_Winning ,
+                                               :Genre_Drama ;
                     <https://schema.org/isBasedOn> :Manga_Shingeki_no_Kyojin ;
-                    <https://schema.org/producer> <http://www.semanticweb.org/ontology/anime-1/MAPPA> ;
+                    <https://schema.org/producer> :Organization_MAPPA ;
                     dct:title "Attack on Titan" ,
                               "Shingeki no Kyojin" ;
                     :meteorologicalSeason "Spring 2017" ;
-                    <https://schema.org/endDate> "2013-09-29T00:00:00"^^xsd:dateTime ;
+                    <https://schema.org/airingEndDate> "2013-09-29T00:00:00"^^xsd:dateTime ;
+                    <https://schema.org/airingStartDate> "2013-04-07T00:00:00"^^xsd:dateTime ;
                     <https://schema.org/numberOfEpisodes> "12"^^xsd:int ;
-                    <https://schema.org/startDate> "2013-04-07T00:00:00"^^xsd:dateTime ;
                     <https://schema.org/url> "https://myanimelist.net/anime/16498/Shingeki_no_Kyojin" ;
                     dct:description """Centuries ago, mankind was slaughtered to near extinction by monstrous humanoid creatures called Titans, forcing humans to hide in fear behind enormous concentric walls. What makes these giants truly terrifying is that their taste for human flesh is not born out of hunger but what appears to be out of pleasure. To ensure their survival, the remnants of humanity began living within defensive barriers, resulting in one hundred years without a single titan encounter. However, that fragile calm is soon shattered when a colossal Titan manages to breach the supposedly impregnable outer wall, reigniting the fight for survival against the man-eating abominations.
 
@@ -1374,29 +1636,29 @@ After witnessing a horrific personal loss at the hands of the invading creatures
 ###  http://www.semanticweb.org/ontology/anime/Shingeki_no_Kyojin_Season_2
 :Shingeki_no_Kyojin_Season_2 rdf:type owl:NamedIndividual ,
                                       :AnimeSeason ;
-                             :creativeWorkStatus <http://www.semanticweb.org/ontology/anime-1/CreativeWorkStatus-Finished_Airing> ;
+                             :creativeWorkStatus :CreativeWorkStatus_Finished_Airing ;
                              :isStreamedOn :Crunchyroll_Shingeki_no_Kyojin_Season_2 ,
                                            :Netflix_Shingeki_no_Kyojin_Season_2 ;
-                             <https://schema.org/audience> <http://www.semanticweb.org/ontology/anime-1/Shounen> ;
+                             <https://schema.org/audience> :Audience_Shounen ;
                              <https://schema.org/character> :Character_Armin_Arlert ,
                                                             :Character_Eren_Yeager ,
                                                             :Character_Levi ,
                                                             :Character_Mikasa_Ackerman ;
-                             <https://schema.org/contentRating> <http://www.semanticweb.org/ontology/anime-1/NC-17> ;
+                             <https://schema.org/contentRating> :Rating_NC-17 ;
                              <https://schema.org/episode> :Shingeki_no_Kyojin_Season_2_E1 ,
                                                           :Shingeki_no_Kyojin_Season_2_E3 ,
                                                           :Shingeki_no_Kyojin_Season_2_E4 ;
-                             <https://schema.org/genre> <http://www.semanticweb.org/ontology/anime-1/Action> ,
-                                                        <http://www.semanticweb.org/ontology/anime-1/Award_Winning> ,
-                                                        <http://www.semanticweb.org/ontology/anime-1/Drama> ;
+                             <https://schema.org/genre> :Genre_Action ,
+                                                        :Genre_Award_Winning ,
+                                                        :Genre_Drama ;
                              <https://schema.org/isBasedOn> :Manga_Shingeki_no_Kyojin ;
-                             <https://schema.org/producer> <http://www.semanticweb.org/ontology/anime-1/MAPPA> ;
+                             <https://schema.org/producer> :Organization_MAPPA ;
                              dct:title "Attack on Titan Season 2" ,
                                        "Shingeki no Kyojin Season 2" ;
                              :meteorologicalSeason "Spring 2013" ;
-                             <https://schema.org/endDate> "2017-06-17T00:00:00"^^xsd:dateTime ;
+                             <https://schema.org/airingEndDate> "2017-06-17T00:00:00"^^xsd:dateTime ;
+                             <https://schema.org/airingStartDate> "2017-04-01T00:00:00"^^xsd:dateTime ;
                              <https://schema.org/numberOfEpisodes> "12"^^xsd:int ;
-                             <https://schema.org/startDate> "2017-04-01T00:00:00"^^xsd:dateTime ;
                              <https://schema.org/url> "https://myanimelist.net/anime/25777/Shingeki_no_Kyojin_Season_2" ;
                              dct:description """For centuries, humanity has been hunted by giant, mysterious predators known as the Titans. Three mighty walls—Wall Maria, Rose, and Sheena—provided peace and protection for humanity for over a hundred years. That peace, however, was shattered when the Colossal Titan and Armored Titan appeared and destroyed the outermost wall, Wall Maria. Forced to retreat behind Wall Rose, humanity waited with bated breath for the Titans to reappear and destroy their safe haven once more.
 
