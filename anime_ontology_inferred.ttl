@@ -413,8 +413,7 @@ dct:description rdf:type owl:AnnotationProperty ;
 dct:alternative rdf:type owl:DatatypeProperty ;
                 owl:equivalentProperty <https://schema.org/alternateName> ;
                 rdfs:subPropertyOf dct:title ,
-                                   <https://schema.org/alternateName> ,
-                                   <https://schema.org/name> ;
+                                   <https://schema.org/alternateName> ;
                 rdfs:domain <https://schema.org/Thing> ;
                 rdfs:range rdfs:Literal ;
                 dct:description "The distinction between titles and alternative titles is application-specific."@en ;
@@ -468,9 +467,7 @@ dct:title rdf:type owl:DatatypeProperty ;
 
 ###  https://schema.org/alternateName
 <https://schema.org/alternateName> rdf:type owl:DatatypeProperty ;
-                                   rdfs:subPropertyOf dct:alternative ,
-                                                      dct:title ,
-                                                      <https://schema.org/name> ;
+                                   rdfs:subPropertyOf dct:alternative ;
                                    rdfs:domain <https://schema.org/Thing> ;
                                    rdfs:range rdfs:Literal ;
                                    rdfs:comment "An alias for the item." ;
@@ -604,10 +601,7 @@ dct:title rdf:type owl:DatatypeProperty ;
 
 ###  http://dbpedia.org/ontology/Actor
 <http://dbpedia.org/ontology/Actor> rdf:type owl:Class ;
-                                    rdfs:subClassOf <https://dbpedia.org/ontology/Artist> ,
-                                                    <https://dbpedia.org/ontology/Person> ,
-                                                    <https://schema.org/Person> ,
-                                                    <https://schema.org/Thing> .
+                                    rdfs:subClassOf <https://dbpedia.org/ontology/Artist> .
 
 
 ###  http://dbpedia.org/ontology/Anime
@@ -665,9 +659,7 @@ dct:title rdf:type owl:DatatypeProperty ;
 <http://dbpedia.org/ontology/Manga> rdf:type owl:Class ;
                                     owl:equivalentClass <http://www.wikidata.org/entity/Q8274> ;
                                     rdfs:subClassOf <http://dbpedia.org/ontology/Comic> ,
-                                                    <http://www.wikidata.org/entity/Q8274> ,
-                                                    <https://schema.org/CreativeWork> ,
-                                                    <https://schema.org/Thing> ;
+                                                    <http://www.wikidata.org/entity/Q8274> ;
                                     owl:disjointWith :AnimeSeason ;
                                     rdfs:comment "Manga are comics created in Japan"@en ,
                                                  "Manga is het Japanse equivalent van het stripverhaal"@nl ,
@@ -688,10 +680,7 @@ dct:title rdf:type owl:DatatypeProperty ;
 ###  http://dbpedia.org/ontology/VoiceActor
 <http://dbpedia.org/ontology/VoiceActor> rdf:type owl:Class ;
                                          rdfs:subClassOf <http://dbpedia.org/ontology/Actor> ,
-                                                         <https://dbpedia.org/ontology/Artist> ,
-                                                         <https://dbpedia.org/ontology/Person> ,
-                                                         <https://schema.org/Person> ,
-                                                         <https://schema.org/Thing> ;
+                                                         <https://dbpedia.org/ontology/Artist> ;
                                          rdfs:isDefinedBy <http://dbpedia.org/ontology/> ;
                                          rdfs:label "Synchronsprecher"@de ,
                                                     "acteur de doublage"@fr ,
@@ -775,9 +764,7 @@ schema:Quantity rdf:type owl:Class .
 ###  http://www.wikidata.org/entity/Q8274
 <http://www.wikidata.org/entity/Q8274> rdf:type owl:Class ;
                                        rdfs:subClassOf <http://dbpedia.org/ontology/Comic> ,
-                                                       <http://dbpedia.org/ontology/Manga> ,
-                                                       <https://schema.org/CreativeWork> ,
-                                                       <https://schema.org/Thing> .
+                                                       <http://dbpedia.org/ontology/Manga> .
 
 
 ###  https://dbpedia.org/ontology/Artist
@@ -812,10 +799,7 @@ schema:Quantity rdf:type owl:Class .
 
 ###  https://schema.org/BroadcastEvent
 <https://schema.org/BroadcastEvent> rdf:type owl:Class ;
-                                    rdfs:subClassOf <http://purl.org/dc/dcmitype/Event> ,
-                                                    <https://schema.org/Event> ,
-                                                    <https://schema.org/PublicationEvent> ,
-                                                    <https://schema.org/Thing> ;
+                                    rdfs:subClassOf <https://schema.org/PublicationEvent> ;
                                     rdfs:comment "An over the air or online broadcast event." ;
                                     rdfs:label "BroadcastEvent" .
 
@@ -915,8 +899,7 @@ schema:Quantity rdf:type owl:Class .
 ###  https://schema.org/PublicationEvent
 <https://schema.org/PublicationEvent> rdf:type owl:Class ;
                                       rdfs:subClassOf <http://purl.org/dc/dcmitype/Event> ,
-                                                      <https://schema.org/Event> ,
-                                                      <https://schema.org/Thing> ;
+                                                      <https://schema.org/Event> ;
                                       rdfs:comment "A PublicationEvent corresponds indifferently to the event of publication for a CreativeWork of any type, e.g. a broadcast event, an on-demand event, a book/journal publication via a variety of delivery media." ;
                                       rdfs:label "PublicationEvent" .
 
@@ -1587,10 +1570,14 @@ A young, deaf transfer student with an amazingly positive outlook on life. Despi
 :Dragon_Ball rdf:type owl:NamedIndividual ,
                       <http://dbpedia.org/ontology/Anime> ,
                       <http://dbpedia.org/ontology/Cartoon> ,
+                      <http://purl.org/dc/dcmitype/Event> ,
                       :AnimeSeason ,
                       <http://www.wikidata.org/entity/Q1107> ,
+                      <https://schema.org/BroadcastEvent> ,
                       <https://schema.org/CreativeWork> ,
                       <https://schema.org/CreativeWorkSeason> ,
+                      <https://schema.org/Event> ,
+                      <https://schema.org/PublicationEvent> ,
                       <https://schema.org/TVSeason> ,
                       <https://schema.org/Thing> ,
                       [ rdf:type owl:Class ;
@@ -1617,6 +1604,12 @@ A young, deaf transfer student with an amazingly positive outlook on life. Despi
                                         :Genre_Adventure ,
                                         :Genre_Comedy ,
                                         :Genre_Fantasy ;
+             <https://schema.org/inLanguage> :Language_de-DE ,
+                                             :Language_en-US ,
+                                             :Language_es-ES ,
+                                             :Language_fr-FR ,
+                                             :Language_it-IT ,
+                                             :Language_ja-JP ;
              <https://schema.org/isBasedOn> :Manga_Dragon_Ball ;
              <https://schema.org/producer> :Organization_Toei_Animation ;
              dct:date "1986-02-26T00:00:00"^^xsd:dateTime ,
@@ -1672,10 +1665,14 @@ They don't go on the journey alone. On the way, they meet the old Muten-Roshi an
 :Dragon_Ball_Specials rdf:type owl:NamedIndividual ,
                                <http://dbpedia.org/ontology/Anime> ,
                                <http://dbpedia.org/ontology/Cartoon> ,
+                               <http://purl.org/dc/dcmitype/Event> ,
                                :AnimeSeason ,
                                <http://www.wikidata.org/entity/Q1107> ,
+                               <https://schema.org/BroadcastEvent> ,
                                <https://schema.org/CreativeWork> ,
                                <https://schema.org/CreativeWorkSeason> ,
+                               <https://schema.org/Event> ,
+                               <https://schema.org/PublicationEvent> ,
                                <https://schema.org/TVSeason> ,
                                <https://schema.org/Thing> ,
                                [ rdf:type owl:Class ;
@@ -1697,6 +1694,7 @@ They don't go on the journey alone. On the way, they meet the old Muten-Roshi an
                                                    :Dragon_Ball_Specials_E2 ;
                       <https://schema.org/genre> :Genre_Comedy ,
                                                  :Genre_Fantasy ;
+                      <https://schema.org/inLanguage> :Language_ja-JP ;
                       <https://schema.org/isBasedOn> :Manga_Dragon_Ball ;
                       <https://schema.org/producer> :Organization_Toei_Animation ;
                       dct:date "1988-06-08T00:00:00"^^xsd:dateTime ,
@@ -1734,10 +1732,14 @@ They don't go on the journey alone. On the way, they meet the old Muten-Roshi an
 :Dragon_Ball_Z rdf:type owl:NamedIndividual ,
                         <http://dbpedia.org/ontology/Anime> ,
                         <http://dbpedia.org/ontology/Cartoon> ,
+                        <http://purl.org/dc/dcmitype/Event> ,
                         :AnimeSeason ,
                         <http://www.wikidata.org/entity/Q1107> ,
+                        <https://schema.org/BroadcastEvent> ,
                         <https://schema.org/CreativeWork> ,
                         <https://schema.org/CreativeWorkSeason> ,
+                        <https://schema.org/Event> ,
+                        <https://schema.org/PublicationEvent> ,
                         <https://schema.org/TVSeason> ,
                         <https://schema.org/Thing> ,
                         [ rdf:type owl:Class ;
@@ -1763,6 +1765,12 @@ They don't go on the journey alone. On the way, they meet the old Muten-Roshi an
                                           :Genre_Adventure ,
                                           :Genre_Comedy ,
                                           :Genre_Fantasy ;
+               <https://schema.org/inLanguage> :Language_de-DE ,
+                                               :Language_en-US ,
+                                               :Language_es-ES ,
+                                               :Language_fr-FR ,
+                                               :Language_it-IT ,
+                                               :Language_ja-JP ;
                <https://schema.org/isBasedOn> :Manga_Dragon_Ball ;
                <https://schema.org/producer> :Organization_Toei_Animation ;
                dct:date "1989-04-26T00:00:00"^^xsd:dateTime ,
@@ -1947,10 +1955,14 @@ With his failed attempt at forcibly recruiting Gokuu as an ally, Raditz warns Go
 :Koe_no_Katachi rdf:type owl:NamedIndividual ,
                          <http://dbpedia.org/ontology/Anime> ,
                          <http://dbpedia.org/ontology/Cartoon> ,
+                         <http://purl.org/dc/dcmitype/Event> ,
                          :AnimeMovie ,
                          <http://www.wikidata.org/entity/Q1107> ,
+                         <https://schema.org/BroadcastEvent> ,
                          <https://schema.org/CreativeWork> ,
+                         <https://schema.org/Event> ,
                          <https://schema.org/Movie> ,
+                         <https://schema.org/PublicationEvent> ,
                          <https://schema.org/Thing> ,
                          [ rdf:type owl:Class ;
                            owl:unionOf ( :AnimeMovie
@@ -1966,6 +1978,8 @@ With his failed attempt at forcibly recruiting Gokuu as an ally, Raditz warns Go
                 <https://schema.org/contentRating> :Rating_PG-13 ;
                 <https://schema.org/genre> :Genre_Award_Winning ,
                                            :Genre_Drama ;
+                <https://schema.org/inLanguage> :Language_en-US ,
+                                                :Language_ja-JP ;
                 <https://schema.org/isBasedOn> :Manga_Koe_no_Katachi ;
                 <https://schema.org/producer> :Organization_Studio_Ghibli ;
                 dct:date "2016-09-17T00:00:00"^^xsd:dateTime ;
@@ -2320,10 +2334,14 @@ Koe no Katachi tells the heartwarming tale of Shouya's reunion with Shouko and h
 :Shingeki_no_Kyojin rdf:type owl:NamedIndividual ,
                              <http://dbpedia.org/ontology/Anime> ,
                              <http://dbpedia.org/ontology/Cartoon> ,
+                             <http://purl.org/dc/dcmitype/Event> ,
                              :AnimeSeason ,
                              <http://www.wikidata.org/entity/Q1107> ,
+                             <https://schema.org/BroadcastEvent> ,
                              <https://schema.org/CreativeWork> ,
                              <https://schema.org/CreativeWorkSeason> ,
+                             <https://schema.org/Event> ,
+                             <https://schema.org/PublicationEvent> ,
                              <https://schema.org/TVSeason> ,
                              <https://schema.org/Thing> ,
                              [ rdf:type owl:Class ;
@@ -2348,6 +2366,8 @@ Koe no Katachi tells the heartwarming tale of Shouya's reunion with Shouko and h
                     <https://schema.org/genre> :Genre_Action ,
                                                :Genre_Award_Winning ,
                                                :Genre_Drama ;
+                    <https://schema.org/inLanguage> :Language_en-US ,
+                                                    :Language_ja-JP ;
                     <https://schema.org/isBasedOn> :Manga_Shingeki_no_Kyojin ;
                     <https://schema.org/producer> :Organization_MAPPA ;
                     dct:date "2013-04-07T00:00:00"^^xsd:dateTime ,
@@ -2418,10 +2438,14 @@ After witnessing a horrific personal loss at the hands of the invading creatures
 :Shingeki_no_Kyojin_Season_2 rdf:type owl:NamedIndividual ,
                                       <http://dbpedia.org/ontology/Anime> ,
                                       <http://dbpedia.org/ontology/Cartoon> ,
+                                      <http://purl.org/dc/dcmitype/Event> ,
                                       :AnimeSeason ,
                                       <http://www.wikidata.org/entity/Q1107> ,
+                                      <https://schema.org/BroadcastEvent> ,
                                       <https://schema.org/CreativeWork> ,
                                       <https://schema.org/CreativeWorkSeason> ,
+                                      <https://schema.org/Event> ,
+                                      <https://schema.org/PublicationEvent> ,
                                       <https://schema.org/TVSeason> ,
                                       <https://schema.org/Thing> ,
                                       [ rdf:type owl:Class ;
@@ -2447,6 +2471,8 @@ After witnessing a horrific personal loss at the hands of the invading creatures
                              <https://schema.org/genre> :Genre_Action ,
                                                         :Genre_Award_Winning ,
                                                         :Genre_Drama ;
+                             <https://schema.org/inLanguage> :Language_en-US ,
+                                                             :Language_ja-JP ;
                              <https://schema.org/isBasedOn> :Manga_Shingeki_no_Kyojin ;
                              <https://schema.org/producer> :Organization_MAPPA ;
                              dct:date "2017-04-01T00:00:00"^^xsd:dateTime ,
