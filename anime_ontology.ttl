@@ -255,7 +255,7 @@ dct:description rdf:type owl:AnnotationProperty ;
 
 ###  http://purl.org/dc/terms/alternative
 dct:alternative rdf:type owl:DatatypeProperty ;
-                owl:equivalentProperty <https://schema.org/alternateName> ;
+                owl:equivalentProperty <https://schema.org/alternativeName> ;
                 rdfs:subPropertyOf dct:title ;
                 rdfs:range rdfs:Literal ;
                 dct:description "The distinction between titles and alternative titles is application-specific."@en ;
@@ -304,12 +304,12 @@ dct:title rdf:type owl:DatatypeProperty ;
                                      rdfs:range xsd:dateTime .
 
 
-###  https://schema.org/alternateName
-<https://schema.org/alternateName> rdf:type owl:DatatypeProperty ;
-                                   rdfs:domain <https://schema.org/Thing> ;
-                                   rdfs:range rdfs:Literal ;
-                                   rdfs:comment "An alias for the item." ;
-                                   rdfs:label "alternateName" .
+###  https://schema.org/alternativeName
+<https://schema.org/alternativeName> rdf:type owl:DatatypeProperty ;
+                                     rdfs:domain <https://schema.org/Thing> ;
+                                     rdfs:range rdfs:Literal ;
+                                     rdfs:comment "An alias for the item." ;
+                                     rdfs:label "alternateName" .
 
 
 ###  https://schema.org/audienceType
@@ -739,105 +739,105 @@ schema:Quantity rdf:type owl:Class .
 :Actor_Chantal_Claude rdf:type owl:NamedIndividual ,
                                <http://dbpedia.org/ontology/VoiceActor> ;
                       :languageOfVoicing :Language_fr-FR ;
-                      dct:title "Chantal Claude" .
+                      <https://schema.org/name> "Chantal Claude" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Actor_Hayami_Saori
 :Actor_Hayami_Saori rdf:type owl:NamedIndividual ,
                              <http://dbpedia.org/ontology/VoiceActor> ;
                     :languageOfVoicing :Language_ja-JP ;
-                    dct:title "Hayami Saori" .
+                    <https://schema.org/name> "Hayami Saori" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Actor_Inoue_Marina
 :Actor_Inoue_Marina rdf:type owl:NamedIndividual ,
                              <http://dbpedia.org/ontology/VoiceActor> ;
                     :languageOfVoicing :Language_en-US ;
-                    dct:title "Inoue Marina" .
+                    <https://schema.org/name> "Inoue Marina" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Actor_Irino_Miyu
 :Actor_Irino_Miyu rdf:type owl:NamedIndividual ,
                            <http://dbpedia.org/ontology/VoiceActor> ;
                   :languageOfVoicing :Language_ja-JP ;
-                  dct:title "Irino Miyu" .
+                  <https://schema.org/name> "Irino Miyu" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Actor_Ishikawa_Yui
 :Actor_Ishikawa_Yui rdf:type owl:NamedIndividual ,
                              <http://dbpedia.org/ontology/VoiceActor> ;
                     :languageOfVoicing :Language_ja-JP ;
-                    dct:title "Ishikawa Yui" .
+                    <https://schema.org/name> "Ishikawa Yui" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Actor_Kaji_Yuuki
 :Actor_Kaji_Yuuki rdf:type owl:NamedIndividual ,
                            <http://dbpedia.org/ontology/VoiceActor> ;
                   :languageOfVoicing :Language_ja-JP ;
-                  dct:title "Kaji Yuuki" .
+                  <https://schema.org/name> "Kaji Yuuki" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Actor_Kamiya_Hiroshi
 :Actor_Kamiya_Hiroshi rdf:type owl:NamedIndividual ,
                                <http://dbpedia.org/ontology/VoiceActor> ;
                       :languageOfVoicing :Language_ja-JP ;
-                      dct:title "Kamiya Hiroshi" .
+                      <https://schema.org/name> "Kamiya Hiroshi" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Actor_Liebing_Katja
 :Actor_Liebing_Katja rdf:type owl:NamedIndividual ,
                               <http://dbpedia.org/ontology/VoiceActor> ;
                      :languageOfVoicing :Language_de-DE ;
-                     dct:title "Liebing Katja" .
+                     <https://schema.org/name> "Liebing Katja" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Actor_Nishimura_Trina
 :Actor_Nishimura_Trina rdf:type owl:NamedIndividual ,
                                 <http://dbpedia.org/ontology/VoiceActor> ;
                        :languageOfVoicing :Language_en-US ;
-                       dct:title "Nishimura Trina" .
+                       <https://schema.org/name> "Nishimura Trina" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Actor_Nozawa_Masako
 :Actor_Nozawa_Masako rdf:type owl:NamedIndividual ,
                               <http://dbpedia.org/ontology/VoiceActor> ;
                      :languageOfVoicing :Language_ja-JP ;
-                     dct:title "Nozawa Masako" .
+                     <https://schema.org/name> "Nozawa Masako" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Actor_Papenbrook_Bryce
 :Actor_Papenbrook_Bryce rdf:type owl:NamedIndividual ,
                                  <http://dbpedia.org/ontology/VoiceActor> ;
                         :languageOfVoicing :Language_en-US ;
-                        dct:title "Papenbrook Bryce" .
+                        <https://schema.org/name> "Papenbrook Bryce" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Actor_Scianca_Patrizia
 :Actor_Scianca_Patrizia rdf:type owl:NamedIndividual ,
                                  <http://dbpedia.org/ontology/VoiceActor> ;
                         :languageOfVoicing :Language_it-IT ;
-                        dct:title "Scianca Patrizia" .
+                        <https://schema.org/name> "Scianca Patrizia" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Actor_Shioya_Kouzou
 :Actor_Shioya_Kouzou rdf:type owl:NamedIndividual ,
                               <http://dbpedia.org/ontology/VoiceActor> ;
                      :languageOfVoicing :Language_ja-JP ;
-                     dct:title "Shioya Kouzou" .
+                     <https://schema.org/name> "Shioya Kouzou" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Actor_Tanaka_Mayumi
 :Actor_Tanaka_Mayumi rdf:type owl:NamedIndividual ,
                               <http://dbpedia.org/ontology/VoiceActor> ;
                      :languageOfVoicing :Language_ja-JP ;
-                     dct:title "Tanaka Mayumi" .
+                     <https://schema.org/name> "Tanaka Mayumi" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Actor_Tsuru_Hiromi
 :Actor_Tsuru_Hiromi rdf:type owl:NamedIndividual ,
                              <http://dbpedia.org/ontology/VoiceActor> ;
                     :languageOfVoicing :Language_ja-JP ;
-                    dct:title "Tsuru Hiromi" .
+                    <https://schema.org/name> "Tsuru Hiromi" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Audience_Josei
@@ -901,7 +901,7 @@ schema:Quantity rdf:type owl:Class .
 :Character_Armin_Arlert rdf:type owl:NamedIndividual ,
                                  <https://schema.org/Person> ;
                         :hasVoiceActor :Actor_Inoue_Marina ;
-                        dct:title "Armin Arlert"^^rdfs:Literal ;
+                        <https://schema.org/name> "Armin Arlert" ;
                         <https://schema.org/url> "https://myanimelist.net/character/46494/Armin_Arlert"^^rdfs:Literal ;
                         dct:description """Birthday: November 3
 Height: 163 cm (5'4\") -> 169 cm (5'6\")
@@ -917,7 +917,7 @@ Armin Arlert is Eren's best friend. He is physically weak, but emotionally stron
                           <https://schema.org/Person> ;
                  :hasVoiceActor :Actor_Liebing_Katja ,
                                 :Actor_Tsuru_Hiromi ;
-                 dct:title "Bulma" ;
+                 <https://schema.org/name> "Bulma" ;
                  <https://schema.org/url> "https://myanimelist.net/character/678/Bulma" ;
                  dct:description """Race: Earthling
 Height: 5' 5\"
@@ -937,7 +937,7 @@ Bulma is the second character to be introduced in the Dragon Ball series. In the
                                 <https://schema.org/Person> ;
                        :hasVoiceActor :Actor_Kaji_Yuuki ,
                                       :Actor_Papenbrook_Bryce ;
-                       dct:title "Eren Yeager"^^rdfs:Literal ;
+                       <https://schema.org/name> "Eren Yeager" ;
                        <https://schema.org/url> "https://myanimelist.net/character/40882/Eren_Yeager"^^rdfs:Literal ;
                        dct:description """Birthdate: March 30
 Height: 170 cm (5'7\") -> 183 cm (6'0\")
@@ -955,8 +955,8 @@ His father is a doctor (whom is well respected by Hannes and potentially many mo
                           <https://schema.org/Person> ;
                  :hasVoiceActor :Actor_Nozawa_Masako ,
                                 :Actor_Scianca_Patrizia ;
-                 dct:alternative "Kakarot" ;
-                 dct:title "Gokuu" ;
+                 <https://schema.org/alternativeName> "Kakarot" ;
+                 <https://schema.org/name> "Gokuu" ;
                  <https://schema.org/url> "https://myanimelist.net/character/246/Gokuu_Son" ;
                  dct:description """Race: Saiyan
 Height: 5'9\" (175.3 cm)
@@ -975,8 +975,8 @@ Dragon Ball Z takes place 5 years after Gokuu's victory against Piccolo in the 2
 :Character_Ishida_Shouya rdf:type owl:NamedIndividual ,
                                   <https://schema.org/Person> ;
                          :hasVoiceActor :Actor_Irino_Miyu ;
-                         dct:alternative "Shou-chan, Yashou"^^rdfs:Literal ;
-                         dct:title "Shouya Ishida"^^rdfs:Literal ;
+                         <https://schema.org/alternativeName> "Shou-chan, Yashou" ;
+                         <https://schema.org/name> "Shouya Ishida" ;
                          <https://schema.org/url> "https://myanimelist.net/character/80491/Shouya_Ishida"^^rdfs:Literal ;
                          dct:description """Age: 18
 Gender: Male
@@ -990,8 +990,8 @@ The main character and narrator. Ishida bullied Nishimiya Shouko in elementary s
                             <https://schema.org/Person> ;
                    :hasVoiceActor :Actor_Chantal_Claude ,
                                   :Actor_Tanaka_Mayumi ;
-                   dct:alternative "Krillin" ;
-                   dct:title "Kuririn" ;
+                   <https://schema.org/alternativeName> "Krillin" ;
+                   <https://schema.org/name> "Kuririn" ;
                    <https://schema.org/url> "https://myanimelist.net/character/2159/Kuririn" ;
                    dct:description """A short, hairless (for most of the series) warrior monk, loyal Krillin provides comic relief during tense moments. Like Chiaotzu, Krillin doesn't have a nose. He is a good-natured, outgoing and competitive martial artist. His only true vice seems to be his interest in women, though as the series progresses, his intentions lean more romantic, and in dangerous situations, he sometimes despairs about possibly dying unmarried. One of the most powerful and talented Human martial artists on Earth, Krillin is courageous, a faithful ally and good-natured. He is a prominent Z Fighter, despite usually being overpowered by the major enemies.
 
@@ -1002,7 +1002,7 @@ Once a fierce rival of Son Goku, he quickly became his best friend while trainin
 :Character_Levi rdf:type owl:NamedIndividual ,
                          <https://schema.org/Person> ;
                 :hasVoiceActor :Actor_Kamiya_Hiroshi ;
-                dct:title "Levi"^^rdfs:Literal ;
+                <https://schema.org/name> "Levi" ;
                 <https://schema.org/url> "https://myanimelist.net/character/45627/Levi"^^rdfs:Literal ;
                 dct:description """Birthday: December 25
 Height: 160 cm (5'3\")
@@ -1016,7 +1016,7 @@ Levi is known as humanity's most powerful soldier. He's ranked as Captain of the
 :Character_Majin_Buu rdf:type owl:NamedIndividual ,
                               <https://schema.org/Person> ;
                      :hasVoiceActor :Actor_Shioya_Kouzou ;
-                     dct:title "Majin Buu" ;
+                     <https://schema.org/name> "Majin Buu" ;
                      <https://schema.org/url> "https://myanimelist.net/character/1012/Majin_Buu" .
 
 
@@ -1025,7 +1025,7 @@ Levi is known as humanity's most powerful soldier. He's ranked as Captain of the
                                     <https://schema.org/Person> ;
                            :hasVoiceActor :Actor_Ishikawa_Yui ,
                                           :Actor_Nishimura_Trina ;
-                           dct:title "Mikasa Ackerman"^^rdfs:Literal ;
+                           <https://schema.org/name> "Mikasa Ackerman" ;
                            <https://schema.org/url> "https://myanimelist.net/character/40881/Mikasa_Ackerman"^^rdfs:Literal ;
                            dct:description """Birthdate: February 10
 Height: 170 cm (5'7\") -> 176 cm (5'9\")
@@ -1042,8 +1042,8 @@ As a teen, Mikasa is considered a genius among all the army trainees and is incr
 :Character_Shouko_Nishimiya rdf:type owl:NamedIndividual ,
                                      <https://schema.org/Person> ;
                             :hasVoiceActor :Actor_Hayami_Saori ;
-                            dct:alternative "Shou-chan, 西宮 硝子"^^rdfs:Literal ;
-                            dct:title "Shouko Nishimiya"^^rdfs:Literal ;
+                            <https://schema.org/alternativeName> "Shou-chan, 西宮 硝子" ;
+                            <https://schema.org/name> "Shouko Nishimiya" ;
                             <https://schema.org/url> "https://myanimelist.net/character/80243/Shouko_Nishimiya"^^rdfs:Literal ;
                             dct:description """Birthday: June 7
 Blood type: A
@@ -1076,7 +1076,8 @@ A young, deaf transfer student with an amazingly positive outlook on life. Despi
                                                          :Language_it-IT ,
                                                          :Language_ja-JP ;
                          <https://schema.org/publishedOn> :Broadcast_Crunchyroll ;
-                         <https://schema.org/subtitleLanguage> :Language_en-US ;
+                         <https://schema.org/subtitleLanguage> :Language_en-US ,
+                                                               :Language_it-IT ;
                          <https://schema.org/url> "https://www.crunchyroll.com/it/series/G8DHV7W21/dragon-ball" .
 
 
@@ -1097,6 +1098,7 @@ A young, deaf transfer student with an amazingly positive outlook on life. Despi
                             <https://schema.org/inLanguage> :Language_ja-JP ;
                             <https://schema.org/publishedOn> :Broadcast_Crunchyroll ;
                             <https://schema.org/subtitleLanguage> :Language_en-US ,
+                                                                  :Language_it-IT ,
                                                                   :Language_ja-JP ;
                             <https://schema.org/url> "https://www.crunchyroll.com/it/series/GP5HJ84XV/a-silent-voice" .
 
@@ -1132,8 +1134,8 @@ A young, deaf transfer student with an amazingly positive outlook on life. Despi
                                         :Genre_Fantasy ;
              <https://schema.org/isBasedOn> :Manga_Dragon_Ball ;
              <https://schema.org/producer> :Organization_Toei_Animation ;
-             dct:title "Dragon Ball"@en ,
-                       "ドラゴンボール"@ja ;
+             dct:alternative "ドラゴンボール"@ja ;
+             dct:title "Dragon Ball"@en ;
              :meteorologicalSeason "Winter 1986" ;
              <https://schema.org/airingEndDate> "1989-04-12T00:00:00"^^xsd:dateTime ;
              <https://schema.org/airingStartDate> "1986-02-26T00:00:00"^^xsd:dateTime ;
@@ -1219,6 +1221,7 @@ They don't go on the journey alone. On the way, they meet the old Muten-Roshi an
                                           :Genre_Fantasy ;
                <https://schema.org/isBasedOn> :Manga_Dragon_Ball ;
                <https://schema.org/producer> :Organization_Toei_Animation ;
+               dct:title "Dragon Ball Z" ;
                :meteorologicalSeason "Spring 1989" ;
                <https://schema.org/airingEndDate> "1996-01-31T00:00:00"^^xsd:dateTime ;
                <https://schema.org/airingStartDate> "1989-04-26T00:00:00"^^xsd:dateTime ;
@@ -1381,52 +1384,52 @@ Koe no Katachi tells the heartwarming tale of Shouya's reunion with Shouko and h
 :Language_de-DE rdf:type owl:NamedIndividual ,
                          <https://schema.org/Language> ;
                 dct:title "de-DE" ;
-                <https://schema.org/alternateName> "Deutsch"@de ,
-                                                   "German"@en ,
-                                                   "Tedesco"@it .
+                <https://schema.org/alternativeName> "Deutsch"@de ,
+                                                     "German"@en ,
+                                                     "Tedesco"@it .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Language_en-US
 :Language_en-US rdf:type owl:NamedIndividual ,
                          <https://schema.org/Language> ;
                 dct:title "en-US" ;
-                <https://schema.org/alternateName> "English"@en ,
-                                                   "Inglese"@it .
+                <https://schema.org/alternativeName> "English"@en ,
+                                                     "Inglese"@it .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Language_es-ES
 :Language_es-ES rdf:type owl:NamedIndividual ,
                          <https://schema.org/Language> ;
                 dct:title "es-ES" ;
-                <https://schema.org/alternateName> "Español"@es ,
-                                                   "Spagnolo"@it ,
-                                                   "Spanish"@en .
+                <https://schema.org/alternativeName> "Español"@es ,
+                                                     "Spagnolo"@it ,
+                                                     "Spanish"@en .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Language_fr-FR
 :Language_fr-FR rdf:type owl:NamedIndividual ,
                          <https://schema.org/Language> ;
                 dct:title "fr-FR" ;
-                <https://schema.org/alternateName> "Francese"@it ,
-                                                   "Français"@fr ,
-                                                   "French"@en .
+                <https://schema.org/alternativeName> "Francese"@it ,
+                                                     "Français"@fr ,
+                                                     "French"@en .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Language_it-IT
 :Language_it-IT rdf:type owl:NamedIndividual ,
                          <https://schema.org/Language> ;
                 dct:title "it-IT" ;
-                <https://schema.org/alternateName> "Italian"@en ,
-                                                   "Italiano"@it .
+                <https://schema.org/alternativeName> "Italian"@en ,
+                                                     "Italiano"@it .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Language_ja-JP
 :Language_ja-JP rdf:type owl:NamedIndividual ,
                          <https://schema.org/Language> ;
                 dct:title "ja-JP" ;
-                <https://schema.org/alternateName> "Giapponese"@it ,
-                                                   "Japanese"@en ,
-                                                   "日本語"@ja .
+                <https://schema.org/alternativeName> "Giapponese"@it ,
+                                                     "Japanese"@en ,
+                                                     "日本語"@ja .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Manga_Dragon_Ball
@@ -1470,6 +1473,7 @@ Koe no Katachi tells the heartwarming tale of Shouya's reunion with Shouko and h
                             <https://schema.org/publishedOn> :Broadcast_Netflix ;
                             <https://schema.org/subtitleLanguage> :Language_en-US ,
                                                                   :Language_es-ES ,
+                                                                  :Language_it-IT ,
                                                                   :Language_ja-JP ;
                             <https://schema.org/url> "https://www.netflix.com/it-en/title/70299043" .
 
