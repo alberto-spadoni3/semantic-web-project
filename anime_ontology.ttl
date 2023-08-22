@@ -1017,7 +1017,12 @@ Levi is known as humanity's most powerful soldier. He's ranked as Captain of the
                               <https://schema.org/Person> ;
                      :hasVoiceActor :Actor_Shioya_Kouzou ;
                      <https://schema.org/name> "Majin Buu" ;
-                     <https://schema.org/url> "https://myanimelist.net/character/1012/Majin_Buu" .
+                     <https://schema.org/url> "https://myanimelist.net/character/1012/Majin_Buu" ;
+                     dct:description """Buu is introduced in the series during the Buu Saga as an innocent looking pudgy pink genie-like creature. Later in the series, it is revealed that Boo's original form is a more sleek child form (\"The Boo of Pure Evil\"), however his nature and form had been altered after he'd assimilated the gentle, pudgy god (Dai kaioshin) into his body. Buu's creator, a wizard named Bibbidi, had used Boo to wage war on the Kaioshin. Buu managed to assimilate two of the four Kaioshin, the second being the one who altered his nature to become innocent. Before assimilating the second Kaioshin, he had killed the third Kaioshin. After Bibbidi sealed buu away, Bibbidi was killed by the fourth Kaioshin, and Boo was transported to planet Earth where he layed dormant for five million years until he was revived by Bibbidi's son Babbidi during the events of Dragon Ball.
+
+Buu has numerous counterparts in the series. When he first emerges from his shell, he is tall and round, and his personality is naive and innocent. The first form of Buu kills Babidi, however soon befriends a human named Mr. Satan, and later a puppy which Buu finds and heals after he'd decided to go on a killing rampage. After realizing that the puppy liked him, Boo names the puppy Bay (Bee in English). Despite Boo's sudden change of heart, two gunmen destroy his house and attempt to kill Bay and Mr. Satan. Due to his rage at the gunman, Boo's anger manifests itself in the form of another Buu (\"The Buu of Pure Wrath\").
+
+After a battle with the superior Buu of Pure Wrath, Buu is absorbed and the two combined create Super Buu, who tracks down the protagonists of the series Piccolo and Gotenks. After absorbing them, Buu is faced by another character named Son Gohan. After absorbing Son Gohan, Buu is confronted by the character Vegetto, where he is forced to separate from all the characters at which he'd absorbed, including the Good Bu. As a result, he reverts to his purest form, the original child state called \"The Buu of Pure Evil.\" After a long hard battle, the characters Son Goku, Majin Buu, and Vegeta topple Kid Buu.""" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Character_Mikasa_Ackerman
