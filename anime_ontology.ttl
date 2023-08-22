@@ -1130,6 +1130,12 @@ A young, deaf transfer student with an amazingly positive outlook on life. Despi
                                         :Genre_Adventure ,
                                         :Genre_Comedy ,
                                         :Genre_Fantasy ;
+             <https://schema.org/inLanguage> :Language_de-DE ,
+                                             :Language_en-US ,
+                                             :Language_es-ES ,
+                                             :Language_fr-FR ,
+                                             :Language_it-IT ,
+                                             :Language_ja-JP ;
              <https://schema.org/isBasedOn> :Manga_Dragon_Ball ;
              <https://schema.org/producer> :Organization_Toei_Animation ;
              dct:title "Dragon Ball"@en ,
@@ -1178,6 +1184,7 @@ They don't go on the journey alone. On the way, they meet the old Muten-Roshi an
                                                    :Dragon_Ball_Specials_E2 ;
                       <https://schema.org/genre> :Genre_Comedy ,
                                                  :Genre_Fantasy ;
+                      <https://schema.org/inLanguage> :Language_ja-JP ;
                       <https://schema.org/isBasedOn> :Manga_Dragon_Ball ;
                       <https://schema.org/producer> :Organization_Toei_Animation ;
                       dct:title "Dragon Ball Specials" ;
@@ -1217,6 +1224,12 @@ They don't go on the journey alone. On the way, they meet the old Muten-Roshi an
                                           :Genre_Adventure ,
                                           :Genre_Comedy ,
                                           :Genre_Fantasy ;
+               <https://schema.org/inLanguage> :Language_de-DE ,
+                                               :Language_en-US ,
+                                               :Language_es-ES ,
+                                               :Language_fr-FR ,
+                                               :Language_it-IT ,
+                                               :Language_ja-JP ;
                <https://schema.org/isBasedOn> :Manga_Dragon_Ball ;
                <https://schema.org/producer> :Organization_Toei_Animation ;
                :meteorologicalSeason "Spring 1989" ;
@@ -1363,6 +1376,8 @@ With his failed attempt at forcibly recruiting Gokuu as an ally, Raditz warns Go
                 <https://schema.org/contentRating> :Rating_PG-13 ;
                 <https://schema.org/genre> :Genre_Award_Winning ,
                                            :Genre_Drama ;
+                <https://schema.org/inLanguage> :Language_en-US ,
+                                                :Language_ja-JP ;
                 <https://schema.org/isBasedOn> :Manga_Koe_no_Katachi ;
                 <https://schema.org/producer> :Organization_Studio_Ghibli ;
                 dct:title "A Silent Voice" ,
@@ -1567,6 +1582,8 @@ Koe no Katachi tells the heartwarming tale of Shouya's reunion with Shouko and h
                     <https://schema.org/genre> :Genre_Action ,
                                                :Genre_Award_Winning ,
                                                :Genre_Drama ;
+                    <https://schema.org/inLanguage> :Language_en-US ,
+                                                    :Language_ja-JP ;
                     <https://schema.org/isBasedOn> :Manga_Shingeki_no_Kyojin ;
                     <https://schema.org/producer> :Organization_MAPPA ;
                     dct:title "Attack on Titan" ,
@@ -1631,6 +1648,8 @@ After witnessing a horrific personal loss at the hands of the invading creatures
                              <https://schema.org/genre> :Genre_Action ,
                                                         :Genre_Award_Winning ,
                                                         :Genre_Drama ;
+                             <https://schema.org/inLanguage> :Language_en-US ,
+                                                             :Language_ja-JP ;
                              <https://schema.org/isBasedOn> :Manga_Shingeki_no_Kyojin ;
                              <https://schema.org/producer> :Organization_MAPPA ;
                              dct:title "Attack on Titan Season 2" ,
