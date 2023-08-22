@@ -1,0 +1,38 @@
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX schema: <https://schema.org/>
+PREFIX dbpedia: <http://dbpedia.org/ontology/>
+
+PREFIX anime: <http://www.semanticweb.org/ontology/anime/>
+
+# Query 2
+# 
+SELECT ?platform (COUNT(?anime ) AS ?AnimeCount) WHERE {
+	?brd_event schema:publishedOn ?platform ;
+			   schema:subtitleLanguage anime:Language_en-US ;
+			   anime:providesContentFor ?anime .
+	?anime a dbpedia:Anime . 
+}
+GROUP BY ?platform
+
+# Query 4
+# A partire da una qualsiasi stringa, mostrare tutti gli anime (sia serie che film) i quali contengono tale stringa nel titolo.
+SELECT ?anime ?anime_name WHERE {
+  	?anime a dbpedia:Anime ;
+           dct:title ?anime_name .
+    FILTER regex(?anime_name, "${STRINGA}") .
+}
+
+# Query 5
+# 
+
+# Query 7
+#
+
+# Query 9
+# Tutti gli anime presenti su Crunchyroll che sono disponibili in lingua italiana
+SELECT ?anime_name WHERE {
+    ?brd_event schema:publishedOn anime:Broadcast_Crunhyroll ;
+               schema:inLanguage anime:Language_it-IT ;
+               anime:providesContentFor ?anime .
+    ?anime dct:title ?anime_name .
+}
