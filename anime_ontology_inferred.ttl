@@ -1693,7 +1693,8 @@ They don't go on the journey alone. On the way, they meet the old Muten-Roshi an
                       schema:airingEndDate "1988-06-08T23:59:00"^^xsd:dateTime ;
                       schema:airingStartDate "1988-06-08T00:00:00"^^xsd:dateTime ;
                       schema:name "Dragon Ball Specials" ;
-                      schema:numberOfEpisodes "2"^^xsd:int .
+                      schema:numberOfEpisodes "2"^^xsd:int ;
+                      schema:url "https://myanimelist.net/anime/2520/Dragon_Ball_Specials" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Dragon_Ball_Specials_E1
