@@ -1994,9 +1994,11 @@ With his failed attempt at forcibly recruiting Gokuu as an ally, Raditz warns Go
                              :Genre_Drama ;
                 schema:isBasedOn :Manga_Koe_no_Katachi ;
                 schema:producer :Organization_Studio_Ghibli ;
+                dct:alternative "A Silent Voice" ;
                 dct:date "2016-09-17T00:00:00"^^xsd:dateTime ;
                 dct:title "A Silent Voice" ,
                           "Koe no Katachi" ;
+                schema:alternateName "A Silent Voice" ;
                 schema:datePublished "2016-09-17T00:00:00"^^xsd:dateTime ;
                 schema:duration "2 hr. 10 min." ;
                 schema:name "A Silent Voice" ,
@@ -2377,6 +2379,7 @@ Koe no Katachi tells the heartwarming tale of Shouya's reunion with Shouko and h
                                  :Genre_Drama ;
                     schema:isBasedOn :Manga_Shingeki_no_Kyojin ;
                     schema:producer :Organization_MAPPA ;
+                    dct:alternative "Attack on Titan" ;
                     dct:date "2013-04-07T00:00:00"^^xsd:dateTime ,
                              "2013-09-29T00:00:00"^^xsd:dateTime ;
                     dct:title "Attack on Titan" ,
@@ -2384,6 +2387,7 @@ Koe no Katachi tells the heartwarming tale of Shouya's reunion with Shouko and h
                     :meteorologicalSeason "Spring 2017" ;
                     schema:airingEndDate "2013-09-29T00:00:00"^^xsd:dateTime ;
                     schema:airingStartDate "2013-04-07T00:00:00"^^xsd:dateTime ;
+                    schema:alternateName "Attack on Titan" ;
                     schema:name "Attack on Titan" ,
                                 "Shingeki no Kyojin" ;
                     schema:numberOfEpisodes "12"^^xsd:int ;
@@ -2476,6 +2480,7 @@ After witnessing a horrific personal loss at the hands of the invading creatures
                                           :Genre_Drama ;
                              schema:isBasedOn :Manga_Shingeki_no_Kyojin ;
                              schema:producer :Organization_MAPPA ;
+                             dct:alternative "Attack on Titan Season 2" ;
                              dct:date "2017-04-01T00:00:00"^^xsd:dateTime ,
                                       "2017-06-17T00:00:00"^^xsd:dateTime ;
                              dct:title "Attack on Titan Season 2" ,
@@ -2483,6 +2488,7 @@ After witnessing a horrific personal loss at the hands of the invading creatures
                              :meteorologicalSeason "Spring 2013" ;
                              schema:airingEndDate "2017-06-17T00:00:00"^^xsd:dateTime ;
                              schema:airingStartDate "2017-04-01T00:00:00"^^xsd:dateTime ;
+                             schema:alternateName "Attack on Titan Season 2" ;
                              schema:name "Attack on Titan Season 2" ,
                                          "Shingeki no Kyojin Season 2" ;
                              schema:numberOfEpisodes "12"^^xsd:int ;
