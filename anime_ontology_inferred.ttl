@@ -6,8 +6,6 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix vann: <http://purl.org/vocab/vann/> .
-@prefix voaf: <http://purl.org/vocommons/voaf#> .
 @prefix schema: <https://schema.org/> .
 @base <http://www.semanticweb.org/ontology/anime/> .
 
@@ -1507,7 +1505,10 @@ A young, deaf transfer student with an amazingly positive outlook on life. Despi
                                   schema:PublicationEvent ,
                                   schema:Thing ;
                          :providesContentFor :Dragon_Ball ;
-                         schema:inLanguage :Language_en-US ,
+                         schema:inLanguage :Language_de-DE ,
+                                           :Language_en-US ,
+                                           :Language_es-ES ,
+                                           :Language_fr-FR ,
                                            :Language_it-IT ,
                                            :Language_ja-JP ;
                          schema:publishedOn :Broadcast_Crunchyroll ;
@@ -1526,11 +1527,15 @@ A young, deaf transfer student with an amazingly positive outlook on life. Despi
                                     schema:PublicationEvent ,
                                     schema:Thing ;
                            :providesContentFor :Dragon_Ball_Z ;
-                           schema:inLanguage :Language_en-US ,
+                           schema:inLanguage :Language_de-DE ,
+                                             :Language_en-US ,
+                                             :Language_es-ES ,
+                                             :Language_fr-FR ,
                                              :Language_it-IT ,
                                              :Language_ja-JP ;
                            schema:publishedOn :Broadcast_Crunchyroll ;
-                           schema:subtitleLanguage :Language_en-US ;
+                           schema:subtitleLanguage :Language_en-US ,
+                                                   :Language_it-IT ;
                            schema:url "https://www.crunchyroll.com/it/series/G9VHN9PPW/dragon-ball-z" .
 
 
@@ -1544,10 +1549,10 @@ A young, deaf transfer student with an amazingly positive outlook on life. Despi
                                      schema:PublicationEvent ,
                                      schema:Thing ;
                             :providesContentFor :Koe_no_Katachi ;
-                            schema:inLanguage :Language_ja-JP ;
+                            schema:inLanguage :Language_en-US ,
+                                              :Language_ja-JP ;
                             schema:publishedOn :Broadcast_Crunchyroll ;
                             schema:subtitleLanguage :Language_en-US ,
-                                                    :Language_it-IT ,
                                                     :Language_ja-JP ;
                             schema:url "https://www.crunchyroll.com/it/series/GP5HJ84XV/a-silent-voice" .
 
@@ -1562,7 +1567,8 @@ A young, deaf transfer student with an amazingly positive outlook on life. Despi
                                                   schema:PublicationEvent ,
                                                   schema:Thing ;
                                          :providesContentFor :Shingeki_no_Kyojin_Season_2 ;
-                                         schema:inLanguage :Language_ja-JP ;
+                                         schema:inLanguage :Language_en-US ,
+                                                           :Language_ja-JP ;
                                          schema:publishedOn :Broadcast_Crunchyroll ;
                                          schema:subtitleLanguage :Language_en-US ,
                                                                  :Language_ja-JP ;
@@ -1608,14 +1614,14 @@ A young, deaf transfer student with an amazingly positive outlook on life. Despi
              dct:alternative "ドラゴンボール"@ja ;
              dct:date "1986-02-26T00:00:00"^^xsd:dateTime ,
                       "1989-04-12T00:00:00"^^xsd:dateTime ;
-             dct:title "Dragon Ball"@en ,
-                       "ドラゴンボール" ;
+             dct:title "ドラゴンボール" ,
+                       "Dragon Ball" ;
              :meteorologicalSeason "Winter 1986" ;
              schema:airingEndDate "1989-04-12T00:00:00"^^xsd:dateTime ;
              schema:airingStartDate "1986-02-26T00:00:00"^^xsd:dateTime ;
              schema:alternateName "ドラゴンボール" ;
-             schema:name "Dragon Ball" ,
-                         "ドラゴンボール" ;
+             schema:name "ドラゴンボール" ,
+                         "Dragon Ball" ;
              schema:numberOfEpisodes "153"^^xsd:int ;
              schema:url "https://myanimelist.net/anime/223/Dragon_Ball?q=dragon%20ball&cat=anime" ;
              dct:description """Gokuu Son is a young boy who lives in the woods all alone—that is, until a girl named Bulma runs into him in her search for a set of magical objects called the \"Dragon Balls.\" Since the artifacts are said to grant one wish to whoever collects all seven, Bulma hopes to gather them and wish for a perfect boyfriend. Gokuu happens to be in possession of a dragon ball, but unfortunately for Bulma, he refuses to part ways with it, so she makes him a deal: he can tag along on her journey if he lets her borrow the dragon ball's power. With that, the two set off on the journey of a lifetime.

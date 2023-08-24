@@ -6,8 +6,6 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix vann: <http://purl.org/vocab/vann/> .
-@prefix voaf: <http://purl.org/vocommons/voaf#> .
 @prefix schema: <https://schema.org/> .
 @base <http://www.semanticweb.org/ontology/anime/> .
 
@@ -1073,11 +1071,11 @@ A young, deaf transfer student with an amazingly positive outlook on life. Despi
 ###  http://www.semanticweb.org/ontology/anime/Crunchyroll_Dragon_Ball
 :Crunchyroll_Dragon_Ball rdf:type owl:NamedIndividual ,
                                   schema:BroadcastEvent ;
-                         schema:inLanguage :Language_en-US ,
-                                           :Language_it-IT ,
-                                           :Language_de-DE ,
+                         schema:inLanguage :Language_de-DE ,
+                                           :Language_en-US ,
                                            :Language_es-ES ,
                                            :Language_fr-FR ,
+                                           :Language_it-IT ,
                                            :Language_ja-JP ;
                          schema:publishedOn :Broadcast_Crunchyroll ;
                          schema:subtitleLanguage :Language_en-US ,
@@ -1088,12 +1086,12 @@ A young, deaf transfer student with an amazingly positive outlook on life. Despi
 ###  http://www.semanticweb.org/ontology/anime/Crunchyroll_Dragon_Ball_Z
 :Crunchyroll_Dragon_Ball_Z rdf:type owl:NamedIndividual ,
                                     schema:BroadcastEvent ;
-                           schema:inLanguage :Language_en-US ,
-                                            :Language_it-IT ,
-                                            :Language_de-DE ,
-                                            :Language_es-ES ,
-                                            :Language_fr-FR ,
-                                            :Language_ja-JP ;
+                           schema:inLanguage :Language_de-DE ,
+                                             :Language_en-US ,
+                                             :Language_es-ES ,
+                                             :Language_fr-FR ,
+                                             :Language_it-IT ,
+                                             :Language_ja-JP ;
                            schema:publishedOn :Broadcast_Crunchyroll ;
                            schema:subtitleLanguage :Language_en-US ,
                                                    :Language_it-IT ;
@@ -1103,8 +1101,8 @@ A young, deaf transfer student with an amazingly positive outlook on life. Despi
 ###  http://www.semanticweb.org/ontology/anime/Crunchyroll_Koe_no_Katachi
 :Crunchyroll_Koe_no_Katachi rdf:type owl:NamedIndividual ,
                                      schema:BroadcastEvent ;
-                            schema:inLanguage :Language_ja-JP ,
-                                              :Language_en-US ;
+                            schema:inLanguage :Language_en-US ,
+                                              :Language_ja-JP ;
                             schema:publishedOn :Broadcast_Crunchyroll ;
                             schema:subtitleLanguage :Language_en-US ,
                                                     :Language_ja-JP ;
@@ -1114,8 +1112,8 @@ A young, deaf transfer student with an amazingly positive outlook on life. Despi
 ###  http://www.semanticweb.org/ontology/anime/Crunchyroll_Shingeki_no_Kyojin_Season_2
 :Crunchyroll_Shingeki_no_Kyojin_Season_2 rdf:type owl:NamedIndividual ,
                                                   schema:BroadcastEvent ;
-                                         schema:inLanguage :Language_ja-JP, 
-                                                           :Language_en-US ;
+                                         schema:inLanguage :Language_en-US ,
+                                                           :Language_ja-JP ;
                                          schema:publishedOn :Broadcast_Crunchyroll ;
                                          schema:subtitleLanguage :Language_en-US ,
                                                                  :Language_ja-JP ;
@@ -1144,7 +1142,7 @@ A young, deaf transfer student with an amazingly positive outlook on life. Despi
              schema:isBasedOn :Manga_Dragon_Ball ;
              schema:producer :Organization_Toei_Animation ;
              dct:alternative "ドラゴンボール"@ja ;
-             dct:title "Dragon Ball"@en ;
+             dct:title "Dragon Ball" ;
              :meteorologicalSeason "Winter 1986" ;
              schema:airingEndDate "1989-04-12T00:00:00"^^xsd:dateTime ;
              schema:airingStartDate "1986-02-26T00:00:00"^^xsd:dateTime ;
