@@ -1075,6 +1075,9 @@ A young, deaf transfer student with an amazingly positive outlook on life. Despi
                                   schema:BroadcastEvent ;
                          schema:inLanguage :Language_en-US ,
                                            :Language_it-IT ,
+                                           :Language_de-DE ,
+                                           :Language_es-ES ,
+                                           :Language_fr-FR ,
                                            :Language_ja-JP ;
                          schema:publishedOn :Broadcast_Crunchyroll ;
                          schema:subtitleLanguage :Language_en-US ,
@@ -1086,20 +1089,24 @@ A young, deaf transfer student with an amazingly positive outlook on life. Despi
 :Crunchyroll_Dragon_Ball_Z rdf:type owl:NamedIndividual ,
                                     schema:BroadcastEvent ;
                            schema:inLanguage :Language_en-US ,
-                                             :Language_it-IT ,
-                                             :Language_ja-JP ;
+                                            :Language_it-IT ,
+                                            :Language_de-DE ,
+                                            :Language_es-ES ,
+                                            :Language_fr-FR ,
+                                            :Language_ja-JP ;
                            schema:publishedOn :Broadcast_Crunchyroll ;
-                           schema:subtitleLanguage :Language_en-US ;
+                           schema:subtitleLanguage :Language_en-US ,
+                                                   :Language_it-IT ;
                            schema:url "https://www.crunchyroll.com/it/series/G9VHN9PPW/dragon-ball-z" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Crunchyroll_Koe_no_Katachi
 :Crunchyroll_Koe_no_Katachi rdf:type owl:NamedIndividual ,
                                      schema:BroadcastEvent ;
-                            schema:inLanguage :Language_ja-JP ;
+                            schema:inLanguage :Language_ja-JP ,
+                                              :Language_en-US ;
                             schema:publishedOn :Broadcast_Crunchyroll ;
                             schema:subtitleLanguage :Language_en-US ,
-                                                    :Language_it-IT ,
                                                     :Language_ja-JP ;
                             schema:url "https://www.crunchyroll.com/it/series/GP5HJ84XV/a-silent-voice" .
 
@@ -1107,7 +1114,8 @@ A young, deaf transfer student with an amazingly positive outlook on life. Despi
 ###  http://www.semanticweb.org/ontology/anime/Crunchyroll_Shingeki_no_Kyojin_Season_2
 :Crunchyroll_Shingeki_no_Kyojin_Season_2 rdf:type owl:NamedIndividual ,
                                                   schema:BroadcastEvent ;
-                                         schema:inLanguage :Language_ja-JP ;
+                                         schema:inLanguage :Language_ja-JP, 
+                                                           :Language_en-US ;
                                          schema:publishedOn :Broadcast_Crunchyroll ;
                                          schema:subtitleLanguage :Language_en-US ,
                                                                  :Language_ja-JP ;
