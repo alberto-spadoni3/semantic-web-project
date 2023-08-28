@@ -188,13 +188,6 @@ schema:contentRating rdf:type owl:ObjectProperty ;
                      rdfs:range schema:Rating .
 
 
-###  https://schema.org/creativeWorkStatus
-schema:creativeWorkStatus rdf:type owl:ObjectProperty ;
-                          rdfs:subPropertyOf schema:character ;
-                          rdfs:domain schema:CreativeWork ;
-                          rdfs:range schema:Text .
-
-
 ###  https://schema.org/episode
 schema:episode rdf:type owl:ObjectProperty ;
                owl:inverseOf schema:partOfSeason ;
@@ -503,34 +496,6 @@ dbo:VoiceActor rdf:type owl:Class ;
                                     owl:equivalentClass schema:Event .
 
 
-###  http://schema.org/Date
-<http://schema.org/Date> rdf:type owl:Class ;
-                         rdfs:comment "A date value in [ISO 8601 date format](http://en.wikipedia.org/wiki/ISO_8601)." ;
-                         rdfs:label "Date" .
-
-
-###  http://schema.org/Duration
-<http://schema.org/Duration> rdf:type owl:Class ;
-                             rdfs:subClassOf <http://schema.org/Quantity> ;
-                             rdfs:comment "Quantity: Duration (use [ISO 8601 duration format](http://en.wikipedia.org/wiki/ISO_8601))." ;
-                             rdfs:label "Duration" .
-
-
-###  http://schema.org/Integer
-<http://schema.org/Integer> rdf:type owl:Class ;
-                            rdfs:subClassOf <http://schema.org/Number> ;
-                            rdfs:comment "Data type: Integer." ;
-                            rdfs:label "Integer" .
-
-
-###  http://schema.org/Number
-<http://schema.org/Number> rdf:type owl:Class .
-
-
-###  http://schema.org/Quantity
-<http://schema.org/Quantity> rdf:type owl:Class .
-
-
 ###  http://www.semanticweb.org/ontology/anime/AnimeMovie
 :AnimeMovie rdf:type owl:Class ;
             owl:equivalentClass [ owl:intersectionOf ( schema:Movie
@@ -720,23 +685,10 @@ schema:TVSeason rdf:type owl:Class ;
                 rdfs:label "TVSeason" .
 
 
-###  https://schema.org/Text
-schema:Text rdf:type owl:Class ;
-            rdfs:comment "Data type: Text." ;
-            rdfs:label "Text" .
-
-
 ###  https://schema.org/Thing
 schema:Thing rdf:type owl:Class ;
              rdfs:comment "The most generic type of item." ;
              rdfs:label "Thing" .
-
-
-###  https://schema.org/URL
-schema:URL rdf:type owl:Class ;
-           rdfs:subClassOf schema:Text ;
-           rdfs:comment "Data type: URL." ;
-           rdfs:label "URL" .
 
 
 #################################################################
