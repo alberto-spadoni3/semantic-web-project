@@ -245,10 +245,22 @@ schema:contributor rdf:type owl:AnnotationProperty .
                                   schema:CreativeWorkSeason ,
                                   schema:TVSeason ,
                                   schema:Thing ,
+                                  [ owl:intersectionOf ( schema:CreativeWorkSeason
+                                                         [ rdf:type owl:Restriction ;
+                                                           owl:onProperty schema:numberOfEpisodes ;
+                                                           owl:someValuesFrom xsd:int
+                                                         ]
+                                                       ) ;
+                                    rdf:type owl:Class
+                                  ] ,
                                   [ rdf:type owl:Class ;
                                     owl:unionOf ( :AnimeMovie
                                                   :AnimeSeason
                                                 )
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty schema:numberOfEpisodes ;
+                                    owl:someValuesFrom xsd:int
                                   ] .
 
 
@@ -301,25 +313,6 @@ schema:contentRating rdf:type owl:ObjectProperty ;
                                 schema:Thing .
 
 
-###  https://schema.org/creativeWorkStatus
-schema:creativeWorkStatus rdf:type owl:ObjectProperty ;
-                          rdfs:subPropertyOf schema:character ;
-                          rdfs:domain dbo:Anime ,
-                                      dbo:Cartoon ,
-                                      <http://www.wikidata.org/entity/Q1107> ,
-                                      schema:CreativeWork ,
-                                      schema:Thing ,
-                                      [ rdf:type owl:Class ;
-                                        owl:unionOf ( :AnimeMovie
-                                                      :AnimeSeason
-                                                    )
-                                      ] ;
-                          rdfs:range <https://dbpedia.org/ontology/Person> ,
-                                     schema:Person ,
-                                     schema:Text ,
-                                     schema:Thing .
-
-
 ###  https://schema.org/episode
 schema:episode rdf:type owl:ObjectProperty ;
                owl:inverseOf schema:partOfSeason ;
@@ -334,14 +327,16 @@ schema:episode rdf:type owl:ObjectProperty ;
 ###  https://schema.org/genre
 schema:genre rdf:type owl:ObjectProperty ;
              rdfs:domain schema:CreativeWork ,
-                         schema:Thing .
+                         schema:Thing ;
+             rdfs:range dbo:Genre ,
+                        schema:Intangible ,
+                        schema:Thing .
 
 
 ###  https://schema.org/inLanguage
 schema:inLanguage rdf:type owl:ObjectProperty ;
                   rdfs:domain <http://purl.org/dc/dcmitype/Event> ,
                               schema:BroadcastEvent ,
-                              schema:CreativeWork ,
                               schema:Event ,
                               schema:PublicationEvent ,
                               schema:Thing ;
@@ -392,9 +387,7 @@ schema:publishedOn rdf:type owl:ObjectProperty ;
 schema:subtitleLanguage rdf:type owl:ObjectProperty ;
                         rdfs:domain <http://purl.org/dc/dcmitype/Event> ,
                                     schema:BroadcastEvent ,
-                                    schema:CreativeWork ,
                                     schema:Event ,
-                                    schema:Movie ,
                                     schema:PublicationEvent ,
                                     schema:Thing ;
                         rdfs:range schema:Intangible ,
@@ -486,6 +479,7 @@ schema:audienceType rdf:type owl:DatatypeProperty ;
 schema:datePublished rdf:type owl:DatatypeProperty ;
                      rdfs:subPropertyOf dct:date ;
                      rdfs:domain schema:CreativeWork ,
+                                 schema:Movie ,
                                  schema:Thing ;
                      rdfs:range xsd:dateTime .
 
@@ -654,7 +648,6 @@ dbo:Manga rdf:type owl:Class ;
           owl:equivalentClass <http://www.wikidata.org/entity/Q8274> ;
           rdfs:subClassOf dbo:Comic ,
                           <http://www.wikidata.org/entity/Q8274> ;
-          owl:disjointWith :AnimeSeason ;
           rdfs:comment "Manga are comics created in Japan"@en ,
                        "Manga is het Japanse equivalent van het stripverhaal"@nl ,
                        "منگا جاپان میں تخلیق کردہ کامکس ہیں"@ur ;
@@ -694,38 +687,26 @@ dbo:VoiceActor rdf:type owl:Class ;
                                                     schema:Thing .
 
 
-###  http://schema.org/Date
-<http://schema.org/Date> rdf:type owl:Class ;
-                         rdfs:comment "A date value in [ISO 8601 date format](http://en.wikipedia.org/wiki/ISO_8601)." ;
-                         rdfs:label "Date" .
-
-
-###  http://schema.org/Duration
-<http://schema.org/Duration> rdf:type owl:Class ;
-                             rdfs:subClassOf <http://schema.org/Quantity> ;
-                             rdfs:comment "Quantity: Duration (use [ISO 8601 duration format](http://en.wikipedia.org/wiki/ISO_8601))." ;
-                             rdfs:label "Duration" .
-
-
-###  http://schema.org/Integer
-<http://schema.org/Integer> rdf:type owl:Class ;
-                            rdfs:subClassOf <http://schema.org/Number> ;
-                            rdfs:comment "Data type: Integer." ;
-                            rdfs:label "Integer" .
-
-
-###  http://schema.org/Number
-<http://schema.org/Number> rdf:type owl:Class .
-
-
-###  http://schema.org/Quantity
-<http://schema.org/Quantity> rdf:type owl:Class .
-
-
 ###  http://www.semanticweb.org/ontology/anime/AnimeMovie
 :AnimeMovie rdf:type owl:Class ;
+            owl:equivalentClass [ owl:intersectionOf ( schema:Movie
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty schema:datePublished ;
+                                                         owl:someValuesFrom xsd:dateTime
+                                                       ]
+                                                     ) ;
+                                  rdf:type owl:Class
+                                ] ;
             rdfs:subClassOf dbo:Anime ,
-                            schema:Movie ;
+                            schema:Movie ,
+                            [ owl:intersectionOf ( schema:Movie
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty schema:datePublished ;
+                                                     owl:someValuesFrom xsd:dateTime
+                                                   ]
+                                                 ) ;
+                              rdf:type owl:Class
+                            ] ;
             owl:disjointWith :AnimeSeason ;
             rdfs:comment "An animated movie." ;
             rdfs:label "AnimeMovie" .
@@ -733,9 +714,24 @@ dbo:VoiceActor rdf:type owl:Class ;
 
 ###  http://www.semanticweb.org/ontology/anime/AnimeSeason
 :AnimeSeason rdf:type owl:Class ;
+             owl:equivalentClass [ owl:intersectionOf ( schema:CreativeWorkSeason
+                                                        [ rdf:type owl:Restriction ;
+                                                          owl:onProperty schema:numberOfEpisodes ;
+                                                          owl:someValuesFrom xsd:int
+                                                        ]
+                                                      ) ;
+                                   rdf:type owl:Class
+                                 ] ;
              rdfs:subClassOf dbo:Anime ,
-                             schema:CreativeWorkSeason ,
-                             schema:TVSeason ;
+                             schema:TVSeason ,
+                             [ owl:intersectionOf ( schema:CreativeWorkSeason
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty schema:numberOfEpisodes ;
+                                                      owl:someValuesFrom xsd:int
+                                                    ]
+                                                  ) ;
+                               rdf:type owl:Class
+                             ] ;
              rdfs:comment "A particular season of a specif Anime. A season is composed of a sequence of episodes." ;
              rdfs:label "AnimeSeason" .
 
@@ -923,23 +919,10 @@ schema:TVSeason rdf:type owl:Class ;
                 rdfs:label "TVSeason" .
 
 
-###  https://schema.org/Text
-schema:Text rdf:type owl:Class ;
-            rdfs:comment "Data type: Text." ;
-            rdfs:label "Text" .
-
-
 ###  https://schema.org/Thing
 schema:Thing rdf:type owl:Class ;
              rdfs:comment "The most generic type of item." ;
              rdfs:label "Thing" .
-
-
-###  https://schema.org/URL
-schema:URL rdf:type owl:Class ;
-           rdfs:subClassOf schema:Text ;
-           rdfs:comment "Data type: URL." ;
-           rdfs:label "URL" .
 
 
 #################################################################
@@ -1463,10 +1446,7 @@ A young, deaf transfer student with an amazingly positive outlook on life. Despi
 
 
 ###  http://www.semanticweb.org/ontology/anime/CreativeWorkStatus_Currently_Airing
-:CreativeWorkStatus_Currently_Airing rdf:type owl:NamedIndividual ,
-                                              :Status ,
-                                              schema:Intangible ,
-                                              schema:Thing ;
+:CreativeWorkStatus_Currently_Airing rdf:type owl:NamedIndividual ;
                                      dct:title "Currently Airing"@en ;
                                      schema:name "Currently Airing" .
 
@@ -1487,10 +1467,7 @@ A young, deaf transfer student with an amazingly positive outlook on life. Despi
 
 
 ###  http://www.semanticweb.org/ontology/anime/CreativeWorkStatus_Not_Yet_Aired
-:CreativeWorkStatus_Not_Yet_Aired rdf:type owl:NamedIndividual ,
-                                           :Status ,
-                                           schema:Intangible ,
-                                           schema:Thing ;
+:CreativeWorkStatus_Not_Yet_Aired rdf:type owl:NamedIndividual ;
                                   dct:title "Not Yet Aired"@en ;
                                   schema:name "Not Yet Aired" .
 
@@ -1499,9 +1476,7 @@ A young, deaf transfer student with an amazingly positive outlook on life. Despi
 :Crunchyroll_Dragon_Ball rdf:type owl:NamedIndividual ,
                                   <http://purl.org/dc/dcmitype/Event> ,
                                   schema:BroadcastEvent ,
-                                  schema:CreativeWork ,
                                   schema:Event ,
-                                  schema:Movie ,
                                   schema:PublicationEvent ,
                                   schema:Thing ;
                          :providesContentFor :Dragon_Ball ;
@@ -1521,9 +1496,7 @@ A young, deaf transfer student with an amazingly positive outlook on life. Despi
 :Crunchyroll_Dragon_Ball_Z rdf:type owl:NamedIndividual ,
                                     <http://purl.org/dc/dcmitype/Event> ,
                                     schema:BroadcastEvent ,
-                                    schema:CreativeWork ,
                                     schema:Event ,
-                                    schema:Movie ,
                                     schema:PublicationEvent ,
                                     schema:Thing ;
                            :providesContentFor :Dragon_Ball_Z ;
@@ -1543,9 +1516,7 @@ A young, deaf transfer student with an amazingly positive outlook on life. Despi
 :Crunchyroll_Koe_no_Katachi rdf:type owl:NamedIndividual ,
                                      <http://purl.org/dc/dcmitype/Event> ,
                                      schema:BroadcastEvent ,
-                                     schema:CreativeWork ,
                                      schema:Event ,
-                                     schema:Movie ,
                                      schema:PublicationEvent ,
                                      schema:Thing ;
                             :providesContentFor :Koe_no_Katachi ;
@@ -1561,9 +1532,7 @@ A young, deaf transfer student with an amazingly positive outlook on life. Despi
 :Crunchyroll_Shingeki_no_Kyojin_Season_2 rdf:type owl:NamedIndividual ,
                                                   <http://purl.org/dc/dcmitype/Event> ,
                                                   schema:BroadcastEvent ,
-                                                  schema:CreativeWork ,
                                                   schema:Event ,
-                                                  schema:Movie ,
                                                   schema:PublicationEvent ,
                                                   schema:Thing ;
                                          :providesContentFor :Shingeki_no_Kyojin_Season_2 ;
@@ -1579,11 +1548,9 @@ A young, deaf transfer student with an amazingly positive outlook on life. Despi
 :Dragon_Ball rdf:type owl:NamedIndividual ,
                       dbo:Anime ,
                       dbo:Cartoon ,
-                      :AnimeSeason ,
                       <http://www.wikidata.org/entity/Q1107> ,
                       schema:CreativeWork ,
                       schema:CreativeWorkSeason ,
-                      schema:TVSeason ,
                       schema:Thing ,
                       [ rdf:type owl:Class ;
                         owl:unionOf ( :AnimeMovie
@@ -1666,11 +1633,9 @@ They don't go on the journey alone. On the way, they meet the old Muten-Roshi an
 :Dragon_Ball_Specials rdf:type owl:NamedIndividual ,
                                dbo:Anime ,
                                dbo:Cartoon ,
-                               :AnimeSeason ,
                                <http://www.wikidata.org/entity/Q1107> ,
                                schema:CreativeWork ,
                                schema:CreativeWorkSeason ,
-                               schema:TVSeason ,
                                schema:Thing ,
                                [ rdf:type owl:Class ;
                                  owl:unionOf ( :AnimeMovie
@@ -1729,11 +1694,9 @@ They don't go on the journey alone. On the way, they meet the old Muten-Roshi an
 :Dragon_Ball_Z rdf:type owl:NamedIndividual ,
                         dbo:Anime ,
                         dbo:Cartoon ,
-                        :AnimeSeason ,
                         <http://www.wikidata.org/entity/Q1107> ,
                         schema:CreativeWork ,
                         schema:CreativeWorkSeason ,
-                        schema:TVSeason ,
                         schema:Thing ,
                         [ rdf:type owl:Class ;
                           owl:unionOf ( :AnimeMovie
@@ -1821,10 +1784,7 @@ With his failed attempt at forcibly recruiting Gokuu as an ally, Raditz warns Go
 
 
 ###  http://www.semanticweb.org/ontology/anime/Genre_Avant_Garde
-:Genre_Avant_Garde rdf:type owl:NamedIndividual ,
-                            dbo:Genre ,
-                            schema:Intangible ,
-                            schema:Thing ;
+:Genre_Avant_Garde rdf:type owl:NamedIndividual ;
                    dct:title "Avant Garde"@en ;
                    schema:name "Avant Garde" .
 
@@ -1842,10 +1802,7 @@ With his failed attempt at forcibly recruiting Gokuu as an ally, Raditz warns Go
 
 
 ###  http://www.semanticweb.org/ontology/anime/Genre_Boys_Love
-:Genre_Boys_Love rdf:type owl:NamedIndividual ,
-                          dbo:Genre ,
-                          schema:Intangible ,
-                          schema:Thing ;
+:Genre_Boys_Love rdf:type owl:NamedIndividual ;
                  dct:title "Boys Love"@en ;
                  schema:name "Boys Love" .
 
@@ -1887,91 +1844,61 @@ With his failed attempt at forcibly recruiting Gokuu as an ally, Raditz warns Go
 
 
 ###  http://www.semanticweb.org/ontology/anime/Genre_Girls_Love
-:Genre_Girls_Love rdf:type owl:NamedIndividual ,
-                           dbo:Genre ,
-                           schema:Intangible ,
-                           schema:Thing ;
+:Genre_Girls_Love rdf:type owl:NamedIndividual ;
                   dct:title "Girls Love"@en ;
                   schema:name "Girls Love" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Genre_Gourmet
-:Genre_Gourmet rdf:type owl:NamedIndividual ,
-                        dbo:Genre ,
-                        schema:Intangible ,
-                        schema:Thing ;
+:Genre_Gourmet rdf:type owl:NamedIndividual ;
                dct:title "Gourmet"@en ;
                schema:name "Gourmet" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Genre_Horror
-:Genre_Horror rdf:type owl:NamedIndividual ,
-                       dbo:Genre ,
-                       schema:Intangible ,
-                       schema:Thing ;
+:Genre_Horror rdf:type owl:NamedIndividual ;
               dct:title "Horror"@en ;
               schema:name "Horror" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Genre_Mistery
-:Genre_Mistery rdf:type owl:NamedIndividual ,
-                        dbo:Genre ,
-                        schema:Intangible ,
-                        schema:Thing ;
+:Genre_Mistery rdf:type owl:NamedIndividual ;
                dct:title "Mistery"@en ;
                schema:name "Mistery" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Genre_Romance
-:Genre_Romance rdf:type owl:NamedIndividual ,
-                        dbo:Genre ,
-                        schema:Intangible ,
-                        schema:Thing ;
+:Genre_Romance rdf:type owl:NamedIndividual ;
                dct:title "Romance"@en ;
                schema:name "Romance" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Genre_Sci-Fi
-:Genre_Sci-Fi rdf:type owl:NamedIndividual ,
-                       dbo:Genre ,
-                       schema:Intangible ,
-                       schema:Thing ;
+:Genre_Sci-Fi rdf:type owl:NamedIndividual ;
               dct:title "Sci-Fi"@en ;
               schema:name "Sci-Fi" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Genre_Slice_Of_Life
-:Genre_Slice_Of_Life rdf:type owl:NamedIndividual ,
-                              dbo:Genre ,
-                              schema:Intangible ,
-                              schema:Thing ;
+:Genre_Slice_Of_Life rdf:type owl:NamedIndividual ;
                      dct:title "Slice Of Life"@en ;
                      schema:name "Slice Of Life" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Genre_Sports
-:Genre_Sports rdf:type owl:NamedIndividual ,
-                       dbo:Genre ,
-                       schema:Intangible ,
-                       schema:Thing ;
+:Genre_Sports rdf:type owl:NamedIndividual ;
               dct:title "Sports"@en ;
               schema:name "Sports" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Genre_Supernatural
-:Genre_Supernatural rdf:type owl:NamedIndividual ,
-                             dbo:Genre ,
-                             schema:Intangible ,
-                             schema:Thing ;
+:Genre_Supernatural rdf:type owl:NamedIndividual ;
                     dct:title "Supernatural"@en ;
                     schema:name "Supernatural" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Genre_Suspense
-:Genre_Suspense rdf:type owl:NamedIndividual ,
-                         dbo:Genre ,
-                         schema:Intangible ,
-                         schema:Thing ;
+:Genre_Suspense rdf:type owl:NamedIndividual ;
                 dct:title "Suspense"@en ;
                 schema:name "Suspense" .
 
@@ -1980,7 +1907,6 @@ With his failed attempt at forcibly recruiting Gokuu as an ally, Raditz warns Go
 :Koe_no_Katachi rdf:type owl:NamedIndividual ,
                          dbo:Anime ,
                          dbo:Cartoon ,
-                         :AnimeMovie ,
                          <http://www.wikidata.org/entity/Q1107> ,
                          schema:CreativeWork ,
                          schema:Movie ,
@@ -2200,9 +2126,7 @@ Koe no Katachi tells the heartwarming tale of Shouya's reunion with Shouko and h
 :Netflix_Koe_no_Katachi rdf:type owl:NamedIndividual ,
                                  <http://purl.org/dc/dcmitype/Event> ,
                                  schema:BroadcastEvent ,
-                                 schema:CreativeWork ,
                                  schema:Event ,
-                                 schema:Movie ,
                                  schema:PublicationEvent ,
                                  schema:Thing ;
                         :providesContentFor :Koe_no_Katachi ;
@@ -2219,9 +2143,7 @@ Koe no Katachi tells the heartwarming tale of Shouya's reunion with Shouko and h
 :Netflix_Shingeki_no_Kyojin rdf:type owl:NamedIndividual ,
                                      <http://purl.org/dc/dcmitype/Event> ,
                                      schema:BroadcastEvent ,
-                                     schema:CreativeWork ,
                                      schema:Event ,
-                                     schema:Movie ,
                                      schema:PublicationEvent ,
                                      schema:Thing ;
                             :providesContentFor :Shingeki_no_Kyojin ;
@@ -2239,9 +2161,7 @@ Koe no Katachi tells the heartwarming tale of Shouya's reunion with Shouko and h
 :Netflix_Shingeki_no_Kyojin_Season_2 rdf:type owl:NamedIndividual ,
                                               <http://purl.org/dc/dcmitype/Event> ,
                                               schema:BroadcastEvent ,
-                                              schema:CreativeWork ,
                                               schema:Event ,
-                                              schema:Movie ,
                                               schema:PublicationEvent ,
                                               schema:Thing ;
                                      :providesContentFor :Shingeki_no_Kyojin_Season_2 ;
@@ -2267,7 +2187,6 @@ Koe no Katachi tells the heartwarming tale of Shouya's reunion with Shouko and h
 
 ###  http://www.semanticweb.org/ontology/anime/Organization_Madhouse
 :Organization_Madhouse rdf:type owl:NamedIndividual ,
-                                schema:Organization ,
                                 schema:Thing ;
                        dct:title "Madhouse" ;
                        schema:name "Madhouse" ;
@@ -2297,10 +2216,7 @@ Koe no Katachi tells the heartwarming tale of Shouya's reunion with Shouko and h
 
 
 ###  http://www.semanticweb.org/ontology/anime/Rating_G
-:Rating_G rdf:type owl:NamedIndividual ,
-                   schema:Intangible ,
-                   schema:Rating ,
-                   schema:Thing ;
+:Rating_G rdf:type owl:NamedIndividual ;
           dct:title "G" ;
           schema:name "G" ;
           dct:description "General audiences – All ages admitted"@en .
@@ -2343,10 +2259,7 @@ Koe no Katachi tells the heartwarming tale of Shouya's reunion with Shouko and h
 
 
 ###  http://www.semanticweb.org/ontology/anime/Rating_R
-:Rating_R rdf:type owl:NamedIndividual ,
-                   schema:Intangible ,
-                   schema:Rating ,
-                   schema:Thing ;
+:Rating_R rdf:type owl:NamedIndividual ;
           dct:title "R" ;
           schema:name "R" ;
           dct:description "Restricted – Under 17 requires accompanying parent or adult guardian"@en .
@@ -2356,11 +2269,9 @@ Koe no Katachi tells the heartwarming tale of Shouya's reunion with Shouko and h
 :Shingeki_no_Kyojin rdf:type owl:NamedIndividual ,
                              dbo:Anime ,
                              dbo:Cartoon ,
-                             :AnimeSeason ,
                              <http://www.wikidata.org/entity/Q1107> ,
                              schema:CreativeWork ,
                              schema:CreativeWorkSeason ,
-                             schema:TVSeason ,
                              schema:Thing ,
                              [ rdf:type owl:Class ;
                                owl:unionOf ( :AnimeMovie
@@ -2456,11 +2367,9 @@ After witnessing a horrific personal loss at the hands of the invading creatures
 :Shingeki_no_Kyojin_Season_2 rdf:type owl:NamedIndividual ,
                                       dbo:Anime ,
                                       dbo:Cartoon ,
-                                      :AnimeSeason ,
                                       <http://www.wikidata.org/entity/Q1107> ,
                                       schema:CreativeWork ,
                                       schema:CreativeWorkSeason ,
-                                      schema:TVSeason ,
                                       schema:Thing ,
                                       [ rdf:type owl:Class ;
                                         owl:unionOf ( :AnimeMovie
@@ -2562,6 +2471,54 @@ dbo: <http://open.vocab.org/terms/defines> dbo:Anime ,
 
 <http://dbpedia.org/ontology/data/definitions.ttl> <http://open.vocab.org/terms/describes> dbo:Anime ,
                                                                                            dbo:VoiceActor .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ owl:intersectionOf ( schema:CreativeWorkSeason
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty schema:numberOfEpisodes ;
+                         owl:someValuesFrom xsd:int
+                       ]
+                     ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf :AnimeSeason
+] .
+
+
+[ owl:intersectionOf ( schema:CreativeWorkSeason
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty schema:numberOfEpisodes ;
+                         owl:someValuesFrom xsd:int
+                       ]
+                     ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf schema:TVSeason
+] .
+
+
+[ owl:intersectionOf ( schema:Movie
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty schema:datePublished ;
+                         owl:someValuesFrom xsd:dateTime
+                       ]
+                     ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf :AnimeMovie
+] .
+
+
+[ owl:intersectionOf ( schema:Movie
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty schema:datePublished ;
+                         owl:someValuesFrom xsd:dateTime
+                       ]
+                     ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf schema:Movie
+] .
 
 
 ###  Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi
