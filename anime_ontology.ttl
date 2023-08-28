@@ -319,7 +319,7 @@ schema:audienceType rdf:type owl:DatatypeProperty ;
 ###  https://schema.org/datePublished
 schema:datePublished rdf:type owl:DatatypeProperty ;
                      rdfs:subPropertyOf dct:date ;
-                     rdfs:domain schema:CreativeWork ;
+                     rdfs:domain schema:Movie ;
                      rdfs:range xsd:dateTime .
 
 
@@ -467,7 +467,6 @@ dbo:Genre rdf:type owl:Class ;
 dbo:Manga rdf:type owl:Class ;
           owl:equivalentClass <http://www.wikidata.org/entity/Q8274> ;
           rdfs:subClassOf dbo:Comic ;
-          owl:disjointWith :AnimeSeason ;
           rdfs:comment "Manga are comics created in Japan"@en ,
                        "Manga is het Japanse equivalent van het stripverhaal"@nl ,
                        "منگا جاپان میں تخلیق کردہ کامکس ہیں"@ur ;
@@ -534,6 +533,14 @@ dbo:VoiceActor rdf:type owl:Class ;
 
 ###  http://www.semanticweb.org/ontology/anime/AnimeMovie
 :AnimeMovie rdf:type owl:Class ;
+            owl:equivalentClass [ owl:intersectionOf ( schema:Movie
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty schema:datePublished ;
+                                                         owl:someValuesFrom xsd:dateTime
+                                                       ]
+                                                     ) ;
+                                  rdf:type owl:Class
+                                ] ;
             rdfs:subClassOf dbo:Anime ,
                             schema:Movie ;
             owl:disjointWith :AnimeSeason ;
@@ -543,6 +550,14 @@ dbo:VoiceActor rdf:type owl:Class ;
 
 ###  http://www.semanticweb.org/ontology/anime/AnimeSeason
 :AnimeSeason rdf:type owl:Class ;
+             owl:equivalentClass [ owl:intersectionOf ( schema:CreativeWorkSeason
+                                                        [ rdf:type owl:Restriction ;
+                                                          owl:onProperty schema:numberOfEpisodes ;
+                                                          owl:someValuesFrom xsd:int
+                                                        ]
+                                                      ) ;
+                                   rdf:type owl:Class
+                                 ] ;
              rdfs:subClassOf dbo:Anime ,
                              schema:TVSeason ;
              rdfs:comment "A particular season of a specif Anime. A season is composed of a sequence of episodes." ;
