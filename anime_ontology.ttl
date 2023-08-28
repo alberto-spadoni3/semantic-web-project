@@ -204,13 +204,13 @@ schema:episode rdf:type owl:ObjectProperty ;
 
 ###  https://schema.org/genre
 schema:genre rdf:type owl:ObjectProperty ;
-             rdfs:domain schema:CreativeWork .
+             rdfs:domain schema:CreativeWork ;
+             rdfs:range dbo:Genre .
 
 
 ###  https://schema.org/inLanguage
 schema:inLanguage rdf:type owl:ObjectProperty ;
-                  rdfs:domain schema:BroadcastEvent ,
-                              schema:CreativeWork ;
+                  rdfs:domain schema:BroadcastEvent ;
                   rdfs:range schema:Language .
 
 
@@ -241,8 +241,7 @@ schema:publishedOn rdf:type owl:ObjectProperty ;
 
 ###  https://schema.org/subtitleLanguage
 schema:subtitleLanguage rdf:type owl:ObjectProperty ;
-                        rdfs:domain schema:BroadcastEvent ,
-                                    schema:Movie ;
+                        rdfs:domain schema:BroadcastEvent ;
                         rdfs:range schema:Language ;
                         rdfs:comment "\"Languages in which subtitles/captions are available, in IETF BCP 47 standard format (http://tools.ietf.org/html/bcp47)." ;
                         rdfs:label "subtitleLanguage" .
