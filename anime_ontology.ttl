@@ -730,113 +730,97 @@ schema:URL rdf:type owl:Class ;
 #################################################################
 
 ###  http://www.semanticweb.org/ontology/anime/Actor_Chantal_Claude
-:Actor_Chantal_Claude rdf:type owl:NamedIndividual ,
-                               dbo:VoiceActor ;
+:Actor_Chantal_Claude rdf:type owl:NamedIndividual ;
                       :languageOfVoicing :Language_fr-FR ;
                       schema:name "Chantal Claude" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Actor_Hayami_Saori
-:Actor_Hayami_Saori rdf:type owl:NamedIndividual ,
-                             dbo:VoiceActor ;
+:Actor_Hayami_Saori rdf:type owl:NamedIndividual ;
                     :languageOfVoicing :Language_ja-JP ;
                     schema:name "Hayami Saori" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Actor_Inoue_Marina
-:Actor_Inoue_Marina rdf:type owl:NamedIndividual ,
-                             dbo:VoiceActor ;
+:Actor_Inoue_Marina rdf:type owl:NamedIndividual ;
                     :languageOfVoicing :Language_en-US ;
                     schema:name "Inoue Marina" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Actor_Irino_Miyu
-:Actor_Irino_Miyu rdf:type owl:NamedIndividual ,
-                           dbo:VoiceActor ;
+:Actor_Irino_Miyu rdf:type owl:NamedIndividual ;
                   :languageOfVoicing :Language_ja-JP ;
                   schema:name "Irino Miyu" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Actor_Ishikawa_Yui
-:Actor_Ishikawa_Yui rdf:type owl:NamedIndividual ,
-                             dbo:VoiceActor ;
+:Actor_Ishikawa_Yui rdf:type owl:NamedIndividual ;
                     :languageOfVoicing :Language_ja-JP ;
                     schema:name "Ishikawa Yui" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Actor_Kaji_Yuuki
-:Actor_Kaji_Yuuki rdf:type owl:NamedIndividual ,
-                           dbo:VoiceActor ;
+:Actor_Kaji_Yuuki rdf:type owl:NamedIndividual ;
                   :languageOfVoicing :Language_ja-JP ;
                   schema:name "Kaji Yuuki" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Actor_Kamiya_Hiroshi
-:Actor_Kamiya_Hiroshi rdf:type owl:NamedIndividual ,
-                               dbo:VoiceActor ;
+:Actor_Kamiya_Hiroshi rdf:type owl:NamedIndividual ;
                       :languageOfVoicing :Language_ja-JP ;
                       schema:name "Kamiya Hiroshi" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Actor_Liebing_Katja
-:Actor_Liebing_Katja rdf:type owl:NamedIndividual ,
-                              dbo:VoiceActor ;
+:Actor_Liebing_Katja rdf:type owl:NamedIndividual ;
                      :languageOfVoicing :Language_de-DE ;
                      schema:name "Liebing Katja" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Actor_Nishimura_Trina
-:Actor_Nishimura_Trina rdf:type owl:NamedIndividual ,
-                                dbo:VoiceActor ;
+:Actor_Nishimura_Trina rdf:type owl:NamedIndividual ;
                        :languageOfVoicing :Language_en-US ;
                        schema:name "Nishimura Trina" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Actor_Nozawa_Masako
-:Actor_Nozawa_Masako rdf:type owl:NamedIndividual ,
-                              dbo:VoiceActor ;
+:Actor_Nozawa_Masako rdf:type owl:NamedIndividual ;
                      :languageOfVoicing :Language_ja-JP ;
                      schema:name "Nozawa Masako" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Actor_Papenbrook_Bryce
-:Actor_Papenbrook_Bryce rdf:type owl:NamedIndividual ,
-                                 dbo:VoiceActor ;
+:Actor_Papenbrook_Bryce rdf:type owl:NamedIndividual ;
                         :languageOfVoicing :Language_en-US ;
                         schema:name "Papenbrook Bryce" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Actor_Scianca_Patrizia
-:Actor_Scianca_Patrizia rdf:type owl:NamedIndividual ,
-                                 dbo:VoiceActor ;
+:Actor_Scianca_Patrizia rdf:type owl:NamedIndividual ;
                         :languageOfVoicing :Language_it-IT ;
                         schema:name "Scianca Patrizia" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Actor_Shioya_Kouzou
-:Actor_Shioya_Kouzou rdf:type owl:NamedIndividual ,
-                              dbo:VoiceActor ;
+:Actor_Shioya_Kouzou rdf:type owl:NamedIndividual ;
                      :languageOfVoicing :Language_ja-JP ;
                      schema:name "Shioya Kouzou" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Actor_Tanaka_Mayumi
-:Actor_Tanaka_Mayumi rdf:type owl:NamedIndividual ,
-                              dbo:VoiceActor ;
+:Actor_Tanaka_Mayumi rdf:type owl:NamedIndividual ;
                      :languageOfVoicing :Language_ja-JP ;
                      schema:name "Tanaka Mayumi" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Actor_Tsuru_Hiromi
-:Actor_Tsuru_Hiromi rdf:type owl:NamedIndividual ,
-                             dbo:VoiceActor ;
+:Actor_Tsuru_Hiromi rdf:type owl:NamedIndividual ;
                     :languageOfVoicing :Language_ja-JP ;
                     schema:name "Tsuru Hiromi" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Audience_Josei
-:Audience_Josei rdf:type owl:NamedIndividual ,
-                         schema:PeopleAudience ;
+:Audience_Josei rdf:type owl:NamedIndividual ;
                 schema:audienceType "Josei" ;
                 schema:suggestedGender "female" ;
                 schema:suggestedMaxAge "40"^^xsd:int ;
@@ -844,8 +828,7 @@ schema:URL rdf:type owl:Class ;
 
 
 ###  http://www.semanticweb.org/ontology/anime/Audience_Kids
-:Audience_Kids rdf:type owl:NamedIndividual ,
-                        schema:PeopleAudience ;
+:Audience_Kids rdf:type owl:NamedIndividual ;
                schema:audienceType "Kids" ;
                schema:suggestedGender "unisex" ;
                schema:suggestedMaxAge "12"^^xsd:int ;
@@ -853,8 +836,7 @@ schema:URL rdf:type owl:Class ;
 
 
 ###  http://www.semanticweb.org/ontology/anime/Audience_Seinen
-:Audience_Seinen rdf:type owl:NamedIndividual ,
-                          schema:PeopleAudience ;
+:Audience_Seinen rdf:type owl:NamedIndividual ;
                  schema:audienceType "Seinen" ;
                  schema:suggestedGender "unisex" ;
                  schema:suggestedMaxAge "40"^^xsd:int ;
@@ -862,8 +844,7 @@ schema:URL rdf:type owl:Class ;
 
 
 ###  http://www.semanticweb.org/ontology/anime/Audience_Shoujo
-:Audience_Shoujo rdf:type owl:NamedIndividual ,
-                          schema:PeopleAudience ;
+:Audience_Shoujo rdf:type owl:NamedIndividual ;
                  schema:audienceType "Shoujo" ;
                  schema:suggestedGender "female" ;
                  schema:suggestedMaxAge "18"^^xsd:int ;
@@ -871,8 +852,7 @@ schema:URL rdf:type owl:Class ;
 
 
 ###  http://www.semanticweb.org/ontology/anime/Audience_Shounen
-:Audience_Shounen rdf:type owl:NamedIndividual ,
-                           schema:PeopleAudience ;
+:Audience_Shounen rdf:type owl:NamedIndividual ;
                   schema:audienceType "Shounen" ;
                   schema:suggestedGender "unisex" ;
                   schema:suggestedMaxAge "18"^^xsd:int ;
@@ -880,20 +860,17 @@ schema:URL rdf:type owl:Class ;
 
 
 ###  http://www.semanticweb.org/ontology/anime/Broadcast_Crunchyroll
-:Broadcast_Crunchyroll rdf:type owl:NamedIndividual ,
-                                schema:BroadcastService ;
+:Broadcast_Crunchyroll rdf:type owl:NamedIndividual ;
                        dct:title "Crunchyroll" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Broadcast_Netflix
-:Broadcast_Netflix rdf:type owl:NamedIndividual ,
-                            schema:BroadcastService ;
+:Broadcast_Netflix rdf:type owl:NamedIndividual ;
                    dct:title "Netflix" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Character_Armin_Arlert
-:Character_Armin_Arlert rdf:type owl:NamedIndividual ,
-                                 schema:Person ;
+:Character_Armin_Arlert rdf:type owl:NamedIndividual ;
                         :hasVoiceActor :Actor_Inoue_Marina ;
                         schema:name "Armin Arlert" ;
                         schema:url "https://myanimelist.net/character/46494/Armin_Arlert"^^rdfs:Literal ;
@@ -907,8 +884,7 @@ Armin Arlert is Eren's best friend. He is physically weak, but emotionally stron
 
 
 ###  http://www.semanticweb.org/ontology/anime/Character_Bulma
-:Character_Bulma rdf:type owl:NamedIndividual ,
-                          schema:Person ;
+:Character_Bulma rdf:type owl:NamedIndividual ;
                  :hasVoiceActor :Actor_Liebing_Katja ,
                                 :Actor_Tsuru_Hiromi ;
                  schema:name "Bulma" ;
@@ -927,8 +903,7 @@ Bulma is the second character to be introduced in the Dragon Ball series. In the
 
 
 ###  http://www.semanticweb.org/ontology/anime/Character_Eren_Yeager
-:Character_Eren_Yeager rdf:type owl:NamedIndividual ,
-                                schema:Person ;
+:Character_Eren_Yeager rdf:type owl:NamedIndividual ;
                        :hasVoiceActor :Actor_Kaji_Yuuki ,
                                       :Actor_Papenbrook_Bryce ;
                        schema:name "Eren Yeager" ;
@@ -945,8 +920,7 @@ His father is a doctor (whom is well respected by Hannes and potentially many mo
 
 
 ###  http://www.semanticweb.org/ontology/anime/Character_Gokuu
-:Character_Gokuu rdf:type owl:NamedIndividual ,
-                          schema:Person ;
+:Character_Gokuu rdf:type owl:NamedIndividual ;
                  :hasVoiceActor :Actor_Nozawa_Masako ,
                                 :Actor_Scianca_Patrizia ;
                  schema:alternateName "Kakarot" ;
@@ -966,8 +940,7 @@ Dragon Ball Z takes place 5 years after Gokuu's victory against Piccolo in the 2
 
 
 ###  http://www.semanticweb.org/ontology/anime/Character_Ishida_Shouya
-:Character_Ishida_Shouya rdf:type owl:NamedIndividual ,
-                                  schema:Person ;
+:Character_Ishida_Shouya rdf:type owl:NamedIndividual ;
                          :hasVoiceActor :Actor_Irino_Miyu ;
                          schema:alternateName "Shou-chan, Yashou" ;
                          schema:name "Shouya Ishida" ;
@@ -980,8 +953,7 @@ The main character and narrator. Ishida bullied Nishimiya Shouko in elementary s
 
 
 ###  http://www.semanticweb.org/ontology/anime/Character_Kuririn
-:Character_Kuririn rdf:type owl:NamedIndividual ,
-                            schema:Person ;
+:Character_Kuririn rdf:type owl:NamedIndividual ;
                    :hasVoiceActor :Actor_Chantal_Claude ,
                                   :Actor_Tanaka_Mayumi ;
                    schema:alternateName "Krillin" ;
@@ -993,8 +965,7 @@ Once a fierce rival of Son Goku, he quickly became his best friend while trainin
 
 
 ###  http://www.semanticweb.org/ontology/anime/Character_Levi
-:Character_Levi rdf:type owl:NamedIndividual ,
-                         schema:Person ;
+:Character_Levi rdf:type owl:NamedIndividual ;
                 :hasVoiceActor :Actor_Kamiya_Hiroshi ;
                 schema:name "Levi" ;
                 schema:url "https://myanimelist.net/character/45627/Levi"^^rdfs:Literal ;
@@ -1007,8 +978,7 @@ Levi is known as humanity's most powerful soldier. He's ranked as Captain of the
 
 
 ###  http://www.semanticweb.org/ontology/anime/Character_Majin_Buu
-:Character_Majin_Buu rdf:type owl:NamedIndividual ,
-                              schema:Person ;
+:Character_Majin_Buu rdf:type owl:NamedIndividual ;
                      :hasVoiceActor :Actor_Shioya_Kouzou ;
                      schema:name "Majin Buu" ;
                      schema:url "https://myanimelist.net/character/1012/Majin_Buu" ;
@@ -1020,8 +990,7 @@ After a battle with the superior Buu of Pure Wrath, Buu is absorbed and the two 
 
 
 ###  http://www.semanticweb.org/ontology/anime/Character_Mikasa_Ackerman
-:Character_Mikasa_Ackerman rdf:type owl:NamedIndividual ,
-                                    schema:Person ;
+:Character_Mikasa_Ackerman rdf:type owl:NamedIndividual ;
                            :hasVoiceActor :Actor_Ishikawa_Yui ,
                                           :Actor_Nishimura_Trina ;
                            schema:name "Mikasa Ackerman" ;
@@ -1038,8 +1007,7 @@ As a teen, Mikasa is considered a genius among all the army trainees and is incr
 
 
 ###  http://www.semanticweb.org/ontology/anime/Character_Shouko_Nishimiya
-:Character_Shouko_Nishimiya rdf:type owl:NamedIndividual ,
-                                     schema:Person ;
+:Character_Shouko_Nishimiya rdf:type owl:NamedIndividual ;
                             :hasVoiceActor :Actor_Hayami_Saori ;
                             schema:alternateName "Shou-chan, 西宮 硝子" ;
                             schema:name "Shouko Nishimiya" ;
@@ -1051,26 +1019,22 @@ A young, deaf transfer student with an amazingly positive outlook on life. Despi
 
 
 ###  http://www.semanticweb.org/ontology/anime/CreativeWorkStatus_Currently_Airing
-:CreativeWorkStatus_Currently_Airing rdf:type owl:NamedIndividual ,
-                                              :Status ;
+:CreativeWorkStatus_Currently_Airing rdf:type owl:NamedIndividual ;
                                      dct:title "Currently Airing"@en .
 
 
 ###  http://www.semanticweb.org/ontology/anime/CreativeWorkStatus_Finished_Airing
-:CreativeWorkStatus_Finished_Airing rdf:type owl:NamedIndividual ,
-                                             :Status ;
+:CreativeWorkStatus_Finished_Airing rdf:type owl:NamedIndividual ;
                                     dct:title "Finished Airing"@en .
 
 
 ###  http://www.semanticweb.org/ontology/anime/CreativeWorkStatus_Not_Yet_Aired
-:CreativeWorkStatus_Not_Yet_Aired rdf:type owl:NamedIndividual ,
-                                           :Status ;
+:CreativeWorkStatus_Not_Yet_Aired rdf:type owl:NamedIndividual ;
                                   dct:title "Not Yet Aired"@en .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Crunchyroll_Dragon_Ball
-:Crunchyroll_Dragon_Ball rdf:type owl:NamedIndividual ,
-                                  schema:BroadcastEvent ;
+:Crunchyroll_Dragon_Ball rdf:type owl:NamedIndividual ;
                          schema:inLanguage :Language_de-DE ,
                                            :Language_en-US ,
                                            :Language_es-ES ,
@@ -1084,8 +1048,7 @@ A young, deaf transfer student with an amazingly positive outlook on life. Despi
 
 
 ###  http://www.semanticweb.org/ontology/anime/Crunchyroll_Dragon_Ball_Z
-:Crunchyroll_Dragon_Ball_Z rdf:type owl:NamedIndividual ,
-                                    schema:BroadcastEvent ;
+:Crunchyroll_Dragon_Ball_Z rdf:type owl:NamedIndividual ;
                            schema:inLanguage :Language_de-DE ,
                                              :Language_en-US ,
                                              :Language_es-ES ,
@@ -1099,8 +1062,7 @@ A young, deaf transfer student with an amazingly positive outlook on life. Despi
 
 
 ###  http://www.semanticweb.org/ontology/anime/Crunchyroll_Koe_no_Katachi
-:Crunchyroll_Koe_no_Katachi rdf:type owl:NamedIndividual ,
-                                     schema:BroadcastEvent ;
+:Crunchyroll_Koe_no_Katachi rdf:type owl:NamedIndividual ;
                             schema:inLanguage :Language_en-US ,
                                               :Language_ja-JP ;
                             schema:publishedOn :Broadcast_Crunchyroll ;
@@ -1110,8 +1072,7 @@ A young, deaf transfer student with an amazingly positive outlook on life. Despi
 
 
 ###  http://www.semanticweb.org/ontology/anime/Crunchyroll_Shingeki_no_Kyojin_Season_2
-:Crunchyroll_Shingeki_no_Kyojin_Season_2 rdf:type owl:NamedIndividual ,
-                                                  schema:BroadcastEvent ;
+:Crunchyroll_Shingeki_no_Kyojin_Season_2 rdf:type owl:NamedIndividual ;
                                          schema:inLanguage :Language_en-US ,
                                                            :Language_ja-JP ;
                                          schema:publishedOn :Broadcast_Crunchyroll ;
@@ -1121,8 +1082,7 @@ A young, deaf transfer student with an amazingly positive outlook on life. Despi
 
 
 ###  http://www.semanticweb.org/ontology/anime/Dragon_Ball
-:Dragon_Ball rdf:type owl:NamedIndividual ,
-                      :AnimeSeason ;
+:Dragon_Ball rdf:type owl:NamedIndividual ;
              :creativeWorkStatus :CreativeWorkStatus_Finished_Airing ;
              :hasSequel :Dragon_Ball_Z ;
              :hasSpinOff :Dragon_Ball_Specials ;
@@ -1154,29 +1114,25 @@ They don't go on the journey alone. On the way, they meet the old Muten-Roshi an
 
 
 ###  http://www.semanticweb.org/ontology/anime/Dragon_Ball_E1
-:Dragon_Ball_E1 rdf:type owl:NamedIndividual ,
-                         schema:Episode ;
+:Dragon_Ball_E1 rdf:type owl:NamedIndividual ;
                 dct:title "The Secret of the Dragon Balls" ;
                 schema:episodeNumber "1"^^xsd:int .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Dragon_Ball_E2
-:Dragon_Ball_E2 rdf:type owl:NamedIndividual ,
-                         schema:Episode ;
+:Dragon_Ball_E2 rdf:type owl:NamedIndividual ;
                 dct:title "The Emperor's Quest" ;
                 schema:episodeNumber "2"^^xsd:int .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Dragon_Ball_E3
-:Dragon_Ball_E3 rdf:type owl:NamedIndividual ,
-                         schema:Episode ;
+:Dragon_Ball_E3 rdf:type owl:NamedIndividual ;
                 dct:title "The Nimbus Cloud of Roshi" ;
                 schema:episodeNumber 3 .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Dragon_Ball_Specials
-:Dragon_Ball_Specials rdf:type owl:NamedIndividual ,
-                               :AnimeSeason ;
+:Dragon_Ball_Specials rdf:type owl:NamedIndividual ;
                       :creativeWorkStatus :CreativeWorkStatus_Finished_Airing ;
                       schema:audience :Audience_Shounen ;
                       schema:character :Character_Bulma ,
@@ -1197,22 +1153,19 @@ They don't go on the journey alone. On the way, they meet the old Muten-Roshi an
 
 
 ###  http://www.semanticweb.org/ontology/anime/Dragon_Ball_Specials_E1
-:Dragon_Ball_Specials_E1 rdf:type owl:NamedIndividual ,
-                                  schema:Episode ;
+:Dragon_Ball_Specials_E1 rdf:type owl:NamedIndividual ;
                          dct:title "Goku's Traffic Safety" ;
                          schema:episodeNumber "1"^^xsd:int .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Dragon_Ball_Specials_E2
-:Dragon_Ball_Specials_E2 rdf:type owl:NamedIndividual ,
-                                  schema:Episode ;
+:Dragon_Ball_Specials_E2 rdf:type owl:NamedIndividual ;
                          dct:title "Goku's Fire Brigade" ;
                          schema:episodeNumber "2"^^xsd:int .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Dragon_Ball_Z
-:Dragon_Ball_Z rdf:type owl:NamedIndividual ,
-                        :AnimeSeason ;
+:Dragon_Ball_Z rdf:type owl:NamedIndividual ;
                :creativeWorkStatus :CreativeWorkStatus_Finished_Airing ;
                :isStreamedOn :Crunchyroll_Dragon_Ball_Z ;
                schema:audience :Audience_Shounen ;
@@ -1241,130 +1194,109 @@ With his failed attempt at forcibly recruiting Gokuu as an ally, Raditz warns Go
 
 
 ###  http://www.semanticweb.org/ontology/anime/Dragon_Ball_Z_E1
-:Dragon_Ball_Z_E1 rdf:type owl:NamedIndividual ,
-                           schema:Episode ;
+:Dragon_Ball_Z_E1 rdf:type owl:NamedIndividual ;
                   dct:title "The New Threat" ;
                   schema:episodeNumber "1"^^xsd:int .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Dragon_Ball_Z_E2
-:Dragon_Ball_Z_E2 rdf:type owl:NamedIndividual ,
-                           schema:Episode ;
+:Dragon_Ball_Z_E2 rdf:type owl:NamedIndividual ;
                   dct:title "Reunions" ;
                   schema:episodeNumber "2"^^xsd:int .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Genre_Action
-:Genre_Action rdf:type owl:NamedIndividual ,
-                       dbo:Genre ;
+:Genre_Action rdf:type owl:NamedIndividual ;
               dct:title "Action"@en .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Genre_Adventure
-:Genre_Adventure rdf:type owl:NamedIndividual ,
-                          dbo:Genre ;
+:Genre_Adventure rdf:type owl:NamedIndividual ;
                  dct:title "Adventure"@en .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Genre_Avant_Garde
-:Genre_Avant_Garde rdf:type owl:NamedIndividual ,
-                            dbo:Genre ;
+:Genre_Avant_Garde rdf:type owl:NamedIndividual ;
                    dct:title "Avant Garde"@en .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Genre_Award_Winning
-:Genre_Award_Winning rdf:type owl:NamedIndividual ,
-                              dbo:Genre ;
+:Genre_Award_Winning rdf:type owl:NamedIndividual ;
                      dct:title "Award Winning"@en .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Genre_Boys_Love
-:Genre_Boys_Love rdf:type owl:NamedIndividual ,
-                          dbo:Genre ;
+:Genre_Boys_Love rdf:type owl:NamedIndividual ;
                  dct:title "Boys Love"@en .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Genre_Comedy
-:Genre_Comedy rdf:type owl:NamedIndividual ,
-                       dbo:Genre ;
+:Genre_Comedy rdf:type owl:NamedIndividual ;
               dct:title "Comedy"@en .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Genre_Drama
-:Genre_Drama rdf:type owl:NamedIndividual ,
-                      dbo:Genre ;
+:Genre_Drama rdf:type owl:NamedIndividual ;
              dct:title "Drama"@en .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Genre_Fantasy
-:Genre_Fantasy rdf:type owl:NamedIndividual ,
-                        dbo:Genre ;
+:Genre_Fantasy rdf:type owl:NamedIndividual ;
                dct:title "Fantasy"@en .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Genre_Girls_Love
-:Genre_Girls_Love rdf:type owl:NamedIndividual ,
-                           dbo:Genre ;
+:Genre_Girls_Love rdf:type owl:NamedIndividual ;
                   dct:title "Girls Love"@en .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Genre_Gourmet
-:Genre_Gourmet rdf:type owl:NamedIndividual ,
-                        dbo:Genre ;
+:Genre_Gourmet rdf:type owl:NamedIndividual ;
                dct:title "Gourmet"@en .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Genre_Horror
-:Genre_Horror rdf:type owl:NamedIndividual ,
-                       dbo:Genre ;
+:Genre_Horror rdf:type owl:NamedIndividual ;
               dct:title "Horror"@en .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Genre_Mistery
-:Genre_Mistery rdf:type owl:NamedIndividual ,
-                        dbo:Genre ;
+:Genre_Mistery rdf:type owl:NamedIndividual ;
                dct:title "Mistery"@en .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Genre_Romance
-:Genre_Romance rdf:type owl:NamedIndividual ,
-                        dbo:Genre ;
+:Genre_Romance rdf:type owl:NamedIndividual ;
                dct:title "Romance"@en .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Genre_Sci-Fi
-:Genre_Sci-Fi rdf:type owl:NamedIndividual ,
-                       dbo:Genre ;
+:Genre_Sci-Fi rdf:type owl:NamedIndividual ;
               dct:title "Sci-Fi"@en .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Genre_Slice_Of_Life
-:Genre_Slice_Of_Life rdf:type owl:NamedIndividual ,
-                              dbo:Genre ;
+:Genre_Slice_Of_Life rdf:type owl:NamedIndividual ;
                      dct:title "Slice Of Life"@en .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Genre_Sports
-:Genre_Sports rdf:type owl:NamedIndividual ,
-                       dbo:Genre ;
+:Genre_Sports rdf:type owl:NamedIndividual ;
               dct:title "Sports"@en .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Genre_Supernatural
-:Genre_Supernatural rdf:type owl:NamedIndividual ,
-                             dbo:Genre ;
+:Genre_Supernatural rdf:type owl:NamedIndividual ;
                     dct:title "Supernatural"@en .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Genre_Suspense
-:Genre_Suspense rdf:type owl:NamedIndividual ,
-                         dbo:Genre ;
+:Genre_Suspense rdf:type owl:NamedIndividual ;
                 dct:title "Suspense"@en .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Koe_no_Katachi
-:Koe_no_Katachi rdf:type owl:NamedIndividual ,
-                         :AnimeMovie ;
+:Koe_no_Katachi rdf:type owl:NamedIndividual ;
                 :creativeWorkStatus :CreativeWorkStatus_Finished_Airing ;
                 :isStreamedOn :Crunchyroll_Koe_no_Katachi ,
                               :Netflix_Koe_no_Katachi ;
@@ -1389,8 +1321,7 @@ Koe no Katachi tells the heartwarming tale of Shouya's reunion with Shouko and h
 
 
 ###  http://www.semanticweb.org/ontology/anime/Language_de-DE
-:Language_de-DE rdf:type owl:NamedIndividual ,
-                         schema:Language ;
+:Language_de-DE rdf:type owl:NamedIndividual ;
                 dct:title "de-DE" ;
                 schema:alternateName "Deutsch"@de ,
                                      "German"@en ,
@@ -1398,16 +1329,14 @@ Koe no Katachi tells the heartwarming tale of Shouya's reunion with Shouko and h
 
 
 ###  http://www.semanticweb.org/ontology/anime/Language_en-US
-:Language_en-US rdf:type owl:NamedIndividual ,
-                         schema:Language ;
+:Language_en-US rdf:type owl:NamedIndividual ;
                 dct:title "en-US" ;
                 schema:alternateName "English"@en ,
                                      "Inglese"@it .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Language_es-ES
-:Language_es-ES rdf:type owl:NamedIndividual ,
-                         schema:Language ;
+:Language_es-ES rdf:type owl:NamedIndividual ;
                 dct:title "es-ES" ;
                 schema:alternateName "Español"@es ,
                                      "Spagnolo"@it ,
@@ -1415,8 +1344,7 @@ Koe no Katachi tells the heartwarming tale of Shouya's reunion with Shouko and h
 
 
 ###  http://www.semanticweb.org/ontology/anime/Language_fr-FR
-:Language_fr-FR rdf:type owl:NamedIndividual ,
-                         schema:Language ;
+:Language_fr-FR rdf:type owl:NamedIndividual ;
                 dct:title "fr-FR" ;
                 schema:alternateName "Francese"@it ,
                                      "Français"@fr ,
@@ -1424,16 +1352,14 @@ Koe no Katachi tells the heartwarming tale of Shouya's reunion with Shouko and h
 
 
 ###  http://www.semanticweb.org/ontology/anime/Language_it-IT
-:Language_it-IT rdf:type owl:NamedIndividual ,
-                         schema:Language ;
+:Language_it-IT rdf:type owl:NamedIndividual ;
                 dct:title "it-IT" ;
                 schema:alternateName "Italian"@en ,
                                      "Italiano"@it .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Language_ja-JP
-:Language_ja-JP rdf:type owl:NamedIndividual ,
-                         schema:Language ;
+:Language_ja-JP rdf:type owl:NamedIndividual ;
                 dct:title "ja-JP" ;
                 schema:alternateName "Giapponese"@it ,
                                      "Japanese"@en ,
@@ -1441,29 +1367,25 @@ Koe no Katachi tells the heartwarming tale of Shouya's reunion with Shouko and h
 
 
 ###  http://www.semanticweb.org/ontology/anime/Manga_Dragon_Ball
-:Manga_Dragon_Ball rdf:type owl:NamedIndividual ,
-                            dbo:Manga ;
+:Manga_Dragon_Ball rdf:type owl:NamedIndividual ;
                    dct:title "Dragon Ball Manga" ;
                    schema:url "https://myanimelist.net/manga/42/Dragon_Ball?q=dragon%20ball&cat=manga" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Manga_Koe_no_Katachi
-:Manga_Koe_no_Katachi rdf:type owl:NamedIndividual ,
-                               dbo:Manga ;
+:Manga_Koe_no_Katachi rdf:type owl:NamedIndividual ;
                       dct:title "Koe no Katachi Manga" ;
                       schema:url "https://myanimelist.net/manga/56805/Koe_no_Katachi" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Manga_Shingeki_no_Kyojin
-:Manga_Shingeki_no_Kyojin rdf:type owl:NamedIndividual ,
-                                   dbo:Manga ;
+:Manga_Shingeki_no_Kyojin rdf:type owl:NamedIndividual ;
                           dct:title "Shingeki no Kyojin Manga" ;
                           schema:url "https://myanimelist.net/manga/23390/Shingeki_no_Kyojin" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Netflix_Koe_no_Katachi
-:Netflix_Koe_no_Katachi rdf:type owl:NamedIndividual ,
-                                 schema:BroadcastEvent ;
+:Netflix_Koe_no_Katachi rdf:type owl:NamedIndividual ;
                         schema:inLanguage :Language_en-US ,
                                           :Language_ja-JP ;
                         schema:publishedOn :Broadcast_Netflix ;
@@ -1474,8 +1396,7 @@ Koe no Katachi tells the heartwarming tale of Shouya's reunion with Shouko and h
 
 
 ###  http://www.semanticweb.org/ontology/anime/Netflix_Shingeki_no_Kyojin
-:Netflix_Shingeki_no_Kyojin rdf:type owl:NamedIndividual ,
-                                     schema:BroadcastEvent ;
+:Netflix_Shingeki_no_Kyojin rdf:type owl:NamedIndividual ;
                             schema:inLanguage :Language_en-US ,
                                               :Language_ja-JP ;
                             schema:publishedOn :Broadcast_Netflix ;
@@ -1487,8 +1408,7 @@ Koe no Katachi tells the heartwarming tale of Shouya's reunion with Shouko and h
 
 
 ###  http://www.semanticweb.org/ontology/anime/Netflix_Shingeki_no_Kyojin_Season_2
-:Netflix_Shingeki_no_Kyojin_Season_2 rdf:type owl:NamedIndividual ,
-                                              schema:BroadcastEvent ;
+:Netflix_Shingeki_no_Kyojin_Season_2 rdf:type owl:NamedIndividual ;
                                      schema:inLanguage :Language_en-US ,
                                                        :Language_ja-JP ;
                                      schema:publishedOn :Broadcast_Netflix ;
@@ -1499,71 +1419,61 @@ Koe no Katachi tells the heartwarming tale of Shouya's reunion with Shouko and h
 
 
 ###  http://www.semanticweb.org/ontology/anime/Organization_MAPPA
-:Organization_MAPPA rdf:type owl:NamedIndividual ,
-                             schema:Organization ;
+:Organization_MAPPA rdf:type owl:NamedIndividual ;
                     dct:title "MAPPA" ;
                     schema:url "https://dbpedia.org/page/MAPPA"^^xsd:anyURI .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Organization_Madhouse
-:Organization_Madhouse rdf:type owl:NamedIndividual ,
-                                schema:Organization ;
+:Organization_Madhouse rdf:type owl:NamedIndividual ;
                        dct:title "Madhouse" ;
                        schema:url "https://dbpedia.org/page/Madhouse_(company)"^^xsd:anyURI .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Organization_Studio_Ghibli
-:Organization_Studio_Ghibli rdf:type owl:NamedIndividual ,
-                                     schema:Organization ;
+:Organization_Studio_Ghibli rdf:type owl:NamedIndividual ;
                             dct:title "Studio Ghibli" ;
                             schema:url "https://dbpedia.org/page/Studio_Ghibli"^^xsd:anyURI .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Organization_Toei_Animation
-:Organization_Toei_Animation rdf:type owl:NamedIndividual ,
-                                      schema:Organization ;
+:Organization_Toei_Animation rdf:type owl:NamedIndividual ;
                              dct:title "Toei Animation" ;
                              schema:url "https://dbpedia.org/page/Toei_Animation"^^xsd:anyURI .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Rating_G
-:Rating_G rdf:type owl:NamedIndividual ,
-                   schema:Rating ;
+:Rating_G rdf:type owl:NamedIndividual ;
           dct:title "G" ;
           dct:description "General audiences – All ages admitted"@en .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Rating_NC-17
-:Rating_NC-17 rdf:type owl:NamedIndividual ,
-                       schema:Rating ;
+:Rating_NC-17 rdf:type owl:NamedIndividual ;
               dct:title "NC-17" ;
               dct:description "Adults Only – No one 17 and under admitted"@en .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Rating_PG
-:Rating_PG rdf:type owl:NamedIndividual ,
-                    schema:Rating ;
+:Rating_PG rdf:type owl:NamedIndividual ;
            dct:title "PG" ;
            dct:description "Parental guidance suggested – Some material may not be suitable for children"@en .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Rating_PG-13
-:Rating_PG-13 rdf:type owl:NamedIndividual ,
-                       schema:Rating ;
+:Rating_PG-13 rdf:type owl:NamedIndividual ;
               dct:title "PG-13" ;
               dct:description "Parents strongly cautioned – Some material may be inappropriate for children under 13"@en .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Rating_R
-:Rating_R rdf:type owl:NamedIndividual ,
-                   schema:Rating ;
+:Rating_R rdf:type owl:NamedIndividual ;
           dct:title "R" ;
           dct:description "Restricted – Under 17 requires accompanying parent or adult guardian"@en .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Shingeki_no_Kyojin
-:Shingeki_no_Kyojin rdf:type owl:NamedIndividual ,
-                             :AnimeSeason ;
+:Shingeki_no_Kyojin rdf:type owl:NamedIndividual ;
                     :creativeWorkStatus :CreativeWorkStatus_Finished_Airing ;
                     :hasSequel :Shingeki_no_Kyojin_Season_2 ;
                     :isStreamedOn :Netflix_Shingeki_no_Kyojin ;
@@ -1594,40 +1504,35 @@ After witnessing a horrific personal loss at the hands of the invading creatures
 
 
 ###  http://www.semanticweb.org/ontology/anime/Shingeki_no_Kyojin_E1
-:Shingeki_no_Kyojin_E1 rdf:type owl:NamedIndividual ,
-                                schema:Episode ;
+:Shingeki_no_Kyojin_E1 rdf:type owl:NamedIndividual ;
                        dct:title "To You Two Thousand Years Later" ;
                        schema:episodeNumber 1 ;
                        dct:description "For over a century, humans have been living in settlements surrounded by three 50m gigantic walls, Wall Maria, Wall Rose and Wall Sina, which prevent the Titans, giant humanoid creatures who eat humans, from entering. Eren Jaeger, of the town called the Shiganshina District, wishes to see the outside world by joining the Scout Regiment, as he likens living in the cities to livestock. Despite this, his friend Mikasa Ackermann and their mother Carla Jaeger are against him joining the Scouts. Even after seeing the Scouts return home with large casualties, Eren expresses his interest to join, which impresses his father Grisha Jaeger, who promises to show him what lies in their basement once he returns. After Eren and Mikasa rescue their friend Armin Arlert from a group of delinquents, the Colossal Titan, a 60m Titan, suddenly appears and knocks down the gate to the Shiganshina District, which lies in the outer edge of Wall Maria, allowing smaller Titans to enter. As the town erupts into mass panic, Eren and Mikasa rush back to their house, only to see Carla pinned under their collapsed house. As a Smiling Titan approaches them, Carla begs them to flee, but they refuse until city guard Hannes arrives and assures them that he will defend them. However, as he charges towards the Titan, he is overcome with fear and takes Eren and Mikasa away. Eren watches in horror as a Smiling Titan eats Carla." .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Shingeki_no_Kyojin_E2
-:Shingeki_no_Kyojin_E2 rdf:type owl:NamedIndividual ,
-                                schema:Episode ;
+:Shingeki_no_Kyojin_E2 rdf:type owl:NamedIndividual ;
                        dct:title "That Day" ;
                        schema:episodeNumber 2 ;
                        dct:description "Hannes apologizes to Eren for not saving his mother, admitting he was afraid of the Smiling Titan and that both Eren and Mikasa are still weak children. Some of townsfolk of the Shiganshina District escape to the inner Wall Maria, while the soldiers try to hold off the Titans. The soldiers try to close the gate, but the Armored Titan rams the gate, breaching the inner Wall Maria, and causing those inside to retreat even further inside Wall Rose. Some time later, Eren has a strange dream in which his grieving father forcefully gives him an injection and his key before being woken up by Mikasa. Eren grows disgusted with the people of Wall Rose as the latter do not like sharing their food or homes with the refugees. During the next year, as a food shortage becomes apparent, the government orders the refugees to either work on the farms or fight to reclaim Wall Maria. About 250,000 people, 20% of the populace, choose to fight, only to be wiped out by the Titans. Eren vows revenge and joins the army along with Mikasa and Armin." .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Shingeki_no_Kyojin_E3
-:Shingeki_no_Kyojin_E3 rdf:type owl:NamedIndividual ,
-                                schema:Episode ;
+:Shingeki_no_Kyojin_E3 rdf:type owl:NamedIndividual ;
                        dct:title "Shining Dimly in the Midst of Despair" ;
                        schema:episodeNumber 3 ;
                        dct:description "The drill instructor Keith Sadies inspects the new recruits of the 104th Cadet Corps and provides a barrage of verbal insults. When he comes across Sasha Braus, who is eating a potato, he punishes her by having her run around the camp until sunset and not giving her any food or drink. Eren develops a rivalry with Jean Kirschtein, who desires a safe and easy position in the Military Police Regiment within the inner city walls. The recruits train on an omni-directional mobility gear[10] apparatus, where they have to balance themselves while suspended on cables. After Eren has trouble balancing, he asks Reiner Braun and Bertholdt Hoover for help and discover they too are among the few who have personally encountered Titans. The next day, Eren balances on the apparatus but falls, but Keith discovers that Eren's apparatus was defective and passes him after a retry with different equipment." .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Shingeki_no_Kyojin_E4
-:Shingeki_no_Kyojin_E4 rdf:type owl:NamedIndividual ,
-                                schema:Episode ;
+:Shingeki_no_Kyojin_E4 rdf:type owl:NamedIndividual ;
                        dct:title "Night of the Disbanding" ;
                        schema:episodeNumber 4 ;
                        dct:description "Five years since Wall Maria fell, Keith evaluates the recruits for their strengths and weaknesses. After training in hand-to-hand combat with Reiner and Annie Leonhart, Eren learns later that night that Jean and several other recruits hope to join the Military Police Regiment to avoid having to fight Titans. On graduation day, Eren and Mikasa rank among the top ten of their class. They are eligible to join the Military Police Regiment, but Eren declines and announces that he is joining the Scout Regiment on the front lines, leading Armin and Mikasa to join him. They are assigned to the Trost District, one of the cities which is at the outer edge of Wall Rose, where they discover other classmates have joined. The Colossal Titan appears and breaches the gate. Once Eren regains his composure, he takes command and orders a counterattack." .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Shingeki_no_Kyojin_Season_2
-:Shingeki_no_Kyojin_Season_2 rdf:type owl:NamedIndividual ,
-                                      :AnimeSeason ;
+:Shingeki_no_Kyojin_Season_2 rdf:type owl:NamedIndividual ;
                              :creativeWorkStatus :CreativeWorkStatus_Finished_Airing ;
                              :isStreamedOn :Crunchyroll_Shingeki_no_Kyojin_Season_2 ,
                                            :Netflix_Shingeki_no_Kyojin_Season_2 ;
@@ -1658,32 +1563,28 @@ In Shingeki no Kyojin Season 2, Eren Yeager and others of the 104th Training Cor
 
 
 ###  http://www.semanticweb.org/ontology/anime/Shingeki_no_Kyojin_Season_2_E1
-:Shingeki_no_Kyojin_Season_2_E1 rdf:type owl:NamedIndividual ,
-                                         schema:Episode ;
+:Shingeki_no_Kyojin_Season_2_E1 rdf:type owl:NamedIndividual ;
                                 dct:title "Beast Titan" ;
                                 schema:episodeNumber 1 ;
                                 dct:description "As the encased Annie is taken into custody, Hange and her team discover the Titan sealed inside the walls. Pastor Nick of the Wall Cult appears, urging them to cover it from sunlight. After the Titan is covered with sheets, Nick refuses to tell Hange why it is there, even after she threatens to kill him. She suspects that more titans are hidden within the walls. Meanwhile, Erwin is informed that Wall Rose was breached and Titans are roaming inside. 12 hours earlier, the rest of the 104th Trainees are stationed at an outpost when Titans are seen advancing from the south. Mike Zacharias orders the soldiers and trainees to spread out and inform the nearby villages and the capital about the Titans while he stays behind to delay them. In Stohess, Eren wakes up with Mikasa at his bedside and Armin tells them the Titans have breached Wall Rose. Back at the outpost, Mike buys enough time and prepares to escape, but is captured by a mysterious ape-like Titan covered in fur that is capable of speaking. The Beast Titan inquires about his three-dimensional maneuvering equipment (立体機動装置 Rittai kidō sōchi), but Mike does not answer, so the Titan strips Mike of his gear and leaves him to be eaten by the other Titans. (Source: Wikipedia)" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Shingeki_no_Kyojin_Season_2_E2
-:Shingeki_no_Kyojin_Season_2_E2 rdf:type owl:NamedIndividual ,
-                                         schema:Episode ;
+:Shingeki_no_Kyojin_Season_2_E2 rdf:type owl:NamedIndividual ;
                                 dct:title "I'm Home" ;
                                 schema:episodeNumber 2 ;
                                 dct:description "Hange and Armin deduce that the Titans encased within the walls provide its strength. The Survey Corps depart from Stohess to deal with the Titans that appeared inside Wall Rose, and Hange takes Pastor Nick along intending to gain more information from him. Meanwhile, Sasha rushes to warn her father and her village. She arrives to find the entire village deserted except for a woman being eaten by a Titan, and her daughter nearby in a state of shock. Sasha takes the girl and flees but they are chased by the Titan. Sasha decides to stay and fight while urging the girl to run away. Sasha succeeds in blinding the Titan with her arrows just as a group of villagers, including her father and the girl, return to pick her up. Meanwhile, Connie arrives at his village, only to find that it had already been attacked by Titans. Upon reaching his house, Connie discovers a Titan on its back trapped inside. He and the others wonder how it got so far from the walls when its short, thin legs seem too weak to support its body. (Source: Wikipedia)" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Shingeki_no_Kyojin_Season_2_E3
-:Shingeki_no_Kyojin_Season_2_E3 rdf:type owl:NamedIndividual ,
-                                         schema:Episode ;
+:Shingeki_no_Kyojin_Season_2_E3 rdf:type owl:NamedIndividual ;
                                 dct:title "Shothwestward" ;
                                 schema:episodeNumber 3 ;
                                 dct:description "Conny learns from Lynne and Gelgar that his family could still be alive since there are no traces of carnage, but before Conny rejoins his group to find the breach in the wall, he is startled when the Titan in his house faintly speaks and welcomes him back home. Elsewhere, Christa Lenz tells Ymir not to worry about her when the latter asks Nanaba and Henning to allow the two to leave their group. Both groups eventually meet up at nighttime, discovering that no breaches occurred at the walls and deciding to rest up at Castle Utgard. Meanwhile, Eren Jaeger learns from Hange he could learn how to seal the breach in the Shiganshina District, seeing as the crystallized skin from Annie Leonhart as the Female Titan is the same material from the walls. Pastor Nick eventually reveals to Hange that Christa is the key to finding all the answers. Soon after, Sasha arrives and hands Hange a scroll from Erwin, advising Hange and the Scouts to head to Castle Utgard. In the meantime, the Beast Titan leads the other Titans to attack Castle Utgard. This prompts Nanaba, Henning, Lynne and Gelgar to defend the 104th Cadets." .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Shingeki_no_Kyojin_Season_2_E4
-:Shingeki_no_Kyojin_Season_2_E4 rdf:type owl:NamedIndividual ,
-                                         schema:Episode ;
+:Shingeki_no_Kyojin_Season_2_E4 rdf:type owl:NamedIndividual ;
                                 dct:title "Soldier" ;
                                 schema:episodeNumber 4 ;
                                 dct:description "Two hours before the attack by the Titans at Castle Utgard, the 104th Cadets rest as their seniors keep watch. Conny mentions that the Titan he encountered at Ragako resembled his mother, but Ymir plays it off. Reiner Braun becomes suspicious when Ymir is able to read the unknown language on a food can labeled herring. The Titans soon appear, and the senior soldiers hold them off from the outside while the 104th Cadets defend themselves against smaller Titans that have breached the castle. In the process, Reiner has his arm badly injured after it is bitten by a Titan. After clearing the area of Titans, the Beast Titan throws chunks of Wall Rose at the castle, killing the group's horses. A second wave of Titans subsequently attack the castle, and the senior soldiers are soon overwhelmed and killed. As the Titans surround the tower which the unarmed 104th Cadets are on, Ymir jumps off the tower and transforms into a Titan in order to honor a promise that she made with Christa." .
