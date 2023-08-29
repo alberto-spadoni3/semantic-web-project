@@ -66,7 +66,7 @@ PREFIX anime: <http://www.semanticweb.org/ontology/anime/>
 
 # 6. (Fabio) i 3 anime più ridoppiati
 # PROBLEMA: un anime può essere ridoppiato in italiano e su pi+ piattaforme. Al momento si contano tutte le istanze anche duplicate quindi ridoppiaggio in italiano su due siti diversi viene contato entrambe le volte
-SELECT ?element (COUNT(?streamingLanguage) AS ?languagesCount)	# conteggio linguaggi distinti per elemento
+SELECT ?element (COUNT(DISTINCT ?streamingLanguage) AS ?languagesCount)	# conteggio linguaggi distinti per elemento
 WHERE {
   ?element rdf:type dbpedia:Anime ;
     anime:isStreamedOn ?streamingEvent .
@@ -75,7 +75,7 @@ WHERE {
 }
 GROUP BY ?element
 ORDER BY DESC(?languagesCount)
-LIMIT 3													# limita i risultati ai top 3 anime
+LIMIT 3		
 
 # 8. (Fabio) tutti gli anime currently airing e relative piattaforme di streaming
 #SELECT ?element (GROUP_CONCAT(?platformTitle; SEPARATOR=", ") AS ?platforms)
