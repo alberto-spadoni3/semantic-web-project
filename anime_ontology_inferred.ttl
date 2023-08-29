@@ -299,7 +299,10 @@ schema:character rdf:type owl:ObjectProperty ;
                                              :AnimeSeason
                                            )
                              ] ;
-                 rdfs:range <https://dbpedia.org/ontology/Person> ,
+                 rdfs:range dbo:Agent ,
+                            dbo:FictionalCharacter ,
+                            <http://www.wikidata.org/entity/Q95074> ,
+                            <https://dbpedia.org/ontology/Person> ,
                             schema:Person ,
                             schema:Thing .
 
@@ -579,6 +582,10 @@ dbo:Actor rdf:type owl:Class ;
           rdfs:subClassOf <https://dbpedia.org/ontology/Artist> .
 
 
+###  http://dbpedia.org/ontology/Agent
+dbo:Agent rdf:type owl:Class .
+
+
 ###  http://dbpedia.org/ontology/Anime
 dbo:Anime rdf:type owl:Class ;
           owl:equivalentClass <http://www.wikidata.org/entity/Q1107> ,
@@ -624,6 +631,25 @@ dbo:Comic rdf:type owl:Class ;
                           schema:Thing ;
           rdfs:comment "Comics is a medium used to express ideas with images, often combined with text or other visual information. It typically takes the form of a sequence of panels of images." ;
           rdfs:label "Comic" .
+
+
+###  http://dbpedia.org/ontology/FictionalCharacter
+dbo:FictionalCharacter rdf:type owl:Class ;
+                       owl:equivalentClass <http://www.wikidata.org/entity/Q95074> ;
+                       rdfs:subClassOf dbo:Agent ,
+                                       <http://www.wikidata.org/entity/Q95074> ,
+                                       <https://dbpedia.org/ontology/Person> ;
+                       rdfs:isDefinedBy dbo: ;
+                       rdfs:label "carachtar ficseanúil"@ga ,
+                                  "fictional character"@en ,
+                                  "fiktiver Charakter"@de ,
+                                  "personage (fictie)"@nl ,
+                                  "personnage de fiction"@fr ,
+                                  "πλασματικός χαρακτήρας"@el ,
+                                  "خیالی کردار"@ur ,
+                                  "キャラクター"@ja ;
+                       <http://www.w3.org/2007/05/powder-s#describedby> <http://dbpedia.org/ontology/data/definitions.ttl> ;
+                       <http://www.w3.org/ns/prov#wasDerivedFrom> <http://mappings.dbpedia.org/index.php/OntologyClass:FictionalCharacter> .
 
 
 ###  http://dbpedia.org/ontology/Genre
@@ -755,6 +781,12 @@ dbo:VoiceActor rdf:type owl:Class ;
 <http://www.wikidata.org/entity/Q8274> rdf:type owl:Class ;
                                        rdfs:subClassOf dbo:Comic ,
                                                        dbo:Manga .
+
+
+###  http://www.wikidata.org/entity/Q95074
+<http://www.wikidata.org/entity/Q95074> rdf:type owl:Class ;
+                                        rdfs:subClassOf dbo:Agent ,
+                                                        dbo:FictionalCharacter .
 
 
 ###  https://dbpedia.org/ontology/Artist
@@ -1227,6 +1259,9 @@ schema:Thing rdf:type owl:Class ;
 
 ###  http://www.semanticweb.org/ontology/anime/Character_Armin_Arlert
 :Character_Armin_Arlert rdf:type owl:NamedIndividual ,
+                                 dbo:Agent ,
+                                 dbo:FictionalCharacter ,
+                                 <http://www.wikidata.org/entity/Q95074> ,
                                  <https://dbpedia.org/ontology/Person> ,
                                  schema:Person ,
                                  schema:Thing ;
@@ -1247,6 +1282,9 @@ Armin Arlert is Eren's best friend. He is physically weak, but emotionally stron
 
 ###  http://www.semanticweb.org/ontology/anime/Character_Bulma
 :Character_Bulma rdf:type owl:NamedIndividual ,
+                          dbo:Agent ,
+                          dbo:FictionalCharacter ,
+                          <http://www.wikidata.org/entity/Q95074> ,
                           <https://dbpedia.org/ontology/Person> ,
                           schema:Person ,
                           schema:Thing ;
@@ -1273,6 +1311,9 @@ Bulma is the second character to be introduced in the Dragon Ball series. In the
 
 ###  http://www.semanticweb.org/ontology/anime/Character_Eren_Yeager
 :Character_Eren_Yeager rdf:type owl:NamedIndividual ,
+                                dbo:Agent ,
+                                dbo:FictionalCharacter ,
+                                <http://www.wikidata.org/entity/Q95074> ,
                                 <https://dbpedia.org/ontology/Person> ,
                                 schema:Person ,
                                 schema:Thing ;
@@ -1296,6 +1337,9 @@ His father is a doctor (whom is well respected by Hannes and potentially many mo
 
 ###  http://www.semanticweb.org/ontology/anime/Character_Gokuu
 :Character_Gokuu rdf:type owl:NamedIndividual ,
+                          dbo:Agent ,
+                          dbo:FictionalCharacter ,
+                          <http://www.wikidata.org/entity/Q95074> ,
                           <https://dbpedia.org/ontology/Person> ,
                           schema:Person ,
                           schema:Thing ;
@@ -1326,6 +1370,9 @@ Dragon Ball Z takes place 5 years after Gokuu's victory against Piccolo in the 2
 
 ###  http://www.semanticweb.org/ontology/anime/Character_Ishida_Shouya
 :Character_Ishida_Shouya rdf:type owl:NamedIndividual ,
+                                  dbo:Agent ,
+                                  dbo:FictionalCharacter ,
+                                  <http://www.wikidata.org/entity/Q95074> ,
                                   <https://dbpedia.org/ontology/Person> ,
                                   schema:Person ,
                                   schema:Thing ;
@@ -1347,6 +1394,9 @@ The main character and narrator. Ishida bullied Nishimiya Shouko in elementary s
 
 ###  http://www.semanticweb.org/ontology/anime/Character_Kuririn
 :Character_Kuririn rdf:type owl:NamedIndividual ,
+                            dbo:Agent ,
+                            dbo:FictionalCharacter ,
+                            <http://www.wikidata.org/entity/Q95074> ,
                             <https://dbpedia.org/ontology/Person> ,
                             schema:Person ,
                             schema:Thing ;
@@ -1369,6 +1419,9 @@ Once a fierce rival of Son Goku, he quickly became his best friend while trainin
 
 ###  http://www.semanticweb.org/ontology/anime/Character_Levi
 :Character_Levi rdf:type owl:NamedIndividual ,
+                         dbo:Agent ,
+                         dbo:FictionalCharacter ,
+                         <http://www.wikidata.org/entity/Q95074> ,
                          <https://dbpedia.org/ontology/Person> ,
                          schema:Person ,
                          schema:Thing ;
@@ -1387,6 +1440,9 @@ Levi is known as humanity's most powerful soldier. He's ranked as Captain of the
 
 ###  http://www.semanticweb.org/ontology/anime/Character_Majin_Buu
 :Character_Majin_Buu rdf:type owl:NamedIndividual ,
+                              dbo:Agent ,
+                              dbo:FictionalCharacter ,
+                              <http://www.wikidata.org/entity/Q95074> ,
                               <https://dbpedia.org/ontology/Person> ,
                               schema:Person ,
                               schema:Thing ;
@@ -1404,6 +1460,9 @@ After a battle with the superior Buu of Pure Wrath, Buu is absorbed and the two 
 
 ###  http://www.semanticweb.org/ontology/anime/Character_Mikasa_Ackerman
 :Character_Mikasa_Ackerman rdf:type owl:NamedIndividual ,
+                                    dbo:Agent ,
+                                    dbo:FictionalCharacter ,
+                                    <http://www.wikidata.org/entity/Q95074> ,
                                     <https://dbpedia.org/ontology/Person> ,
                                     schema:Person ,
                                     schema:Thing ;
@@ -1427,6 +1486,9 @@ As a teen, Mikasa is considered a genius among all the army trainees and is incr
 
 ###  http://www.semanticweb.org/ontology/anime/Character_Shouko_Nishimiya
 :Character_Shouko_Nishimiya rdf:type owl:NamedIndividual ,
+                                     dbo:Agent ,
+                                     dbo:FictionalCharacter ,
+                                     <http://www.wikidata.org/entity/Q95074> ,
                                      <https://dbpedia.org/ontology/Person> ,
                                      schema:Person ,
                                      schema:Thing ;

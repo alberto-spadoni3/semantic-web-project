@@ -179,7 +179,7 @@ schema:audience rdf:type owl:ObjectProperty ;
 schema:character rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf owl:topObjectProperty ;
                  rdfs:domain dbo:Anime ;
-                 rdfs:range schema:Person .
+                 rdfs:range dbo:FictionalCharacter .
 
 
 ###  https://schema.org/contentRating
@@ -395,6 +395,10 @@ dbo:Actor rdf:type owl:Class ;
           rdfs:subClassOf <https://dbpedia.org/ontology/Artist> .
 
 
+###  http://dbpedia.org/ontology/Agent
+dbo:Agent rdf:type owl:Class .
+
+
 ###  http://dbpedia.org/ontology/Anime
 dbo:Anime rdf:type owl:Class ;
           owl:equivalentClass <http://www.wikidata.org/entity/Q1107> ,
@@ -438,6 +442,24 @@ dbo:Comic rdf:type owl:Class ;
           rdfs:subClassOf schema:CreativeWork ;
           rdfs:comment "Comics is a medium used to express ideas with images, often combined with text or other visual information. It typically takes the form of a sequence of panels of images." ;
           rdfs:label "Comic" .
+
+
+###  http://dbpedia.org/ontology/FictionalCharacter
+dbo:FictionalCharacter rdf:type owl:Class ;
+                       owl:equivalentClass <http://www.wikidata.org/entity/Q95074> ;
+                       rdfs:subClassOf dbo:Agent ,
+                                       <https://dbpedia.org/ontology/Person> ;
+                       rdfs:isDefinedBy dbo: ;
+                       rdfs:label "carachtar ficseanúil"@ga ,
+                                  "fictional character"@en ,
+                                  "fiktiver Charakter"@de ,
+                                  "personage (fictie)"@nl ,
+                                  "personnage de fiction"@fr ,
+                                  "πλασματικός χαρακτήρας"@el ,
+                                  "خیالی کردار"@ur ,
+                                  "キャラクター"@ja ;
+                       <http://www.w3.org/2007/05/powder-s#describedby> <http://dbpedia.org/ontology/data/definitions.ttl> ;
+                       <http://www.w3.org/ns/prov#wasDerivedFrom> <http://mappings.dbpedia.org/index.php/OntologyClass:FictionalCharacter> .
 
 
 ###  http://dbpedia.org/ontology/Genre
@@ -541,6 +563,10 @@ dbo:VoiceActor rdf:type owl:Class ;
 ###  http://www.wikidata.org/entity/Q8274
 <http://www.wikidata.org/entity/Q8274> rdf:type owl:Class ;
                                        rdfs:subClassOf dbo:Comic .
+
+
+###  http://www.wikidata.org/entity/Q95074
+<http://www.wikidata.org/entity/Q95074> rdf:type owl:Class .
 
 
 ###  https://dbpedia.org/ontology/Artist
