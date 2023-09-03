@@ -1199,92 +1199,92 @@ With his failed attempt at forcibly recruiting Gokuu as an ally, Raditz warns Go
 
 ###  http://www.semanticweb.org/ontology/anime/Genre_Action
 :Genre_Action rdf:type owl:NamedIndividual ;
-              dct:title "Action"@en .
+              dct:title "Action" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Genre_Adventure
 :Genre_Adventure rdf:type owl:NamedIndividual ;
-                 dct:title "Adventure"@en .
+                 dct:title "Adventure" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Genre_Avant_Garde
 :Genre_Avant_Garde rdf:type owl:NamedIndividual ;
-                   dct:title "Avant Garde"@en .
+                   dct:title "Avant Garde" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Genre_Award_Winning
 :Genre_Award_Winning rdf:type owl:NamedIndividual ;
-                     dct:title "Award Winning"@en .
+                     dct:title "Award Winning" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Genre_Boys_Love
 :Genre_Boys_Love rdf:type owl:NamedIndividual ;
-                 dct:title "Boys Love"@en .
+                 dct:title "Boys Love" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Genre_Comedy
 :Genre_Comedy rdf:type owl:NamedIndividual ;
-              dct:title "Comedy"@en .
+              dct:title "Comedy" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Genre_Drama
 :Genre_Drama rdf:type owl:NamedIndividual ;
-             dct:title "Drama"@en .
+             dct:title "Drama" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Genre_Fantasy
 :Genre_Fantasy rdf:type owl:NamedIndividual ;
-               dct:title "Fantasy"@en .
+               dct:title "Fantasy" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Genre_Girls_Love
 :Genre_Girls_Love rdf:type owl:NamedIndividual ;
-                  dct:title "Girls Love"@en .
+                  dct:title "Girls Love" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Genre_Gourmet
 :Genre_Gourmet rdf:type owl:NamedIndividual ;
-               dct:title "Gourmet"@en .
+               dct:title "Gourmet" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Genre_Horror
 :Genre_Horror rdf:type owl:NamedIndividual ;
-              dct:title "Horror"@en .
+              dct:title "Horror" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Genre_Mistery
 :Genre_Mistery rdf:type owl:NamedIndividual ;
-               dct:title "Mistery"@en .
+               dct:title "Mistery" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Genre_Romance
 :Genre_Romance rdf:type owl:NamedIndividual ;
-               dct:title "Romance"@en .
+               dct:title "Romance" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Genre_Sci-Fi
 :Genre_Sci-Fi rdf:type owl:NamedIndividual ;
-              dct:title "Sci-Fi"@en .
+              dct:title "Sci-Fi" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Genre_Slice_Of_Life
 :Genre_Slice_Of_Life rdf:type owl:NamedIndividual ;
-                     dct:title "Slice Of Life"@en .
+                     dct:title "Slice Of Life" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Genre_Sports
 :Genre_Sports rdf:type owl:NamedIndividual ;
-              dct:title "Sports"@en .
+              dct:title "Sports" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Genre_Supernatural
 :Genre_Supernatural rdf:type owl:NamedIndividual ;
-                    dct:title "Supernatural"@en .
+                    dct:title "Supernatural" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Genre_Suspense
 :Genre_Suspense rdf:type owl:NamedIndividual ;
-                dct:title "Suspense"@en .
+                dct:title "Suspense" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Koe_no_Katachi
