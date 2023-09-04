@@ -264,6 +264,12 @@ dct:title rdf:type owl:DatatypeProperty ;
           rdfs:label "Title"@en .
 
 
+###  http://www.semanticweb.org/ontology/anime#suitableForKids
+:suitableForKids rdf:type owl:DatatypeProperty ;
+                 rdfs:domain dbo:Anime ;
+                 rdfs:range xsd:boolean .
+
+
 ###  http://www.semanticweb.org/ontology/anime/meteorologicalSeason
 :meteorologicalSeason rdf:type owl:DatatypeProperty ;
                       rdfs:domain :AnimeSeason ;
