@@ -52,11 +52,6 @@ schema:contributor rdf:type owl:AnnotationProperty .
 #    Object Properties
 #################################################################
 
-###  http://www.semanticweb.org/ontology/anime/animeInMeteorologicalSeason
-:animeInMeteorologicalSeason rdf:type owl:ObjectProperty ;
-                             owl:inverseOf :meteorologicalSeason .
-
-
 ###  http://www.semanticweb.org/ontology/anime/animeWithAudience
 :animeWithAudience rdf:type owl:ObjectProperty ;
                    owl:inverseOf schema:audience .
@@ -235,35 +230,6 @@ schema:contributor rdf:type owl:AnnotationProperty .
 :languageVoicedBy rdf:type owl:ObjectProperty .
 
 
-###  http://www.semanticweb.org/ontology/anime/meteorologicalSeason
-:meteorologicalSeason rdf:type owl:ObjectProperty ;
-                      rdfs:domain dbo:Anime ,
-                                  dbo:Cartoon ,
-                                  :AnimeSeason ,
-                                  <http://www.wikidata.org/entity/Q1107> ,
-                                  schema:CreativeWork ,
-                                  schema:CreativeWorkSeason ,
-                                  schema:TVSeason ,
-                                  schema:Thing ,
-                                  [ owl:intersectionOf ( schema:CreativeWorkSeason
-                                                         [ rdf:type owl:Restriction ;
-                                                           owl:onProperty schema:numberOfEpisodes ;
-                                                           owl:someValuesFrom xsd:int
-                                                         ]
-                                                       ) ;
-                                    rdf:type owl:Class
-                                  ] ,
-                                  [ rdf:type owl:Class ;
-                                    owl:unionOf ( :AnimeMovie
-                                                  :AnimeSeason
-                                                )
-                                  ] ,
-                                  [ rdf:type owl:Restriction ;
-                                    owl:onProperty schema:numberOfEpisodes ;
-                                    owl:someValuesFrom xsd:int
-                                  ] .
-
-
 ###  http://www.semanticweb.org/ontology/anime/producedAnime
 :producedAnime rdf:type owl:ObjectProperty ;
                owl:inverseOf schema:producer .
@@ -439,7 +405,47 @@ dct:title rdf:type owl:DatatypeProperty ;
 
 ###  http://www.semanticweb.org/ontology/anime/meteorologicalSeason
 :meteorologicalSeason rdf:type owl:DatatypeProperty ;
-                      rdfs:range rdfs:Literal .
+                      rdfs:domain dbo:Anime ,
+                                  dbo:Cartoon ,
+                                  :AnimeSeason ,
+                                  <http://www.wikidata.org/entity/Q1107> ,
+                                  schema:CreativeWork ,
+                                  schema:CreativeWorkSeason ,
+                                  schema:TVSeason ,
+                                  schema:Thing ,
+                                  [ owl:intersectionOf ( schema:CreativeWorkSeason
+                                                         [ rdf:type owl:Restriction ;
+                                                           owl:onProperty schema:numberOfEpisodes ;
+                                                           owl:someValuesFrom xsd:int
+                                                         ]
+                                                       ) ;
+                                    rdf:type owl:Class
+                                  ] ,
+                                  [ rdf:type owl:Class ;
+                                    owl:unionOf ( :AnimeMovie
+                                                  :AnimeSeason
+                                                )
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty schema:numberOfEpisodes ;
+                                    owl:someValuesFrom xsd:int
+                                  ] ;
+                      rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/ontology/anime/suitableForKids
+:suitableForKids rdf:type owl:DatatypeProperty ;
+                 rdfs:domain dbo:Anime ,
+                             dbo:Cartoon ,
+                             <http://www.wikidata.org/entity/Q1107> ,
+                             schema:CreativeWork ,
+                             schema:Thing ,
+                             [ rdf:type owl:Class ;
+                               owl:unionOf ( :AnimeMovie
+                                             :AnimeSeason
+                                           )
+                             ] ;
+                 rdfs:range xsd:boolean .
 
 
 ###  https://schema.org/airingEndDate
@@ -1645,7 +1651,6 @@ A young, deaf transfer student with an amazingly positive outlook on life. Despi
                       "1989-04-12T00:00:00"^^xsd:dateTime ;
              dct:title "ドラゴンボール" ,
                        "Dragon Ball" ;
-             :meteorologicalSeason "Winter 1986" ;
              schema:airingEndDate "1989-04-12T00:00:00"^^xsd:dateTime ;
              schema:airingStartDate "1986-02-26T00:00:00"^^xsd:dateTime ;
              schema:alternateName "ドラゴンボール" ;
@@ -1788,7 +1793,6 @@ They don't go on the journey alone. On the way, they meet the old Muten-Roshi an
                dct:date "1989-04-26T00:00:00"^^xsd:dateTime ,
                         "1996-01-31T00:00:00"^^xsd:dateTime ;
                dct:title "Dragon Ball Z" ;
-               :meteorologicalSeason "Spring 1989" ;
                schema:airingEndDate "1996-01-31T00:00:00"^^xsd:dateTime ;
                schema:airingStartDate "1989-04-26T00:00:00"^^xsd:dateTime ;
                schema:name "Dragon Ball Z" ;
@@ -1830,7 +1834,7 @@ With his failed attempt at forcibly recruiting Gokuu as an ally, Raditz warns Go
                               :Dragon_Ball_Z ,
                               :Shingeki_no_Kyojin ,
                               :Shingeki_no_Kyojin_Season_2 ;
-              dct:title "Action"@en ;
+              dct:title "Action" ;
               schema:name "Action" .
 
 
@@ -1841,13 +1845,13 @@ With his failed attempt at forcibly recruiting Gokuu as an ally, Raditz warns Go
                           schema:Thing ;
                  :animeWithGenre :Dragon_Ball ,
                                  :Dragon_Ball_Z ;
-                 dct:title "Adventure"@en ;
+                 dct:title "Adventure" ;
                  schema:name "Adventure" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Genre_Avant_Garde
 :Genre_Avant_Garde rdf:type owl:NamedIndividual ;
-                   dct:title "Avant Garde"@en ;
+                   dct:title "Avant Garde" ;
                    schema:name "Avant Garde" .
 
 
@@ -1859,13 +1863,13 @@ With his failed attempt at forcibly recruiting Gokuu as an ally, Raditz warns Go
                      :animeWithGenre :Koe_no_Katachi ,
                                      :Shingeki_no_Kyojin ,
                                      :Shingeki_no_Kyojin_Season_2 ;
-                     dct:title "Award Winning"@en ;
+                     dct:title "Award Winning" ;
                      schema:name "Award Winning" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Genre_Boys_Love
 :Genre_Boys_Love rdf:type owl:NamedIndividual ;
-                 dct:title "Boys Love"@en ;
+                 dct:title "Boys Love" ;
                  schema:name "Boys Love" .
 
 
@@ -1877,7 +1881,7 @@ With his failed attempt at forcibly recruiting Gokuu as an ally, Raditz warns Go
               :animeWithGenre :Dragon_Ball ,
                               :Dragon_Ball_Specials ,
                               :Dragon_Ball_Z ;
-              dct:title "Comedy"@en ;
+              dct:title "Comedy" ;
               schema:name "Comedy" .
 
 
@@ -1889,7 +1893,7 @@ With his failed attempt at forcibly recruiting Gokuu as an ally, Raditz warns Go
              :animeWithGenre :Koe_no_Katachi ,
                              :Shingeki_no_Kyojin ,
                              :Shingeki_no_Kyojin_Season_2 ;
-             dct:title "Drama"@en ;
+             dct:title "Drama" ;
              schema:name "Drama" .
 
 
@@ -1901,67 +1905,67 @@ With his failed attempt at forcibly recruiting Gokuu as an ally, Raditz warns Go
                :animeWithGenre :Dragon_Ball ,
                                :Dragon_Ball_Specials ,
                                :Dragon_Ball_Z ;
-               dct:title "Fantasy"@en ;
+               dct:title "Fantasy" ;
                schema:name "Fantasy" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Genre_Girls_Love
 :Genre_Girls_Love rdf:type owl:NamedIndividual ;
-                  dct:title "Girls Love"@en ;
+                  dct:title "Girls Love" ;
                   schema:name "Girls Love" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Genre_Gourmet
 :Genre_Gourmet rdf:type owl:NamedIndividual ;
-               dct:title "Gourmet"@en ;
+               dct:title "Gourmet" ;
                schema:name "Gourmet" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Genre_Horror
 :Genre_Horror rdf:type owl:NamedIndividual ;
-              dct:title "Horror"@en ;
+              dct:title "Horror" ;
               schema:name "Horror" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Genre_Mistery
 :Genre_Mistery rdf:type owl:NamedIndividual ;
-               dct:title "Mistery"@en ;
+               dct:title "Mistery" ;
                schema:name "Mistery" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Genre_Romance
 :Genre_Romance rdf:type owl:NamedIndividual ;
-               dct:title "Romance"@en ;
+               dct:title "Romance" ;
                schema:name "Romance" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Genre_Sci-Fi
 :Genre_Sci-Fi rdf:type owl:NamedIndividual ;
-              dct:title "Sci-Fi"@en ;
+              dct:title "Sci-Fi" ;
               schema:name "Sci-Fi" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Genre_Slice_Of_Life
 :Genre_Slice_Of_Life rdf:type owl:NamedIndividual ;
-                     dct:title "Slice Of Life"@en ;
+                     dct:title "Slice Of Life" ;
                      schema:name "Slice Of Life" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Genre_Sports
 :Genre_Sports rdf:type owl:NamedIndividual ;
-              dct:title "Sports"@en ;
+              dct:title "Sports" ;
               schema:name "Sports" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Genre_Supernatural
 :Genre_Supernatural rdf:type owl:NamedIndividual ;
-                    dct:title "Supernatural"@en ;
+                    dct:title "Supernatural" ;
                     schema:name "Supernatural" .
 
 
 ###  http://www.semanticweb.org/ontology/anime/Genre_Suspense
 :Genre_Suspense rdf:type owl:NamedIndividual ;
-                dct:title "Suspense"@en ;
+                dct:title "Suspense" ;
                 schema:name "Suspense" .
 
 
@@ -2364,7 +2368,6 @@ Koe no Katachi tells the heartwarming tale of Shouya's reunion with Shouko and h
                              "2013-09-29T00:00:00"^^xsd:dateTime ;
                     dct:title "Attack on Titan" ,
                               "Shingeki no Kyojin" ;
-                    :meteorologicalSeason "Spring 2017" ;
                     schema:airingEndDate "2013-09-29T00:00:00"^^xsd:dateTime ;
                     schema:airingStartDate "2013-04-07T00:00:00"^^xsd:dateTime ;
                     schema:alternateName "Attack on Titan" ;
@@ -2463,7 +2466,6 @@ After witnessing a horrific personal loss at the hands of the invading creatures
                                       "2017-06-17T00:00:00"^^xsd:dateTime ;
                              dct:title "Attack on Titan Season 2" ,
                                        "Shingeki no Kyojin Season 2" ;
-                             :meteorologicalSeason "Spring 2013" ;
                              schema:airingEndDate "2017-06-17T00:00:00"^^xsd:dateTime ;
                              schema:airingStartDate "2017-04-01T00:00:00"^^xsd:dateTime ;
                              schema:alternateName "Attack on Titan Season 2" ;
