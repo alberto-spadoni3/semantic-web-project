@@ -52,11 +52,6 @@ schema:contributor rdf:type owl:AnnotationProperty .
 #    Object Properties
 #################################################################
 
-###  http://www.semanticweb.org/ontology/anime/animeInMeteorologicalSeason
-:animeInMeteorologicalSeason rdf:type owl:ObjectProperty ;
-                             owl:inverseOf :meteorologicalSeason .
-
-
 ###  http://www.semanticweb.org/ontology/anime/animeWithAudience
 :animeWithAudience rdf:type owl:ObjectProperty ;
                    owl:inverseOf schema:audience .
@@ -149,11 +144,6 @@ schema:contributor rdf:type owl:AnnotationProperty .
 
 ###  http://www.semanticweb.org/ontology/anime/languageVoicedBy
 :languageVoicedBy rdf:type owl:ObjectProperty .
-
-
-###  http://www.semanticweb.org/ontology/anime/meteorologicalSeason
-:meteorologicalSeason rdf:type owl:ObjectProperty ;
-                      rdfs:domain :AnimeSeason .
 
 
 ###  http://www.semanticweb.org/ontology/anime/producedAnime
@@ -276,7 +266,8 @@ dct:title rdf:type owl:DatatypeProperty ;
 
 ###  http://www.semanticweb.org/ontology/anime/meteorologicalSeason
 :meteorologicalSeason rdf:type owl:DatatypeProperty ;
-                      rdfs:range rdfs:Literal .
+                      rdfs:domain :AnimeSeason ;
+                      rdfs:range xsd:string .
 
 
 ###  https://schema.org/airingEndDate
@@ -1095,7 +1086,6 @@ A young, deaf transfer student with an amazingly positive outlook on life. Despi
              schema:producer :Organization_Toei_Animation ;
              dct:alternative "ドラゴンボール"@ja ;
              dct:title "Dragon Ball" ;
-             :meteorologicalSeason "Winter 1986" ;
              schema:airingEndDate "1989-04-12T00:00:00"^^xsd:dateTime ;
              schema:airingStartDate "1986-02-26T00:00:00"^^xsd:dateTime ;
              schema:numberOfEpisodes "153"^^xsd:int ;
@@ -1175,7 +1165,6 @@ They don't go on the journey alone. On the way, they meet the old Muten-Roshi an
                schema:isBasedOn :Manga_Dragon_Ball ;
                schema:producer :Organization_Toei_Animation ;
                dct:title "Dragon Ball Z" ;
-               :meteorologicalSeason "Spring 1989" ;
                schema:airingEndDate "1996-01-31T00:00:00"^^xsd:dateTime ;
                schema:airingStartDate "1989-04-26T00:00:00"^^xsd:dateTime ;
                schema:numberOfEpisodes "291"^^xsd:int ;
@@ -1485,7 +1474,6 @@ Koe no Katachi tells the heartwarming tale of Shouya's reunion with Shouko and h
                     schema:producer :Organization_MAPPA ;
                     dct:alternative "Attack on Titan" ;
                     dct:title "Shingeki no Kyojin" ;
-                    :meteorologicalSeason "Spring 2017" ;
                     schema:airingEndDate "2013-09-29T00:00:00"^^xsd:dateTime ;
                     schema:airingStartDate "2013-04-07T00:00:00"^^xsd:dateTime ;
                     schema:numberOfEpisodes "12"^^xsd:int ;
@@ -1544,7 +1532,6 @@ After witnessing a horrific personal loss at the hands of the invading creatures
                              schema:producer :Organization_MAPPA ;
                              dct:alternative "Attack on Titan Season 2" ;
                              dct:title "Shingeki no Kyojin Season 2" ;
-                             :meteorologicalSeason "Spring 2013" ;
                              schema:airingEndDate "2017-06-17T00:00:00"^^xsd:dateTime ;
                              schema:airingStartDate "2017-04-01T00:00:00"^^xsd:dateTime ;
                              schema:numberOfEpisodes "12"^^xsd:int ;
