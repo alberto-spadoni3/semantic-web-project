@@ -40,13 +40,11 @@ PREFIX anime: <http://www.semanticweb.org/ontology/anime/>
 
 
 # 3. (Fabio) dato un nome di anime, tabulare tutte le opere relative in ordine di uscita
+# NB la query è spezzata in due perchè non posso inserire nella stessa query l'elemento target e quelli raggiunti dalla prop hasRelation
 #SELECT ?element ?date ?category ?sequel ?spinOff
 #WHERE {
-#  ?firstElement rdf:type dbpedia:Anime ;
-#    dcterms:title ?originalTitle ;
-#  	BIND(STR(?originalTitle) AS ?title) . 		# estrai tutti i titoli associati ed ignora @lingua
-#  FILTER ( ?title = "Dragon Ball" ) .			# seleziona il titolo che corrisponde esattamente a Dragon Ball
-#  ?element anime:hasRelation ?firstElement .	# find all the associated elements to the first element
+#  ?element rdf:type dbpedia:Anime ;
+#  	dcterms:title "Dragon Ball".
 #  OPTIONAL {									# select all the movies
 #    ?element schema:datePublished ?date ;
 #    BIND("Movie" AS ?category) .
@@ -62,10 +60,32 @@ PREFIX anime: <http://www.semanticweb.org/ontology/anime/>
 #    ?element anime:hasSpinOff ?spinOff .
 #  } .
 #}
-#ORDER BY ?date									# order by date
+#ORDER BY ?date	
+
+#SELECT ?element ?date ?category ?sequel ?spinOff
+#WHERE {
+#  ?firstElement rdf:type dbpedia:Anime ;
+#  	dcterms:title "Dragon Ball".
+#  ?firstElement anime:hasRelation ?element.
+#  OPTIONAL {									# select all the movies
+#    ?element schema:datePublished ?date ;
+#    BIND("Movie" AS ?category) .
+#  } .
+#  OPTIONAL {									# select all the tv series
+#    ?element schema:airingStartDate ?date ;
+#    BIND("Serie" AS ?category) .
+#  } .
+#  OPTIONAL {									# select all the sequels
+#    ?element anime:hasSequel ?sequel .
+#  } .
+#  OPTIONAL {									# select all the spin offs
+#    ?element anime:hasSpinOff ?spinOff .
+#  } .
+#}
+#ORDER BY ?date	
+
 
 # 6. (Fabio) i 3 anime più ridoppiati
-# PROBLEMA: un anime può essere ridoppiato in italiano e su pi+ piattaforme. Al momento si contano tutte le istanze anche duplicate quindi ridoppiaggio in italiano su due siti diversi viene contato entrambe le volte
 SELECT ?element (COUNT(DISTINCT ?streamingLanguage) AS ?languagesCount)	# conteggio linguaggi distinti per elemento
 WHERE {
   ?element rdf:type dbpedia:Anime ;
@@ -77,7 +97,7 @@ GROUP BY ?element
 ORDER BY DESC(?languagesCount)
 LIMIT 3		
 
-# 8. (Fabio) tutti gli anime currently airing e relative piattaforme di streaming
+# 8. (Fabio) tutti gli anime finished airing e relative piattaforme di streaming
 #SELECT ?element (GROUP_CONCAT(?platformTitle; SEPARATOR=", ") AS ?platforms)
 #WHERE {
 #  ?element rdf:type dbpedia:Anime ;
@@ -90,19 +110,17 @@ LIMIT 3
 
 # 10. (Fabio) dato un titolo di un anime, fornire siti di streaming+lingue disponibili 
 # NB ho tolto la seconda parte che era uguale ad un altra query 3
-#SELECT ?title ?streamingPlatformTitle (GROUP_CONCAT(?languageTitle; SEPARATOR=", ") AS ?language)
-#WHERE {
-#  ?element rdf:type dbpedia:Anime ;
-#    anime:isStreamedOn ?streamingEvent ;
-#    dcterms:title ?originalTitle ;
-#    BIND(STR(?originalTitle) AS ?title) .
-#  FILTER ( CONTAINS(?title, "Dragon Ball") ) .
-#  ?streamingEvent schema:inLanguage ?streamingLanguage ;
-#    schema:publishedOn ?streamingPlatform . 
-#  ?streamingLanguage dcterms:title ?languageTitle .
-#  MINUS {
-#    ?streamingLanguage dcterms:alternative ?languageTitle.
-#  }
-#  ?streamingPlatform dcterms:title ?streamingPlatformTitle.
-#}
-#GROUP BY ?title ?streamingPlatformTitle
+SELECT ?streamingPlatformTitle (GROUP_CONCAT(?languageTitle; SEPARATOR=", ") AS ?language)
+WHERE {
+  ?element rdf:type dbpedia:Anime ;
+    anime:isStreamedOn ?streamingEvent ;
+    dcterms:title "Koe no Katachi" .
+  ?streamingEvent schema:inLanguage ?streamingLanguage ;
+    schema:publishedOn ?streamingPlatform . 
+  ?streamingLanguage dcterms:title ?languageTitle .
+  MINUS {
+    ?streamingLanguage dcterms:alternative ?languageTitle.
+  }
+  ?streamingPlatform dcterms:title ?streamingPlatformTitle.
+}
+GROUP BY ?title ?streamingPlatformTitle
