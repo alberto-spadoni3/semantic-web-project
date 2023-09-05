@@ -246,8 +246,12 @@ dct:alternative rdf:type owl:DatatypeProperty ;
 
 ###  http://purl.org/dc/terms/date
 dct:date rdf:type owl:DatatypeProperty ;
-         rdfs:range rdfs:Literal ,
-                    xsd:dateTime ;
+         rdfs:domain [ rdf:type owl:Class ;
+                       owl:unionOf ( schema:CreativeWorkSeason
+                                     schema:Movie
+                                   )
+                     ] ;
+         rdfs:range xsd:dateTime ;
          dct:description "Date may be used to express temporal information at any level of granularity.  Recommended practice is to express the date, date/time, or period of time according to ISO 8601-1 [[ISO 8601-1](https://www.iso.org/iso-8601-date-and-time-format.html)] or a published profile of the ISO standard, such as the W3C Note on Date and Time Formats [[W3CDTF](https://www.w3.org/TR/NOTE-datetime)] or the Extended Date/Time Format Specification [[EDTF](http://www.loc.gov/standards/datetime/)].  If the full date is unknown, month and year (YYYY-MM) or just year (YYYY) may be used. Date ranges may be specified using ISO 8601 period of time specification in which start and end dates are separated by a '/' (slash) character.  Either the start or end date may be missing."@en ;
          rdfs:comment "A point or period of time associated with an event in the lifecycle of the resource."@en ;
          rdfs:isDefinedBy dct: ;
@@ -257,6 +261,7 @@ dct:date rdf:type owl:DatatypeProperty ;
 ###  http://purl.org/dc/terms/title
 dct:title rdf:type owl:DatatypeProperty ;
           owl:equivalentProperty schema:name ;
+          rdfs:domain owl:Thing ;
           rdfs:range rdfs:Literal ;
           rdfs:comment "A name given to the resource."@en ;
           rdfs:isDefinedBy dct: ;
@@ -266,7 +271,7 @@ dct:title rdf:type owl:DatatypeProperty ;
 ###  http://www.semanticweb.org/ontology/anime/meteorologicalSeason
 :meteorologicalSeason rdf:type owl:DatatypeProperty ;
                       rdfs:domain :AnimeSeason ;
-                      rdfs:range xsd:string .
+                      rdfs:range rdfs:Literal .
 
 
 ###  http://www.semanticweb.org/ontology/anime/suitableForKids
@@ -278,16 +283,14 @@ dct:title rdf:type owl:DatatypeProperty ;
 ###  https://schema.org/airingEndDate
 schema:airingEndDate rdf:type owl:DatatypeProperty ;
                      rdfs:subPropertyOf dct:date ;
-                     rdfs:domain schema:CreativeWork ,
-                                 schema:CreativeWorkSeason ;
+                     rdfs:domain schema:CreativeWorkSeason ;
                      rdfs:range xsd:dateTime .
 
 
 ###  https://schema.org/airingStartDate
 schema:airingStartDate rdf:type owl:DatatypeProperty ;
                        rdfs:subPropertyOf dct:date ;
-                       rdfs:domain schema:CreativeWork ,
-                                   schema:CreativeWorkSeason ;
+                       rdfs:domain schema:CreativeWorkSeason ;
                        rdfs:range xsd:dateTime .
 
 
@@ -331,11 +334,6 @@ schema:duration rdf:type owl:DatatypeProperty ;
 schema:episodeNumber rdf:type owl:DatatypeProperty ;
                      rdfs:domain schema:Episode ;
                      rdfs:range xsd:int .
-
-
-###  https://schema.org/genre
-schema:genre rdf:type owl:DatatypeProperty ;
-             rdfs:range rdfs:Literal .
 
 
 ###  https://schema.org/name
