@@ -101,13 +101,16 @@ GROUP BY ?anime_name ?animeAlterName ?animeURL ?status ?producer ?rating ?audien
 SELECT 
     ?voiceActorName (COUNT(?characterName) AS ?voicedAnimeCount)
     (GROUP_CONCAT(?characterName; SEPARATOR=", ") AS ?voicedCharactersName)
+    ?languageOfVoicing
 WHERE {
     ?voiceActor anime:voiceActed ?character ;
+                anime:languageOfVoicing [ schema:alternateName ?languageOfVoicing ] ;
                 schema:name ?voiceActorName .
     ?character schema:name ?characterName .
     MINUS { ?character schema:alternateName ?characterName . }
+    FILTER ( LANG(?languageOfVoicing) = "en" )
 }
-GROUP BY ?voiceActorName
+GROUP BY ?voiceActorName ?languageOfVoicing
 ORDER BY DESC(?voicedAnimeCount)
 LIMIT 5
 
@@ -139,12 +142,11 @@ SELECT
 WHERE {
   	?character schema:name "${NOME_PERSONAGGIO}" ;
                anime:animeWithCharacter ?anime ;
-               anime:hasVoiceActor [ anime:languageOfVoicing ?languageOfVoicing ] .
+               anime:hasVoiceActor [ anime:languageOfVoicing [ schema:alternateName ?voicingLang ] ] .
     OPTIONAL { ?character schema:alternateName ?characterAlterName . }
 	OPTIONAL { ?character dcterms:description ?description . }
     ?anime dcterms:title ?animeName .
     MINUS { ?anime schema:alternateName ?animeName }
-	?languageOfVoicing schema:alternateName ?voicingLang .
     FILTER ( LANG(?voicingLang) = "en" ) .
 }
 GROUP BY ?character ?characterAlterName ?description

@@ -1,0 +1,22 @@
+# rule 2
+dbo:Anime(?a) ^ 
+schema:genre(?a, ?g) ^
+dct:title (?g, ?genreName) ^ 
+swrlb:containsIgnoreCase(?genreName, "Horror") -> suitableForKids(?a, false)
+
+dbo:Anime(?a) ^ 
+schema:genre(?a, ?g) ^
+dct:title (?g, ?genreName) ^ 
+swrlb:containsIgnoreCase(?genreName, "Love") -> suitableForKids(?a, false)
+
+dbo:Anime(?a) ^ 
+schema:genre(?a, ?g) ^
+dct:title (?g, ?genreName) ^ 
+swrlb:containsIgnoreCase(?genreName, "Suspense") -> suitableForKids(?a, false)
+
+
+# rule 4
+dbo:Anime(?a) ^
+schema:airingStartDate(?a, ?date) ^ 
+swrlb:seasonFromDateTime(?computedSeason, ?date) 
+    -> meteorologicalSeason(?a, ?computedSeason)

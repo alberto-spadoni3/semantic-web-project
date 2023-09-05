@@ -52,11 +52,6 @@ schema:contributor rdf:type owl:AnnotationProperty .
 #    Object Properties
 #################################################################
 
-###  http://www.semanticweb.org/ontology/anime/animeInMeteorologicalSeason
-:animeInMeteorologicalSeason rdf:type owl:ObjectProperty ;
-                             owl:inverseOf :meteorologicalSeason .
-
-
 ###  http://www.semanticweb.org/ontology/anime/animeWithAudience
 :animeWithAudience rdf:type owl:ObjectProperty ;
                    owl:inverseOf schema:audience .
@@ -100,7 +95,6 @@ schema:contributor rdf:type owl:AnnotationProperty .
 
 ###  http://www.semanticweb.org/ontology/anime/hasRelation
 :hasRelation rdf:type owl:ObjectProperty ,
-                      owl:SymmetricProperty ,
                       owl:TransitiveProperty ;
              rdfs:domain dbo:Anime ;
              rdfs:range dbo:Anime .
@@ -149,11 +143,6 @@ schema:contributor rdf:type owl:AnnotationProperty .
 
 ###  http://www.semanticweb.org/ontology/anime/languageVoicedBy
 :languageVoicedBy rdf:type owl:ObjectProperty .
-
-
-###  http://www.semanticweb.org/ontology/anime/meteorologicalSeason
-:meteorologicalSeason rdf:type owl:ObjectProperty ;
-                      rdfs:domain :AnimeSeason .
 
 
 ###  http://www.semanticweb.org/ontology/anime/producedAnime
@@ -257,8 +246,12 @@ dct:alternative rdf:type owl:DatatypeProperty ;
 
 ###  http://purl.org/dc/terms/date
 dct:date rdf:type owl:DatatypeProperty ;
-         rdfs:range rdfs:Literal ,
-                    xsd:dateTime ;
+         rdfs:domain [ rdf:type owl:Class ;
+                       owl:unionOf ( schema:CreativeWorkSeason
+                                     schema:Movie
+                                   )
+                     ] ;
+         rdfs:range xsd:dateTime ;
          dct:description "Date may be used to express temporal information at any level of granularity.  Recommended practice is to express the date, date/time, or period of time according to ISO 8601-1 [[ISO 8601-1](https://www.iso.org/iso-8601-date-and-time-format.html)] or a published profile of the ISO standard, such as the W3C Note on Date and Time Formats [[W3CDTF](https://www.w3.org/TR/NOTE-datetime)] or the Extended Date/Time Format Specification [[EDTF](http://www.loc.gov/standards/datetime/)].  If the full date is unknown, month and year (YYYY-MM) or just year (YYYY) may be used. Date ranges may be specified using ISO 8601 period of time specification in which start and end dates are separated by a '/' (slash) character.  Either the start or end date may be missing."@en ;
          rdfs:comment "A point or period of time associated with an event in the lifecycle of the resource."@en ;
          rdfs:isDefinedBy dct: ;
@@ -268,6 +261,7 @@ dct:date rdf:type owl:DatatypeProperty ;
 ###  http://purl.org/dc/terms/title
 dct:title rdf:type owl:DatatypeProperty ;
           owl:equivalentProperty schema:name ;
+          rdfs:domain owl:Thing ;
           rdfs:range rdfs:Literal ;
           rdfs:comment "A name given to the resource."@en ;
           rdfs:isDefinedBy dct: ;
@@ -276,22 +270,27 @@ dct:title rdf:type owl:DatatypeProperty ;
 
 ###  http://www.semanticweb.org/ontology/anime/meteorologicalSeason
 :meteorologicalSeason rdf:type owl:DatatypeProperty ;
+                      rdfs:domain :AnimeSeason ;
                       rdfs:range rdfs:Literal .
+
+
+###  http://www.semanticweb.org/ontology/anime/suitableForKids
+:suitableForKids rdf:type owl:DatatypeProperty ;
+                 rdfs:domain dbo:Anime ;
+                 rdfs:range xsd:boolean .
 
 
 ###  https://schema.org/airingEndDate
 schema:airingEndDate rdf:type owl:DatatypeProperty ;
                      rdfs:subPropertyOf dct:date ;
-                     rdfs:domain schema:CreativeWork ,
-                                 schema:CreativeWorkSeason ;
+                     rdfs:domain schema:CreativeWorkSeason ;
                      rdfs:range xsd:dateTime .
 
 
 ###  https://schema.org/airingStartDate
 schema:airingStartDate rdf:type owl:DatatypeProperty ;
                        rdfs:subPropertyOf dct:date ;
-                       rdfs:domain schema:CreativeWork ,
-                                   schema:CreativeWorkSeason ;
+                       rdfs:domain schema:CreativeWorkSeason ;
                        rdfs:range xsd:dateTime .
 
 
@@ -335,11 +334,6 @@ schema:duration rdf:type owl:DatatypeProperty ;
 schema:episodeNumber rdf:type owl:DatatypeProperty ;
                      rdfs:domain schema:Episode ;
                      rdfs:range xsd:int .
-
-
-###  https://schema.org/genre
-schema:genre rdf:type owl:DatatypeProperty ;
-             rdfs:range rdfs:Literal .
 
 
 ###  https://schema.org/name
@@ -863,7 +857,8 @@ schema:Thing rdf:type owl:Class ;
 
 ###  http://www.semanticweb.org/ontology/anime/Character_Armin_Arlert
 :Character_Armin_Arlert rdf:type owl:NamedIndividual ;
-                        :hasVoiceActor :Actor_Inoue_Marina ;
+                        :hasVoiceActor :Actor_Inoue_Marina ,
+                                       :Actor_Scianca_Patrizia ;
                         schema:name "Armin Arlert" ;
                         schema:url "https://myanimelist.net/character/46494/Armin_Arlert"^^rdfs:Literal ;
                         dct:description """Birthday: November 3
@@ -877,7 +872,9 @@ Armin Arlert is Eren's best friend. He is physically weak, but emotionally stron
 
 ###  http://www.semanticweb.org/ontology/anime/Character_Bulma
 :Character_Bulma rdf:type owl:NamedIndividual ;
-                 :hasVoiceActor :Actor_Liebing_Katja ,
+                 :hasVoiceActor :Actor_Inoue_Marina ,
+                                :Actor_Liebing_Katja ,
+                                :Actor_Scianca_Patrizia ,
                                 :Actor_Tsuru_Hiromi ;
                  schema:name "Bulma" ;
                  schema:url "https://myanimelist.net/character/678/Bulma" ;
@@ -897,6 +894,7 @@ Bulma is the second character to be introduced in the Dragon Ball series. In the
 ###  http://www.semanticweb.org/ontology/anime/Character_Eren_Yeager
 :Character_Eren_Yeager rdf:type owl:NamedIndividual ;
                        :hasVoiceActor :Actor_Kaji_Yuuki ,
+                                      :Actor_Nozawa_Masako ,
                                       :Actor_Papenbrook_Bryce ;
                        schema:name "Eren Yeager" ;
                        schema:url "https://myanimelist.net/character/40882/Eren_Yeager"^^rdfs:Literal ;
@@ -913,7 +911,8 @@ His father is a doctor (whom is well respected by Hannes and potentially many mo
 
 ###  http://www.semanticweb.org/ontology/anime/Character_Gokuu
 :Character_Gokuu rdf:type owl:NamedIndividual ;
-                 :hasVoiceActor :Actor_Nozawa_Masako ,
+                 :hasVoiceActor :Actor_Chantal_Claude ,
+                                :Actor_Nozawa_Masako ,
                                 :Actor_Scianca_Patrizia ;
                  schema:alternateName "Kakarot" ;
                  schema:name "Gokuu" ;
@@ -933,7 +932,8 @@ Dragon Ball Z takes place 5 years after Gokuu's victory against Piccolo in the 2
 
 ###  http://www.semanticweb.org/ontology/anime/Character_Ishida_Shouya
 :Character_Ishida_Shouya rdf:type owl:NamedIndividual ;
-                         :hasVoiceActor :Actor_Irino_Miyu ;
+                         :hasVoiceActor :Actor_Chantal_Claude ,
+                                        :Actor_Irino_Miyu ;
                          schema:alternateName "Shou-chan, Yashou" ;
                          schema:name "Shouya Ishida" ;
                          schema:url "https://myanimelist.net/character/80491/Shouya_Ishida"^^rdfs:Literal ;
@@ -958,7 +958,9 @@ Once a fierce rival of Son Goku, he quickly became his best friend while trainin
 
 ###  http://www.semanticweb.org/ontology/anime/Character_Levi
 :Character_Levi rdf:type owl:NamedIndividual ;
-                :hasVoiceActor :Actor_Kamiya_Hiroshi ;
+                :hasVoiceActor :Actor_Inoue_Marina ,
+                               :Actor_Kamiya_Hiroshi ,
+                               :Actor_Nozawa_Masako ;
                 schema:name "Levi" ;
                 schema:url "https://myanimelist.net/character/45627/Levi"^^rdfs:Literal ;
                 dct:description """Birthday: December 25
@@ -971,7 +973,9 @@ Levi is known as humanity's most powerful soldier. He's ranked as Captain of the
 
 ###  http://www.semanticweb.org/ontology/anime/Character_Majin_Buu
 :Character_Majin_Buu rdf:type owl:NamedIndividual ;
-                     :hasVoiceActor :Actor_Shioya_Kouzou ;
+                     :hasVoiceActor :Actor_Chantal_Claude ,
+                                    :Actor_Hayami_Saori ,
+                                    :Actor_Shioya_Kouzou ;
                      schema:name "Majin Buu" ;
                      schema:url "https://myanimelist.net/character/1012/Majin_Buu" ;
                      dct:description """Buu is introduced in the series during the Buu Saga as an innocent looking pudgy pink genie-like creature. Later in the series, it is revealed that Boo's original form is a more sleek child form (\"The Boo of Pure Evil\"), however his nature and form had been altered after he'd assimilated the gentle, pudgy god (Dai kaioshin) into his body. Buu's creator, a wizard named Bibbidi, had used Boo to wage war on the Kaioshin. Buu managed to assimilate two of the four Kaioshin, the second being the one who altered his nature to become innocent. Before assimilating the second Kaioshin, he had killed the third Kaioshin. After Bibbidi sealed buu away, Bibbidi was killed by the fourth Kaioshin, and Boo was transported to planet Earth where he layed dormant for five million years until he was revived by Bibbidi's son Babbidi during the events of Dragon Ball.
@@ -984,7 +988,8 @@ After a battle with the superior Buu of Pure Wrath, Buu is absorbed and the two 
 ###  http://www.semanticweb.org/ontology/anime/Character_Mikasa_Ackerman
 :Character_Mikasa_Ackerman rdf:type owl:NamedIndividual ;
                            :hasVoiceActor :Actor_Ishikawa_Yui ,
-                                          :Actor_Nishimura_Trina ;
+                                          :Actor_Nishimura_Trina ,
+                                          :Actor_Nozawa_Masako ;
                            schema:name "Mikasa Ackerman" ;
                            schema:url "https://myanimelist.net/character/40881/Mikasa_Ackerman"^^rdfs:Literal ;
                            dct:description """Birthdate: February 10
@@ -1000,7 +1005,9 @@ As a teen, Mikasa is considered a genius among all the army trainees and is incr
 
 ###  http://www.semanticweb.org/ontology/anime/Character_Shouko_Nishimiya
 :Character_Shouko_Nishimiya rdf:type owl:NamedIndividual ;
-                            :hasVoiceActor :Actor_Hayami_Saori ;
+                            :hasVoiceActor :Actor_Inoue_Marina ,
+                                           :Actor_Liebing_Katja ,
+                                           :Actor_Nozawa_Masako ;
                             schema:alternateName "Shou-chan, 西宮 硝子" ;
                             schema:name "Shouko Nishimiya" ;
                             schema:url "https://myanimelist.net/character/80243/Shouko_Nishimiya"^^rdfs:Literal ;
@@ -1095,7 +1102,6 @@ A young, deaf transfer student with an amazingly positive outlook on life. Despi
              schema:producer :Organization_Toei_Animation ;
              dct:alternative "ドラゴンボール"@ja ;
              dct:title "Dragon Ball" ;
-             :meteorologicalSeason "Winter 1986" ;
              schema:airingEndDate "1989-04-12T00:00:00"^^xsd:dateTime ;
              schema:airingStartDate "1986-02-26T00:00:00"^^xsd:dateTime ;
              schema:numberOfEpisodes "153"^^xsd:int ;
@@ -1175,7 +1181,6 @@ They don't go on the journey alone. On the way, they meet the old Muten-Roshi an
                schema:isBasedOn :Manga_Dragon_Ball ;
                schema:producer :Organization_Toei_Animation ;
                dct:title "Dragon Ball Z" ;
-               :meteorologicalSeason "Spring 1989" ;
                schema:airingEndDate "1996-01-31T00:00:00"^^xsd:dateTime ;
                schema:airingStartDate "1989-04-26T00:00:00"^^xsd:dateTime ;
                schema:numberOfEpisodes "291"^^xsd:int ;
@@ -1485,7 +1490,6 @@ Koe no Katachi tells the heartwarming tale of Shouya's reunion with Shouko and h
                     schema:producer :Organization_MAPPA ;
                     dct:alternative "Attack on Titan" ;
                     dct:title "Shingeki no Kyojin" ;
-                    :meteorologicalSeason "Spring 2017" ;
                     schema:airingEndDate "2013-09-29T00:00:00"^^xsd:dateTime ;
                     schema:airingStartDate "2013-04-07T00:00:00"^^xsd:dateTime ;
                     schema:numberOfEpisodes "12"^^xsd:int ;
@@ -1544,7 +1548,6 @@ After witnessing a horrific personal loss at the hands of the invading creatures
                              schema:producer :Organization_MAPPA ;
                              dct:alternative "Attack on Titan Season 2" ;
                              dct:title "Shingeki no Kyojin Season 2" ;
-                             :meteorologicalSeason "Spring 2013" ;
                              schema:airingEndDate "2017-06-17T00:00:00"^^xsd:dateTime ;
                              schema:airingStartDate "2017-04-01T00:00:00"^^xsd:dateTime ;
                              schema:numberOfEpisodes "12"^^xsd:int ;
