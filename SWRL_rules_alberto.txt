@@ -16,4 +16,7 @@ swrlb:containsIgnoreCase(?genreName, "Suspense") -> suitableForKids(?a, false)
 
 
 # rule 4
-dbo:Anime(?a) ^ schema:airingStartDate(?a, ?date) ^ swrlb:seasonFromDateTime(?computedSeason, ?date) -> meteorologicalSeason(?a, ?computedSeason)
+dbo:Anime(?a) ^
+schema:airingStartDate(?a, ?date) ^ 
+swrlb:seasonFromDateTime(?computedSeason, ?date) 
+    -> meteorologicalSeason(?a, ?computedSeason)
