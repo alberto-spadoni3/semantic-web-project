@@ -98,7 +98,6 @@ schema:contributor rdf:type owl:AnnotationProperty .
 
 ###  http://www.semanticweb.org/ontology/anime/hasRelation
 :hasRelation rdf:type owl:ObjectProperty ,
-                      owl:SymmetricProperty ,
                       owl:TransitiveProperty ;
              rdfs:domain dbo:Anime ,
                          dbo:Cartoon ,
@@ -287,7 +286,12 @@ schema:episode rdf:type owl:ObjectProperty ;
                owl:inverseOf schema:partOfSeason ;
                rdfs:domain schema:CreativeWork ,
                            schema:CreativeWorkSeason ,
-                           schema:Thing ;
+                           schema:Thing ,
+                           [ rdf:type owl:Class ;
+                             owl:unionOf ( schema:CreativeWorkSeason
+                                           schema:Movie
+                                         )
+                           ] ;
                rdfs:range schema:CreativeWork ,
                           schema:Episode ,
                           schema:Thing .
@@ -385,8 +389,12 @@ dct:alternative rdf:type owl:DatatypeProperty ;
 
 ###  http://purl.org/dc/terms/date
 dct:date rdf:type owl:DatatypeProperty ;
-         rdfs:range rdfs:Literal ,
-                    xsd:dateTime ;
+         rdfs:domain [ rdf:type owl:Class ;
+                       owl:unionOf ( schema:CreativeWorkSeason
+                                     schema:Movie
+                                   )
+                     ] ;
+         rdfs:range xsd:dateTime ;
          dct:description "Date may be used to express temporal information at any level of granularity.  Recommended practice is to express the date, date/time, or period of time according to ISO 8601-1 [[ISO 8601-1](https://www.iso.org/iso-8601-date-and-time-format.html)] or a published profile of the ISO standard, such as the W3C Note on Date and Time Formats [[W3CDTF](https://www.w3.org/TR/NOTE-datetime)] or the Extended Date/Time Format Specification [[EDTF](http://www.loc.gov/standards/datetime/)].  If the full date is unknown, month and year (YYYY-MM) or just year (YYYY) may be used. Date ranges may be specified using ISO 8601 period of time specification in which start and end dates are separated by a '/' (slash) character.  Either the start or end date may be missing."@en ;
          rdfs:comment "A point or period of time associated with an event in the lifecycle of the resource."@en ;
          rdfs:isDefinedBy dct: ;
@@ -397,6 +405,7 @@ dct:date rdf:type owl:DatatypeProperty ;
 dct:title rdf:type owl:DatatypeProperty ;
           owl:equivalentProperty schema:name ;
           rdfs:subPropertyOf schema:name ;
+          rdfs:domain owl:Thing ;
           rdfs:range rdfs:Literal ;
           rdfs:comment "A name given to the resource."@en ;
           rdfs:isDefinedBy dct: ;
@@ -426,11 +435,16 @@ dct:title rdf:type owl:DatatypeProperty ;
                                                   :AnimeSeason
                                                 )
                                   ] ,
+                                  [ rdf:type owl:Class ;
+                                    owl:unionOf ( schema:CreativeWorkSeason
+                                                  schema:Movie
+                                                )
+                                  ] ,
                                   [ rdf:type owl:Restriction ;
                                     owl:onProperty schema:numberOfEpisodes ;
                                     owl:someValuesFrom xsd:int
                                   ] ;
-                      rdfs:range xsd:string .
+                      rdfs:range rdfs:Literal .
 
 
 ###  http://www.semanticweb.org/ontology/anime/suitableForKids
@@ -453,7 +467,12 @@ schema:airingEndDate rdf:type owl:DatatypeProperty ;
                      rdfs:subPropertyOf dct:date ;
                      rdfs:domain schema:CreativeWork ,
                                  schema:CreativeWorkSeason ,
-                                 schema:Thing ;
+                                 schema:Thing ,
+                                 [ rdf:type owl:Class ;
+                                   owl:unionOf ( schema:CreativeWorkSeason
+                                                 schema:Movie
+                                               )
+                                 ] ;
                      rdfs:range xsd:dateTime .
 
 
@@ -462,7 +481,12 @@ schema:airingStartDate rdf:type owl:DatatypeProperty ;
                        rdfs:subPropertyOf dct:date ;
                        rdfs:domain schema:CreativeWork ,
                                    schema:CreativeWorkSeason ,
-                                   schema:Thing ;
+                                   schema:Thing ,
+                                   [ rdf:type owl:Class ;
+                                     owl:unionOf ( schema:CreativeWorkSeason
+                                                   schema:Movie
+                                                 )
+                                   ] ;
                        rdfs:range xsd:dateTime .
 
 
@@ -489,7 +513,12 @@ schema:datePublished rdf:type owl:DatatypeProperty ;
                      rdfs:subPropertyOf dct:date ;
                      rdfs:domain schema:CreativeWork ,
                                  schema:Movie ,
-                                 schema:Thing ;
+                                 schema:Thing ,
+                                 [ rdf:type owl:Class ;
+                                   owl:unionOf ( schema:CreativeWorkSeason
+                                                 schema:Movie
+                                               )
+                                 ] ;
                      rdfs:range xsd:dateTime .
 
 
@@ -506,7 +535,12 @@ schema:description rdf:type owl:DatatypeProperty ,
 schema:duration rdf:type owl:DatatypeProperty ;
                 rdfs:domain schema:CreativeWork ,
                             schema:Movie ,
-                            schema:Thing ;
+                            schema:Thing ,
+                            [ rdf:type owl:Class ;
+                              owl:unionOf ( schema:CreativeWorkSeason
+                                            schema:Movie
+                                          )
+                            ] ;
                 rdfs:range rdfs:Literal .
 
 
@@ -516,11 +550,6 @@ schema:episodeNumber rdf:type owl:DatatypeProperty ;
                                  schema:Episode ,
                                  schema:Thing ;
                      rdfs:range xsd:int .
-
-
-###  https://schema.org/genre
-schema:genre rdf:type owl:DatatypeProperty ;
-             rdfs:range rdfs:Literal .
 
 
 ###  https://schema.org/name
@@ -534,7 +563,12 @@ schema:name rdf:type owl:DatatypeProperty ;
 schema:numberOfEpisodes rdf:type owl:DatatypeProperty ;
                         rdfs:domain schema:CreativeWork ,
                                     schema:CreativeWorkSeason ,
-                                    schema:Thing ;
+                                    schema:Thing ,
+                                    [ rdf:type owl:Class ;
+                                      owl:unionOf ( schema:CreativeWorkSeason
+                                                    schema:Movie
+                                                  )
+                                    ] ;
                         rdfs:range xsd:int .
 
 
@@ -854,7 +888,12 @@ schema:CreativeWork rdf:type owl:Class ;
 ###  https://schema.org/CreativeWorkSeason
 schema:CreativeWorkSeason rdf:type owl:Class ;
                           rdfs:subClassOf schema:CreativeWork ,
-                                          schema:Thing ;
+                                          schema:Thing ,
+                                          [ rdf:type owl:Class ;
+                                            owl:unionOf ( schema:CreativeWorkSeason
+                                                          schema:Movie
+                                                        )
+                                          ] ;
                           rdfs:comment "A media season, e.g. TV, radio, video game etc." ;
                           rdfs:label "CreativeWorkSeason" .
 
@@ -894,7 +933,12 @@ schema:Language rdf:type owl:Class ;
 ###  https://schema.org/Movie
 schema:Movie rdf:type owl:Class ;
              rdfs:subClassOf schema:CreativeWork ,
-                             schema:Thing ;
+                             schema:Thing ,
+                             [ rdf:type owl:Class ;
+                               owl:unionOf ( schema:CreativeWorkSeason
+                                             schema:Movie
+                                           )
+                             ] ;
              rdfs:comment "A movie." ;
              rdfs:label "Movie" .
 
@@ -952,7 +996,12 @@ schema:Service rdf:type owl:Class ;
 schema:TVSeason rdf:type owl:Class ;
                 rdfs:subClassOf schema:CreativeWork ,
                                 schema:CreativeWorkSeason ,
-                                schema:Thing ;
+                                schema:Thing ,
+                                [ rdf:type owl:Class ;
+                                  owl:unionOf ( schema:CreativeWorkSeason
+                                                schema:Movie
+                                              )
+                                ] ;
                 rdfs:comment "Season dedicated to TV broadcast and associated online delivery." ;
                 rdfs:label "TVSeason" .
 
@@ -976,7 +1025,10 @@ schema:Thing rdf:type owl:Class ;
                                schema:Person ,
                                schema:Thing ;
                       :languageOfVoicing :Language_fr-FR ;
-                      :voiceActed :Character_Kuririn ;
+                      :voiceActed :Character_Gokuu ,
+                                  :Character_Ishida_Shouya ,
+                                  :Character_Kuririn ,
+                                  :Character_Majin_Buu ;
                       dct:title "Chantal Claude" ;
                       schema:name "Chantal Claude" .
 
@@ -990,7 +1042,7 @@ schema:Thing rdf:type owl:Class ;
                              schema:Person ,
                              schema:Thing ;
                     :languageOfVoicing :Language_ja-JP ;
-                    :voiceActed :Character_Shouko_Nishimiya ;
+                    :voiceActed :Character_Majin_Buu ;
                     dct:title "Hayami Saori" ;
                     schema:name "Hayami Saori" .
 
@@ -1004,7 +1056,10 @@ schema:Thing rdf:type owl:Class ;
                              schema:Person ,
                              schema:Thing ;
                     :languageOfVoicing :Language_en-US ;
-                    :voiceActed :Character_Armin_Arlert ;
+                    :voiceActed :Character_Armin_Arlert ,
+                                :Character_Bulma ,
+                                :Character_Levi ,
+                                :Character_Shouko_Nishimiya ;
                     dct:title "Inoue Marina" ;
                     schema:name "Inoue Marina" .
 
@@ -1074,7 +1129,8 @@ schema:Thing rdf:type owl:Class ;
                               schema:Person ,
                               schema:Thing ;
                      :languageOfVoicing :Language_de-DE ;
-                     :voiceActed :Character_Bulma ;
+                     :voiceActed :Character_Bulma ,
+                                 :Character_Shouko_Nishimiya ;
                      dct:title "Liebing Katja" ;
                      schema:name "Liebing Katja" .
 
@@ -1102,7 +1158,11 @@ schema:Thing rdf:type owl:Class ;
                               schema:Person ,
                               schema:Thing ;
                      :languageOfVoicing :Language_ja-JP ;
-                     :voiceActed :Character_Gokuu ;
+                     :voiceActed :Character_Eren_Yeager ,
+                                 :Character_Gokuu ,
+                                 :Character_Levi ,
+                                 :Character_Mikasa_Ackerman ,
+                                 :Character_Shouko_Nishimiya ;
                      dct:title "Nozawa Masako" ;
                      schema:name "Nozawa Masako" .
 
@@ -1130,7 +1190,9 @@ schema:Thing rdf:type owl:Class ;
                                  schema:Person ,
                                  schema:Thing ;
                         :languageOfVoicing :Language_it-IT ;
-                        :voiceActed :Character_Gokuu ;
+                        :voiceActed :Character_Armin_Arlert ,
+                                    :Character_Bulma ,
+                                    :Character_Gokuu ;
                         dct:title "Scianca Patrizia" ;
                         schema:name "Scianca Patrizia" .
 
@@ -1273,7 +1335,8 @@ schema:Thing rdf:type owl:Class ;
                                  schema:Thing ;
                         :animeWithCharacter :Shingeki_no_Kyojin ,
                                             :Shingeki_no_Kyojin_Season_2 ;
-                        :hasVoiceActor :Actor_Inoue_Marina ;
+                        :hasVoiceActor :Actor_Inoue_Marina ,
+                                       :Actor_Scianca_Patrizia ;
                         dct:title "Armin Arlert" ;
                         schema:name "Armin Arlert" ;
                         schema:url "https://myanimelist.net/character/46494/Armin_Arlert"^^rdfs:Literal ;
@@ -1297,7 +1360,9 @@ Armin Arlert is Eren's best friend. He is physically weak, but emotionally stron
                  :animeWithCharacter :Dragon_Ball ,
                                      :Dragon_Ball_Specials ,
                                      :Dragon_Ball_Z ;
-                 :hasVoiceActor :Actor_Liebing_Katja ,
+                 :hasVoiceActor :Actor_Inoue_Marina ,
+                                :Actor_Liebing_Katja ,
+                                :Actor_Scianca_Patrizia ,
                                 :Actor_Tsuru_Hiromi ;
                  dct:title "Bulma" ;
                  schema:name "Bulma" ;
@@ -1326,6 +1391,7 @@ Bulma is the second character to be introduced in the Dragon Ball series. In the
                        :animeWithCharacter :Shingeki_no_Kyojin ,
                                            :Shingeki_no_Kyojin_Season_2 ;
                        :hasVoiceActor :Actor_Kaji_Yuuki ,
+                                      :Actor_Nozawa_Masako ,
                                       :Actor_Papenbrook_Bryce ;
                        dct:title "Eren Yeager" ;
                        schema:name "Eren Yeager" ;
@@ -1352,7 +1418,8 @@ His father is a doctor (whom is well respected by Hannes and potentially many mo
                  :animeWithCharacter :Dragon_Ball ,
                                      :Dragon_Ball_Specials ,
                                      :Dragon_Ball_Z ;
-                 :hasVoiceActor :Actor_Nozawa_Masako ,
+                 :hasVoiceActor :Actor_Chantal_Claude ,
+                                :Actor_Nozawa_Masako ,
                                 :Actor_Scianca_Patrizia ;
                  dct:alternative "Kakarot" ;
                  dct:title "Gokuu" ,
@@ -1383,7 +1450,8 @@ Dragon Ball Z takes place 5 years after Gokuu's victory against Piccolo in the 2
                                   schema:Person ,
                                   schema:Thing ;
                          :animeWithCharacter :Koe_no_Katachi ;
-                         :hasVoiceActor :Actor_Irino_Miyu ;
+                         :hasVoiceActor :Actor_Chantal_Claude ,
+                                        :Actor_Irino_Miyu ;
                          dct:alternative "Shou-chan, Yashou" ;
                          dct:title "Shou-chan, Yashou" ,
                                    "Shouya Ishida" ;
@@ -1432,7 +1500,9 @@ Once a fierce rival of Son Goku, he quickly became his best friend while trainin
                          schema:Person ,
                          schema:Thing ;
                 :animeWithCharacter :Shingeki_no_Kyojin_Season_2 ;
-                :hasVoiceActor :Actor_Kamiya_Hiroshi ;
+                :hasVoiceActor :Actor_Inoue_Marina ,
+                               :Actor_Kamiya_Hiroshi ,
+                               :Actor_Nozawa_Masako ;
                 dct:title "Levi" ;
                 schema:name "Levi" ;
                 schema:url "https://myanimelist.net/character/45627/Levi"^^rdfs:Literal ;
@@ -1453,7 +1523,9 @@ Levi is known as humanity's most powerful soldier. He's ranked as Captain of the
                               schema:Person ,
                               schema:Thing ;
                      :animeWithCharacter :Dragon_Ball_Z ;
-                     :hasVoiceActor :Actor_Shioya_Kouzou ;
+                     :hasVoiceActor :Actor_Chantal_Claude ,
+                                    :Actor_Hayami_Saori ,
+                                    :Actor_Shioya_Kouzou ;
                      dct:title "Majin Buu" ;
                      schema:name "Majin Buu" ;
                      schema:url "https://myanimelist.net/character/1012/Majin_Buu" ;
@@ -1475,7 +1547,8 @@ After a battle with the superior Buu of Pure Wrath, Buu is absorbed and the two 
                            :animeWithCharacter :Shingeki_no_Kyojin ,
                                                :Shingeki_no_Kyojin_Season_2 ;
                            :hasVoiceActor :Actor_Ishikawa_Yui ,
-                                          :Actor_Nishimura_Trina ;
+                                          :Actor_Nishimura_Trina ,
+                                          :Actor_Nozawa_Masako ;
                            dct:title "Mikasa Ackerman" ;
                            schema:name "Mikasa Ackerman" ;
                            schema:url "https://myanimelist.net/character/40881/Mikasa_Ackerman"^^rdfs:Literal ;
@@ -1499,7 +1572,9 @@ As a teen, Mikasa is considered a genius among all the army trainees and is incr
                                      schema:Person ,
                                      schema:Thing ;
                             :animeWithCharacter :Koe_no_Katachi ;
-                            :hasVoiceActor :Actor_Hayami_Saori ;
+                            :hasVoiceActor :Actor_Inoue_Marina ,
+                                           :Actor_Liebing_Katja ,
+                                           :Actor_Nozawa_Masako ;
                             dct:alternative "Shou-chan, 西宮 硝子" ;
                             dct:title "Shou-chan, 西宮 硝子" ,
                                       "Shouko Nishimiya" ;
@@ -1624,10 +1699,14 @@ A young, deaf transfer student with an amazingly positive outlook on life. Despi
                         owl:unionOf ( :AnimeMovie
                                       :AnimeSeason
                                     )
+                      ] ,
+                      [ rdf:type owl:Class ;
+                        owl:unionOf ( schema:CreativeWorkSeason
+                                      schema:Movie
+                                    )
                       ] ;
              :creativeWorkStatus :CreativeWorkStatus_Finished_Airing ;
-             :hasRelation :Dragon_Ball ,
-                          :Dragon_Ball_Specials ,
+             :hasRelation :Dragon_Ball_Specials ,
                           :Dragon_Ball_Z ;
              :hasSequel :Dragon_Ball_Z ;
              :hasSpinOff :Dragon_Ball_Specials ;
@@ -1708,11 +1787,13 @@ They don't go on the journey alone. On the way, they meet the old Muten-Roshi an
                                  owl:unionOf ( :AnimeMovie
                                                :AnimeSeason
                                              )
+                               ] ,
+                               [ rdf:type owl:Class ;
+                                 owl:unionOf ( schema:CreativeWorkSeason
+                                               schema:Movie
+                                             )
                                ] ;
                       :creativeWorkStatus :CreativeWorkStatus_Finished_Airing ;
-                      :hasRelation :Dragon_Ball ,
-                                   :Dragon_Ball_Specials ,
-                                   :Dragon_Ball_Z ;
                       :isSpinOffOf :Dragon_Ball ;
                       schema:audience :Audience_Shounen ;
                       schema:character :Character_Bulma ,
@@ -1769,12 +1850,14 @@ They don't go on the journey alone. On the way, they meet the old Muten-Roshi an
                           owl:unionOf ( :AnimeMovie
                                         :AnimeSeason
                                       )
+                        ] ,
+                        [ rdf:type owl:Class ;
+                          owl:unionOf ( schema:CreativeWorkSeason
+                                        schema:Movie
+                                      )
                         ] ;
                :creativeWorkStatus :CreativeWorkStatus_Finished_Airing ;
                :hasPrequel :Dragon_Ball ;
-               :hasRelation :Dragon_Ball ,
-                            :Dragon_Ball_Specials ,
-                            :Dragon_Ball_Z ;
                :isStreamedOn :Crunchyroll_Dragon_Ball_Z ;
                schema:audience :Audience_Shounen ;
                schema:character :Character_Bulma ,
@@ -1980,6 +2063,11 @@ With his failed attempt at forcibly recruiting Gokuu as an ally, Raditz warns Go
                          [ rdf:type owl:Class ;
                            owl:unionOf ( :AnimeMovie
                                          :AnimeSeason
+                                       )
+                         ] ,
+                         [ rdf:type owl:Class ;
+                           owl:unionOf ( schema:CreativeWorkSeason
+                                         schema:Movie
                                        )
                          ] ;
                 :creativeWorkStatus :CreativeWorkStatus_Finished_Airing ;
@@ -2343,10 +2431,14 @@ Koe no Katachi tells the heartwarming tale of Shouya's reunion with Shouko and h
                                owl:unionOf ( :AnimeMovie
                                              :AnimeSeason
                                            )
+                             ] ,
+                             [ rdf:type owl:Class ;
+                               owl:unionOf ( schema:CreativeWorkSeason
+                                             schema:Movie
+                                           )
                              ] ;
                     :creativeWorkStatus :CreativeWorkStatus_Finished_Airing ;
-                    :hasRelation :Shingeki_no_Kyojin ,
-                                 :Shingeki_no_Kyojin_Season_2 ;
+                    :hasRelation :Shingeki_no_Kyojin_Season_2 ;
                     :hasSequel :Shingeki_no_Kyojin_Season_2 ;
                     :isStreamedOn :Netflix_Shingeki_no_Kyojin ;
                     schema:audience :Audience_Shounen ;
@@ -2440,11 +2532,14 @@ After witnessing a horrific personal loss at the hands of the invading creatures
                                         owl:unionOf ( :AnimeMovie
                                                       :AnimeSeason
                                                     )
+                                      ] ,
+                                      [ rdf:type owl:Class ;
+                                        owl:unionOf ( schema:CreativeWorkSeason
+                                                      schema:Movie
+                                                    )
                                       ] ;
                              :creativeWorkStatus :CreativeWorkStatus_Finished_Airing ;
                              :hasPrequel :Shingeki_no_Kyojin ;
-                             :hasRelation :Shingeki_no_Kyojin ,
-                                          :Shingeki_no_Kyojin_Season_2 ;
                              :isStreamedOn :Crunchyroll_Shingeki_no_Kyojin_Season_2 ,
                                            :Netflix_Shingeki_no_Kyojin_Season_2 ;
                              schema:audience :Audience_Shounen ;
