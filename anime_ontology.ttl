@@ -95,7 +95,6 @@ schema:contributor rdf:type owl:AnnotationProperty .
 
 ###  http://www.semanticweb.org/ontology/anime/hasRelation
 :hasRelation rdf:type owl:ObjectProperty ,
-                      owl:SymmetricProperty ,
                       owl:TransitiveProperty ;
              rdfs:domain dbo:Anime ;
              rdfs:range dbo:Anime .
