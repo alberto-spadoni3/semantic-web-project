@@ -108,7 +108,7 @@ WHERE {
                 schema:name ?voiceActorName .
     ?character schema:name ?characterName .
     MINUS { ?character schema:alternateName ?characterName . }
-    FILTER ( LANG(?languageOfVoicing) = "en" . )
+    FILTER ( LANG(?languageOfVoicing) = "en" )
 }
 GROUP BY ?voiceActorName ?languageOfVoicing
 ORDER BY DESC(?voicedAnimeCount)
