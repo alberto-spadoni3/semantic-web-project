@@ -859,7 +859,8 @@ schema:Thing rdf:type owl:Class ;
 
 ###  http://www.semanticweb.org/ontology/anime/Character_Armin_Arlert
 :Character_Armin_Arlert rdf:type owl:NamedIndividual ;
-                        :hasVoiceActor :Actor_Inoue_Marina ;
+                        :hasVoiceActor :Actor_Inoue_Marina ,
+                                       :Actor_Scianca_Patrizia ;
                         schema:name "Armin Arlert" ;
                         schema:url "https://myanimelist.net/character/46494/Armin_Arlert"^^rdfs:Literal ;
                         dct:description """Birthday: November 3
@@ -873,7 +874,9 @@ Armin Arlert is Eren's best friend. He is physically weak, but emotionally stron
 
 ###  http://www.semanticweb.org/ontology/anime/Character_Bulma
 :Character_Bulma rdf:type owl:NamedIndividual ;
-                 :hasVoiceActor :Actor_Liebing_Katja ,
+                 :hasVoiceActor :Actor_Inoue_Marina ,
+                                :Actor_Liebing_Katja ,
+                                :Actor_Scianca_Patrizia ,
                                 :Actor_Tsuru_Hiromi ;
                  schema:name "Bulma" ;
                  schema:url "https://myanimelist.net/character/678/Bulma" ;
@@ -893,6 +896,7 @@ Bulma is the second character to be introduced in the Dragon Ball series. In the
 ###  http://www.semanticweb.org/ontology/anime/Character_Eren_Yeager
 :Character_Eren_Yeager rdf:type owl:NamedIndividual ;
                        :hasVoiceActor :Actor_Kaji_Yuuki ,
+                                      :Actor_Nozawa_Masako ,
                                       :Actor_Papenbrook_Bryce ;
                        schema:name "Eren Yeager" ;
                        schema:url "https://myanimelist.net/character/40882/Eren_Yeager"^^rdfs:Literal ;
@@ -909,7 +913,8 @@ His father is a doctor (whom is well respected by Hannes and potentially many mo
 
 ###  http://www.semanticweb.org/ontology/anime/Character_Gokuu
 :Character_Gokuu rdf:type owl:NamedIndividual ;
-                 :hasVoiceActor :Actor_Nozawa_Masako ,
+                 :hasVoiceActor :Actor_Chantal_Claude ,
+                                :Actor_Nozawa_Masako ,
                                 :Actor_Scianca_Patrizia ;
                  schema:alternateName "Kakarot" ;
                  schema:name "Gokuu" ;
@@ -929,7 +934,8 @@ Dragon Ball Z takes place 5 years after Gokuu's victory against Piccolo in the 2
 
 ###  http://www.semanticweb.org/ontology/anime/Character_Ishida_Shouya
 :Character_Ishida_Shouya rdf:type owl:NamedIndividual ;
-                         :hasVoiceActor :Actor_Irino_Miyu ;
+                         :hasVoiceActor :Actor_Chantal_Claude ,
+                                        :Actor_Irino_Miyu ;
                          schema:alternateName "Shou-chan, Yashou" ;
                          schema:name "Shouya Ishida" ;
                          schema:url "https://myanimelist.net/character/80491/Shouya_Ishida"^^rdfs:Literal ;
@@ -954,7 +960,9 @@ Once a fierce rival of Son Goku, he quickly became his best friend while trainin
 
 ###  http://www.semanticweb.org/ontology/anime/Character_Levi
 :Character_Levi rdf:type owl:NamedIndividual ;
-                :hasVoiceActor :Actor_Kamiya_Hiroshi ;
+                :hasVoiceActor :Actor_Inoue_Marina ,
+                               :Actor_Kamiya_Hiroshi ,
+                               :Actor_Nozawa_Masako ;
                 schema:name "Levi" ;
                 schema:url "https://myanimelist.net/character/45627/Levi"^^rdfs:Literal ;
                 dct:description """Birthday: December 25
@@ -967,7 +975,9 @@ Levi is known as humanity's most powerful soldier. He's ranked as Captain of the
 
 ###  http://www.semanticweb.org/ontology/anime/Character_Majin_Buu
 :Character_Majin_Buu rdf:type owl:NamedIndividual ;
-                     :hasVoiceActor :Actor_Shioya_Kouzou ;
+                     :hasVoiceActor :Actor_Chantal_Claude ,
+                                    :Actor_Hayami_Saori ,
+                                    :Actor_Shioya_Kouzou ;
                      schema:name "Majin Buu" ;
                      schema:url "https://myanimelist.net/character/1012/Majin_Buu" ;
                      dct:description """Buu is introduced in the series during the Buu Saga as an innocent looking pudgy pink genie-like creature. Later in the series, it is revealed that Boo's original form is a more sleek child form (\"The Boo of Pure Evil\"), however his nature and form had been altered after he'd assimilated the gentle, pudgy god (Dai kaioshin) into his body. Buu's creator, a wizard named Bibbidi, had used Boo to wage war on the Kaioshin. Buu managed to assimilate two of the four Kaioshin, the second being the one who altered his nature to become innocent. Before assimilating the second Kaioshin, he had killed the third Kaioshin. After Bibbidi sealed buu away, Bibbidi was killed by the fourth Kaioshin, and Boo was transported to planet Earth where he layed dormant for five million years until he was revived by Bibbidi's son Babbidi during the events of Dragon Ball.
@@ -980,7 +990,8 @@ After a battle with the superior Buu of Pure Wrath, Buu is absorbed and the two 
 ###  http://www.semanticweb.org/ontology/anime/Character_Mikasa_Ackerman
 :Character_Mikasa_Ackerman rdf:type owl:NamedIndividual ;
                            :hasVoiceActor :Actor_Ishikawa_Yui ,
-                                          :Actor_Nishimura_Trina ;
+                                          :Actor_Nishimura_Trina ,
+                                          :Actor_Nozawa_Masako ;
                            schema:name "Mikasa Ackerman" ;
                            schema:url "https://myanimelist.net/character/40881/Mikasa_Ackerman"^^rdfs:Literal ;
                            dct:description """Birthdate: February 10
@@ -996,7 +1007,9 @@ As a teen, Mikasa is considered a genius among all the army trainees and is incr
 
 ###  http://www.semanticweb.org/ontology/anime/Character_Shouko_Nishimiya
 :Character_Shouko_Nishimiya rdf:type owl:NamedIndividual ;
-                            :hasVoiceActor :Actor_Hayami_Saori ;
+                            :hasVoiceActor :Actor_Inoue_Marina ,
+                                           :Actor_Liebing_Katja ,
+                                           :Actor_Nozawa_Masako ;
                             schema:alternateName "Shou-chan, 西宮 硝子" ;
                             schema:name "Shouko Nishimiya" ;
                             schema:url "https://myanimelist.net/character/80243/Shouko_Nishimiya"^^rdfs:Literal ;
