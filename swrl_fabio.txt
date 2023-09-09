@@ -1,3 +1,0 @@
-AnimeSeason(?anime) ^ creativeWorkStatus(?anime, CreativeWorkStatus_Not_Yet_Aired) ^ schema:airingStartDate(?anime, ?startDate) ^ schema:airingEndDate(?anime, ?endDate) ^ swrlb:dateTime("2023-09-01T00:00:00"^^xsd:dateTime, ?now) ^ temporal:before(?startDate, ?endDate) ^ temporal:after(?startDate, ?currentDate) -> autogen0:hasValidDateRange(?anime, ?startDate)
-
-AnimeSeason(?anime) ^ schema:airingStartDate(?anime, ?startDate) ^ schema:airingEndDate(?anime, ?endDate) -> temporal:before(?startDate, ?endDate)
