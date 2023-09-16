@@ -315,15 +315,6 @@ schema:datePublished rdf:type owl:DatatypeProperty ;
                      rdfs:range xsd:dateTime .
 
 
-###  https://schema.org/description
-schema:description rdf:type owl:DatatypeProperty ,
-                            owl:FunctionalProperty ;
-                   rdfs:domain schema:Thing ;
-                   rdfs:range rdfs:Literal ;
-                   rdfs:comment "A description of the item." ;
-                   rdfs:label "description" .
-
-
 ###  https://schema.org/duration
 schema:duration rdf:type owl:DatatypeProperty ;
                 rdfs:domain schema:Movie ;
@@ -442,7 +433,11 @@ dbo:Comic rdf:type owl:Class ;
 dbo:FictionalCharacter rdf:type owl:Class ;
                        owl:equivalentClass <http://www.wikidata.org/entity/Q95074> ;
                        rdfs:subClassOf dbo:Agent ,
-                                       <https://dbpedia.org/ontology/Person> ;
+                                       <https://dbpedia.org/ontology/Person> ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :hasVoiceActor ;
+                                         owl:someValuesFrom dbo:VoiceActor
+                                       ] ;
                        rdfs:isDefinedBy dbo: ;
                        rdfs:label "carachtar ficseanúil"@ga ,
                                   "fictional character"@en ,
