@@ -269,7 +269,11 @@ schema:character rdf:type owl:ObjectProperty ;
                             <http://www.wikidata.org/entity/Q95074> ,
                             <https://dbpedia.org/ontology/Person> ,
                             schema:Person ,
-                            schema:Thing .
+                            schema:Thing ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :hasVoiceActor ;
+                              owl:someValuesFrom dbo:VoiceActor
+                            ] .
 
 
 ###  https://schema.org/contentRating
@@ -522,15 +526,6 @@ schema:datePublished rdf:type owl:DatatypeProperty ;
                      rdfs:range xsd:dateTime .
 
 
-###  https://schema.org/description
-schema:description rdf:type owl:DatatypeProperty ,
-                            owl:FunctionalProperty ;
-                   rdfs:domain schema:Thing ;
-                   rdfs:range rdfs:Literal ;
-                   rdfs:comment "A description of the item." ;
-                   rdfs:label "description" .
-
-
 ###  https://schema.org/duration
 schema:duration rdf:type owl:DatatypeProperty ;
                 rdfs:domain schema:CreativeWork ,
@@ -678,7 +673,11 @@ dbo:FictionalCharacter rdf:type owl:Class ;
                        owl:equivalentClass <http://www.wikidata.org/entity/Q95074> ;
                        rdfs:subClassOf dbo:Agent ,
                                        <http://www.wikidata.org/entity/Q95074> ,
-                                       <https://dbpedia.org/ontology/Person> ;
+                                       <https://dbpedia.org/ontology/Person> ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :hasVoiceActor ;
+                                         owl:someValuesFrom dbo:VoiceActor
+                                       ] ;
                        rdfs:isDefinedBy dbo: ;
                        rdfs:label "carachtar ficseanúil"@ga ,
                                   "fictional character"@en ,
@@ -826,7 +825,11 @@ dbo:VoiceActor rdf:type owl:Class ;
 ###  http://www.wikidata.org/entity/Q95074
 <http://www.wikidata.org/entity/Q95074> rdf:type owl:Class ;
                                         rdfs:subClassOf dbo:Agent ,
-                                                        dbo:FictionalCharacter .
+                                                        dbo:FictionalCharacter ,
+                                                        [ rdf:type owl:Restriction ;
+                                                          owl:onProperty :hasVoiceActor ;
+                                                          owl:someValuesFrom dbo:VoiceActor
+                                                        ] .
 
 
 ###  https://dbpedia.org/ontology/Artist
@@ -1332,7 +1335,11 @@ schema:Thing rdf:type owl:Class ;
                                  <http://www.wikidata.org/entity/Q95074> ,
                                  <https://dbpedia.org/ontology/Person> ,
                                  schema:Person ,
-                                 schema:Thing ;
+                                 schema:Thing ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :hasVoiceActor ;
+                                   owl:someValuesFrom dbo:VoiceActor
+                                 ] ;
                         :animeWithCharacter :Shingeki_no_Kyojin ,
                                             :Shingeki_no_Kyojin_Season_2 ;
                         :hasVoiceActor :Actor_Inoue_Marina ,
@@ -1356,7 +1363,11 @@ Armin Arlert is Eren's best friend. He is physically weak, but emotionally stron
                           <http://www.wikidata.org/entity/Q95074> ,
                           <https://dbpedia.org/ontology/Person> ,
                           schema:Person ,
-                          schema:Thing ;
+                          schema:Thing ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasVoiceActor ;
+                            owl:someValuesFrom dbo:VoiceActor
+                          ] ;
                  :animeWithCharacter :Dragon_Ball ,
                                      :Dragon_Ball_Specials ,
                                      :Dragon_Ball_Z ;
@@ -1387,7 +1398,11 @@ Bulma is the second character to be introduced in the Dragon Ball series. In the
                                 <http://www.wikidata.org/entity/Q95074> ,
                                 <https://dbpedia.org/ontology/Person> ,
                                 schema:Person ,
-                                schema:Thing ;
+                                schema:Thing ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :hasVoiceActor ;
+                                  owl:someValuesFrom dbo:VoiceActor
+                                ] ;
                        :animeWithCharacter :Shingeki_no_Kyojin ,
                                            :Shingeki_no_Kyojin_Season_2 ;
                        :hasVoiceActor :Actor_Kaji_Yuuki ,
@@ -1414,7 +1429,11 @@ His father is a doctor (whom is well respected by Hannes and potentially many mo
                           <http://www.wikidata.org/entity/Q95074> ,
                           <https://dbpedia.org/ontology/Person> ,
                           schema:Person ,
-                          schema:Thing ;
+                          schema:Thing ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasVoiceActor ;
+                            owl:someValuesFrom dbo:VoiceActor
+                          ] ;
                  :animeWithCharacter :Dragon_Ball ,
                                      :Dragon_Ball_Specials ,
                                      :Dragon_Ball_Z ;
@@ -1448,7 +1467,11 @@ Dragon Ball Z takes place 5 years after Gokuu's victory against Piccolo in the 2
                                   <http://www.wikidata.org/entity/Q95074> ,
                                   <https://dbpedia.org/ontology/Person> ,
                                   schema:Person ,
-                                  schema:Thing ;
+                                  schema:Thing ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :hasVoiceActor ;
+                                    owl:someValuesFrom dbo:VoiceActor
+                                  ] ;
                          :animeWithCharacter :Koe_no_Katachi ;
                          :hasVoiceActor :Actor_Chantal_Claude ,
                                         :Actor_Irino_Miyu ;
@@ -1473,7 +1496,11 @@ The main character and narrator. Ishida bullied Nishimiya Shouko in elementary s
                             <http://www.wikidata.org/entity/Q95074> ,
                             <https://dbpedia.org/ontology/Person> ,
                             schema:Person ,
-                            schema:Thing ;
+                            schema:Thing ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :hasVoiceActor ;
+                              owl:someValuesFrom dbo:VoiceActor
+                            ] ;
                    :animeWithCharacter :Dragon_Ball ,
                                        :Dragon_Ball_Specials ,
                                        :Dragon_Ball_Z ;
@@ -1498,7 +1525,11 @@ Once a fierce rival of Son Goku, he quickly became his best friend while trainin
                          <http://www.wikidata.org/entity/Q95074> ,
                          <https://dbpedia.org/ontology/Person> ,
                          schema:Person ,
-                         schema:Thing ;
+                         schema:Thing ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasVoiceActor ;
+                           owl:someValuesFrom dbo:VoiceActor
+                         ] ;
                 :animeWithCharacter :Shingeki_no_Kyojin_Season_2 ;
                 :hasVoiceActor :Actor_Inoue_Marina ,
                                :Actor_Kamiya_Hiroshi ,
@@ -1521,7 +1552,11 @@ Levi is known as humanity's most powerful soldier. He's ranked as Captain of the
                               <http://www.wikidata.org/entity/Q95074> ,
                               <https://dbpedia.org/ontology/Person> ,
                               schema:Person ,
-                              schema:Thing ;
+                              schema:Thing ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasVoiceActor ;
+                                owl:someValuesFrom dbo:VoiceActor
+                              ] ;
                      :animeWithCharacter :Dragon_Ball_Z ;
                      :hasVoiceActor :Actor_Chantal_Claude ,
                                     :Actor_Hayami_Saori ,
@@ -1543,7 +1578,11 @@ After a battle with the superior Buu of Pure Wrath, Buu is absorbed and the two 
                                     <http://www.wikidata.org/entity/Q95074> ,
                                     <https://dbpedia.org/ontology/Person> ,
                                     schema:Person ,
-                                    schema:Thing ;
+                                    schema:Thing ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :hasVoiceActor ;
+                                      owl:someValuesFrom dbo:VoiceActor
+                                    ] ;
                            :animeWithCharacter :Shingeki_no_Kyojin ,
                                                :Shingeki_no_Kyojin_Season_2 ;
                            :hasVoiceActor :Actor_Ishikawa_Yui ,
@@ -1570,7 +1609,11 @@ As a teen, Mikasa is considered a genius among all the army trainees and is incr
                                      <http://www.wikidata.org/entity/Q95074> ,
                                      <https://dbpedia.org/ontology/Person> ,
                                      schema:Person ,
-                                     schema:Thing ;
+                                     schema:Thing ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :hasVoiceActor ;
+                                       owl:someValuesFrom dbo:VoiceActor
+                                     ] ;
                             :animeWithCharacter :Koe_no_Katachi ;
                             :hasVoiceActor :Actor_Inoue_Marina ,
                                            :Actor_Liebing_Katja ,
